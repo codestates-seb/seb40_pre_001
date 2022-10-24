@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'development') {
   worker.start();
 }
 
+// react-query
 const queryClient = new QueryClient();
 const container = document.getElementById('root');
 const root = createRoot(container);

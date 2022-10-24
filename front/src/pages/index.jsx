@@ -4,9 +4,10 @@ import Layout from './pagesLayout/Layout';
 
 import { ROUTES } from '../constants';
 
+// Layout 하위로 페이지 라우팅
 const PAGES = [
   {
-    name: <Layout />,
+    element: <Layout />,
     children: [
       {
         name: ROUTES.HOME.name,
