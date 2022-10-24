@@ -4,12 +4,20 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  extends: ['airbnb', 'eslint:recommended', 'plugin:react/recommended', 'prettier'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
-  rules: {},
+  plugins: ['react', 'react-hooks'],
+  rules: {
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: '(useRecoilCallback|useRecoilTransaction_UNSTABLE)',
+      },
+    ],
+  },
 };
