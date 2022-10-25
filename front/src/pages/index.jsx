@@ -1,6 +1,10 @@
 import React from 'react';
+
+import Layout from './PagesLayout/Layout';
 import Home from './Home';
-import Layout from './pagesLayout/Layout';
+import About from './About';
+import Login from './AuthPage/Login';
+import SignUp from './AuthPage/Signup';
 
 import { ROUTES } from '../constants';
 
@@ -13,6 +17,21 @@ const PAGES = [
         name: ROUTES.HOME.name,
         path: ROUTES.HOME.path,
         element: <Home />,
+      },
+      {
+        name: ROUTES.ABOUT.name,
+        path: ROUTES.ABOUT.path,
+        element: <About />,
+      },
+      {
+        name: ROUTES.LOGIN.name,
+        path: ROUTES.LOGIN.path,
+        element: <Login />,
+      },
+      {
+        name: ROUTES.SIGNUP.name,
+        path: ROUTES.SIGNUP.path,
+        element: <SignUp />,
       },
     ],
   },
