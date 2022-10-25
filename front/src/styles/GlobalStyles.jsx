@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   background-color: white;
   width: 100vw;  
+  height : 100vh;
   overflow-x: hidden;
   display : flex;
   flex-direction : column;
