@@ -22,6 +22,17 @@ body {
 button {
   cursor: pointer;
 }
+
+.active {
+  background-color: hsl(210, 8%, 95%) ;
+  font-weight: 700;
+  border-right: 3px solid hsl(27, 90%, 55%) ;
+  
+  div {
+    color: hsl(210, 8%, 5%);
+    font-weight: 700;
+  }
+}
 `;
 
 export default GlobalStyles;
