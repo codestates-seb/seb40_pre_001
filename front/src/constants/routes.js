@@ -5,6 +5,18 @@ const ROUTES = {
     path: '/',
     name: 'Home',
   },
+  ABOUT: {
+    path: '/about',
+    name: 'About',
+  },
+  LOGIN: {
+    path: '/login',
+    name: 'Login',
+  },
+  SIGNUP: {
+    path: '/signup',
+    name: 'SignUp',
+  },
 };
 
 export default ROUTES;
