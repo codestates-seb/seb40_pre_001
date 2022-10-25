@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Header = styled.header`
   display: flex;
+  width: 1920px;
   height: 50px;
   position: fixed;
   min-width: auto;
@@ -11,26 +12,37 @@ const Header = styled.header`
   z-index: 2;
   background-color: hsl(210, 8%, 97.5%);
   border-top: 3px solid hsl(27, 90%, 55%);
-  position: relative;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
 `;
 
 const NavContainer = styled.nav`
-  width: 97.2307692rem;
-  max-width: 75%;
-  height: 100%;
   display: flex;
-  margin: 0 auto;
   align-items: center;
+  width: 1264px;
+  max-width: 100%;
+  height: 47px;
+  line-heigh: 17px;
+  margin-left: 328px;
+  margin-right: 328px;
+
+  vertical-align: baseline;
 `;
 
-const LogoBox = styled.div`
-  flex: 0 0 150px;
-  position: relative;
-  margin-left: 15px;
-  margin-top: 3px;
-  height: 40px;
-  overflow: hidden;
+const LogoBox = styled.a`
+  width: 166px;
+  height: 47px;
+  line-height: 17px;
+  padding: 0 8px;
+
+  svg {
+    width: 150px;
+    height: 30px;
+    margin: 7px 0 0 0;
+    background-position-y: -500px;
+  }
 `;
 
 export { Header, NavContainer, LogoBox };

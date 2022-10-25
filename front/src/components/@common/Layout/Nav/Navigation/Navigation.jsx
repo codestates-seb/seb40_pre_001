@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import CustomLink from '../../../Link';
-import * as S from './Links.style';
+import * as S from './Navigation.style';
 
 const Links = () => {
   return (

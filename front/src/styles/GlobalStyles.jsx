@@ -7,8 +7,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size : 15px;
-    font-weight : 400;
+    font-size : 13px;
 }
 
 body {
