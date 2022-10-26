@@ -5,6 +5,8 @@ import Home from './Home';
 import About from './About';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
+import Questions from './Questions/Questions';
+// import PostPage from './Questions/Post/Post';
 
 import { ROUTES } from '../constants';
 
@@ -32,6 +34,18 @@ const PAGES = [
         name: ROUTES.SIGNUP.name,
         path: ROUTES.SIGNUP.path,
         element: <SignUp />,
+      },
+      {
+        name: ROUTES.QUESTIONS.name,
+        path: ROUTES.QUESTIONS.path,
+        element: <Questions />,
+        // children: [
+        //   {
+        //     name: ROUTES.POST.name,
+        //     path: ROUTES.POST.path,
+        //     element: <PostPage />,
+        //   },
+        // ],
       },
     ],
   },

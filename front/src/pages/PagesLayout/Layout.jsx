@@ -1,14 +1,25 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { Nav, Footer } from '../../components/@common/Layout';
+import { Outlet, useLocation } from 'react-router-dom';
+import { Nav, Footer, LeftSidebar } from '../../components/@common/Layout';
+import * as S from './Layout.style';
+
+const paths = ['/login'];
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  const isIncluded = paths.includes(pathname);
+
+  console.log(isIncluded);
+
   return (
     <>
       <Nav />
-      {/* page */}
-      <Outlet />
-      <Footer />
+      <S.Container>
+        {!isIncluded && <LeftSidebar />}
+        <Outlet />
+      </S.Container>
+      {!isIncluded && <Footer />}
     </>
   );
 };
