@@ -20,6 +20,7 @@ const SquareButton = styled.button`
   height: 34px;
   user-select: none;
   margin-top: 6px;
+  border: 1px solid transparent;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
 `;
 

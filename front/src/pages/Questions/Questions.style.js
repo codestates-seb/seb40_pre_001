@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const ContentWrapper = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted',
+    'Segoe UI', 'Liberation Sans', sans-serif;
   max-width: 1100px;
   width: calc(100% - 164px);
   background-color: hsl(0, 0%, 100%);
