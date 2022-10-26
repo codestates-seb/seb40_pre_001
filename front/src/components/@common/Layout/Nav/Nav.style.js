@@ -5,11 +5,12 @@ const Header = styled.header`
   width: 1920px;
   height: 50px;
   position: fixed;
+  position: relative;
   min-width: auto;
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
     0 2px 8px hsla(0, 0%, 0%, 0.05);
   width: 100%;
-  z-index: 2;
+  z-index: 10;
   background-color: hsl(210, 8%, 97.5%);
   border-top: 3px solid hsl(27, 90%, 55%);
   align-items: center;

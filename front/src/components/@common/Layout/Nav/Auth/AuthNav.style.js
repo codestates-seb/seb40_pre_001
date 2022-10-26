@@ -5,6 +5,7 @@ const Nav = styled.nav`
 
   width: 143px;
   height: 47px;
+  margin-left: -15px;
 `;
 
 const Ol = styled.ol`

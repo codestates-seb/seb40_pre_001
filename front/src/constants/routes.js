@@ -17,6 +17,14 @@ const ROUTES = {
     path: '/signup',
     name: 'SignUp',
   },
+  QUESTIONS: {
+    path: '/questions',
+    name: 'Questions',
+  },
+  POST: {
+    path: '/questions/:id',
+    name: 'Post',
+  },
 };
 
 export default ROUTES;
