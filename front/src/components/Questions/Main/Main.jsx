@@ -1,6 +1,6 @@
 import React from 'react';
+import Header from './Features/Header';
 import * as S from './Main.style';
-import { Header } from './Features';
 
 const Main = () => {
   return (

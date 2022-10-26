@@ -8,6 +8,17 @@ const LeftContainer = styled.div`
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   transform: translateZ(0);
   text-align: left;
+
+  .active {
+    background-color: hsl(210, 8%, 95%);
+    font-weight: 700;
+    border-right: 3px solid hsl(27, 90%, 55%);
+
+    div {
+      color: hsl(210, 8%, 5%);
+      font-weight: 700;
+    }
+  }
 `;
 
 const LeftStickyContainer = styled.div`

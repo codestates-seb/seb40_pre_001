@@ -1,21 +1,15 @@
 import React from 'react';
-import * as S from './Features.style';
-import CustomLink from '../../../@common/Link';
-import StyledButton from '../../../@common/Buttons/Button';
+import FilterBox from './FIlterBox/FIlterBox';
+import PostBox from './Post/Post';
+import TitleBox from './TitleBox/TitleBar';
 
 const Header = () => {
   return (
-    <S.Header>
-      <h1>All Questions</h1>
-      <S.ButtonContainer>
-        <CustomLink path='/questions/ask'>
-          <StyledButton
-            content='Ask Question'
-            style={{ width: 103, height: 38 }}
-          />
-        </CustomLink>
-      </S.ButtonContainer>
-    </S.Header>
+    <>
+      <TitleBox />
+      <FilterBox />
+      <PostBox />
+    </>
   );
 };
 
