@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// 공용 버튼
 const SquareButton = styled.button`
   position: relative;
   display: inline-block;
@@ -24,4 +25,29 @@ const SquareButton = styled.button`
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
 `;
 
-export { SquareButton };
+// SNS 버튼
+
+const StyledSnsButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 255px;
+  height: 35px;
+  font-size: 13px;
+  margin: 6px 0px;
+  padding: 10.4px;
+
+  border: 1px solid ${({ borderColor }) => borderColor};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
+
+  &:hover {
+    color: white;
+    transition: 0.2s;
+    background: ${({ hoverBackground }) => hoverBackground};
+  }
+`;
+
+export { SquareButton, StyledSnsButton };
