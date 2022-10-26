@@ -6,7 +6,7 @@ const SidebarBottom = () => {
   return (
     <S.Ol>
       <S.Li>
-        <li
+        <p
           style={{
             margin: '16px 0 8px 8px',
             fontSize: 11,
@@ -14,7 +14,7 @@ const SidebarBottom = () => {
           }}
         >
           TEAMS
-        </li>
+        </p>
         <S.TeamsContainer>
           <strong>Stack Overflow for Teams</strong>
           – Start collaborating and sharing organizational knowledge.

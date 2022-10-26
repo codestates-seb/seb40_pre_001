@@ -13,7 +13,7 @@ const SideBarTop = () => {
         </S.Li>
         <S.Li>
           <S.Ol>
-            <li
+            <p
               style={{
                 margin: '16px 0 4px 8px',
                 fontSize: 11,
@@ -21,9 +21,9 @@ const SideBarTop = () => {
               }}
             >
               PUBLIC
-            </li>
+            </p>
             <S.Li>
-              <CustomLink className='active'>
+              <CustomLink path='/questions' className='active'>
                 <S.PageLinkContainer>
                   <GlobeIcon
                     className='icon'
