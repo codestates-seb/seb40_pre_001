@@ -5,7 +5,7 @@ import {
   FacebookIcon,
 } from '../components/@common/Icons';
 
-const SNS_BUTTONS = [
+const SNS_BUTTONS = Object.freeze([
   {
     BGC: 'rgb(214, 217, 220)',
     BORDER_C: '#fff',
@@ -30,6 +30,6 @@ const SNS_BUTTONS = [
     MESSAGE: 'Login with Facebook',
     ICON: <FacebookIcon />,
   },
-];
+]);
 
 export default SNS_BUTTONS;
