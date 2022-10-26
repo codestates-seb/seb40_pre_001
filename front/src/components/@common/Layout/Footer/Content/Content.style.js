@@ -52,11 +52,11 @@ const Copyright = styled.div`
     margin: 0;
     padding: 0;
     color: hsl(210, 8%, 60%);
-    font-size: 5px;
   }
 
   li {
     margin-right: 10px;
+    font-size: 12px;
     color: hsl(210, 8%, 60%);
   }
 

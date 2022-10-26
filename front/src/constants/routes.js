@@ -17,6 +17,10 @@ const ROUTES = {
     path: '/signup',
     name: 'SignUp',
   },
+  QUESTIONS: {
+    path: '/questions',
+    name: 'Questions',
+  },
 };
 
 export default ROUTES;

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Nav, Footer } from '../../components/@common/Layout';
+import { Nav, Footer, LeftSidebar } from '../../components/@common/Layout';
+import * as S from './Layout.style';
 
 const Layout = () => {
   return (
     <>
       <Nav />
-      <Outlet />
+      <S.Container>
+        <LeftSidebar />
+        <Outlet />
+      </S.Container>
       <Footer />
     </>
   );
