@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  // 추후 삭제 예정
   display: flex;
   justify-content: space-between;
 

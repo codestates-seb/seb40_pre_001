@@ -6,7 +6,8 @@ const useGetAllPosts = (select) => {
   return useQuery(['questions'], getAllPostData, {
     select,
     refetchOnWindowFocus: false,
-    staleTime: Infinity,
+    staleTime: 5000,
+    keepPreviousData: true,
   });
 };
 

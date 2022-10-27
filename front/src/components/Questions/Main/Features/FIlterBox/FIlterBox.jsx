@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { categoryButton } from '../../../../../constants';
 import useGetAllPosts from '../../../../../hooks/useGetAllPosts';
+import { pagesState } from '../../../../../store';
 import { FilterIcon } from '../../../../@common/Icons';
 import * as S from './FilterBox.style';
 
 const FilterBox = () => {
-  const categoryButton = ['Newest', 'Active', `Bountied`, 'Unanswered', 'More'];
-
+  const [state, setPostsLength] = useRecoilState(pagesState);
   const { data: count } = useGetAllPosts((data) => data.length);
+
+  useEffect(
+    () => setPostsLength({ ...state, postsLength: count }),
+    [count, state.postsLength],
+  );
 
   return (
     <S.FlexBox>

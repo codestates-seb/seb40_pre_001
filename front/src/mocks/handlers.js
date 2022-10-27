@@ -17,5 +17,12 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
   }),
 
-  rest.get('/api/questions/page='),
+  // rest.get('/api/questions?page:number', (req, res, ctx) => {
+  //   const { page } = req.params;
+  //   console.log(page);
+
+  //   const matchPages = questionData.slice()
+
+  //   return res(ctx.status(200),ctx.json())
+  // }),
 ];

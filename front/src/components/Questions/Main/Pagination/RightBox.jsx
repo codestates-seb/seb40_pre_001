@@ -1,12 +1,28 @@
 import React from 'react';
 import * as S from './Pagination.style';
+import { useRecoilState } from 'recoil';
+import { pagesState } from '../../../../store';
+import { pageLimits } from '../../../../constants';
 
 const RightBox = () => {
+  const [limit, setLimit] = useRecoilState(pagesState);
+
   return (
     <S.RightBox>
-      <S.PageButton className='active'>15</S.PageButton>
-      <S.PageButton>30</S.PageButton>
-      <S.PageButton>50</S.PageButton>
+      {pageLimits.map((page) => {
+        return (
+          <S.PageButton
+            onClick={(e) =>
+              setLimit({ ...limit, selectedLimit: Number(e.target.value) })
+            }
+            className={limit.selectedLimit === page && 'active'}
+            value={page}
+            key={page}
+          >
+            {page}
+          </S.PageButton>
+        );
+      })}
       <S.Text>per page</S.Text>
     </S.RightBox>
   );

@@ -19,6 +19,7 @@ const Footer = styled.footer`
 `;
 
 const Container = styled.div`
+  // footer랑 연결이 되어있네용
   max-width: 1264px;
   width: 100%;
   margin: 0 auto;

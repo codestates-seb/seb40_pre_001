@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PostDetails from './Details';
 import PostStatus from './Status';
 import * as S from './Post.style';
 
 import useGetAllPosts from '../../../../../hooks/useGetAllPosts';
+import { useRecoilValue } from 'recoil';
+import { pagesState } from '../../../../../store';
 
 const PostBox = () => {
   // Pagination
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  const offset = (page - 1) * limit;
-
-  const { data } = useGetAllPosts((data) => {
-    return data.slice(offset, offset + limit);
-  });
-
-  setPage, setLimit;
+  const { selectedLimit, currentPage } = useRecoilValue(pagesState);
+  const offset = (currentPage - 1) * selectedLimit;
+  const { data } = useGetAllPosts((data) =>
+    data.slice(offset, offset + selectedLimit),
+  );
 
   return data?.map((postData, i) => {
     return (
