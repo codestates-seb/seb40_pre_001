@@ -9,7 +9,6 @@ const SideContainer = styled.div`
 
   // 추후 삭제
   height: 1000px;
-  border: 1px solid green;
 `;
 
 export { SideContainer };

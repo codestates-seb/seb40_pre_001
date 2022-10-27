@@ -59,11 +59,13 @@ const CategoryButton = styled.button`
       right: 10px;
       top: calc(50% - 2px);
       border-style: solid;
-      border-width: 4px;
       border-top-width: 4px;
       border-bottom-width: 0;
-      border-color: currentColor transparent;
-      pointer-events: none;
+
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
     }
   }
 
@@ -96,8 +98,8 @@ const Count = styled.p`
   border-radius: 5px;
   height: 13px;
   font-size: 11px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin-top: 1px;
   margin-left: 4px;
   min-width: 18px;

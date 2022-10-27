@@ -1,13 +1,16 @@
 import React from 'react';
+import useGetAllPosts from '../../../../../hooks/useGetAllPosts';
 import { FilterIcon } from '../../../../@common/Icons';
 import * as S from './FilterBox.style';
 
 const FilterBox = () => {
-  const count = 255;
   const categoryButton = ['Newest', 'Active', `Bountied`, 'Unanswered', 'More'];
+
+  const { data: count } = useGetAllPosts((data) => data.length);
+
   return (
     <S.FlexBox>
-      <S.QuestionCount>23,145,068 questions</S.QuestionCount>
+      <S.QuestionCount>{count} questions</S.QuestionCount>
       <div>
         <S.ButtonWrapper>
           <S.BoxLeft>
@@ -15,7 +18,7 @@ const FilterBox = () => {
               return button === 'Bountied' ? (
                 <S.CategoryButton key={button}>
                   {button}
-                  <S.Count>{count}</S.Count>
+                  <S.Count>{255}</S.Count>
                 </S.CategoryButton>
               ) : (
                 <S.CategoryButton key={button}>{button}</S.CategoryButton>

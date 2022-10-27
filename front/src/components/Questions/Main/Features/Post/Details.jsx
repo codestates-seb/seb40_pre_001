@@ -1,24 +1,31 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
+
 import * as S from './Post.style';
 
-const PostDetails = () => {
+const PostDetails = ({ data }) => {
+  const { title, author, content, tags, createdAt } = data;
+
   return (
     <S.BoxRight>
       <S.Title>
         <a href='/questions/74210325/ansible-merge-2-task-with-condition-checks'>
-          ansible merge 2 task with condition checks
+          {title}
         </a>
       </S.Title>
-      <p>
-        Need help to merge below 2 tasks in 1 task. tasks are divided based on
-        vrf value.
-      </p>
+      <p>{content.context}</p>
       {/* Tag Box */}
       <S.ExtraDetailsBox>
         <S.TagBox>
           <ul>
             <li>
-              <S.Tab href='/questions/tagged/ansible'>ansible</S.Tab>
+              {tags.map((tag) => {
+                return (
+                  <S.Tab key={tag} href='/questions/tagged/ansible'>
+                    {tag}
+                  </S.Tab>
+                );
+              })}
             </li>
           </ul>
         </S.TagBox>
@@ -26,12 +33,18 @@ const PostDetails = () => {
         <S.DetailRight>
           <S.UserCard>
             <S.UserCardLink>
-              <a href='/users/17314281/user17314281'>user17314281</a>
+              <a href='/users/17314281/user17314281'>{author}</a>
             </S.UserCardLink>
             <S.UserPostCount>13</S.UserPostCount>
           </S.UserCard>
           <S.TimeBox>
-            <span>asked 1 min ago</span>
+            <span>
+              asked{' '}
+              <TimeAgo
+                date={createdAt}
+                style={{ color: 'hsl(210, 8%, 45%)' }}
+              />
+            </span>
           </S.TimeBox>
         </S.DetailRight>
       </S.ExtraDetailsBox>

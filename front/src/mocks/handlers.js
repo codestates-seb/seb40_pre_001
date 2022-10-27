@@ -16,4 +16,6 @@ export const handlers = [
 
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
   }),
+
+  rest.get('/api/questions/page='),
 ];

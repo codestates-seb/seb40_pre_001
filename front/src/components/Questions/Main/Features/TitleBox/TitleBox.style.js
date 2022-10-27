@@ -4,6 +4,7 @@ const TitleContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   height: 50px;
+  padding-top: -8px;
   margin-bottom: 15px;
 
   h1 {

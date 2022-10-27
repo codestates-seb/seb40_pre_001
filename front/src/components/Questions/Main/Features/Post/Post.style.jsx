@@ -7,6 +7,8 @@ const PostContainer = styled.div`
   padding: 16px;
   right: 25px;
   width: 751px;
+
+  display: flex;
 `;
 
 const BoxLeft = styled.div`
@@ -14,6 +16,7 @@ const BoxLeft = styled.div`
   margin-right: 16px;
   margin-bottom: 4px;
   width: calc(96px + 12px);
+  height: 100px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -54,6 +57,7 @@ const ViewBox = styled(VoteBox)`
 `;
 
 const BoxRight = styled.div`
+  width: 574px;
   flex-grow: 1;
   max-width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted',
@@ -132,7 +136,7 @@ const Tab = styled.a`
   border-color: transparent;
   display: inline-block;
   padding: 0.4em 0.5em;
-  margin: 10px 2px 2px 0;
+  margin: 0 2px 2px 0;
   line-height: 1;
   white-space: nowrap;
   text-decoration: none;
@@ -158,7 +162,7 @@ const UserCard = styled.div`
   align-items: center;
   gap: 4px;
 
-  margin: 20px 2px 0 0;
+  margin: 10px 2px 0 0;
 `;
 
 const UserCardLink = styled.div`
@@ -188,10 +192,10 @@ const UserPostCount = styled.p`
 const TimeBox = styled.div`
   grid-column: 1 / 3;
   grid-row: 1 / 2;
-  color: var(--black-500);
-  font-size: var(--fs-caption);
+  color: hsl(210, 8%, 45%);
+  font-size: 12px;
 
-  margin-top: 20px;
+  margin-top: 10px;
 
   span {
     color: hsl(210, 8%, 45%);

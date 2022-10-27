@@ -6,6 +6,8 @@ import GlobeIcon from './GlobeIcon';
 import InfoIcon from './InfoIcon';
 import StarIcon from './StartIcon';
 import FilterIcon from './FilterIcon';
+import PencilIcon from './PencilIcon';
+import StackExChangeIcon from './StackExIcon';
 
 // SNS related
 import GoogleIcon from './GoogleIcon';
@@ -21,6 +23,8 @@ export {
   InfoIcon,
   StarIcon,
   FilterIcon,
+  PencilIcon,
+  StackExChangeIcon,
 };
 
 // SNS
