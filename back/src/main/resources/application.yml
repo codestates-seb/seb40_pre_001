@@ -1,0 +1,25 @@
+server:
+  port: 8000
+  context-path: /api
+
+spring:
+  h2:
+    console:
+      enabled: true  # H2 Console을 사용할지 여부 (H2 Console은 H2 Database를 UI로 제공해주는 기능)
+      path: /h2-console  # H2 Console의 Path
+  datasource:
+    driver-class-name: org.h2.Driver  # Database를 H2로 사용하겠다.
+    url: jdbc:h2:~/test  # H2 접속 정보
+    username: sa  # H2 접속 시 입력할 username 정보 (원하는 것으로 입력)
+    password:  # H2 접속 시 입력할 password 정보 (원하는 것으로 입력)
+  jpa:
+    hibernate:
+      # globally_quoted_identifiers: true # 이 설정을 추가해준다.
+      # show_sql: true # 쿼리를 출력해준다.
+      # format_sql: true # 쿼리를 예쁘게 출력해준다.
+      # generate_statistics: true # 쿼리 수행 통계를 확인할 수 있다.
+      ddl-auto: create  # (1) ??? ?? ??
+    show-sql: true      # (2) SQL ?? ??
+    open-in-view: false
+logging.level:
+  org.hibernate.SQL: debug
