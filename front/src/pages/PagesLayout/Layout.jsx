@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Nav, Footer, LeftSidebar } from '../../components/@common/Layout';
 import * as S from './Layout.style';
 
-const paths = ['/login'];
+const paths = ['/login', '/signup'];
 
 const Layout = () => {
   const { pathname } = useLocation();
