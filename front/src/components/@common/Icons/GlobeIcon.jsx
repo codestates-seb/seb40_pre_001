@@ -1,6 +1,5 @@
 import React from 'react';
 
-/* eslint-disable react/prop-types */
 const GlobeIcon = (props) => {
   return (
     <svg
