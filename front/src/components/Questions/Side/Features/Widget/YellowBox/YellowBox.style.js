@@ -20,7 +20,9 @@ const Title = styled.li`
   font-size: 12px;
   font-weight: bold;
   border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   border-bottom: 1px solid;
   border-top: 1px solid;
 
