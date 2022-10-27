@@ -75,7 +75,7 @@ const SideBarTop = () => {
               </div>
               <div>
                 <a role='button' aria-controls='popover-discover-collectives'>
-                  <InfoIcon style={{ marginRight: 8, marginTop: 5 }} />
+                  <InfoIcon style={{ marginRight: 8, marginTop: 10 }} />
                 </a>
               </div>
             </li>
