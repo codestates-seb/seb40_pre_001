@@ -21,4 +21,4 @@ const getPostByUserId = async (id) => {
   return data;
 };
 
-export { getAllPostData, getPostByUserId };
+export { apiClient, getAllPostData, getPostByUserId };

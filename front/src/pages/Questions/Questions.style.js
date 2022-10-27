@@ -13,10 +13,11 @@ const ContentWrapper = styled.div`
   border-left-width: 1px;
   border-right-width: 0;
   padding: 24px;
+  margin-top: calc(50px);
+  margin-left: calc(164px);
   box-sizing: border-box;
 
-  // 추후에 삭제
-  height: 1000px;
+  margin-bottom: 322px;
 `;
 
 export { ContentWrapper };

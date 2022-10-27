@@ -80,7 +80,7 @@ const questionsData = [
   {
     contentId: 5,
     userId: 1232345,
-    title: 'where to find my wallet',
+    title: 'Rails includes for self-referential associations',
     author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
@@ -99,7 +99,7 @@ const questionsData = [
   {
     contentId: 6,
     userId: 1232345,
-    title: 'where to find my wallet',
+    title: 'How to subset rows of df based on unique values?',
     author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
@@ -118,7 +118,7 @@ const questionsData = [
   {
     contentId: 7,
     userId: 1232345,
-    title: 'where to find my wallet',
+    title: 'How to implement Individual Column Searching using checkboxes?',
     author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
@@ -137,7 +137,8 @@ const questionsData = [
   {
     contentId: 8,
     userId: 1232345,
-    title: 'where to find my wallet',
+    title:
+      'Why the font color setting button does not shown in Ckeditor4 Tool bar',
     author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
@@ -175,7 +176,7 @@ const questionsData = [
   {
     contentId: 10,
     userId: 1232345,
-    title: 'where to find my wallet',
+    title: 'How to do two conditions in same if statement? c++',
     author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],

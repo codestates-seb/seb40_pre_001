@@ -57,14 +57,20 @@ const SideBarTop = () => {
             <li
               style={{
                 display: 'flex',
-                margin: '16px 0 4px 8px',
+                margin: '0 0 4px 8px',
                 fontSize: 13,
                 color: 'hsl(210,8%,45%)',
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}
             >
-              <div style={{ color: 'hsl(210,8%,45%)', fontSize: 11 }}>
+              <div
+                style={{
+                  color: 'hsl(210,8%,45%)',
+                  fontSize: 11,
+                  marginTop: 10,
+                }}
+              >
                 COLLECTIVES
               </div>
               <div>

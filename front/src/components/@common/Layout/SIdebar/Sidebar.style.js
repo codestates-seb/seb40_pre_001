@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const LeftContainer = styled.div`
+  position: fixed;
   width: 164px;
   flex-shrink: 0;
-  z-index: 1000;
   box-shadow: 0 0 0 hsl(210deg 8% 5% / 5%);
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
-  transform: translateZ(0);
   text-align: left;
+  height: 100vh;
+  overflow: auto;
 
   .active {
     background-color: hsl(210, 8%, 95%);
@@ -24,14 +25,11 @@ const LeftContainer = styled.div`
 const LeftStickyContainer = styled.div`
   position: sticky;
   width: auto;
-  top: 0;
   margin-bottom: 8px;
   padding-top: 24px;
-  max-height: 100vh;
   overflow-y: auto;
-  scrollbar-color: var(--scrollbar) transparent;
-  top: var(--top-bar-allocated-space);
-  max-height: calc(100vh - var(--top-bar-allocated-space));
+  top: 50px;
+  max-height: calc(100vh - 50px);
 `;
 
 const Ol = styled.ol`
@@ -79,9 +77,29 @@ const PageLinkContainer = styled.div`
 `;
 
 const TeamsContainer = styled.div`
-  border-top: 1px solid hsl(210, 8%, 85%);
-  border-bottom: 1px solid hsl(210, 8%, 85%);
   padding: 12px 12px 6px 12px;
+  border: 1px solid hsl(210, 8%, 90%);
+
+  a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    color: hsl(210, 8%, 55%);
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(27, 90%, 55%);
+    box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+    border: 1px solid transparent;
+    padding: 4.8px;
+    border-radius: 3px;
+
+    width: 129px;
+    height: 28px;
+  }
 `;
 
 export {

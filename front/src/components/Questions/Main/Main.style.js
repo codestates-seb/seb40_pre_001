@@ -5,9 +5,6 @@ const MainContainer = styled.div`
   float: left;
   margin: 0;
   padding: 0;
-
-  // 추후 삭제
-  height: 1000px;
 `;
 
 export { MainContainer };

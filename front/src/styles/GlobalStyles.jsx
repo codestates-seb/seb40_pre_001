@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
     font-size : 13px;
 }
 
+
+
+
 body {
   background-color: white;
   width: 100vw;  
@@ -17,6 +20,7 @@ body {
   overflow-x: hidden;
   display : flex;
   flex-direction : column;
+
 }
 
 button {
