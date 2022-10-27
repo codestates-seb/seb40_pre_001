@@ -20,5 +20,6 @@ module.exports = {
         additionalHooks: '(useRecoilCallback|useRecoilTransaction_UNSTABLE)',
       },
     ],
+    'react/prop-types': 0,
   },
 };
