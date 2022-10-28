@@ -65,12 +65,12 @@ const StyledTag = styled.button`
   font-family: inherit;
   font-size: 13px;
   font-weight: normal;
-  line-height: calc((13px) + 2) / 13px));  
+  line-height: calc((((13px) + 2) / 13px));
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  white-space: nowrap
+  white-space: nowrap;
 `;
 
 export { SquareButton, StyledSnsButton, StyledTag };
