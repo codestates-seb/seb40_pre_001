@@ -6,6 +6,7 @@ import Tags from './Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 import Questions from './Questions/Questions';
+import Post from './Questions/Post/Post';
 import Users from './Users';
 
 import { ROUTES } from '../constants';
@@ -40,6 +41,11 @@ const PAGES = [
         name: ROUTES.QUESTIONS.name,
         path: ROUTES.QUESTIONS.path,
         element: <Questions />,
+      },
+      {
+        name: ROUTES.POST.name,
+        path: ROUTES.POST.path,
+        element: <Post />,
       },
       {
         name: ROUTES.USERS.name,

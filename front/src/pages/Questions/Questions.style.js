@@ -20,4 +20,16 @@ const ContentWrapper = styled.div`
   margin-bottom: 322px;
 `;
 
-export { ContentWrapper };
+const PostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 auto;
+
+  p {
+    font-size: 30px;
+  }
+`;
+
+export { ContentWrapper, PostContainer };

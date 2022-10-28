@@ -31,7 +31,7 @@ const SideBarTop = () => {
               <S.Li key={name}>
                 <CustomLink
                   path={path}
-                  className={pathname === path && 'active'}
+                  className={pathname.includes(path) && 'active'}
                 >
                   {name === 'Questions' ? (
                     <S.PageLinkContainer>
