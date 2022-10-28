@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 import team001_be.stackoverflowCloneDemo.user.Hashing;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDTO;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
@@ -77,7 +78,35 @@ public class UserController {
         userRepository.save(user);
 
         return "success";
-
     }
+
+   /* //회원정보수정//
+    @GetMapping("/user/info")
+    public String userInfo(Model model, Principal principal){
+        String userId = principal.getName();
+        UserDTO detail = userService.detail(userId);
+        model.addAttribute("detail", detail);
+        return "user/info";
+    }
+    @GetMapping("/user/password")
+    public String userPassword(Model model, Principal principal){
+        String userId = principal.getName();
+        UserDTO detail = userService.detail(userId);
+        model.addAttribute("detail", detail);
+        return "user/password";
+    }
+    @GetMapping("/user/takecourse")
+    public String userTaskcourse(Model model, Principal principal){
+        String userId = principal.getName();
+        UserDTO detail = userService.detail(userId);
+        model.addAttribute("detail", detail);
+        return "user/takecourse";
+    }
+
+    @PostMapping("/member/password")
+    Public String userPasswordSubmit(Model model, UserInput parameter,
+                                       Princpal ){
+        String userId = principal.getName();
+    }*/
 
 }
