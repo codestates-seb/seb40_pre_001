@@ -25,6 +25,10 @@ const ROUTES = Object.freeze({
     path: '/questions/:id',
     name: 'Post',
   },
+  USERS: {
+    path: '/users',
+    name: 'Users',
+  },
 });
 
 export default ROUTES;
