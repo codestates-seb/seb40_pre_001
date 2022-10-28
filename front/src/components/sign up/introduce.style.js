@@ -19,6 +19,29 @@ const IntroHeader = styled.div`
   margin-bottom: 32px;
 `;
 
-const IntroElment = styled.div``;
+const IntroElment = styled.div`
+  vertical-align: baseline;
+  margin-bottom: 24px;
+  display: flex;
+  /* font-size: 14px; */
+  > svg {
+    margin-right: 8px;
+  }
+  .content {
+    font-size: 15px;
+  }
+`;
 
-export { JoinIntroZone, IntroHeader, IntroElment };
+const PrivateIntro = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: hsl(210, 8%, 45%);
+  margin-bottom: 10px;
+
+  > a {
+    color: hsl(206, 100%, 40%);
+    cursor: pointer;
+  }
+`;
+
+export { JoinIntroZone, IntroHeader, IntroElment, PrivateIntro };
