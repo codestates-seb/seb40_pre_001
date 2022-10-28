@@ -6,7 +6,7 @@ const LoginHelp = () => {
     <>
       <S.HelpContainer>
         <S.HelpContent>Don’t have an account?</S.HelpContent>
-        <S.HelpLink>Sing up</S.HelpLink>
+        <S.HelpLink>Sign up</S.HelpLink>
       </S.HelpContainer>
       <S.HelpContainer>
         <S.HelpContent>Are you an employer?</S.HelpContent>

@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 const Header = styled.header`
   display: flex;
+  position: fixed !important;
   width: 1920px;
   height: 50px;
-  position: fixed;
-  position: relative;
   min-width: auto;
   box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.05),
     0 2px 8px hsla(0, 0%, 0%, 0.05);
   width: 100%;
-  z-index: 10;
+  z-index: 999999 !important;
   background-color: hsl(210, 8%, 97.5%);
   border-top: 3px solid hsl(27, 90%, 55%);
   align-items: center;
@@ -25,7 +24,7 @@ const NavContainer = styled.nav`
   width: 1264px;
   max-width: 100%;
   height: 47px;
-  line-heigh: 17px;
+  line-height: 17px;
   margin-left: 328px;
   margin-right: 328px;
 

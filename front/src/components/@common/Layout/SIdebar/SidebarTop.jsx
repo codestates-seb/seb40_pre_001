@@ -57,19 +57,25 @@ const SideBarTop = () => {
             <li
               style={{
                 display: 'flex',
-                margin: '16px 0 4px 8px',
+                margin: '0 0 4px 8px',
                 fontSize: 13,
                 color: 'hsl(210,8%,45%)',
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}
             >
-              <div style={{ color: 'hsl(210,8%,45%)', fontSize: 11 }}>
+              <div
+                style={{
+                  color: 'hsl(210,8%,45%)',
+                  fontSize: 11,
+                  marginTop: 10,
+                }}
+              >
                 COLLECTIVES
               </div>
               <div>
                 <a role='button' aria-controls='popover-discover-collectives'>
-                  <InfoIcon style={{ marginRight: 8, marginTop: 5 }} />
+                  <InfoIcon style={{ marginRight: 8, marginTop: 10 }} />
                 </a>
               </div>
             </li>

@@ -2,11 +2,12 @@ import { rest } from 'msw';
 import questionData from './data/questions';
 
 export const handlers = [
-  //
+  // Get All  Post
   rest.get('/api/questions', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(questionData));
   }),
 
+  // Get Post By Content Id
   rest.get('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
     const matchIdData = questionData.find(
@@ -15,4 +16,13 @@ export const handlers = [
 
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
   }),
+
+  // rest.get('/api/questions?page:number', (req, res, ctx) => {
+  //   const { page } = req.params;
+  //   console.log(page);
+
+  //   const matchPages = questionData.slice()
+
+  //   return res(ctx.status(200),ctx.json())
+  // }),
 ];
