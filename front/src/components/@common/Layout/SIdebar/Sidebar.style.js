@@ -64,6 +64,11 @@ const Li = styled.li`
   }
 `;
 
+const CollectiveBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const PageLinkContainer = styled.div`
   display: flex;
   align-items: center;
@@ -107,6 +112,7 @@ export {
   LeftStickyContainer,
   Ol,
   Li,
+  CollectiveBox,
   PageLinkContainer,
   TeamsContainer,
 };

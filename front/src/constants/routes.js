@@ -5,9 +5,9 @@ const ROUTES = Object.freeze({
     path: '/',
     name: 'Home',
   },
-  ABOUT: {
-    path: '/about',
-    name: 'About',
+  TAGS: {
+    path: '/tags',
+    name: 'Tags',
   },
   LOGIN: {
     path: '/login',
@@ -20,6 +20,10 @@ const ROUTES = Object.freeze({
   QUESTIONS: {
     path: '/questions',
     name: 'Questions',
+  },
+  USERS: {
+    path: '/users',
+    name: 'Users',
   },
   POST: {
     path: '/questions/:id',

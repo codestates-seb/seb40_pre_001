@@ -7,6 +7,10 @@ const Container = styled.div`
   background: none;
   justify-content: space-between;
   margin: 0 auto;
+
+  // 추후 삭제 예정
+
+  min-height: 1000px;
 `;
 
 export { Container };

@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
+import TagButton from '../../../../@common/Buttons/Tag';
 
 import * as S from './Post.style';
 
@@ -20,11 +21,7 @@ const PostDetails = ({ data }) => {
           <ul>
             <li>
               {tags.map((tag) => {
-                return (
-                  <S.Tab key={tag} href='/questions/tagged/ansible'>
-                    {tag}
-                  </S.Tab>
-                );
+                return <TagButton key={tag} content={tag} />;
               })}
             </li>
           </ul>

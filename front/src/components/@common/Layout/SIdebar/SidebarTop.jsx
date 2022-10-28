@@ -3,92 +3,63 @@ import React from 'react';
 import CustomLink from '../../Link';
 import { GlobeIcon, InfoIcon, StarIcon } from '../../Icons';
 import * as S from './Sidebar.style';
+import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import { SIDEBAR_LIST } from '../../../../constants';
+
+const HeaderText = styled.p`
+  margin: 16px 0 8px 8px;
+  font-size: 11px;
+  color: 'hsl(210,8%,45%)';
+`;
 
 const SideBarTop = () => {
+  const { pathname } = useLocation();
+
   return (
     <nav>
       <S.Ol>
-        <S.Li>
-          <CustomLink path='/'>Home</CustomLink>
-        </S.Li>
-        <S.Li>
-          <S.Ol>
-            <p
-              style={{
-                margin: '16px 0 4px 8px',
-                fontSize: 11,
-                color: 'hsl(210,8%,45%)',
-              }}
-            >
-              PUBLIC
-            </p>
-            <S.Li>
-              <CustomLink path='/questions' className='active'>
-                <S.PageLinkContainer>
-                  <GlobeIcon
-                    className='icon'
-                    style={{ marginTop: -1, marginRight: 4 }}
-                  />
-                  Questions
-                </S.PageLinkContainer>
-              </CustomLink>
-            </S.Li>
-            <S.Li>
-              <CustomLink>
-                <S.PageLinkContainer style={{ paddingLeft: 25 }}>
-                  Tags
-                </S.PageLinkContainer>
-              </CustomLink>
-            </S.Li>
-            <S.Li>
-              <CustomLink>
-                <S.PageLinkContainer style={{ paddingLeft: 25 }}>
-                  Users
-                </S.PageLinkContainer>
-              </CustomLink>
-            </S.Li>
-            <S.Li>
-              <CustomLink>
-                <S.PageLinkContainer style={{ paddingLeft: 25 }}>
-                  Companies
-                </S.PageLinkContainer>
-              </CustomLink>
-            </S.Li>
-            <li
-              style={{
-                display: 'flex',
-                margin: '0 0 4px 8px',
-                fontSize: 13,
-                color: 'hsl(210,8%,45%)',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <div
-                style={{
-                  color: 'hsl(210,8%,45%)',
-                  fontSize: 11,
-                  marginTop: 10,
-                }}
-              >
-                COLLECTIVES
-              </div>
-              <div>
-                <a role='button' aria-controls='popover-discover-collectives'>
-                  <InfoIcon style={{ marginRight: 8, marginTop: 10 }} />
-                </a>
-              </div>
-            </li>
-            <S.Li style={{ marginTop: 15 }}>
-              <CustomLink>
-                <S.PageLinkContainer style={{ marginTop: -20 }}>
-                  <StarIcon style={{ marginRight: 3 }} />
-                  Explorer Collectives
-                </S.PageLinkContainer>
-              </CustomLink>
-            </S.Li>
-          </S.Ol>
-        </S.Li>
+        <HeaderText style={{ fontSize: 13 }}>Home</HeaderText>
+        <div>
+          <HeaderText>PUBLIC</HeaderText>
+
+          {SIDEBAR_LIST.map(({ name, path }) => {
+            return (
+              <S.Li key={name}>
+                <CustomLink
+                  path={path}
+                  className={pathname === path && 'active'}
+                >
+                  {name === 'Questions' ? (
+                    <S.PageLinkContainer>
+                      <GlobeIcon
+                        className='icon'
+                        style={{ marginTop: -1, marginRight: 4 }}
+                      />
+                      {name}
+                    </S.PageLinkContainer>
+                  ) : (
+                    <S.PageLinkContainer style={{ paddingLeft: 25 }}>
+                      <>{name}</>
+                    </S.PageLinkContainer>
+                  )}
+                </CustomLink>
+              </S.Li>
+            );
+          })}
+          <S.CollectiveBox>
+            <HeaderText>COLLECTIVES</HeaderText>
+            <InfoIcon style={{ marginRight: 8, marginTop: 17 }} />
+          </S.CollectiveBox>
+          <S.Li style={{ marginTop: 15 }}>
+            <CustomLink>
+              <S.PageLinkContainer style={{ marginTop: -20 }}>
+                <StarIcon style={{ marginRight: 3 }} />
+                Explorer Collectives
+              </S.PageLinkContainer>
+            </CustomLink>
+          </S.Li>
+        </div>
       </S.Ol>
     </nav>
   );
