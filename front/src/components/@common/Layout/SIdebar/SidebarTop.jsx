@@ -19,7 +19,10 @@ const SideBarTop = () => {
   return (
     <nav>
       <S.Ol>
-        <HeaderText style={{ fontSize: 13 }}>Home</HeaderText>
+        <CustomLink path='/questions'>
+          <HeaderText style={{ fontSize: 13 }}>Home</HeaderText>
+        </CustomLink>
+
         <div>
           <HeaderText>PUBLIC</HeaderText>
 

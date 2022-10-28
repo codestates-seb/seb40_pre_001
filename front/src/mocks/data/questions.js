@@ -288,538 +288,538 @@ const questionsData = [
       code: `<div>code</div>`,
     },
   },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
-  // {
-  //   contentId: 15,
-  //   userId: 12322345,
-  //   title: 'Run flask application on linux server with nohup',
-  //   author: 'anonymous',
-  //   createdAt: '2022-01-20',
-  //   tags: ['javascript', 'react', 'money'],
-  //   status: {
-  //     votes: 0,
-  //     answers: 1,
-  //     views: 2,
-  //   },
-  //   content: {
-  //     image: 'url',
-  //     context:
-  //       'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
-  //     code: `<div>code</div>`,
-  //   },
-  // },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
+  {
+    contentId: 15,
+    userId: 12322345,
+    title: 'Run flask application on linux server with nohup',
+    author: 'anonymous',
+    createdAt: '2022-01-20',
+    tags: ['javascript', 'react', 'money'],
+    status: {
+      votes: 0,
+      answers: 1,
+      views: 2,
+    },
+    content: {
+      image: 'url',
+      context:
+        'In the void tampil or results section to display the final result of my program, there is a problem because the result is always repeated without stopping continuously. how to solve a problem like that? Ive tried to fix it but havent found a solution',
+      code: `<div>code</div>`,
+    },
+  },
 ];
 
 export default questionsData;

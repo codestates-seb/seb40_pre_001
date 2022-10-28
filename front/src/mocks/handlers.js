@@ -17,12 +17,10 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
   }),
 
-  // rest.get('/api/questions?page:number', (req, res, ctx) => {
-  //   const { page } = req.params;
-  //   console.log(page);
+  // Create New Post
+  rest.post('/api/questions/ask', (req, res, ctx) => {
+    questionData.unshift(req.body);
 
-  //   const matchPages = questionData.slice()
-
-  //   return res(ctx.status(200),ctx.json())
-  // }),
+    return res(ctx.status(201), ctx.delay());
+  }),
 ];

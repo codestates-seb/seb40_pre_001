@@ -9,6 +9,7 @@ import Questions from './Questions/Questions';
 import Users from './Users';
 
 import { ROUTES } from '../constants';
+import Ask from './Questions/ASK/Ask';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -45,6 +46,7 @@ const PAGES = [
         path: ROUTES.USERS.path,
         element: <Users />,
       },
+      { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
     ],
   },
 ];
