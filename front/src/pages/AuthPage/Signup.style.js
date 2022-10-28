@@ -6,6 +6,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0;
+  margin-top: 50px;
   background-color: hsl(210, 8%, 95%);
   padding: 24px;
 `;
