@@ -12,7 +12,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // react-query
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 60 * 24, // 24h 추후 설정 변경 예정
+      notifyOnChangeProps: 'all',
+    },
+  },
+});
 const container = document.getElementById('root');
 const root = createRoot(container);
 

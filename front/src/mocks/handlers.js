@@ -1,14 +1,28 @@
 import { rest } from 'msw';
+import questionData from './data/questions';
 
 export const handlers = [
-  // 할일 목록
-  rest.get('/todos', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json());
+  // Get All  Post
+  rest.get('/api/questions', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(questionData));
   }),
 
-  // 할일 추가
-  rest.post('/todos', (req, res, ctx) => {
-    // todos.push(req.body);
-    return res(ctx.status(201));
+  // Get Post By Content Id
+  rest.get('/api/questions/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    const matchIdData = questionData.find(
+      ({ contentId }) => contentId === Number(id),
+    );
+
+    return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
   }),
+
+  // rest.get('/api/questions?page:number', (req, res, ctx) => {
+  //   const { page } = req.params;
+  //   console.log(page);
+
+  //   const matchPages = questionData.slice()
+
+  //   return res(ctx.status(200),ctx.json())
+  // }),
 ];
