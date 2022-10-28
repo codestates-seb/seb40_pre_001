@@ -54,11 +54,24 @@ const SignUpForm = () => {
           <S.SubmitButton>Sign up</S.SubmitButton>
           <S.SignUpWarn>
             By clicking “Sign up”, you agree to our
-            <a>terms of service</a>, <a>privacy policy</a> and
+            <a> terms of service</a>, <a>privacy policy</a> and
             <a> cookie policy</a>
           </S.SignUpWarn>
         </S.LoginForm>
       </S.FormContainer>
+      <S.HelpContainer>
+        <S.HelpContent>Already have an account?</S.HelpContent>
+        <S.HelpLink>Sing up</S.HelpLink>
+      </S.HelpContainer>
+      <S.HelpContainer>
+        <S.HelpContent>Are you an employer?</S.HelpContent>
+        <S.HelpLink>
+          Sign up on Talent
+          <svg aria-hidden='true' width='14' height='14' viewBox='0 0 14 14'>
+            <path d='M5 1H3a2 2 0 0 0-2 2v8c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V9h-2v2H3V3h2V1Zm2 0h6v6h-2V4.5L6.5 9 5 7.5 9.5 3H7V1Z'></path>
+          </svg>
+        </S.HelpLink>
+      </S.HelpContainer>
     </S.Container>
   );
 };

@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 // 레이아웃 컨테이너
 const Container = styled.div`
-  position: absolute;
-  left: 50%;
+  /* position: absolute; */
+  /* left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  margin-bottom: 40px;
 `;
 
 // 폼컨테이너
@@ -18,6 +19,7 @@ const FormContainer = styled.form`
   background: white;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
     0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
+  margin-bottom: 40px;
 `;
 
 // 폼 레이아웃
@@ -143,6 +145,27 @@ const SignUpWarn = styled.div`
   }
 `;
 
+//already insight?
+const HelpContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 255px; */
+  margin: 12px 6px 12px 6px;
+`;
+
+const HelpContent = styled.div`
+  margin-right: 10px;
+  font-size: 13px;
+`;
+
+const HelpLink = styled.a`
+  color: #0a95ff;
+  > svg {
+    margin-left: 3px;
+  }
+`;
+
 export {
   FormContainer,
   LoginForm,
@@ -158,6 +181,9 @@ export {
   OptionDiscription,
   AdviceMark,
   SignUpWarn,
+  HelpContainer,
+  HelpLink,
+  HelpContent,
 };
 
 export { SnsButtonContainer };
