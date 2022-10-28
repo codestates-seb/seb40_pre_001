@@ -1,12 +1,15 @@
-// Stack Over Flow
+// Stack Over Flow related
 import LogoIcon from './LogoIcon';
 import SearchIcon from './SearchIcon';
 import SmallLogoIcon from './SmallLogoIcon';
 import GlobeIcon from './GlobeIcon';
 import InfoIcon from './InfoIcon';
 import StarIcon from './StartIcon';
+import FilterIcon from './FilterIcon';
+import PencilIcon from './PencilIcon';
+import StackExChangeIcon from './StackExIcon';
 
-// SNS
+// SNS related
 import GoogleIcon from './GoogleIcon';
 import GithubIcon from './GithubIcon';
 import FacebookIcon from './FacebookIcon';
@@ -18,7 +21,17 @@ import TrophyIcon from './TrophyIcon';
 import UpDownIcon from './UpDownIcon';
 
 // Stack Over Flow
-export { LogoIcon, SearchIcon, SmallLogoIcon, GlobeIcon, InfoIcon, StarIcon };
+export {
+  LogoIcon,
+  SearchIcon,
+  SmallLogoIcon,
+  GlobeIcon,
+  InfoIcon,
+  StarIcon,
+  FilterIcon,
+  PencilIcon,
+  StackExChangeIcon,
+};
 
 // SNS
 

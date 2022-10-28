@@ -4,7 +4,7 @@ import * as S from './Sidebar.style';
 
 const SidebarBottom = () => {
   return (
-    <S.Ol>
+    <S.Ol style={{ marginTop: -10 }}>
       <S.Li>
         <p
           style={{
@@ -24,9 +24,9 @@ const SidebarBottom = () => {
             src='https://cdn.sstatic.net/Img/teams/teams-illo-free-sidebar-promo.svg?v=47faa659a05e'
             alt=''
           />
-          <a href='https://try.stackoverflow.co/why-teams/?utm_source=so-owned&amp;utm_medium=side-bar&amp;utm_campaign=campaign-38&amp;utm_content=cta'>
+          <button href='https://try.stackoverflow.co/why-teams/?utm_source=so-owned&amp;utm_medium=side-bar&amp;utm_campaign=campaign-38&amp;utm_content=cta'>
             Create a free Team
-          </a>
+          </button>
           <a href='https://stackoverflow.co/teams'>Why Teams?</a>
         </S.TeamsContainer>
       </S.Li>

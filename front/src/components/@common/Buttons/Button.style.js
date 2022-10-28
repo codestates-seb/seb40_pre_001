@@ -50,4 +50,27 @@ const StyledSnsButton = styled.button`
   }
 `;
 
-export { SquareButton, StyledSnsButton };
+const StyledTag = styled.button`
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(206, 100%, 52%);
+  box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+
+  position: relative;
+  display: inline-block;
+  padding: 0.8em;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background-color: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: calc((13px) + 2) / 13px));  
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap
+`;
+
+export { SquareButton, StyledSnsButton, StyledTag };

@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-const Header = styled.div`
+const TitleContainer = styled.div`
   display: flex;
-  margin-bottom: 12px;
   flex-wrap: wrap;
+  height: 50px;
+  padding-top: -8px;
+  margin-bottom: 15px;
 
   h1 {
     flex: 1;
@@ -17,8 +19,7 @@ const Header = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 `;
 
-// Header
-export { Header, ButtonContainer };
+export { TitleContainer, ButtonContainer };
