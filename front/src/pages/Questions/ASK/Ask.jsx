@@ -4,7 +4,8 @@ import useGetAllPost from '../../../hooks/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
 
 const Ask = () => {
-  // useState 대체 할수 있는 방법 있는지, debounce 적용하면 onChange마다 rendering 일어나지 않음
+  // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
+  // 예시
   const [state, setState] = useState({ title: '', author: '', context: '' });
   const { data, status } = useGetAllPost();
   const addPost = usePost('questions', '/questions');
