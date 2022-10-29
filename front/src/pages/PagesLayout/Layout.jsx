@@ -17,7 +17,7 @@ const Layout = () => {
         {!isIncluded && <LeftSidebar />}
         <Outlet />
       </S.Container>
-      {!isIncluded || (pathname === '/questions/ask' && <Footer />)}
+      {!isIncluded || pathname.includes('questions') ? <Footer /> : null}
     </>
   );
 };

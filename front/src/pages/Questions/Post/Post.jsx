@@ -1,12 +1,13 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
+import { Content } from '../../../components/Questions';
 import useGetAllPosts from '../../../hooks/useGetAllPosts';
 import pagesState from '../../../store/pagesState';
 import * as S from '../Questions.style';
 
 const Post = () => {
   const { currentContentId } = useRecoilValue(pagesState);
-  const { data } = useGetAllPosts((data) => {
+  const { data, status } = useGetAllPosts((data) => {
     const currentPost = data.find(
       (post) => post.contentId === currentContentId,
     );
@@ -14,14 +15,12 @@ const Post = () => {
     return currentPost;
   });
 
-  console.log(data);
+  console.log(status);
 
   return (
     <S.ContentWrapper>
       <S.PostContainer>
-        <p>title : {data.title}</p>
-        <p>content : {data.content.context}</p>
-        <p>Author : {data.author}</p>
+        {status === 'success' && <Content data={data} />}
       </S.PostContainer>
     </S.ContentWrapper>
   );
