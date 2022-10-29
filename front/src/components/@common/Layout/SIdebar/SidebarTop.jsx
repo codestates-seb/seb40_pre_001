@@ -3,15 +3,8 @@ import React from 'react';
 import CustomLink from '../../Link';
 import { GlobeIcon, InfoIcon, StarIcon } from '../../Icons';
 import * as S from './Sidebar.style';
-import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { SIDEBAR_LIST } from '../../../../constants';
-
-const HeaderText = styled.p`
-  margin: 16px 0 8px 8px;
-  font-size: 11px;
-  color: 'hsl(210,8%,45%)';
-`;
 
 const SideBarTop = () => {
   const { pathname } = useLocation();
@@ -20,11 +13,13 @@ const SideBarTop = () => {
     <nav>
       <S.Ol>
         <CustomLink path='/questions'>
-          <HeaderText style={{ fontSize: 13 }}>Home</HeaderText>
+          <S.HeaderText style={{ fontSize: 13, marginBottom: 30 }}>
+            Home
+          </S.HeaderText>
         </CustomLink>
 
         <div>
-          <HeaderText>PUBLIC</HeaderText>
+          <S.HeaderText>PUBLIC</S.HeaderText>
 
           {SIDEBAR_LIST.map(({ name, path }) => {
             return (
@@ -51,7 +46,7 @@ const SideBarTop = () => {
             );
           })}
           <S.CollectiveBox>
-            <HeaderText>COLLECTIVES</HeaderText>
+            <S.HeaderText>COLLECTIVES</S.HeaderText>
             <InfoIcon style={{ marginRight: 8, marginTop: 17 }} />
           </S.CollectiveBox>
           <S.Li style={{ marginTop: 15 }}>
