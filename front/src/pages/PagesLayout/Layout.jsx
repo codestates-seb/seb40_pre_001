@@ -13,10 +13,17 @@ const Layout = () => {
   return (
     <>
       <Nav />
-      <S.Container>
-        {!isIncluded && <LeftSidebar />}
-        <Outlet />
-      </S.Container>
+      {isIncluded ? (
+        <S.Container className='NonMaxWidth'>
+          {!isIncluded && <LeftSidebar />}
+          <Outlet />
+        </S.Container>
+      ) : (
+        <S.Container>
+          {!isIncluded && <LeftSidebar />}
+          <Outlet />
+        </S.Container>
+      )}
       {!isIncluded || pathname.includes('questions') ? <Footer /> : null}
     </>
   );
