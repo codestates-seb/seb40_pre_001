@@ -21,4 +21,10 @@ const getPostByUserId = async (id) => {
   return data;
 };
 
-export { apiClient, getAllPostData, getPostByUserId };
+const createPost = async (newPost) => {
+  const { data } = await apiClient.post('/api/questions/ask', newPost);
+
+  return data;
+};
+
+export { apiClient, getAllPostData, getPostByUserId, createPost };

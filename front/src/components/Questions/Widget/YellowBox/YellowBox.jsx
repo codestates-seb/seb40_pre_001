@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './YellowBox.style';
-import { OVERVIEW_BLOG, FEATURED_ON_META } from '../../../../../../constants';
+import { OVERVIEW_BLOG, FEATURED_ON_META } from '../../../../constants';
 
 const YellowBox = () => {
   return (

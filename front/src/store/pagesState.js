@@ -6,6 +6,7 @@ const pagesState = atom({
     selectedLimit: 15,
     currentPage: 1,
     postsLength: 0,
+    currentContentId: null,
   },
 });
 

@@ -32,4 +32,52 @@ const COLLECTIVE_DETAILS = Object.freeze([
   },
 ]);
 
-export { pageLimits, categoryButton, COLLECTIVE_DETAILS };
+const SIDEBAR_LIST = Object.freeze([
+  { name: 'Questions', path: '/questions' },
+  { name: 'Tags', path: '/tags' },
+  { name: 'Users', path: '/users' },
+  { name: 'Companies', path: '/#' },
+]);
+
+const FOOTER_CONTENTS = Object.freeze([
+  { title: 'Stack Overflow', list: ['Questions, Help'] },
+  {
+    title: 'Products',
+    list: ['Teams', 'Advertising', 'Collectives', 'Talent'],
+  },
+  {
+    title: 'Company',
+    list: [
+      'About',
+      'Press',
+      'Work Here',
+      'Legal',
+      'Privacy Policy',
+      'Terms of Service',
+      'Contact Us',
+      'Cookie Settings',
+      'Cookie Policy',
+    ],
+  },
+  {
+    title: 'STACK EXCHANGE NETWORK',
+    list: [
+      'Technology',
+      'Culture & recreation',
+      'Life & arts',
+      'Science',
+      'Professional',
+      'Business',
+      'API',
+      'Data',
+    ],
+  },
+]);
+
+export {
+  pageLimits,
+  categoryButton,
+  COLLECTIVE_DETAILS,
+  SIDEBAR_LIST,
+  FOOTER_CONTENTS,
+};

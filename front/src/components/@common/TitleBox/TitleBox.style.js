@@ -9,7 +9,7 @@ const TitleContainer = styled.div`
 
   h1 {
     flex: 1;
-    font-size: 2.07692308rem;
+    font-size: 2rem;
     margin-bottom: 12px;
     margin-right: 12px;
     line-height: 35.1px;

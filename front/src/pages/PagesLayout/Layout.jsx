@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Nav, Footer, LeftSidebar } from '../../components/@common/Layout';
 import * as S from './Layout.style';
 
-const paths = Object.freeze(['/login', '/signup']);
+const paths = Object.freeze(['/login', '/signup', '/questions/ask']);
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -24,7 +24,7 @@ const Layout = () => {
           <Outlet />
         </S.Container>
       )}
-      {!isIncluded && <Footer />}
+      {!isIncluded || pathname.includes('questions') ? <Footer /> : null}
     </>
   );
 };

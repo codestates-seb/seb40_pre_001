@@ -1,17 +1,27 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
+import pagesState from '../../../../../store/pagesState';
 import TimeAgo from 'react-timeago';
+import TagButton from '../../../../@common/Buttons/Tag';
+import CustomLink from '../../../../@common/Link';
 
 import * as S from './Post.style';
 
 const PostDetails = ({ data }) => {
-  const { title, author, content, tags, createdAt } = data;
+  const { title, author, content, tags, createdAt, userId, contentId } = data;
+  const [state, setCurrentContentId] = useRecoilState(pagesState);
 
   return (
     <S.BoxRight>
-      <S.Title>
-        <a href='/questions/74210325/ansible-merge-2-task-with-condition-checks'>
-          {title}
-        </a>
+      <S.Title
+        onClick={() =>
+          setCurrentContentId({
+            ...state,
+            currentContentId: contentId,
+          })
+        }
+      >
+        <CustomLink path={`/questions/${userId}`}>{title}</CustomLink>
       </S.Title>
       <p>{content.context}</p>
       {/* Tag Box */}
@@ -20,11 +30,7 @@ const PostDetails = ({ data }) => {
           <ul>
             <li>
               {tags.map((tag) => {
-                return (
-                  <S.Tab key={tag} href='/questions/tagged/ansible'>
-                    {tag}
-                  </S.Tab>
-                );
+                return <TagButton key={tag} content={tag} />;
               })}
             </li>
           </ul>

@@ -41,10 +41,10 @@ const LeftBox = () => {
 
       <S.PageButton
         className={state.currentPage === lastPage && 'active'}
-        value={lastPage}
+        value={lastPage || null}
         onClick={onClickButton}
       >
-        {lastPage}
+        {lastPage || undefined}
       </S.PageButton>
       <S.PageButton
         onClick={() =>

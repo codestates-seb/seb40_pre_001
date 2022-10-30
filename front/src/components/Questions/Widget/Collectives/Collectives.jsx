@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './Collectives.style';
-import { COLLECTIVE_DETAILS } from '../../../../../../constants';
+import { COLLECTIVE_DETAILS } from '../../../../constants';
 
 const Collectives = () => {
   return (

@@ -50,27 +50,45 @@ const StyledSnsButton = styled.button`
   }
 `;
 
-const StyledTag = styled.button`
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(206, 100%, 52%);
-  box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
+// 추후 삭제 예정
+// const Ex = styled.button`
+//   color: hsl(0, 0%, 100%);
+//   background-color: hsl(206, 100%, 52%);
+//   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
 
-  position: relative;
+//   position: relative;
+//   display: inline-block;
+//   padding: 0.8em;
+//   border: 1px solid transparent;
+//   border-radius: 3px;
+//   background-color: transparent;
+//   outline: none;
+//   font-family: inherit;
+//   font-size: 13px;
+//   font-weight: normal;
+//   line-height: calc((13px +2) / 13px);
+//   text-align: center;
+//   text-decoration: none;
+//   cursor: pointer;
+//   user-select: none;
+//   white-space: nowrap;
+// `;
+
+const StyledTag = styled.button`
+  font-size: 12px;
+  color: hsl(205, 47%, 42%);
+  background-color: hsl(205, 46%, 92%);
+  border-color: transparent;
   display: inline-block;
-  padding: 0.8em;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background-color: transparent;
-  outline: none;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: calc((((13px) + 2) / 13px));
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
+  padding: 0.4em 0.5em;
+  margin: 0 2px 2px 0;
+  line-height: 1;
   white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
 `;
 
 export { SquareButton, StyledSnsButton, StyledTag };

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './Form.stlye.js';
+import * as S from './Form.style.js';
 import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';

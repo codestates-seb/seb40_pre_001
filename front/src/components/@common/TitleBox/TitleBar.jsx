@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './TitleBox.style';
-import CustomLink from '../../../../@common/Link';
-import { StyledButton } from '../../../../@common/Buttons';
+import CustomLink from '../Link';
+import { StyledButton } from '../Buttons';
 
-const TitleBox = () => {
+const TitleBox = ({ title, ...rest }) => {
   return (
-    <S.TitleContainer>
-      <h1>All Questions</h1>
+    <S.TitleContainer {...rest}>
+      <h1>{title}</h1>
       <S.ButtonContainer>
         <CustomLink path='/questions/ask'>
           <StyledButton
