@@ -15,6 +15,7 @@ import java.util.*;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "QUESTION_ID")
     private Long questionId;
 
     @Column(nullable = false, updatable = false)
@@ -30,11 +31,9 @@ public class Question {
 
     private int voteCount;
 
-
-    @OneToMany(mappedBy = "QuestionTag", cascade = CascadeType.ALL)
-    //CascadeType.All을 하면 question이 수정, 삭제될때 questionTagList도 따라서 수정, 삭제됨
-    @ToString.Exclude
-    private final List<QuestionTag> questionTagList = new ArrayList<>();
+//    CascadeType.All을 하면 question이 수정, 삭제될때 questionTagList도 따라서 수정, 삭제됨
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
+    private List<QuestionTag> questionTagList = new ArrayList<>();
 
     //erd 설계와 이름 다름
     //답변을 선택했는지 여부

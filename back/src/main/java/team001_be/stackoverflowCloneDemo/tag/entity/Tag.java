@@ -1,6 +1,8 @@
-package team001_be.stackoverflowCloneDemo.question.entity;
+package team001_be.stackoverflowCloneDemo.tag.entity;
 
+import com.sun.xml.bind.v2.runtime.Name;
 import lombok.*;
+import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TAG_ID")
     private int tagId;
 
     @Column(nullable = false)
@@ -26,9 +29,9 @@ public class Tag {
         this.tagDescription = tagDescription;
     }
 
-    @OneToMany(mappedBy = "QuestionTag")
+    @OneToMany(mappedBy = "tag", targetEntity = QuestionTag.class)
     @ToString.Exclude
-    private final List<QuestionTag> questionTagList = new ArrayList<>();
+    private List<QuestionTag> questionTagList = new ArrayList<>();
 
     public void addQuestionTag(QuestionTag questionTag){
         this.questionTagList.add(questionTag);
