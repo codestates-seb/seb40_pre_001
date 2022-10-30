@@ -1,7 +1,10 @@
+/*eslint-disable*/
 import React, { useState } from 'react';
 
 import useGetAllPost from '../../../hooks/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
+
+import * as S from './Ask.style';
 
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
@@ -44,39 +47,56 @@ const Ask = () => {
   };
 
   return (
-    <div style={{ marginTop: 300 }}>
-      <form type='submit' style={{ display: 'flex', flexDirection: 'column' }}>
-        <label htmlFor='author'>Author</label>
-        <input
-          type='author'
-          value={state.author}
-          name='author'
-          style={{ width: 300, height: 30 }}
-          onChange={(e) => setState({ ...state, author: e.target.value })}
-          required
-        />
-        <label htmlFor='title'>Title</label>
-        <input
-          type='text'
-          value={state.title}
-          name='title'
-          style={{ width: 300, height: 30 }}
-          onChange={(e) => setState({ ...state, title: e.target.value })}
-          required
-        />
-        <label htmlFor='context'>Context</label>
-        <textarea
-          type='text'
-          name='context'
-          style={{ width: 300, height: 300 }}
-          onChange={(e) => setState({ ...state, context: e.target.value })}
-          required
-        />
-        <button type='button' onClick={onClick}>
-          제출하기
-        </button>
-      </form>
-    </div>
+    <S.AskZone>
+      <S.ComponentZone>
+        <S.AskHeader></S.AskHeader>
+        <S.WritGoodQue></S.WritGoodQue>
+        <S.Wrapper>
+          <S.LeftWrapper>
+            <S.AskForm></S.AskForm>
+          </S.LeftWrapper>
+          <S.RightWrapper>
+            <S.AskForm />
+          </S.RightWrapper>
+        </S.Wrapper>
+
+        {/* <form
+          type='submit'
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
+          <label htmlFor='author'>Author</label>
+          <input
+            type='author'
+            value={state.author}
+            name='author'
+            style={{ width: 300, height: 30 }}
+            onChange={(e) => setState({ ...state, author: e.target.value })}
+            required
+          />
+          <label htmlFor='title'>Title</label>
+          <input
+            type='text'
+            value={state.title}
+            name='title'
+            style={{ width: 300, height: 30 }}
+            onChange={(e) => setState({ ...state, title: e.target.value })}
+            required
+          />
+          <label htmlFor='context'>Context</label>
+          <textarea
+            type='text'
+            name='context'
+            style={{ width: 300, height: 300 }}
+            onChange={(e) => setState({ ...state, context: e.target.value })}
+            required
+          />
+          <button type='button' onClick={onClick}>
+            제출하기
+          </button>
+        </form> */}
+        <S.ButtonFooter></S.ButtonFooter>
+      </S.ComponentZone>
+    </S.AskZone>
   );
 };
 
