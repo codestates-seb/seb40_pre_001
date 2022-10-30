@@ -19,7 +19,7 @@ const SearchInput = () => {
           height={18}
           style={{
             position: 'absolute',
-            marginLeft: 8,
+            marginLeft: 9,
             marginTop: 8,
           }}
         />

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const PostContainer = styled.div`
   position: relative;
   display: flex;
-  border-top: 1px solid hsla(0, 0%, 0%, 0.09);
+  border-top: 1px solid hsl(210, 8%, 85%);
   padding: 16px;
   right: 25px;
   width: 751px;

@@ -4,17 +4,17 @@ const Form = styled.form`
   display: flex;
   padding: 0 calc(8px * 1);
   align-items: center;
-  flex-shrink: 10000;
-  flex-grow: 1;
 `;
 
 const Container = styled.div`
+  width: 704.55px;
+  max-width: 773.5px !important;
   display: flex;
-  flex-grow: 1;
 `;
 
 const Input = styled.input`
   width: 100%;
+
   border-color: hsl(210, 8%, 75%);
   background-color: hsl(0, 0%, 100%);
   color: hsl(210, 8%, 45%);

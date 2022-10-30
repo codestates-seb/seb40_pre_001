@@ -13,14 +13,10 @@ const SideBarTop = () => {
     <nav>
       <S.Ol>
         <CustomLink path='/questions'>
-          <S.HeaderText style={{ fontSize: 13, marginBottom: 30 }}>
-            Home
-          </S.HeaderText>
+          <S.HeaderText>Home</S.HeaderText>
         </CustomLink>
-
         <div>
-          <S.HeaderText>PUBLIC</S.HeaderText>
-
+          <S.HeaderText style={{ fontSize: 11 }}>PUBLIC</S.HeaderText>
           {SIDEBAR_LIST.map(({ name, path }) => {
             return (
               <S.Li key={name}>

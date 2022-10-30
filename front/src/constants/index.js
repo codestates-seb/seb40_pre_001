@@ -1,5 +1,5 @@
 import ROUTES from './routes';
-import SNS_BUTTONS from './snsbutton';
+import SNS_BUTTONS from './snsButton';
 import { FEATURED_ON_META, OVERVIEW_BLOG } from './widget';
 import {
   pageLimits,

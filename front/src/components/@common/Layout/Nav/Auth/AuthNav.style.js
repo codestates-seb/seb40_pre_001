@@ -1,26 +1,42 @@
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  height: 100% !important;
-
-  width: 143px;
+  padding-right: 12px;
   height: 47px;
-  margin-left: -15px;
 `;
 
 const Ol = styled.ol`
   display: flex;
-  width: 127.3px;
   height: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
   overflow-x: auto;
-  margin-left: auto;
+  align-items: center;
+  padding-bottom: 5px;
+  width: auto;
 `;
 
 const Li = styled.li`
-  display: inline-flex;
+  margin: 10px 10px;
+  padding: 2px;
+  cursor: pointer;
 `;
 
-export { Nav, Ol, Li };
+const ProfileBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    border-radius: 3px;
+  }
+
+  span {
+    text-decoration: none;
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+`;
+
+export { Nav, Ol, Li, ProfileBox };

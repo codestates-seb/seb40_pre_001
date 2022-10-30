@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './PopOver.style';
 import CustomLink from '../../../Link';
+import { isLoggedIn } from '../../../../../constants/auth';
 
 const POPOVER_INFO = Object.freeze([
   {
@@ -27,7 +28,7 @@ const POPOVER_INFO = Object.freeze([
 
 const PopOver = ({ setIsClicked }) => {
   return (
-    <S.Container>
+    <S.Container login={isLoggedIn}>
       <S.UpArrow />
       <ol>
         {POPOVER_INFO.map(({ title, desc, path }, i) => {

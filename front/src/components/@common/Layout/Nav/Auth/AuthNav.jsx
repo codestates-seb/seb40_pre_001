@@ -1,30 +1,40 @@
 import React from 'react';
-import StyledButton from '../../../Buttons/Button';
-import CustomLink from '../../../Link';
+import {
+  HelpIcon,
+  InboxIcon,
+  StackExchangeIcon2,
+  TrophyIcon,
+} from '../../../Icons';
 import * as S from './AuthNav.style';
 
-const AuthNav = () => {
+const Auth = () => {
   return (
-    <S.Nav>
-      <S.Ol>
-        <S.Li>
-          <CustomLink path='/login'>
-            <StyledButton
-              content='Login'
-              backgroundColor='hsl(205,46%,92%)'
-              borderColor='hsl(205,41%,63%)'
-              color='hsl(205,47%,42%)'
-            />
-          </CustomLink>
-        </S.Li>
-        <S.Li>
-          <CustomLink path='/signup'>
-            <StyledButton content='Sign up' style={{ marginLeft: 3 }} />
-          </CustomLink>
-        </S.Li>
-      </S.Ol>
-    </S.Nav>
+    <S.Ol>
+      <S.Li>
+        <S.ProfileBox>
+          <img
+            src='https://lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'
+            alt="Keonhee Lee's user avatar"
+            width='24'
+            height='24'
+          />
+          <span>1</span>
+        </S.ProfileBox>
+      </S.Li>
+      <S.Li style={{ marginLeft: 15 }}>
+        <InboxIcon />
+      </S.Li>
+      <S.Li>
+        <TrophyIcon fill1='hsl(210,8%,35%)' style={{ width: 18, height: 18 }} />
+      </S.Li>
+      <S.Li>
+        <HelpIcon />
+      </S.Li>
+      <S.Li>
+        <StackExchangeIcon2 />
+      </S.Li>
+    </S.Ol>
   );
 };
 
-export default AuthNav;
+export default Auth;

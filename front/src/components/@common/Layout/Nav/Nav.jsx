@@ -4,13 +4,17 @@ import { LogoIcon } from '../../Icons';
 
 import Navigation from './Navigation/Navigation';
 import SearchInput from './SearchInput/SearchInput';
-import AuthNav from './Auth/AuthNav';
 
 import CustomLink from '../../Link';
 import PopOver from './Popover/PopOver';
+import { isLoggedIn } from '../../../../constants/auth';
+import Auth from './Auth/AuthNav';
+import NonAuth from './Auth/NonAuthNav';
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
+
+  console.log(isLoggedIn);
 
   return (
     <S.Header>
@@ -23,7 +27,7 @@ const Nav = () => {
         <Navigation isClicked={isClicked} setIsClicked={setIsClicked} />
         {isClicked && <PopOver setIsClicked={setIsClicked} />}
         <SearchInput />
-        <AuthNav />
+        {isLoggedIn ? <Auth /> : <NonAuth />}
       </S.NavContainer>
     </S.Header>
   );

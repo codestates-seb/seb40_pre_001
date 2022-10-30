@@ -23,4 +23,35 @@ export const handlers = [
 
     return res(ctx.status(201), ctx.delay());
   }),
+
+  // Access Request Cookies
+  rest.post('/api/login', (req, res, ctx) => {
+    const { authToken } = req.cookies;
+    const { id } = req.body;
+
+    if (authToken === id) {
+      return res(
+        ctx.delay(),
+        ctx.json({
+          id: 'mock1234',
+          username: 'mock 유저',
+        }),
+      );
+    }
+    return res(
+      ctx.delay(),
+      ctx.json({ message: 'Failed to Authenticate' }),
+      ctx.status(403),
+    );
+  }),
+
+  // response Cookies
+  rest.get('/api/login', (req, res, ctx) => {
+    return res(ctx.delay(), ctx.cookie('authToken', 'mock1234'));
+  }),
+
+  // GitHub Auth
+  rest.get('/api/auth/github', (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
 ];

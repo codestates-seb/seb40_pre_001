@@ -2,25 +2,31 @@ import styled from 'styled-components';
 
 const Ol = styled.ol`
   display: flex;
-  width: 237.56px;
-  height: 37px;
+  flex-wrap: wrap;
+  list-style: none;
   margin: -2px;
-  padding-bottom: 2px;
-  margin-left: -10px;
+  padding: 2px 0;
 `;
 
 const Li = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: hsl(210, 8%, 20%);
-  border-radius: 20px;
-  width: 40%;
-  user-select: none;
-  font-size: 13px;
-  outline: none;
-  cursor: pointer;
+  margin-top: -1px;
+
+  a {
+    color: hsl(210, 8%, 35%);
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    position: relative;
+    border: none;
+    font: unset;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 1000px;
+    margin: 2px;
+    white-space: nowrap;
+  }
 
   a:hover {
     border-radius: 40px;

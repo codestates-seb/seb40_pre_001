@@ -16,6 +16,8 @@ const Container = styled.div`
   color: hsl(210, 8%, 5%);
   font-size: 13px;
   min-width: 12rem;
+
+  left: ${({ login }) => (login ? '-65px' : null)};
 `;
 
 const UpArrow = styled.div`
