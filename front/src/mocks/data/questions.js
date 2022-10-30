@@ -3,7 +3,8 @@ const questionsData = [
   {
     contentId: 1,
     userId: 12345,
-    title: 'Inquirer will not wait to select in async function, Javascript',
+    title:
+      'Inquirer will not wait to select in async function, JavascriptInquirer will not wait to select in async function,',
     author: 'keonhee Lee',
     createdAt: '2022-10-27',
     tags: ['javascript', 'react'],

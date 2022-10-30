@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const CustomLink = ({ className, path, children }) => {
+const CustomLink = ({ className, path, children, ...rest }) => {
   return (
-    <StyledLink className={className} to={path}>
+    <StyledLink className={className} to={path} {...rest}>
       {children}
     </StyledLink>
   );

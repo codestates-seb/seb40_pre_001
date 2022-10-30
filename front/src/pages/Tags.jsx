@@ -1,7 +1,7 @@
 import React from 'react';
 
-const About = () => {
+const Tags = () => {
   return <div></div>;
 };
 
-export default About;
+export default Tags;

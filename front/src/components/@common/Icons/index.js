@@ -14,6 +14,12 @@ import GoogleIcon from './GoogleIcon';
 import GithubIcon from './GithubIcon';
 import FacebookIcon from './FacebookIcon';
 
+//Sign Up
+import LabelIcon from './LabelIcon';
+import QuestionIcon from './QuestionIcon';
+import TrophyIcon from './TrophyIcon';
+import UpDownIcon from './UpDownIcon';
+
 // Stack Over Flow
 export {
   LogoIcon,
@@ -30,3 +36,6 @@ export {
 // SNS
 
 export { GoogleIcon, GithubIcon, FacebookIcon };
+
+//Sign Up
+export { LabelIcon, QuestionIcon, TrophyIcon, UpDownIcon };

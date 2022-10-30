@@ -44,7 +44,8 @@ const Li = styled.li`
   padding: 0;
 
   a {
-    color: hsl(210, 8%, 35%);
+    color: hsl(210, 8%, 45%);
+
     display: block;
     padding: 4px 4px 4px 8px;
     line-height: 26px;
@@ -64,11 +65,22 @@ const Li = styled.li`
   }
 `;
 
+const HeaderText = styled.p`
+  margin: 16px 0 8px 8px;
+  font-size: 11px;
+  color: hsl(210, 8%, 45%);
+`;
+
+const CollectiveBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const PageLinkContainer = styled.div`
   display: flex;
   align-items: center;
   padding-left: 2;
-  color: hsl(210, 8%, 55%);
+  color: hsl(210, 8%, 35%);
   // height: 33px;
 
   &:hover {
@@ -107,6 +119,8 @@ export {
   LeftStickyContainer,
   Ol,
   Li,
+  HeaderText,
+  CollectiveBox,
   PageLinkContainer,
   TeamsContainer,
 };
