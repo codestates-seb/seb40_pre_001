@@ -20,6 +20,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+
+
+
+    // 회원 정보 수정
+    public static User updateUser(User user) {
+        // TODO document why this method is empty
+        userRepository.save(user);
+
+        return user;
+    }
+
+
     public User createUser(User user){
         //등록된 이메일 확인
         verifyExistsEmail(user.getEmail());

@@ -41,6 +41,12 @@ public class User {
     @Column(name = "birthday")
     private LocalDate birthday;
 
+    public static <UserDto, UserEntity> UserEntity toSavEntity(UserDto userDto){
+        UserEntity userEntity = new UserEntity();
+        User.setEmail(User.getEmail());
+
+    }
+
 
 
 

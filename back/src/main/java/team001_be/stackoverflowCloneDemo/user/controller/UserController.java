@@ -8,13 +8,17 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 import team001_be.stackoverflowCloneDemo.user.Hashing;
-import team001_be.stackoverflowCloneDemo.user.dto.UserDTO;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @RestController
 @RequestMapping("/login")
@@ -33,7 +37,7 @@ public class UserController {
         this.userService = userService;
     }
 
-/*
+/
     @PostMapping
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto requestbody) {
         User user = mapper.userPostDtoToUser(requestbody);
@@ -44,8 +48,7 @@ public class UserController {
                 new SingleResponseDto<>(mapper.userToUserResponseDto(createdUser)),
                 HttpStatus.CREATED);
     }
-
- */
+    
 
     @GetMapping("/{user-id}")
     public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId){
@@ -79,6 +82,45 @@ public class UserController {
 
         return "success";
     }
+
+    //4. 회원 정보 전부 출력
+    @GetMapping("/{user-id}/all-users")
+    public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId){
+        List<UserDto> userDtoList = userService.findAll()
+
+        User user = userService.findUser(userId);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
+
+    }
+
+    // 회원정보 수정
+    @PatchMapping("/{user-id}")
+    public ResponseEntity patchUser(
+            @PathVariable("user-id") @Positive long usersId,
+            @Valid @RequestBody UserPatchDto usersPatchDto) {
+        usersPatchDto.setUserId(usersId);
+
+        User response =
+                UserService.updateUser(mapper.userPatchDtoToUser(usersPatchDto));
+
+        return new ResponseEntity<>(mapper.userToUserResponseDto(response),
+                HttpStatus.OK);
+    }
+
+    //회원정보 삭제
+    @DeleteMapping("/{user-id}")
+    public ResponseEntity deleteUser(
+            @PathVariable("user-id") @Positive long usersId) {
+        System.out.println("# delete user");
+        usersService.deleteUser(usersId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+}
+
+
 
    /* //회원정보수정//
     @GetMapping("/user/info")
