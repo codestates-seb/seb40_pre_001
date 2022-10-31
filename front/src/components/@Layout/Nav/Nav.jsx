@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import * as S from './Nav.style';
-import { LogoIcon } from '../../Icons';
+import { LogoIcon } from '../../@common/Icons';
 
 import Navigation from './Navigation/Navigation';
 import SearchInput from './SearchInput/SearchInput';
 
-import CustomLink from '../../Link';
+import CustomLink from '../../@common/Link';
 import PopOver from './Popover/PopOver';
-import { isLoggedIn } from '../../../../constants/auth';
+import { isLoggedIn } from '../../../constants/auth';
 import Auth from './Auth/AuthNav';
 import NonAuth from './Auth/NonAuthNav';
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
-
-  console.log(isLoggedIn);
 
   return (
     <S.Header>

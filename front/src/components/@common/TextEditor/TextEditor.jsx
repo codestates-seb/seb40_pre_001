@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Editor } from '@toast-ui/react-editor';
+import { Editor, Viewer } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 
@@ -22,4 +22,8 @@ const TextEditor = forwardRef(({ onChange, ...props }, ref) => {
 
 TextEditor.displayName = 'TextEditor';
 
-export default TextEditor;
+const TextViewer = ({ initialValue, ...rest }) => {
+  return <Viewer className='viewer' initialValue={initialValue} {...rest} />;
+};
+
+export { TextEditor, TextViewer };

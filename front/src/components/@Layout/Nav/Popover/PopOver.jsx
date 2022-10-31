@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './PopOver.style';
-import CustomLink from '../../../Link';
-import { isLoggedIn } from '../../../../../constants/auth';
+import CustomLink from '../../../@common/Link';
+import { isLoggedIn } from '../../../../constants/auth';
 
 const POPOVER_INFO = Object.freeze([
   {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FOOTER_CONTENTS } from '../../../../../constants';
-import CustomLink from '../../../Link';
+import { FOOTER_CONTENTS } from '../../../../constants';
+import CustomLink from '../../../@common/Link';
 import * as S from './Content.style';
 
 const FooterContent = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import StyledButton from '../../../Buttons/Button';
-import CustomLink from '../../../Link';
+import StyledButton from '../../../@common/Buttons/Button';
+import CustomLink from '../../../@common/Link';
 import * as S from './AuthNav.style';
 
 const NonAuth = () => {

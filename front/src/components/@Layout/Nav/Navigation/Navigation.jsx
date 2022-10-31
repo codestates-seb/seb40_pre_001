@@ -1,8 +1,8 @@
 import React from 'react';
-import CustomLink from '../../../Link';
+import CustomLink from '../../../@common/Link';
 import * as S from './Navigation.style';
 
-import { isLoggedIn } from '../../../../../constants/auth';
+import { isLoggedIn } from '../../../../constants/auth';
 
 const Links = ({ isClicked, setIsClicked }) => {
   return (

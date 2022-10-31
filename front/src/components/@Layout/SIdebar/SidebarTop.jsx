@@ -1,10 +1,10 @@
 import React from 'react';
 
-import CustomLink from '../../Link';
-import { GlobeIcon, InfoIcon, StarIcon } from '../../Icons';
+import CustomLink from '../../@common/Link';
+import { GlobeIcon, InfoIcon, StarIcon } from '../../@common/Icons';
 import * as S from './Sidebar.style';
 import { useLocation } from 'react-router-dom';
-import { SIDEBAR_LIST } from '../../../../constants';
+import { SIDEBAR_LIST } from '../../../constants';
 
 const SideBarTop = () => {
   const { pathname } = useLocation();

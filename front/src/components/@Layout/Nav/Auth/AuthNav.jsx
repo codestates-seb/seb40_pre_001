@@ -4,7 +4,7 @@ import {
   InboxIcon,
   StackExchangeIcon2,
   TrophyIcon,
-} from '../../../Icons';
+} from '../../../@common/Icons';
 import * as S from './AuthNav.style';
 
 const Auth = () => {

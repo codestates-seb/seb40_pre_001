@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchIcon from '../../../Icons/SearchIcon';
+import SearchIcon from '../../../@common/Icons/SearchIcon';
 
 import * as S from './SearchInput.style';
 

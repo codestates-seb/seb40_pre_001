@@ -1,5 +1,5 @@
 import React from 'react';
-import { SmallLogoIcon } from '../../Icons';
+import { SmallLogoIcon } from '../../@common/Icons';
 import FooterContent from './Content/Content';
 import * as S from './Footer.style';
 
