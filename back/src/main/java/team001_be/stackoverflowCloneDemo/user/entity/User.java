@@ -3,6 +3,7 @@ package team001_be.stackoverflowCloneDemo.user.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,7 +30,7 @@ public class User {
     @Column(name = "password", nullable = false, updatable = false)
     private String password;
 
-    @Column(name = "\"userNickname\"", unique = true)
+    @Column(name = "\"userNickname\"")
     public String userNickname;
 
     @Column(name = "description")
@@ -41,10 +42,28 @@ public class User {
     @Column(name = "birthday")
     private LocalDate birthday;
 
-    public static <UserDto, UserEntity> UserEntity toSavEntity(UserDto userDto){
-        UserEntity userEntity = new UserEntity();
-        User.setEmail(User.getEmail());
 
+    // id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
+    public static User toSaveEntity(UserDto userDto){
+        User user = new User();
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setUserNickname(userDto.getUserNickname());
+        user.setBirthday(userDto.getBirthday());
+        user.setAddress(userDto.getAddress());
+        return user;
+    }
+
+    //user Id 가 포함되었기 떄문에 update 쿼리가 나감.
+    public static User toUpdateEntity(UserDto userDto){
+        User user = new User();
+        user.setUserId(userDto.getUserId());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setUserNickname(userDto.getUserNickname());
+        user.setBirthday(userDto.getBirthday());
+        user.setAddress(userDto.getAddress());
+        return user;
     }
 
 

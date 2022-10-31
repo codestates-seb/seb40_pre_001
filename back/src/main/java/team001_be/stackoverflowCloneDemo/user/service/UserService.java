@@ -6,30 +6,48 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+
+    private static UserRepository userRepository ;
 
     public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+        UserService.userRepository = userRepository;
     }
 
 
-
-
+    //save method
+    public Long save(UserDto userDto){
+        User user = User.toSaveEntity(userDto);
+        return userRepository.save(user).getUserId();
+    }
     // 회원 정보 수정
-    public static User updateUser(User user) {
-        // TODO document why this method is empty
-        userRepository.save(user);
-
+    public static User update(User user) {
+        userRepository.save(User.toUpdateEntity(UserDto.userDto));
         return user;
     }
+
+    // 전체조회 service
+    public List<UserDto> findAll() {
+        List<User> userList = userRepository.findAll();
+        List<UserDto> userDtoList = new ArrayList<>();
+        for (User user : userList){
+            UserDto userDto = UserDto.toUserDto(user);
+            userDtoList.add(userDto);
+        }
+        return userDtoList;
+    }
+
+
 
 
     public User createUser(User user){
@@ -39,6 +57,8 @@ public class UserService {
         return userRepository.save(user);
 
     }
+
+
 
     public User findUser(long userId){
         return findVerifiedUser(userId);
@@ -50,7 +70,7 @@ public class UserService {
 
     private void verifyExistsEmail(String email){
 
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
 
         if(user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
@@ -66,4 +86,6 @@ public class UserService {
         }
         return findUser;
     }
+
+
 }

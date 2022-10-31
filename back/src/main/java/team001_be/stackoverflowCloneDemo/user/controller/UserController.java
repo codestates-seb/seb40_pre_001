@@ -36,9 +36,32 @@ public class UserController {
         this.mapper = mapper;
         this.userService = userService;
     }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping("/user/signup")
+    @ResponseBody
+    public String registerUser(@RequestBody User newUser) {
+        String email = newUser.getEmail();
+        String password = Hashing.hashingPassword(newUser.getPassword());
+        String userNickname = newUser.getUserNickname();
 
-/
-    @PostMapping
+        if (email.equals(""))
+            return "failed";
+
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setUserNickname(userNickname);
+
+        if (userRepository.findByEmail(email) != null)
+            return "failed";
+
+        userRepository.save(user);
+
+        return "success";
+    }
+
+
+    @PostMapping("/user/post")
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto requestbody) {
         User user = mapper.userPostDtoToUser(requestbody);
 
@@ -48,78 +71,49 @@ public class UserController {
                 new SingleResponseDto<>(mapper.userToUserResponseDto(createdUser)),
                 HttpStatus.CREATED);
     }
-    
+
 
     @GetMapping("/{user-id}")
-    public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId){
+    public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId) {
         User user = userService.findUser(userId);
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK
+        );
 
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping
-    @ResponseBody
-    public String registerUser(@RequestBody User newUser){
-        String email = newUser.getEmail();
-        String password = Hashing.hashingPassword(newUser.getPassword());
-        String userNickname = newUser.getUserNickname();
 
-        if(email.equals("") || password.equals("") || userNickname.equals(""))
-            return "failed";
 
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setUserNickname(userNickname);
-
-        if(userRepository.findByEmail(email).isPresent())
-            return "failed";
-
-        userRepository.save(user);
-
-        return "success";
-    }
-
-    //4. 회원 정보 전부 출력
-    @GetMapping("/{user-id}/all-users")
-    public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId){
-        List<UserDto> userDtoList = userService.findAll()
-
-        User user = userService.findUser(userId);
-
-        return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK);
-
+    //4. 회원 정보 전부 출력 -  완료
+    @GetMapping("/all-users")
+    public List<UserDto> retrieveUsers() {
+        return userService.findAll();
     }
 
     // 회원정보 수정
     @PatchMapping("/{user-id}")
     public ResponseEntity patchUser(
             @PathVariable("user-id") @Positive long usersId,
-            @Valid @RequestBody UserPatchDto usersPatchDto) {
-        usersPatchDto.setUserId(usersId);
+            @Valid @RequestBody UserPatchDto userPatchDto) {
+        userPatchDto.setUserId(usersId);
 
         User response =
-                UserService.updateUser(mapper.userPatchDtoToUser(usersPatchDto));
+                UserService.update(mapper.userPatchDtoToUser(userPatchDto));
 
         return new ResponseEntity<>(mapper.userToUserResponseDto(response),
                 HttpStatus.OK);
     }
 
     //회원정보 삭제
-    @DeleteMapping("/{user-id}")
+/*    @DeleteMapping("/{user-id}")
     public ResponseEntity deleteUser(
             @PathVariable("user-id") @Positive long usersId) {
         System.out.println("# delete user");
-        usersService.deleteUser(usersId);
+        UserService.deleteUser(usersId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-}
-
+    }*/
 
 
    /* //회원정보수정//
@@ -150,5 +144,5 @@ public class UserController {
                                        Princpal ){
         String userId = principal.getName();
     }*/
-
 }
+

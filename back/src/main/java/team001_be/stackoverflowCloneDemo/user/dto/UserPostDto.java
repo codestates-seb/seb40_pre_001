@@ -19,4 +19,6 @@ public class UserPostDto {
     private String email;
     @NotBlank(message = "비밀번호는 공백일 수 없습니다.")
     private String password;
+    @NotBlank(message = "닉네임은 공백일 수 없습니다.")
+    private String userNickname;
 }
