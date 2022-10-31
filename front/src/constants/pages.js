@@ -11,6 +11,21 @@ const categoryButton = Object.freeze([
   'More',
 ]);
 
+const UsersCategoryButton = Object.freeze([
+  'Reputation',
+  'New users',
+  'Voters',
+  'Editors',
+  'Moderators',
+]);
+
+const UsersTabButton = Object.freeze([
+  'week',
+  'month',
+  'quarter',
+  'year',
+  'all',
+]);
 const COLLECTIVE_DETAILS = Object.freeze([
   {
     title: 'Google Cloud',
@@ -80,4 +95,6 @@ export {
   COLLECTIVE_DETAILS,
   SIDEBAR_LIST,
   FOOTER_CONTENTS,
+  UsersCategoryButton,
+  UsersTabButton,
 };
