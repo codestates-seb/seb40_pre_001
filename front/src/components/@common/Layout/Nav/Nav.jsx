@@ -22,7 +22,7 @@ const Nav = () => {
         </S.LogoBox>
         <Navigation isClicked={isClicked} setIsClicked={setIsClicked} />
         {isClicked && <PopOver setIsClicked={setIsClicked} />}
-        <SearchInput />
+        <SearchInput width={'100%'} placeholder={'Search...'} />
         <AuthNav />
       </S.NavContainer>
     </S.Header>
