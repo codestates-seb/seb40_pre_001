@@ -8,7 +8,8 @@ import java.util.List;
 
 @Getter
 public class QuestionResponseDto {
-    private int userNickName;
+    private Long questionId;
+    private String userNickName;
     private String questionTitle;
     private String context;
     private int viewCount;

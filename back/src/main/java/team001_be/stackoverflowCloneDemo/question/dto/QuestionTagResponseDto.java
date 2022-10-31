@@ -5,9 +5,9 @@ import lombok.Getter;
 import javax.validation.constraints.Positive;
 
 @Getter
-public class QuestionTagDto {
+public class QuestionTagResponseDto {
     @Positive
-    private int tagId;
+    private Long tagId;
 
 
 }

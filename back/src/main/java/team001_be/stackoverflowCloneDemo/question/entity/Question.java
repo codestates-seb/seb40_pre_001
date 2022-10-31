@@ -1,9 +1,6 @@
 package team001_be.stackoverflowCloneDemo.question.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -19,7 +16,7 @@ public class Question {
     private Long questionId;
 
     @Column(nullable = false, updatable = false)
-    private int uerId;
+    private Long uerId;
 
     @Column(length = 100, nullable = false, unique = true)
     private String questionTitle;
@@ -27,11 +24,11 @@ public class Question {
     @Column(length = 65535, nullable = false)
     private String context;
 
-    private int viewCount;
+    private Long viewCount;
 
-    private int voteCount;
+    private Long voteCount;
 
-//    CascadeType.All을 하면 question이 수정, 삭제될때 questionTagList도 따라서 수정, 삭제됨
+//    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
@@ -47,12 +44,12 @@ public class Question {
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
-    public Question(int uerId, String questionTitle, String context){
+    public Question(Long uerId, String questionTitle, String context){
         this.uerId = uerId;
         this.questionTitle = questionTitle;
         this.context = context;
-        this.viewCount = 0;
-        this.voteCount = 0;
+        this.viewCount = 0L;
+        this.voteCount = 0L;
         this.hasAccepted = false;
         //dateCreated, dateModifeied 별도로 생성자에서 설정해줘야 하는지?
     }
@@ -62,5 +59,21 @@ public class Question {
         if(questiontag.getQuestion() != this){
             questiontag.addQuestion(this);
         }
+    }
+
+    public void updateViewCount(Long viewCount){
+        this.viewCount = viewCount;
+    }
+
+    public void setQuestionTitle(String questionTitle) {
+        this.questionTitle = questionTitle;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public void setQuestionTagList(List<QuestionTag> questionTagList) {
+        this.questionTagList = questionTagList;
     }
 }
