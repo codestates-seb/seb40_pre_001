@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import TitleBox from '../../@common/TitleBox/TitleBar';
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
 import Widget from '../Widget/Widget';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../@common/Icons';
-// import useGetAllPosts from '../../../hooks/useGetAllPosts';
+import TextEditor from '../../@common/TextEditor/TextEditor';
+import { StyledButton, TagButton } from '../../@common/Buttons';
 
 const Content = ({ data }) => {
-  const { title } = data;
+  const { title, tags } = data;
+  const [editor, setEditor] = useState({ html: '', md: '' });
+  const editorRef = useRef(null);
+
+  const handleChange = () => {
+    const editor_instance = editorRef.current?.getInstance();
+    if (editor_instance) {
+      setEditor({
+        html: editor_instance?.getHTML(),
+        md: editor_instance?.getMarkdown(),
+      });
+    }
+  };
 
   return (
     <div>
@@ -37,8 +50,9 @@ const Content = ({ data }) => {
             alt=''
           />
         </S.ImgContainer>
-        {/* Left box */}
+        {/* Content Related */}
         <S.PostLayout>
+          {/* Left box */}
           <S.LeftBox>
             <S.VotingContainer>
               <S.IconContainer>
@@ -54,10 +68,13 @@ const Content = ({ data }) => {
               <HistoryIcon style={{ margin: '3px 0 0 11px' }} />
             </S.VotingContainer>
           </S.LeftBox>
+          {/* Right Box */}
           <S.RightBox>
-            <S.PostBody />
+            <S.PostBody></S.PostBody>
             <S.TagBox>
-              <div>태그</div>
+              {tags.map((tag) => {
+                return <TagButton key={tag} content={tag} />;
+              })}
             </S.TagBox>
             <S.BottomBox>
               <S.FeatureBox>
@@ -68,9 +85,33 @@ const Content = ({ data }) => {
                 </S.FeatureLeft>
               </S.FeatureBox>
             </S.BottomBox>
+            <div>Add a comment</div>
           </S.RightBox>
         </S.PostLayout>
+
+        {/* Text Editor */}
+        <div
+          style={{
+            borderTop: '1px solid gray',
+            marginTop: 10,
+          }}
+        >
+          <p style={{ marginBottom: 30, marginTop: 20 }}> Your Answer</p>
+          <TextEditor
+            ref={editorRef}
+            width='727'
+            height='255px'
+            onChange={handleChange}
+          />
+          <p>{editor.md}</p>
+        </div>
+        <StyledButton
+          content='Post Your Answer'
+          style={{ width: 129, height: 45 }}
+          onClick={() => console.log(editor.html)}
+        />
       </M.MainContainer>
+
       <Widget />
     </div>
   );

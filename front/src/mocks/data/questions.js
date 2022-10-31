@@ -1,4 +1,5 @@
 // questions table
+
 const questionsData = [
   {
     contentId: 1,
@@ -17,7 +18,7 @@ const questionsData = [
       image: 'url',
       context:
         'In Powershell, when I try to run Inquirer for an Async function the powershell completely skips the input even with await operators.',
-      code: `<div>code</div>`,
+      code: `<h3><br></h3><p>skladjklzcxxz</p><h2><br></h2><div contenteditable="false"><hr></div><p><strong>lkjdslfjsdlkf</strong></p><p><br></p><p>sadkljzxclkjxzldeasdm,nsadqw</p>`,
     },
   },
   {
@@ -56,7 +57,7 @@ const questionsData = [
       image: 'url',
       context:
         'How can I get the server time with KOA js? I know how to get the time from the users PC but I need to get the actual server time.',
-      code: `<div>code</div>`,
+      code: `<div>djaksdlasjd<p>djkjda</p> <strong>asdlaksjhda</strong></div>`,
     },
   },
   {

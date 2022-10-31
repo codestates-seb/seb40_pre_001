@@ -43,7 +43,7 @@ const PostLayout = styled.div`
 
 // LeftBox
 const LeftBox = styled.div`
-  width: auto;
+  width: 52px;
   padding-right: 16px;
   grid-column: 1;
 
@@ -81,7 +81,7 @@ const VoteCount = styled.div`
   align-items: center;
 
   span {
-    padding-left: 5px;
+    padding-left: 2px;
     color: hsl(210, 8%, 45%);
     margin: 0 auto;
     box-sizing: border-box;
@@ -94,8 +94,6 @@ const RightBox = styled.div`
   grid-column: 2;
   width: auto;
   min-width: 0;
-
-  border: 1px solid red;
 `;
 
 const PostBody = styled.div`
@@ -108,8 +106,7 @@ const PostBody = styled.div`
   overflow-wrap: break-word;
 
   // 추후 삭제 예정
-  height: 700px;
-  border: 1px solid blue;
+  height: 600px;
 `;
 
 const TagBox = styled.div`

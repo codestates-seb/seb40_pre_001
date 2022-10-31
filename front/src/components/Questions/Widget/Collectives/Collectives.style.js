@@ -78,7 +78,7 @@ const JoinButton = styled.div`
 const Icon = styled.img`
   width: 32px;
   height: 32px;
-  margin-right: 20px;
+  margin-right: 10px;
 `;
 
 const Title = styled.a`

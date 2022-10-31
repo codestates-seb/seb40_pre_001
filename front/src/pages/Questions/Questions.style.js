@@ -37,9 +37,6 @@ const MainContainer = styled.div`
   float: left;
   margin: 0;
   padding: 0;
-
-  height: 1000px;
-  border: 1px solid green;
 `;
 
 export { ContentWrapper, PostContainer, MainContainer };
