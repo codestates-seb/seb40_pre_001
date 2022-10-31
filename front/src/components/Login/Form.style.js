@@ -59,7 +59,7 @@ const SubmitButton = styled.button`
   }
 `;
 // 패스워드 콘텐츠
-const FormContents = styled.span`
+const FormContents = styled.label`
   display: block;
   margin: 1px;
   font-weight: 600;
