@@ -8,37 +8,36 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "\"User\"")
+@Table(name = "user_table")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
     private Long userId;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, name = "STATUS")
+    @Column(nullable = false)
     private UserStatus userStatus = UserStatus.USER_EXIST;
 
-    @Column(name = "email", nullable = false, updatable = false, unique = true)
+    @Column( nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false, updatable = false)
+    @Column( nullable = false)
     private String password;
 
-    @Column(name = "\"userNickname\"", unique = true)
-    public String userNickname;
+    @Column(unique = true)
+    private String userNickname;
 
-    @Column(name = "description")
-    public String description;
+    @Column
+    private String description;
 
-    @Column(name = "address")
-    public String address;
+    @Column
+    private String address;
 
-    @Column(name = "birthday")
+    @Column
     private LocalDate birthday;
 
 

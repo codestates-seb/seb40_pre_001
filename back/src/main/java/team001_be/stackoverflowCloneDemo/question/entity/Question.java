@@ -16,7 +16,7 @@ public class Question {
     private Long questionId;
 
     @Column(nullable = false, updatable = false)
-    private Long uerId;
+    private Long userId;
 
     @Column(length = 100, nullable = false, unique = true)
     private String questionTitle;
@@ -37,21 +37,21 @@ public class Question {
     @Column(nullable = false)
     private boolean hasAccepted;
 
-    @Column(nullable = false)
     private Timestamp dateCreated;
 
     private Timestamp dateModified;
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
-    public Question(Long uerId, String questionTitle, String context){
-        this.uerId = uerId;
+    public Question(Long questionId,Long userId, String questionTitle, String context){
+        this.questionId = questionId;
+        this.userId = userId;
         this.questionTitle = questionTitle;
         this.context = context;
         this.viewCount = 0L;
         this.voteCount = 0L;
         this.hasAccepted = false;
-        //dateCreated, dateModifeied 별도로 생성자에서 설정해줘야 하는지?
+        //dateCreated, dateModified 별도로 생성자에서 설정해줘야 하는지?
     }
 
     public void addQuestionTag(QuestionTag questiontag){

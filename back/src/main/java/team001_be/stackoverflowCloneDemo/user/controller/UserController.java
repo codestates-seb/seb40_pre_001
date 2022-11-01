@@ -8,11 +8,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 import team001_be.stackoverflowCloneDemo.user.Hashing;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 @RestController
@@ -20,7 +22,7 @@ import javax.validation.constraints.Positive;
 @Validated
 @Slf4j
 public class UserController {
-    @Autowired
+
     private final UserRepository userRepository;
 
     private final UserMapper mapper;
@@ -32,10 +34,10 @@ public class UserController {
         this.userService = userService;
     }
 
-/*
+
     @PostMapping
-    public ResponseEntity postUser(@Valid @RequestBody UserPostDto requestbody) {
-        User user = mapper.userPostDtoToUser(requestbody);
+    public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto) {
+        User user = mapper.userPostDtoToUser(userPostDto);
 
         User createdUser = userService.createUser(user);
 
@@ -44,7 +46,7 @@ public class UserController {
                 HttpStatus.CREATED);
     }
 
- */
+
 
     @GetMapping("/{user-id}")
     public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId){
@@ -55,29 +57,28 @@ public class UserController {
 
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping
-    @ResponseBody
-    public String registerUser(@RequestBody User newUser){
-        String email = newUser.getEmail();
-        String password = Hashing.hashingPassword(newUser.getPassword());
-        String userNickname = newUser.getUserNickname();
-
-        if(email.equals("") || password.equals("") || userNickname.equals(""))
-            return "failed";
-
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setUserNickname(userNickname);
-
-        if(userRepository.findByEmail(email).isPresent())
-            return "failed";
-
-        userRepository.save(user);
-
-        return "success";
-
-    }
+//    @CrossOrigin(origins = "*", allowedHeaders = "*")
+//    @PostMapping
+//    public String registerUser(@RequestBody User newUser){
+//        String email = newUser.getEmail();
+//        String password = Hashing.hashingPassword(newUser.getPassword());
+//        String userNickname = newUser.getUserNickname();
+//
+//        if(email.equals("") || password.equals("") || userNickname.equals(""))
+//            return "failed";
+//
+//        User user = new User();
+//        user.setEmail(email);
+//        user.setPassword(password);
+//        user.setUserNickname(userNickname);
+//
+//        if(userRepository.findByEmail(email).isPresent())
+//            return "failed";
+//
+//        userRepository.save(user);
+//
+//        return "success";
+//
+//    }
 
 }

@@ -6,8 +6,6 @@ import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 @Getter
-@Setter
-@NoArgsConstructor
 public class UserResponseDto {
 
     private String userNickname;
