@@ -82,7 +82,7 @@ public class SecurityConfiguration {
             JwtAuthorizationFilter jwtAuthorizationFilter = new JwtAuthorizationFilter(jwtTokenizer, authorityUtils);
 
             builder.addFilter(jwtAuthenticationFilter)
-                    .addFilterAfter(jwtAuthorizationFilter, JwtAuthorizationFilter.class); //인증 과정 후에 인가과정 수행되도록 하기
+                    .addFilterAfter(jwtAuthorizationFilter, JwtAuthenticationFilter.class); //인증 과정 후에 인가과정 수행되도록 하기
         }
     }
 }
