@@ -16,32 +16,35 @@ const Header = styled.header`
   margin: 0;
   padding: 0;
   font-size: 13px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Adjusted',
+    'Segoe UI', 'Liberation Sans', sans-serif;
 `;
 
 const NavContainer = styled.nav`
   display: flex;
-  align-items: center;
-  width: 1264px;
+  width: 97.23rem;
   max-width: 100%;
-  height: 47px;
-  line-height: 17px;
-  margin-left: 328px;
-  margin-right: 328px;
-
+  height: 100%;
+  margin: 0 auto;
+  align-items: center;
+  font: inherit;
   vertical-align: baseline;
 `;
 
 const LogoBox = styled.a`
+  display: flex;
+  background-color: transparent;
   width: 166px;
-  height: 47px;
+  height: 100%;
   line-height: 17px;
   padding: 0 8px;
 
   svg {
-    width: 150px;
+    width: 142px;
     height: 30px;
-    margin: 7px 0 0 0;
-    background-position-y: -500px;
+    margin-top: 8px;
+    margin-left: 0;
   }
 `;
 

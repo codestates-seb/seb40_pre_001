@@ -15,8 +15,6 @@ const Post = () => {
     return currentPost;
   });
 
-  console.log(status);
-
   return (
     <S.ContentWrapper>
       <S.PostContainer>

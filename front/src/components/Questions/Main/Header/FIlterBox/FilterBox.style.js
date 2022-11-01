@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 const FlexBox = styled.div`
   display: flex;
-  margin-bottom: 12px;
+  position: relative;
+  top: -3px;
+  margin-bottom: 10px;
   align-items: center;
   justify-content: space-between;
 `;

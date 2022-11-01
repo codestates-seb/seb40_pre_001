@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchIcon from '../../../Icons/SearchIcon';
+import SearchIcon from '../../../@common/Icons/SearchIcon';
 
 import * as S from './SearchInput.style';
 
@@ -22,7 +22,7 @@ const SearchInput = ({ width, placeholder, height, padding, ...rest }) => {
           height={18}
           style={{
             position: 'absolute',
-            marginLeft: 8,
+            marginLeft: 9,
             marginTop: 8,
           }}
         />

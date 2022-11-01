@@ -8,6 +8,10 @@ const Status = styled.div`
   justify-content: left;
 
   font-size: 13px;
+  padding-bottom: 17px;
+  margin-bottom: 16px;
+
+  border-bottom: 1px solid hsl(210, 8%, 90%);
 `;
 
 const TextBox = styled.div`
@@ -28,4 +32,13 @@ const TextBox = styled.div`
   }
 `;
 
-export { Status, TextBox };
+const ImgContainer = styled.div`
+  margin-bottom: 24px;
+`;
+
+const PostLayout = styled.div`
+  display: grid;
+  grid-template-columns: max-content 1fr;
+`;
+
+export { Status, TextBox, ImgContainer, PostLayout };

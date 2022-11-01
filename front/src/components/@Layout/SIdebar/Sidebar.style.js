@@ -28,7 +28,7 @@ const LeftStickyContainer = styled.div`
   margin-bottom: 8px;
   padding-top: 24px;
   overflow-y: auto;
-  top: 50px;
+  top: 35px;
   max-height: calc(100vh - 50px);
 `;
 
@@ -66,9 +66,11 @@ const Li = styled.li`
 `;
 
 const HeaderText = styled.p`
-  margin: 16px 0 8px 8px;
-  font-size: 11px;
-  color: hsl(210, 8%, 45%);
+  position: relative;
+
+  margin: 22px 0 4px 8px;
+  font-size: 13px;
+  color: hsl(210, 8%, 35%);
 `;
 
 const CollectiveBox = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Nav, Footer, LeftSidebar } from '../../components/@common/Layout';
+import { Nav, Footer, LeftSidebar } from '../../components/@Layout';
 import * as S from './Layout.style';
 
 const paths = Object.freeze(['/login', '/signup', '/questions/ask']);

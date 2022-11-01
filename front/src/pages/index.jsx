@@ -6,12 +6,11 @@ import Tags from './Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 import Questions from './Questions/Questions';
-import Users from './Users/Users.jsx';
-
-// import PostPage from './Questions/Post/Post';
+import Post from './Questions/Post/Post';
+import Users from './Users';
 
 import { ROUTES } from '../constants';
-// import Ask from './Questions/ASK/Ask';
+import Ask from './Questions/ASK/Ask';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -44,10 +43,16 @@ const PAGES = [
         element: <Questions />,
       },
       {
+        name: ROUTES.POST.name,
+        path: ROUTES.POST.path,
+        element: <Post />,
+      },
+      {
         name: ROUTES.USERS.name,
         path: ROUTES.USERS.path,
         element: <Users />,
       },
+      { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
     ],
   },
 ];
