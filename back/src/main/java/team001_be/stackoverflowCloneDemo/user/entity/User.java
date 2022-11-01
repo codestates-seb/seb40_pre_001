@@ -70,6 +70,4 @@ public class User extends Auditable {
             this.status = status;
         }
     }
-
 }
-
