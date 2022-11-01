@@ -6,6 +6,9 @@ import usePost from '../../../hooks/usePost';
 
 import * as S from './Ask.style';
 
+import ASK_FORM from '../../../constants/askform';
+import { SquareButton } from '../../../components/@common/Buttons/Button.style';
+
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
   // 예시
@@ -46,14 +49,63 @@ const Ask = () => {
       : null;
   };
 
+  const AskForm = ({ key, title, script, button }) => {
+    return (
+      <S.AskForm type={key}>
+        <div className='title'>{title}</div>
+        <div className='content'>{script}</div>
+        <input></input>
+        {button ? (
+          <SquareButton style={{ width: '49px' }}>Next</SquareButton>
+        ) : null}
+      </S.AskForm>
+    );
+  };
+
   return (
     <S.AskZone>
       <S.ComponentZone>
-        <S.AskHeader></S.AskHeader>
-        <S.WritGoodQue></S.WritGoodQue>
+        <S.AskHeader>
+          <div className='header'>Ask a public question</div>
+          <img
+            className='img'
+            src='https://cdn.sstatic.net/Img/ask/background.svg?v=2e9a8205b368'
+          ></img>
+        </S.AskHeader>
+        <S.WritGoodQue>
+          <div className='header2'>Writing a good question</div>
+          <div className='script'>
+            You’re ready to <a>ask</a> a <a>programming-related question</a> and
+            this form will help guide you through the process.
+          </div>
+          <div className='script'>
+            Looking to ask a non-programming question? See{' '}
+            <a>the topics here</a> to find a relevant site.
+          </div>
+          <div className='list'> Steps</div>
+          <ul>
+            <li>Summarize your problem in a one-line title.</li>
+            <li>Describe your problem in more detail.</li>
+            <li>Describe what you tried and what you expected to happen.</li>
+            <li>
+              Add “tags” which help surface your question to members of the
+              community.
+            </li>
+            <li>Review your question and post it to the site.</li>
+          </ul>
+        </S.WritGoodQue>
         <S.Wrapper>
           <S.LeftWrapper>
-            <S.AskForm></S.AskForm>
+            {ASK_FORM.map(({ TITLE, SCRIPT, BUTTON }) => {
+              return (
+                <AskForm
+                  key={TITLE}
+                  title={TITLE}
+                  script={SCRIPT}
+                  button={BUTTON}
+                ></AskForm>
+              );
+            })}
           </S.LeftWrapper>
           <S.RightWrapper>
             <S.AskForm />
@@ -94,7 +146,9 @@ const Ask = () => {
             제출하기
           </button>
         </form> */}
-        <S.ButtonFooter></S.ButtonFooter>
+        <S.ButtonFooter>
+          <SquareButton>Review your question</SquareButton>
+        </S.ButtonFooter>
       </S.ComponentZone>
     </S.AskZone>
   );
