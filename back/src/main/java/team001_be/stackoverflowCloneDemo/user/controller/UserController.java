@@ -78,4 +78,11 @@ public class UserController {
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user))
                 , HttpStatus.OK);
     }
+    @DeleteMapping("/{user-id}")
+    public ResponseEntity deleteUser(@PathVariable("user-id") @Positive Long userId,
+                                         @Positive @RequestParam UserPatchDto userPatchDto){
+        userService.deleteUser(userId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
