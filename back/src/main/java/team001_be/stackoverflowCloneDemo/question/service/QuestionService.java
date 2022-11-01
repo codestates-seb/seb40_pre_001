@@ -70,7 +70,7 @@ public class QuestionService {
 
     private void verifyQuestion(Question question){
         //회원이 존재하는지 확인, @Transactional이기에 runtime exception발생시 자동 롤백됨
-        userService.findVerifiedUser(question.getUserId());
+        userService.findUser(question.getUserId());
 
         //Tag 존재하는지 확인
         question.getQuestionTagList()

@@ -25,16 +25,6 @@ public class UserDto {
 
     private User.UserStatus userStatus;
 
-    public static UserDto toUserDto(User user) {
-        UserDto userDto = new UserDto();
-        userDto.setUserId(user.getUserId());
-        userDto.setEmail(user.getEmail());
-        userDto.setPassword(user.getPassword());
-        userDto.setUserNickname(user.getUserNickname());
-        userDto.setAddress(user.getAddress());
-        userDto.setBirthday(user.getBirthday());
-        return userDto;
-    }
 }
 
 
