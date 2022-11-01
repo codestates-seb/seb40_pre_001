@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './UsersFilter.style';
-import UsersFilterBox from '../Questions/Main/Header/FIlterBox/UsersFilterBox';
+import UsersFilterBox from '../Questions/Main/Header/FilterBox/UsersFilterBox';
 import SearchInput from '../@common/Layout/Nav/SearchInput/SearchInput';
 
 const UsersFilter = () => {

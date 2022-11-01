@@ -3,7 +3,7 @@ import * as S from './Form.style.js';
 import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
-import SNS_BUTTONS from '../../constants/snsbutton.js';
+import SNS_BUTTONS from '../../constants/snsButton.js';
 
 const Form = () => {
   return (

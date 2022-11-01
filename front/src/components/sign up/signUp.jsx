@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './signUp.style';
 import SnsButton from '../@common/Buttons/Sns';
-import SNS_BUTTONS from '../../constants/snsbutton.js';
+import SNS_BUTTONS from '../../constants/snsButton.js';
 
 //icon
 import AdviceMark from '../@common/Icons/AdviceMark';
