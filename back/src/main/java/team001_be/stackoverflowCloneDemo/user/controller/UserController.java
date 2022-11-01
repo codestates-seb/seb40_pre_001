@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 
-import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 
 import team001_be.stackoverflowCloneDemo.user.entity.User;
-import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
+import team001_be.stackoverflowCloneDemo.user.entity.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 

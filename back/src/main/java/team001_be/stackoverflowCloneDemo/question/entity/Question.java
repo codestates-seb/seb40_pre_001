@@ -1,6 +1,7 @@
 package team001_be.stackoverflowCloneDemo.question.entity;
 
 import lombok.*;
+import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,7 +10,7 @@ import java.util.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Question {
+public class Question extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "QUESTION_ID")

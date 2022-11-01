@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.user.mapper;
+package team001_be.stackoverflowCloneDemo.user.entity.mapper;
 
 import org.mapstruct.Mapper;
 
