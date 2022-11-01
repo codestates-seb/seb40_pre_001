@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPatchDto {
+public class UserPatchDto extends Auditable {
     private Long userId;
 
     private String email;

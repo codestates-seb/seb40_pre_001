@@ -4,13 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Service;
+import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
-public class QuestionPatchDto {
+public class QuestionPatchDto extends Auditable {
     private Long userId;
     private Long questionId;
 

@@ -2,13 +2,14 @@ package team001_be.stackoverflowCloneDemo.question.dto;
 
 import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
+import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
-public class QuestionPostDto {
+public class QuestionPostDto extends Auditable {
     @NotNull
     private Long userId;
 
