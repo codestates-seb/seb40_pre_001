@@ -1,30 +1,36 @@
 import React from 'react';
-import TitleBox from '../../@common/TitleBox/TitleBar';
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
-// import useGetAllPosts from '../../../hooks/useGetAllPosts';
+
+import Header from './Header.';
+import RightBox from './PostBody/RightBox';
+import Answer from './Answer/Answer';
+import Widget from '../Widget/Widget';
+import LeftBox from './PostBody/LeftBox';
 
 const Content = ({ data }) => {
-  const { title } = data;
+  const { title, tags, content, status } = data;
 
   return (
     <div>
-      <TitleBox title={title} style={{ width: 1051 }}></TitleBox>
-      <S.Status>
-        <S.TextBox>
-          <span>Asked</span>
-          <p>today</p>
-        </S.TextBox>
-        <S.TextBox>
-          <span>Modified</span>
-          <p>today</p>
-        </S.TextBox>
-        <S.TextBox>
-          <span>Viewed</span>
-          <p>10 times</p>
-        </S.TextBox>
-      </S.Status>
-      <M.MainContainer>dd</M.MainContainer>
+      <Header title={title} />
+      <M.MainContainer>
+        <S.ImgContainer>
+          <img
+            src='https://tpc.googlesyndication.com/simgad/10582817586221403560'
+            border='0'
+            width='728'
+            height='90'
+            alt=''
+          />
+        </S.ImgContainer>
+        <S.PostLayout>
+          <LeftBox status={status} />
+          <RightBox tags={tags} content={content} />
+        </S.PostLayout>
+        <Answer />
+      </M.MainContainer>
+      <Widget />
     </div>
   );
 };

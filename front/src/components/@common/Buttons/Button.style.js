@@ -6,7 +6,7 @@ const SquareButton = styled.button`
   display: inline-block;
   padding: 0.5em 0.8em 0.5em 0.8em;
   color: ${({ color }) => color || 'hsl(0,0%,100%)'};
-  border: 1px solid ${({ borderColor }) => borderColor};
+  border: 1px solid ${({ borderColor }) => borderColor || 'transparent'};
   border-radius: 3px;
   background-color: ${({ backgroundColor }) =>
     backgroundColor || 'hsl(206,100%,52%)'};
@@ -21,7 +21,6 @@ const SquareButton = styled.button`
   height: 34px;
   user-select: none;
   margin-top: 6px;
-  border: 1px solid transparent;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
 `;
 
@@ -49,30 +48,6 @@ const StyledSnsButton = styled.button`
     background: ${({ hoverBackground }) => hoverBackground};
   }
 `;
-
-// 추후 삭제 예정
-// const Ex = styled.button`
-//   color: hsl(0, 0%, 100%);
-//   background-color: hsl(206, 100%, 52%);
-//   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-
-//   position: relative;
-//   display: inline-block;
-//   padding: 0.8em;
-//   border: 1px solid transparent;
-//   border-radius: 3px;
-//   background-color: transparent;
-//   outline: none;
-//   font-family: inherit;
-//   font-size: 13px;
-//   font-weight: normal;
-//   line-height: calc((13px +2) / 13px);
-//   text-align: center;
-//   text-decoration: none;
-//   cursor: pointer;
-//   user-select: none;
-//   white-space: nowrap;
-// `;
 
 const StyledTag = styled.button`
   font-size: 12px;

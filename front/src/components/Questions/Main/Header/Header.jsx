@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterBox from './FIlterBox/FIlterBox';
+import FilterBox from './FilterBox/FilterBox';
 import PostBox from './Post/PostBox';
 import TitleBox from '../../../@common/TitleBox/TitleBar';
 
