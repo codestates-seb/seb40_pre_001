@@ -3,7 +3,10 @@ const GITHUB = Object.freeze({
   CLIENT_SECRET: process.env.REACT_APP_REACT_APP_GITHUB_SECRET,
 });
 
-// 로그인이후 컴포넌트 구현을 위한 임시 상수
-const isLoggedIn = false;
+const isLoggedIn = localStorage.getItem('token');
 
-export { GITHUB, isLoggedIn };
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
+export { GITHUB, USER_REGEX, PWD_REGEX, isLoggedIn };

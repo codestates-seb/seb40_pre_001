@@ -6,6 +6,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { worker } from './mocks/broswer';
 import { GlobalStyles, theme } from './styles';
 import App from './App';
+import setAuthToken from './components/@helper/setAuthToken';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start();
@@ -20,20 +21,26 @@ const queryClient = new QueryClient({
     },
   },
 });
+
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+const token = localStorage.getItem('token');
+if (token) {
+  setAuthToken(token);
+}
 
 root.render(
   <>
     <React.StrictMode>
       <GlobalStyles theme={theme} />
-      <Router>
+      <QueryClientProvider client={queryClient}>
         <RecoilRoot>
-          <QueryClientProvider client={queryClient}>
+          <Router>
             <App />
-          </QueryClientProvider>
+          </Router>
         </RecoilRoot>
-      </Router>
+      </QueryClientProvider>
     </React.StrictMode>
   </>,
 );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   HelpIcon,
   InboxIcon,
@@ -8,9 +8,16 @@ import {
 import * as S from './AuthNav.style';
 
 const Auth = () => {
+  const [auth, setAuth] = useState(true);
+
+  const deleteToken = () => {
+    localStorage.removeItem('token');
+    setAuth(!auth);
+  };
+
   return (
     <S.Ol>
-      <S.Li>
+      <S.Li onClick={() => deleteToken()}>
         <S.ProfileBox>
           <img
             src='https://lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'

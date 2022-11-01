@@ -29,6 +29,8 @@ export const handlers = [
     const { authToken } = req.cookies;
     const { id } = req.body;
 
+    console.log(id);
+
     if (authToken === id) {
       return res(
         ctx.delay(),
@@ -66,15 +68,5 @@ export const handlers = [
     return res(ctx.status(200));
   }),
 
-  // login
-
-  // response Cookies
-  rest.get('/api/login', (req, res, ctx) => {
-    return res(ctx.delay(), ctx.cookie('authToken', 'mock1234'));
-  }),
-
-  // GitHub Auth
-  rest.get('/api/auth/github', (req, res, ctx) => {
-    return res(ctx.status(200));
-  }),
+  // Auth
 ];
