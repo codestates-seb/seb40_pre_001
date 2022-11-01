@@ -1,7 +1,5 @@
 package team001_be.stackoverflowCloneDemo.user.dto;
 
-// DTO Data Transfer Object.
-
 import lombok.*;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
@@ -27,9 +25,7 @@ public class UserDto {
 
     private User.UserStatus userStatus;
 
-
-
-    public static UserDto toUserDto(User user){
+    public static UserDto toUserDto(User user) {
         UserDto userDto = new UserDto();
         userDto.setUserId(user.getUserId());
         userDto.setEmail(user.getEmail());
@@ -38,6 +34,14 @@ public class UserDto {
         userDto.setAddress(user.getAddress());
         userDto.setBirthday(user.getBirthday());
         return userDto;
+    }
+
+    @AllArgsConstructor
+    @Getter
+    public static class Response {
+        private long userId;
+        private String email;
+        private String userNickname;
     }
 }
 

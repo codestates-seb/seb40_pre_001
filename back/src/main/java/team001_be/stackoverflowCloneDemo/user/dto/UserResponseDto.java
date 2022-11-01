@@ -12,10 +12,10 @@ public class UserResponseDto {
 
     private String userNickname;
     private String email;
-    private User.UserStatus userStatus;
+//    private User.UserStatus userStatus;
 
-    public String getuserStatus() {
-        return userStatus.getStatus();
-    }
+//    public String getuserStatus() {
+//        return userStatus.getStatus();
+//    }
 
 }

@@ -1,5 +1,10 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
 import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import org.springframework.data.domain.Page;
@@ -16,14 +21,16 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+  
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final CustomAuthorityUtils authorityUtils;
 
-
-    private static UserRepository userRepository ;
-
-    public UserService(UserRepository userRepository) {
-        UserService.userRepository = userRepository;
-    }
-
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authorityUtils = authorityUtils;
+    }  
 
     //save method
     public Long save(UserDto userDto){
@@ -39,7 +46,7 @@ public class UserService {
     // 전체조회 service
     public List<UserDto> findAll() {
         List<User> userList = userRepository.findAll();
-        List<UserDto> userDtoList = new ArrayList<>();
+        List<UserDto> userDtoList =List<>();
         for (User user : userList){
             UserDto userDto = UserDto.toUserDto(user);
             userDtoList.add(userDto);
@@ -47,45 +54,40 @@ public class UserService {
         return userDtoList;
     }
 
+    public User createUser(User user) {
 
-
-
-    public User createUser(User user){
         //등록된 이메일 확인
         verifyExistsEmail(user.getEmail());
+        //Password 암호화
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
 
+        // DB에 User Role 저장
+//        List<String> roles = authorityUtils.createRoles(user.getEmail());
+//        user.setRoles(roles);
         return userRepository.save(user);
-
     }
-
 
 
     public User findUser(long userId){
         return findVerifiedUser(userId);
     }
 
-    public Page<User> findUsers(int page, int size){
+    public Page<User> findUsers(int page, int size) {
         return userRepository.findAll(PageRequest.of(page, size, Sort.by("userId").descending()));
     }
 
-    private void verifyExistsEmail(String email){
+    private void verifyExistsEmail(String email) {
 
         Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
 
-        if(user.isPresent())
+        if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }
-
-    public User findVerifiedUser(long userId){
-        Optional<User> optionalUser = userRepository.findById(userId);
-
-        User findUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         if(findUser.getUserStatus() == User.UserStatus.USER_NOT_EXIST){
             throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
         }
         return findUser;
     }
-
-
 }
