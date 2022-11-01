@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Form = styled.form`
   display: flex;
-  padding: 0 calc(8px * 1);
+  padding: ${(props) => props.padding || '0 calc(8px * 1)'};
   align-items: center;
 `;
 
@@ -13,11 +13,11 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  width: 100%;
-
+  width: ${(props) => props.width || '200px'};
+  height: ${(props) => props.height || '32.59px'};
   border-color: hsl(210, 8%, 75%);
   background-color: hsl(0, 0%, 100%);
-  color: hsl(210, 8%, 45%);
+  color: ${(props) => props.color || 'hsl(210, 8%, 45%)'};
   line-height: calc((13 + 2) / 13);
   -webkit-appearance: none;
   margin: 0;
@@ -34,5 +34,12 @@ const Input = styled.input`
     box-shadow: 0 0 3px hsl(206, 93%, 83.5%);
   }
 `;
-
+// const TextInput = styled.TextInput.attrs({
+//   placeholderTextColor: 'grey',
+// })`
+//   background-color: white;
+//   border-radius: 15px;
+//   padding: 5px 10px;
+//   font-size: 18px;
+// `;
 export { Form, Container, Input };
