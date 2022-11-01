@@ -10,6 +10,7 @@ public enum ExceptionCode {
 
     UNAUTHORIZED_USER(403, "not authorized user");
 
+
     @Getter
     private int status;
 

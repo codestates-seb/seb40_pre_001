@@ -6,6 +6,7 @@ import team001_be.stackoverflowCloneDemo.user.entity.User;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByEmail(String email);
-    User findByEmailAndPassword(String email, String password);
+    public Optional<User> findByEmail(String email);
+    public Optional<User> findByUserId(Long userId);
+    public User findByEmailAndPassword(String email, String password);
 }
