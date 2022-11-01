@@ -3,6 +3,7 @@ package team001_be.stackoverflowCloneDemo.question.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import team001_be.stackoverflowCloneDemo.tag.entity.Tag;
 
 import javax.persistence.*;
@@ -16,10 +17,12 @@ public class QuestionTag {
     private int questionTagId;
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "TAG_ID")
     private Tag tag;
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "QUESTION_ID")
     private Question question;
 

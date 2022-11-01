@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import org.springframework.security.core.AuthenticationException;
-import team001_be.stackoverflowCloneDemo.response.ErrorResponse;
+import team001_be.stackoverflowCloneDemo.question.mapper.response.ErrorResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,6 +1,8 @@
 package team001_be.stackoverflowCloneDemo.question.entity;
 
 import lombok.*;
+import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -15,8 +17,11 @@ public class Question {
     @Column(name = "QUESTION_ID")
     private Long questionId;
 
-    @Column(nullable = false, updatable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    @Setter
+    private User user;
 
     @Column(length = 100, nullable = false, unique = true)
     private String questionTitle;
@@ -30,7 +35,12 @@ public class Question {
 
 //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
+    @ToString.Exclude
     private List<QuestionTag> questionTagList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Answer> answerList = new ArrayList<>();
 
     //erd 설계와 이름 다름
     //답변을 선택했는지 여부
@@ -43,9 +53,9 @@ public class Question {
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
-    public Question(Long questionId,Long userId, String questionTitle, String context){
+    public Question(Long questionId, User user, String questionTitle, String context){
         this.questionId = questionId;
-        this.userId = userId;
+        this.user = user;
         this.questionTitle = questionTitle;
         this.context = context;
         this.viewCount = 0L;

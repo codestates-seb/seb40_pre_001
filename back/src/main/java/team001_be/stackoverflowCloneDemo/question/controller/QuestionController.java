@@ -9,7 +9,7 @@ import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.mapper.QuestionMapper;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
-import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
+import team001_be.stackoverflowCloneDemo.question.mapper.response.SingleResponseDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -28,7 +28,7 @@ public class QuestionController {
 
     @PostMapping("/ask")
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto){
-        Question question = questionService.createQuestion(questionMapper.questionPostDtoToQuestion(questionPostDto));
+        Question question = questionService.createQuestion(questionMapper.questionPostDtoToQuestion(questionPostDto), questionPostDto.getUserId());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(questionMapper.questionToQuestionResponseDto(question)),
@@ -39,7 +39,7 @@ public class QuestionController {
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive Long questionId,
                                         @Valid @RequestBody QuestionPatchDto questionPatchDto){
         questionPatchDto.setQuestionId(questionId);
-        Question question = questionService.updateQuestion(questionMapper.questionPatchDtoToQuestion(questionPatchDto));
+        Question question = questionService.updateQuestion(questionMapper.questionPatchDtoToQuestion(questionPatchDto), questionPatchDto.getUserId());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(questionMapper.questionToQuestionResponseDto(question))

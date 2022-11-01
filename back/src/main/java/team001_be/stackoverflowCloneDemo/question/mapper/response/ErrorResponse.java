@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.response;
+package team001_be.stackoverflowCloneDemo.question.mapper.response;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

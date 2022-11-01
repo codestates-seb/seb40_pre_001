@@ -11,9 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
-import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
+import team001_be.stackoverflowCloneDemo.question.mapper.response.SingleResponseDto;
 
-import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;

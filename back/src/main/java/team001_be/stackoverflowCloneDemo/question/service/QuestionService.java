@@ -6,6 +6,7 @@ import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.transaction.Transactional;
@@ -27,7 +28,8 @@ public class QuestionService {
         this.tagService = tagService;
     }
 
-    public Question createQuestion(Question question){
+    public Question createQuestion(Question question, Long userId){
+        question.setUser(userService.findUser(userId));
         verifyQuestion(question); //존재하는 회원, tag인지 check
 
         return saveQuestion(question);
@@ -44,10 +46,11 @@ public class QuestionService {
         saveQuestion(question);
     }
 
-    public Question updateQuestion(Question question){
+    public Question updateQuestion(Question question, Long userId){
         Question foundQuestion = findQuestion(question.getQuestionId());
+
         //user 권한 확인하기.. jwt 구현되면 다시 살펴봐야 할듯
-        verifyUserAuthorization(question.getUserId(), foundQuestion.getUserId());
+        verifyUserAuthorization(userId, foundQuestion.getUser().getUserId());
 
         //title, context, tagList 수정.
         //수정할 값이 null인 경우 수정하지 않는다.
@@ -63,14 +66,14 @@ public class QuestionService {
 
     public void deleteQuestion(Long questionId, Long userId){
         Question question = findVerifiedQuestionById(questionId);
-        verifyUserAuthorization(userId, question.getUserId());
+        verifyUserAuthorization(userId, question.getUser().getUserId());
 
         questionRepository.delete(question);
     }
 
     private void verifyQuestion(Question question){
         //회원이 존재하는지 확인, @Transactional이기에 runtime exception발생시 자동 롤백됨
-        userService.findUser(question.getUserId());
+        userService.findUser(question.getUser().getUserId());
 
         //Tag 존재하는지 확인
         question.getQuestionTagList()
