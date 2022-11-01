@@ -31,15 +31,13 @@ const Form = () => {
       </S.SnsButtonContainer>
       <S.FormContainer>
         <S.LoginForm>
-          {/* label */}
-          <S.FormContents>Email</S.FormContents>
-          {/* htmlFor 사용 필요  */}
-          <S.FormInput></S.FormInput>
+          <S.FormContents htmlFor='email'>Email</S.FormContents>
+          <S.FormInput name='email'></S.FormInput>
           <S.PasswordTextContainer>
-            <S.FormContents>Password</S.FormContents>
+            <S.FormContents htmlFor='password'>Password</S.FormContents>
             <S.Forgot>Forgot password?</S.Forgot>
           </S.PasswordTextContainer>
-          <S.FormInput></S.FormInput>
+          <S.FormInput name='password'></S.FormInput>
           <S.SubmitButton>Log in</S.SubmitButton>
         </S.LoginForm>
       </S.FormContainer>

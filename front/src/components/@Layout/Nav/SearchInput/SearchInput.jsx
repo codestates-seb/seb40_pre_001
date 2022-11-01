@@ -3,16 +3,19 @@ import SearchIcon from '../../../@common/Icons/SearchIcon';
 
 import * as S from './SearchInput.style';
 
-const SearchInput = () => {
+const SearchInput = ({ width, placeholder, height, padding, ...rest }) => {
   return (
-    <S.Form>
+    <S.Form padding={padding}>
       <S.Container>
         <S.Input
           type='text'
-          placeholder='Search...'
+          placeholder={placeholder}
           autoComplete='off'
           maxLength={240}
           aria-label='Search'
+          width={width}
+          height={height}
+          {...rest}
         ></S.Input>
         <SearchIcon
           width={18}
