@@ -14,6 +14,7 @@ import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
@@ -42,7 +43,7 @@ public class UserController {
         User user = mapper.userPostDtoToUser(userPostDto);
         User createdUser = userService.createUser(user);
 
-        UserDto.Response response = mapper.userToUserResponseDto(createdUser);
+        UserResponseDto response = mapper.userToUserResponseDto(createdUser);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),
                 HttpStatus.CREATED);
@@ -56,26 +57,24 @@ public class UserController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK
         );
-
     }
 
     //4. 회원 정보 전부 출력 -  완료
     @GetMapping("/all-users")
-    public List<UserDto> retrieveUsers() {
+    public List<UserResponseDto> retrieveUsers() {
         return userService.findAll();
     }
 
-    // 회원정보 수정
-    @PatchMapping("/{user-id}")
-    public ResponseEntity patchUser(
-            @PathVariable("user-id") @Positive long usersId,
-            @Valid @RequestBody UserPatchDto userPatchDto) {
-        userPatchDto.setUserId(usersId);
 
-        User response =
-                UserService.update(mapper.userPatchDtoToUser(userPatchDto));
+    //5. 회원 정보 수정
+    @PatchMapping("/edit/{user-id}")
+    public ResponseEntity updateUser(@PathVariable("user-id") @Positive Long userId,
+                                     @Valid @RequestBody UserPatchDto userPatchDto){
+        userPatchDto.setUserId(userId);
+        User user = userService.updateUser(mapper.userPatchDtoToUser(userPatchDto));
 
-        return new ResponseEntity<>(mapper.userToUserResponseDto(response),
-                HttpStatus.OK);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user))
+                , HttpStatus.OK);
     }
 }

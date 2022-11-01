@@ -35,14 +35,6 @@ public class UserDto {
         userDto.setBirthday(user.getBirthday());
         return userDto;
     }
-
-    @AllArgsConstructor
-    @Getter
-    public static class Response {
-        private long userId;
-        private String email;
-        private String userNickname;
-    }
 }
 
 

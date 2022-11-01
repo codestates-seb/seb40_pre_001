@@ -6,19 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserPatchDto {
-    private long userId;
+    private Long userId;
 
-    private String id;
+    private String email;
 
     private String password;
 
-    private String name;
+    private String userNickname;
 
-    private String phone;
+    private LocalDate birthday;
+
+    private String address;
 }
 
