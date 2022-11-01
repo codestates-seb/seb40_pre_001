@@ -11,17 +11,17 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UserDto {
 
-    public static UserDto userDto;
+    private static UserDto userDto;
 
     private Long userId;
     private String email;
     private String password;
 
-    public String userNickname;
+    private String userNickname;
 
     private LocalDate birthday;
 
-    public String address;
+    private String address;
 
     private User.UserStatus userStatus;
 
