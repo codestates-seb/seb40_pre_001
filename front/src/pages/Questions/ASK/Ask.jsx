@@ -9,6 +9,9 @@ import * as S from './Ask.style';
 import ASK_FORM from '../../../constants/askform';
 import { SquareButton } from '../../../components/@common/Buttons/Button.style';
 
+import QuestionAdvice from './Advice';
+import QUESTION_ADVICE from '../../../constants/questionAdvice';
+
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
   // 예시
@@ -49,12 +52,12 @@ const Ask = () => {
       : null;
   };
 
-  const AskForm = ({ key, title, script, button }) => {
+  const AskForm = ({ key, title, script, button, markdown }) => {
     return (
       <S.AskForm type={key}>
         <div className='title'>{title}</div>
         <div className='content'>{script}</div>
-        <input></input>
+        {markdown ? null : <input></input>}
         {button ? (
           <SquareButton style={{ width: '49px' }}>Next</SquareButton>
         ) : null}
@@ -96,19 +99,28 @@ const Ask = () => {
         </S.WritGoodQue>
         <S.Wrapper>
           <S.LeftWrapper>
-            {ASK_FORM.map(({ TITLE, SCRIPT, BUTTON }) => {
+            {ASK_FORM.map(({ TITLE, SCRIPT, BUTTON, MARKDOWN }) => {
               return (
                 <AskForm
                   key={TITLE}
                   title={TITLE}
                   script={SCRIPT}
                   button={BUTTON}
+                  markdown={MARKDOWN}
                 ></AskForm>
               );
             })}
           </S.LeftWrapper>
           <S.RightWrapper>
-            <S.AskForm />
+            {QUESTION_ADVICE.map(({ TITLE, SCRIPT }) => {
+              return (
+                <QuestionAdvice
+                  key={TITLE}
+                  title={TITLE}
+                  content={SCRIPT}
+                ></QuestionAdvice>
+              );
+            })}
           </S.RightWrapper>
         </S.Wrapper>
 
