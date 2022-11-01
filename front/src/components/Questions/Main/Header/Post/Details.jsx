@@ -6,6 +6,7 @@ import TagButton from '../../../../@common/Buttons/Tag';
 import CustomLink from '../../../../@common/Link';
 
 import * as S from './Post.style';
+import { TextViewer } from '../../../../@common/TextEditor/TextEditor';
 
 const PostDetails = ({ data }) => {
   const { title, author, content, tags, createdAt, userId, contentId } = data;
@@ -23,7 +24,7 @@ const PostDetails = ({ data }) => {
       >
         <CustomLink path={`/questions/${userId}`}>{title}</CustomLink>
       </S.Title>
-      <p>{content.context}</p>
+      <TextViewer initialValue={content.context.replace(/<[^>]+>/g, '')} />
       {/* Tag Box */}
       <S.ExtraDetailsBox>
         <S.TagBox>
