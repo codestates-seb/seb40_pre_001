@@ -11,16 +11,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
-
-    @Autowired
+  
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
@@ -29,9 +30,32 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
+    }  
+
+    //save method
+    public Long save(UserDto userDto){
+        User user = User.toSaveEntity(userDto);
+        return userRepository.save(user).getUserId();
+    }
+    // 회원 정보 수정
+    public static User update(User user) {
+        userRepository.save(User.toUpdateEntity(UserDto.userDto));
+        return user;
+    }
+
+    // 전체조회 service
+    public List<UserDto> findAll() {
+        List<User> userList = userRepository.findAll();
+        List<UserDto> userDtoList =List<>();
+        for (User user : userList){
+            UserDto userDto = UserDto.toUserDto(user);
+            userDtoList.add(userDto);
+        }
+        return userDtoList;
     }
 
     public User createUser(User user) {
+
         //등록된 이메일 확인
         verifyExistsEmail(user.getEmail());
         //Password 암호화
@@ -42,12 +66,12 @@ public class UserService {
 //        List<String> roles = authorityUtils.createRoles(user.getEmail());
 //        user.setRoles(roles);
         return userRepository.save(user);
-
     }
 
-//    public User findUser(long userId) {
-//        return findVerifiedUser(userId);
-//    }
+
+    public User findUser(long userId){
+        return findVerifiedUser(userId);
+    }
 
     public Page<User> findUsers(int page, int size) {
         return userRepository.findAll(PageRequest.of(page, size, Sort.by("userId").descending()));
@@ -55,21 +79,15 @@ public class UserService {
 
     private void verifyExistsEmail(String email) {
 
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> user = Optional.ofNullable(userRepository.findByEmail(email));
 
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }
 
-
-//    public User findVerifiedUser(long userId){
-//        Optional<User> optionalUser = userRepository.findById(userId);
-//
-//        User findUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND)); //db에 저장된 유저 정보 없으면 예외발생
-//
-//        if(findUser.getUserStatus() == User.UserStatus.USER_NOT_EXIST){
-//            throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
-//        }
-//        return findUser;
-//    }
+        if(findUser.getUserStatus() == User.UserStatus.USER_NOT_EXIST){
+            throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
+        }
+        return findUser;
+    }
 }

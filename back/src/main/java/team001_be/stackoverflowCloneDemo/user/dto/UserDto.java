@@ -23,8 +23,7 @@ public class UserDto {
 
     public String address;
 
-//    private User.UserStatus userStatus;
-
+    private User.UserStatus userStatus;
 
     public static UserDto toUserDto(User user) {
         UserDto userDto = new UserDto();
@@ -45,11 +44,5 @@ public class UserDto {
         private String userNickname;
     }
 }
-//        private  User.UserStatus userStatus;
 
-//        public String getUserStatus() {
-//            return userStatus.getStatus();
-//        }
-//    }
-//}
 

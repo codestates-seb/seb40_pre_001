@@ -1,13 +1,13 @@
 package team001_be.stackoverflowCloneDemo.user.entity;
 
-import lombok.*;
+import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
+import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @NoArgsConstructor
 @Getter
@@ -25,7 +25,7 @@ public class User extends Auditable {
     @Column(nullable = false, updatable = false)
     private String password;
 
-    @Column(name = "\"userNickname\"", unique = true)
+    @Column(name = "\"userNickname\"")
     public String userNickname;
 
     @Column(name = "description")
@@ -37,25 +37,9 @@ public class User extends Auditable {
     @Column(name = "birthday")
     private LocalDate birthday;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(length = 20, nullable = false)
-//    private UserStatus userStatus = UserStatus.USER_EXIST;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
-
-//    public enum UserStatus {
-//        USER_EXIST("이미 가입한 회원"),
-//        USER_NOT_EXIST("가입하지 않은 회원");
-
-//        @Getter
-//        private String status;
-//
-//        UserStatus(String status) {
-//            this.status = status;
-//        }
-//    }
-
+ 
     public User(String email, String userNickname, String description, String address, LocalDate birthday) {
         this.email = email;
         this.userNickname = userNickname;
@@ -63,5 +47,29 @@ public class User extends Auditable {
         this.address = address;
         this.birthday = birthday;
     }
+
+    // id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
+    public static User toSaveEntity(UserDto userDto){
+        User user = new User();
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setUserNickname(userDto.getUserNickname());
+        user.setBirthday(userDto.getBirthday());
+        user.setAddress(userDto.getAddress());
+        return user;
+    }
+  
+    public enum UserStatus {
+        USER_EXIST("이미 가입한 회원"),
+        USER_NOT_EXIST("가입하지 않은 회원");
+
+        @Getter
+        private String status;
+
+        UserStatus(String status) {
+            this.status = status;
+        }
+    }
+
 }
 
