@@ -21,4 +21,37 @@ const getPostByUserId = async (id) => {
   return data;
 };
 
-export { apiClient, getAllPostData, getPostByUserId };
+const createPost = async (newPost) => {
+  const { data } = await apiClient.post('/api/questions/ask', newPost);
+
+  return data;
+};
+
+const loginUser = async (credentials) => {
+  await apiClient
+    .post('/api/login', credentials)
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+};
+
+const getUserStatus = async () => {
+  const response = await apiClient.get('/api/login', { withCredentials: true });
+
+  console.log('res', response);
+
+  return response;
+};
+
+const putStatus = async (id, newStatus) => {
+  return await apiClient.put(`/api/questions/${id}`, newStatus);
+};
+
+export {
+  apiClient,
+  getAllPostData,
+  getPostByUserId,
+  createPost,
+  loginUser,
+  getUserStatus,
+  putStatus,
+};

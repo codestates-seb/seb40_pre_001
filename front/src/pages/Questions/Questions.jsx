@@ -1,12 +1,15 @@
 import React from 'react';
 import * as S from './Questions.style';
-import { Main, Side } from '../../components/Questions';
+import { Widget, Header, Pagination } from '../../components/Questions';
 
 const Questions = () => {
   return (
     <S.ContentWrapper>
-      <Main />
-      <Side />
+      <S.MainContainer>
+        <Header />
+        <Pagination />
+      </S.MainContainer>
+      <Widget />
     </S.ContentWrapper>
   );
 };

@@ -6,7 +6,7 @@ const SquareButton = styled.button`
   display: inline-block;
   padding: 0.5em 0.8em 0.5em 0.8em;
   color: ${({ color }) => color || 'hsl(0,0%,100%)'};
-  border: 1px solid ${({ borderColor }) => borderColor};
+  border: 1px solid ${({ borderColor }) => borderColor || 'transparent'};
   border-radius: 3px;
   background-color: ${({ backgroundColor }) =>
     backgroundColor || 'hsl(206,100%,52%)'};
@@ -21,7 +21,6 @@ const SquareButton = styled.button`
   height: 34px;
   user-select: none;
   margin-top: 6px;
-  border: 1px solid transparent;
   box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
 `;
 
@@ -51,26 +50,20 @@ const StyledSnsButton = styled.button`
 `;
 
 const StyledTag = styled.button`
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(206, 100%, 52%);
-  box-shadow: inset 0 1px 0 0 hsl(0deg 0% 100% / 40%);
-
-  position: relative;
+  font-size: 12px;
+  color: hsl(205, 47%, 42%);
+  background-color: hsl(205, 46%, 92%);
+  border-color: transparent;
   display: inline-block;
-  padding: 0.8em;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  background-color: transparent;
-  outline: none;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: calc((13px) + 2) / 13px));  
-  text-align: center;
+  padding: 0.4em 0.5em;
+  margin: 0 2px 2px 0;
+  line-height: 1;
+  white-space: nowrap;
   text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
 `;
 
 export { SquareButton, StyledSnsButton, StyledTag };

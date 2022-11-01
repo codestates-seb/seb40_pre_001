@@ -1,9 +1,9 @@
 import React from 'react';
-import * as S from './Form.stlye.js';
+import * as S from './Form.style.js';
 import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
-import SNS_BUTTONS from '../../constants/snsbutton.js';
+import SNS_BUTTONS from '../../constants/snsButton.js';
 
 const Form = () => {
   return (
@@ -31,13 +31,13 @@ const Form = () => {
       </S.SnsButtonContainer>
       <S.FormContainer>
         <S.LoginForm>
-          <S.FormContents>Email</S.FormContents>
-          <S.FormInput></S.FormInput>
+          <S.FormContents htmlFor='email'>Email</S.FormContents>
+          <S.FormInput name='email'></S.FormInput>
           <S.PasswordTextContainer>
-            <S.FormContents>Password</S.FormContents>
+            <S.FormContents htmlFor='password'>Password</S.FormContents>
             <S.Forgot>Forgot password?</S.Forgot>
           </S.PasswordTextContainer>
-          <S.FormInput></S.FormInput>
+          <S.FormInput name='password'></S.FormInput>
           <S.SubmitButton>Log in</S.SubmitButton>
         </S.LoginForm>
       </S.FormContainer>

@@ -1,4 +1,6 @@
-import Main from './Main/Main';
-import Side from './Side/Side';
+import Content from './Content/Content';
+import Widget from './Widget/Widget';
+import Pagination from './Main/Pagination/Pagination';
+import Header from './Main/Header/Header';
 
-export { Main, Side };
+export { Widget, Content, Pagination, Header };

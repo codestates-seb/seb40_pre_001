@@ -1,16 +1,20 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import CustomLink from '../../../Link';
 import * as S from './Navigation.style';
 
-const Links = () => {
+const Links = ({ isClicked, setIsClicked }) => {
   return (
     <S.Ol>
       <S.Li>
         <CustomLink path='/about'>About</CustomLink>
       </S.Li>
-      <S.Li>
-        <CustomLink path='/products'>Products</CustomLink>
+      <S.Li style={{ position: 'relative', right: 10 }}>
+        <a
+          className={isClicked ? 'active' : undefined}
+          onClick={() => setIsClicked(!isClicked)}
+        >
+          Products
+        </a>
       </S.Li>
       <S.Li>
         <CustomLink path='/teams'>For Teams</CustomLink>

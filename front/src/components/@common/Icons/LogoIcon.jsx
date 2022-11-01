@@ -5,7 +5,7 @@ const LogoIcon = ({ fill1, fill2, fill3, ...rest }) => {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='622'
-      height='124'
+      height='120'
       viewBox='0 0 622 124'
       {...rest}
     >
