@@ -24,4 +24,21 @@ const StackExChangeIcon = () => {
   );
 };
 
-export default StackExChangeIcon;
+const StackExchangeIcon2 = () => {
+  return (
+    <svg
+      aria-hidden='true'
+      className='svg-icon iconStackExchange'
+      width='18'
+      height='16'
+      viewBox='0 0 18 16'
+    >
+      <path
+        fill='hsl(210,8%,35%)'
+        d='M15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2ZM1 13c0 1.1.9 2 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2Zm16-7H1v4h16V6Z'
+      ></path>
+    </svg>
+  );
+};
+
+export { StackExChangeIcon, StackExchangeIcon2 };
