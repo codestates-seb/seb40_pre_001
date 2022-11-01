@@ -12,16 +12,13 @@ import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
-import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Positive;
-import java.util.Collections;
-import java.util.Map;
+
 
 @RestController
 @RequiredArgsConstructor //-> final 필드 에대한 생성자 생성해주는 어노테이션
