@@ -21,5 +21,13 @@ spring:
       ddl-auto: create  # (1) ??? ?? ??
     show-sql: true      # (2) SQL ?? ??
     open-in-view: false
+mail:
+  address:
+    admin: admin@gmail.com
 logging.level:
   org.hibernate.SQL: debug
+jwt:
+  key:
+    secret: ${JWT_SECRET_KEY}           e    # 민감한 정보는 시스템 환경 변수에서 로드한다.
+  access-token-expiration-minutes: 1200
+  refresh-token-expiration-minutes: 4800
