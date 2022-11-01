@@ -10,16 +10,25 @@ const questionsData = [
     createdAt: '2022-10-27',
     tags: ['javascript', 'react'],
     status: {
-      votes: 0,
+      votes: 10,
       answers: 1,
       views: 2,
     },
     content: {
       image: 'url',
-      context:
-        'In Powershell, when I try to run Inquirer for an Async function the powershell completely skips the input even with await operators.',
-      code: `<h3><br></h3><p>skladjklzcxxz</p><h2><br></h2><div contenteditable="false"><hr></div><p><strong>lkjdslfjsdlkf</strong></p><p><br></p><p>sadkljzxclkjxzldeasdm,nsadqw</p>`,
+      context: `<h3>this question is pretty much out of context tho <br></h3><p>skladjklzcxxz</p><h2><br></h2><div contenteditable="false"><hr><code>const html = '21'</code></div><p><strong>lkjdslfjsdlkf</strong></p><p><br></p><p>sadkljzxclkjxzldeasdm,nsadqw</p>`,
     },
+    answers: [
+      {
+        author: 'John doe',
+        userId: 12344,
+        createdAt: '2022-10-27',
+        content: {
+          image: 'url',
+          context: `<h3><br></h3><p>skladjklzcxxz</p><h2><br></h2><div contenteditable="false"><hr><code>const html = '21'</code></div><p><strong>lkjdslfjsdlkf</strong></p><p><br></p><p>sadkljzxclkjxzldeasdm,nsadqw</p>`,
+        },
+      },
+    ],
   },
   {
     contentId: 2,

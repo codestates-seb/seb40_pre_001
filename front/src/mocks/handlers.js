@@ -45,6 +45,29 @@ export const handlers = [
     );
   }),
 
+  // Update Vote Count
+
+  rest.put('/api/questions/:id', (req, res, ctx) => {
+    const { id } = req.params;
+
+    console.log(req.body);
+    const votes = req.body;
+
+    const question = questionData.find(
+      (question) => question.contentId === Number(id),
+    );
+
+    if (question === undefined) {
+      throw new Error('글을 찾을수 없습니다.');
+    }
+
+    question.status.votes = votes;
+
+    return res(ctx.status(200));
+  }),
+
+  // login
+
   // response Cookies
   rest.get('/api/login', (req, res, ctx) => {
     return res(ctx.delay(), ctx.cookie('authToken', 'mock1234'));

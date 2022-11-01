@@ -42,6 +42,10 @@ const getUserStatus = async () => {
   return response;
 };
 
+const putStatus = async (id, newStatus) => {
+  return await apiClient.put(`/api/questions/${id}`, newStatus);
+};
+
 export {
   apiClient,
   getAllPostData,
@@ -49,4 +53,5 @@ export {
   createPost,
   loginUser,
   getUserStatus,
+  putStatus,
 };
