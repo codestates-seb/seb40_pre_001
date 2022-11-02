@@ -17,7 +17,7 @@ public class QuestionPostDto {
     private String questionTitle;
 
     @NotBlank
-    @Length(min = 30, max = 65535, message = "질문 최대 글자 수를 초과하였습니다")
+    @Length(min = 30, max = 65535, message = "질문은 최소 30자를 입력하여야 합니다")
     private String context;
 
     private List<QuestionTagResponseDto> questionTagDtoList;

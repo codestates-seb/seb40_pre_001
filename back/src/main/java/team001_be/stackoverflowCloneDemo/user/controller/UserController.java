@@ -7,18 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 
-import team001_be.stackoverflowCloneDemo.user.dto.*;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
@@ -27,9 +24,7 @@ import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -54,11 +49,6 @@ public class UserController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),
                 HttpStatus.CREATED);
-    }
-
-    @GetMapping("/login")
-    public String getUser(){
-        return  userService.getLoginUser();
     }
 
     @GetMapping("/{user-id}")

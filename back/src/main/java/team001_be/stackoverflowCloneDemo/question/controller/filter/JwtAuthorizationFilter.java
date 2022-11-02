@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.filter;
+package team001_be.stackoverflowCloneDemo.question.controller.filter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;

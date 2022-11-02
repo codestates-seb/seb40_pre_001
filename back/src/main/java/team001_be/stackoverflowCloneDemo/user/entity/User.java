@@ -1,5 +1,7 @@
 package team001_be.stackoverflowCloneDemo.user.entity;
 
+import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
+import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
@@ -39,7 +41,15 @@ public class User extends Auditable {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
- 
+
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private List<Question> questionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private List<Answer> answerList = new ArrayList<>();
+
     public User(String email, String userNickname, String description, String address, LocalDate birthday) {
         this.email = email;
         this.userNickname = userNickname;
@@ -70,4 +80,13 @@ public class User extends Auditable {
             this.status = status;
         }
     }
+
+    public void addQuestionList(Question question){
+        this.questionList.add(question);
+    }
+
+    public void addAnswerList(Answer answer){
+        this.answerList.add(answer);
+    }
+
 }
