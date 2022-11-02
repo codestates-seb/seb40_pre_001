@@ -4,9 +4,9 @@ import PostDetails from './Details';
 import PostStatus from './Status';
 import * as S from './Post.style';
 
-import useGetAllPosts from '../../../../../hooks/useGetAllPosts';
+import useGetAllPosts from '../../../../hooks/questions/useGetAllPosts';
 import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../../../../store';
+import { pagesState } from '../../../../store';
 
 const PostBox = () => {
   // Pagination

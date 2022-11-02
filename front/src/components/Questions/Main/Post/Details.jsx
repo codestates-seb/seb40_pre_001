@@ -1,12 +1,12 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import pagesState from '../../../../../store/pagesState';
+import pagesState from '../../../../store/pagesState';
 import TimeAgo from 'react-timeago';
-import TagButton from '../../../../@common/Buttons/Tag';
-import CustomLink from '../../../../@common/Link';
+import TagButton from '../../../@common/Buttons/Tag';
+import CustomLink from '../../../@common/Link';
 
 import * as S from './Post.style';
-import { TextViewer } from '../../../../@common/TextEditor/TextEditor';
+import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 
 const PostDetails = ({ data }) => {
   const { title, author, content, tags, createdAt, userId, contentId } = data;
