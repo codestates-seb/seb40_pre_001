@@ -39,7 +39,9 @@ public class Answer extends Auditable {
     private boolean isAccepted;
 
     @Builder
-    public Answer(Long answerId,String context){
+    public Answer(Long answerId,String context, User user, Question question){
+        this.question = question;
+        this.user = user;
         this.answerId = answerId;
         this.context = context;
         this.voteCount = 0;

@@ -7,8 +7,8 @@ public enum ExceptionCode {
     USER_EXISTS(409, "User exists"),
     TAG_NOT_FOUND(404, "Tag not found"),
     QUESTION_NOT_FOUND(404, "Question not found"),
-
-    UNAUTHORIZED_USER(403, "not authorized user");
+    UNAUTHORIZED_USER(403, "not authorized user"),
+    ANSWER_NOT_FOUND(404, "Answer not found");
 
 
     @Getter

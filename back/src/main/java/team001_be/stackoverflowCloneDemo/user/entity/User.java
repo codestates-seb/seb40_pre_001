@@ -19,6 +19,7 @@ import java.util.List;
 public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
     private Long userId;
 
     @Column(nullable = false, updatable = false, unique = true)

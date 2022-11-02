@@ -72,7 +72,7 @@ public class UserService {
 
     public User updateUser(User user) {
         User foundUser = findUser(user.getUserId());
-        //user 권한 확인 jwt
+        //user 권한 확인
         verifyUserAuthorization(user.getUserId(), foundUser.getUserId());
 
         Optional.ofNullable(user.getEmail())
@@ -97,6 +97,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
+
     private User findVerifiedUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findByUserId(userId);
         User foundUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
@@ -108,10 +109,10 @@ public class UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    private void verifyUserAuthorization(Long modifiedUserId, Long oldUserId) {
-        //수정하려는 user가 질문 작성자가 맞는지 check
-        if (!Objects.equals(modifiedUserId, oldUserId))
-            throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
+    public void verifyUserAuthorization(Long authorizedUserId, Long tryingUserId) {
+        //user의 권한 확인
+        if (!Objects.equals(authorizedUserId, tryingUserId))
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED_USER);
     }
 
     private void verifyExistsEmail(String email) {

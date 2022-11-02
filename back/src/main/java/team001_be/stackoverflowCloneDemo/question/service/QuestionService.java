@@ -50,7 +50,7 @@ public class QuestionService {
         Question foundQuestion = findQuestion(question.getQuestionId());
 
         //user 권한 확인하기.. jwt 구현되면 다시 살펴봐야 할듯
-        verifyUserAuthorization(userId, foundQuestion.getUser().getUserId());
+        userService.verifyUserAuthorization(userId, foundQuestion.getUser().getUserId());
 
         //title, context, tagList 수정.
         //수정할 값이 null인 경우 수정하지 않는다.
@@ -66,7 +66,7 @@ public class QuestionService {
 
     public void deleteQuestion(Long questionId, Long userId){
         Question question = findVerifiedQuestionById(questionId);
-        verifyUserAuthorization(userId, question.getUser().getUserId());
+        userService.verifyUserAuthorization(question.getUser().getUserId(), userId);
 
         questionRepository.delete(question);
     }
@@ -78,12 +78,6 @@ public class QuestionService {
         //Tag 존재하는지 확인
         question.getQuestionTagList()
                 .forEach(questionTag -> tagService.findTag(questionTag.getTag().getTagId()));
-    }
-
-    private void verifyUserAuthorization(Long modifiedQuestionUserId, Long oldQuestionUserId){
-        //질문 수정하려는 user가 질문 작성자가 맞는지 check
-        if(!Objects.equals(modifiedQuestionUserId, oldQuestionUserId))
-            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED_USER);
     }
 
     private Question findVerifiedQuestionById(Long questionId){

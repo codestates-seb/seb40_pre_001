@@ -1,13 +1,20 @@
 package team001_be.stackoverflowCloneDemo.answer.service;
 
 import org.springframework.stereotype.Service;
+import team001_be.stackoverflowCloneDemo.answer.dto.AnswerDeleteDto;
+import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPostDto;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.repository.AnswerRepository;
+import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
+import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.transaction.Transactional;
+import java.util.Objects;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -24,8 +31,11 @@ public class AnswerService {
     }
 
     public Answer createAnswer(Answer answer, Long questionId){
+        //해당 userId 존재하는지 검증
+        User user = userService.findUser(answer.getUser().getUserId());
+        //answer 생성
         answer.setQuestion(questionService.findQuestion(questionId));
-        answer.setUser(userService.findUser(answer.getQuestion().getUser().getUserId()));
+        answer.setUser(user);
 
         return saveAnswer(answer);
     }
@@ -33,4 +43,21 @@ public class AnswerService {
     private Answer saveAnswer(Answer answer){
         return answerRepository.save(answer);
     }
+
+    public void deleteAnswer(Long answerId, Long userId) {
+        Answer answer = findAnswer(answerId);
+        userService.verifyUserAuthorization(answer.getUser().getUserId() , userId );
+
+        answerRepository.delete(answer);
+    }
+
+    private Answer findAnswer(Long answerId){
+        Optional<Answer> answer = answerRepository.findById(answerId);
+        if(answer.isEmpty()){
+            throw new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND);
+        }
+        return answer.get();
+    }
+
+
 }

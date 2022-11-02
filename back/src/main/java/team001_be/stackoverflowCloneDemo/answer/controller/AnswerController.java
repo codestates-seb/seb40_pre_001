@@ -4,11 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import team001_be.stackoverflowCloneDemo.answer.dto.AnswerDeleteDto;
 import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPostDto;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.mapper.AnswerMapper;
+import team001_be.stackoverflowCloneDemo.answer.repository.AnswerRepository;
 import team001_be.stackoverflowCloneDemo.answer.service.AnswerService;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
+import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -29,16 +33,25 @@ public class AnswerController {
     @PostMapping("/{question-id}")
     public ResponseEntity postAnswer(@PathVariable("question-id") @Positive Long questionId,
                                      @Valid @RequestBody AnswerPostDto answerPostDto){
-        Answer answer = answerService.createAnswer(answerMapper.answerPostDtoToAnswer(answerPostDto), questionId);
+
+        //answer 생성
+        Answer answer = answerMapper.answerPostDtoToAnswer(answerPostDto);
+
+        answer = answerService.createAnswer(answer, questionId);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(answerMapper.answerToAnswerResponseDto(answer)),
                 HttpStatus.CREATED);
     }
 
-//    @DeleteMapping("/{question-id}")
-//    public ResponseEntity deleteAnswer(@PathVariable("question-id") @Positive Long questionId){
-//        answerService.deleteAnswer()
-//    }
+    @DeleteMapping("/{question-id}/{answer-id}")
+    public ResponseEntity deleteAnswer(@PathVariable("question-id") @Positive Long questionId,
+                                       @PathVariable("answer-id") @Positive Long answerId,
+                                       @RequestParam @Positive Long userId){
+
+        answerService.deleteAnswer(answerId, userId);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 
 }
