@@ -60,6 +60,11 @@ public class UserController {
         );
     }
 
+    @GetMapping("/login")
+    public String getUser(){
+        return  userService.getLoginUser();
+    }
+
     //4. 회원 정보 전부 출력 -  완료
     @GetMapping("/all-users")
     public List<UserResponseDto> retrieveUsers() {

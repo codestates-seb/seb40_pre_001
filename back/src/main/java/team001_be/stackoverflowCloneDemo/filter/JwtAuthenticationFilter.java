@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.question.controller.filter;
+package team001_be.stackoverflowCloneDemo.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;

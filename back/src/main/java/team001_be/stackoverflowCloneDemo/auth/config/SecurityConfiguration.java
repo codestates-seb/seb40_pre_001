@@ -16,9 +16,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import team001_be.stackoverflowCloneDemo.auth.handler.UserAuthenticationFailureHandler;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
 import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
-import team001_be.stackoverflowCloneDemo.question.controller.filter.JwtAuthenticationFilter;
+import team001_be.stackoverflowCloneDemo.filter.JwtAuthenticationFilter;
 import org.springframework.security.authentication.AuthenticationManager;
-import team001_be.stackoverflowCloneDemo.question.controller.filter.JwtAuthorizationFilter;
+import team001_be.stackoverflowCloneDemo.filter.JwtAuthorizationFilter;
 
 import java.util.Arrays;
 
@@ -57,7 +57,6 @@ public class SecurityConfiguration {
                 .addHeaderWriter(new XFrameOptionsHeaderWriter(
                         XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)
                 );
-
 
         return http.build();
     }
