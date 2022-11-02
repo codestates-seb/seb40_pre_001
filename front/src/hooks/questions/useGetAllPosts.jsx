@@ -1,4 +1,4 @@
-import { getAllPostData } from '../apis/questions';
+import { getAllPostData } from '../../apis/questions';
 
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
