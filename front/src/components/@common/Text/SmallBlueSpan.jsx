@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './Text.style';
 
-const SmallBlueSpan = ({ color, fontSize, content }) => {
+const SmallBlueSpan = ({ color, fontSize, content, ...rest }) => {
   return (
-    <S.SmallBlueSpan color={color} fontSize={fontSize}>
+    <S.SmallBlueSpan color={color} fontSize={fontSize} {...rest}>
       {content}
     </S.SmallBlueSpan>
   );

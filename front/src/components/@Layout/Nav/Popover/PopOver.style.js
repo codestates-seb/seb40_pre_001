@@ -18,6 +18,10 @@ const Container = styled.div`
   min-width: 12rem;
 
   left: ${({ login }) => (login ? '-65px' : null)};
+
+  @media screen and (max-width: 1800px) {
+    left: ${({ login }) => (login ? '-184px' : '-120px')};
+  }
 `;
 
 const UpArrow = styled.div`

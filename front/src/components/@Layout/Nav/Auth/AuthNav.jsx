@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   HelpIcon,
   InboxIcon,
@@ -7,20 +7,14 @@ import {
 } from '../../../@common/Icons';
 import * as S from './AuthNav.style';
 
-import { useSetRecoilState } from 'recoil';
-import { usersState } from '../../../../store';
+import LogoutPopOver from './LogoutPopOver';
 
 const Auth = () => {
-  const setIsAuthenticated = useSetRecoilState(usersState);
-
-  const handleLogin = () => {
-    setIsAuthenticated(false);
-    localStorage.removeItem('token');
-  };
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <S.Ol style={{ marginTop: 6 }}>
-      <S.Li onClick={() => handleLogin()}>
+      <S.Li>
         <S.ProfileBox>
           <img
             src='https://lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'
@@ -40,8 +34,9 @@ const Auth = () => {
       <S.Li>
         <HelpIcon />
       </S.Li>
-      <S.Li>
+      <S.Li onClick={() => setIsClicked(!isClicked)}>
         <StackExchangeIcon2 />
+        {isClicked && <LogoutPopOver />}
       </S.Li>
     </S.Ol>
   );

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const LeftContainer = styled.div`
+  user-select: none;
   position: fixed;
   width: 164px;
   flex-shrink: 0;

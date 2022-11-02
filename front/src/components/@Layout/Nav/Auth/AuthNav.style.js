@@ -38,4 +38,40 @@ const ProfileBox = styled.div`
   }
 `;
 
-export { Nav, Ol, Li, ProfileBox };
+const PopOverContainer = styled.div`
+  user-select: none;
+  position: absolute;
+  background-color: hsl(210, 8%, 105%);
+  border-radius: 3px;
+  top: 47px;
+  right: 220px;
+  width: 375px;
+  border: 1px solid hsl(210, 8%, 90%);
+`;
+
+const PopOverHeaderContainer = styled.div`
+  padding: 10px;
+
+  border-bottom: 1px solid hsl(210, 8%, 80%);
+`;
+
+const LogoutContainer = styled.div`
+  width: 150px;
+  display: flex;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 2px;
+
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export {
+  Nav,
+  Ol,
+  Li,
+  ProfileBox,
+  PopOverContainer,
+  LogoutContainer,
+  PopOverHeaderContainer,
+};
