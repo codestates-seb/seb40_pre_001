@@ -70,9 +70,6 @@ const PostBody = styled.div`
   word-spacing: 1.1em;
   font-size: 15px;
   overflow-wrap: break-word;
-
-  // 추후 삭제 예정
-  height: 600px;
 `;
 
 const TagBox = styled.div`
@@ -87,9 +84,6 @@ const BottomBox = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   flex-wrap: wrap;
-
-  // 추후 삭제 예정
-  height: 100px;
 `;
 
 const FeatureBox = styled.div`

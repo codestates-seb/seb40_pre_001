@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pagesState } from '../../../../store';
-import * as S from '../Pagination/Pagination.style';
+import * as S from '../../../@common/Pagination/Pagination.style';
 
 const UsersPagiNation = () => {
   const [state, setCurrentPage] = useRecoilState(pagesState);

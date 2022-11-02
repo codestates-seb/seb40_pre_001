@@ -4,12 +4,12 @@ import * as M from '../../../pages/Questions/Questions.style';
 
 import Header from './Header.';
 import RightBox from './PostBody/RightBox';
-import Answer from './Answer/Answer';
 import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
+import PostAnswer from './Answer/PostAnswer';
 
 const Content = ({ data }) => {
-  const { title, tags, content, status } = data;
+  const { title, tags, content, status, answers } = data;
 
   return (
     <div>
@@ -28,7 +28,23 @@ const Content = ({ data }) => {
           <LeftBox status={status} />
           <RightBox tags={tags} content={content} />
         </S.PostLayout>
-        <Answer />
+        {/* Answers */}
+        {answers.map(({ content }, i) => {
+          return (
+            <>
+              <div>
+                <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
+              </div>
+              <S.PostLayout key={i}>
+                <LeftBox status={status} />
+                <RightBox tags={tags} content={content} />
+              </S.PostLayout>
+            </>
+          );
+        })}
+
+        {/* Post Answer */}
+        <PostAnswer />
       </M.MainContainer>
       <Widget />
     </div>

@@ -1,11 +1,11 @@
 import React from 'react';
-import UserInfo from '../../components/Users/UserInfo';
 import * as S from './Users.style.js';
 import Title from '../../components/Title/Title';
 import UsersTab from '../../components/UsersTab/UsersTab';
 import UsersFilter from '../../components/UsersFilter/UsersFilter';
 import UsersPagiNation from '../../components/Questions/Main/UsersPaginaton/UsersPagination';
 import UserData from '../../components/Users/UserData';
+import UserInfo from '../../components/Users/Userinfo';
 
 const Users = () => {
   return (

@@ -1,17 +1,12 @@
 import React from 'react';
 import * as S from './UsersFilter.style';
 import UsersFilterBox from '../Questions/Main/Header/FilterBox/UsersFilterBox';
-import SearchInput from '../@common/Layout/Nav/SearchInput/SearchInput';
+import SearchInput from '../@Layout/Nav/SearchInput/SearchInput';
 
 const UsersFilter = () => {
   return (
     <S.UsersFilterBoxContainer>
-      <SearchInput
-        width={'190px'}
-        placeholder={'Filter by user'}
-        height={'40px'}
-        padding={'0'}
-      />
+      <SearchInput style={{ width: 190, height: 40, margin: 0 }} />
       <UsersFilterBox />
     </S.UsersFilterBoxContainer>
   );

@@ -1,26 +1,32 @@
 import React from 'react';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import pagesState from '../../../../store/pagesState';
 import { usersState } from '../../../../store';
 import SearchIcon from '../../../@common/Icons/SearchIcon';
-
 import * as S from './SearchInput.style';
 
-const SearchInput = () => {
+const SearchInput = ({ ...rest }) => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const [state, setFilterKeyword] = useRecoilState(pagesState);
   const keywordRef = useRef(null);
   const isAuthenticated = useRecoilValue(usersState);
 
+  const userLocation = pathname === '/users';
+
   return (
     <S.Form>
-      <S.Container isAuthenticated={isAuthenticated}>
+      <S.Container
+        isAuthenticated={isAuthenticated}
+        location={pathname}
+        {...rest}
+      >
         <S.Input
           ref={keywordRef}
           type='text'
-          placeholder='Search...'
+          placeholder={userLocation ? 'Filter by user' : 'Search...'}
           autoComplete='off'
           maxLength={240}
           aria-label='Search'

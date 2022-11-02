@@ -2,6 +2,7 @@ import React from 'react';
 import { TagButton } from '../../../@common/Buttons';
 import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import * as S from './PostBody.style';
+import UserInfo from './UserInfo';
 
 const RightBox = ({ tags, content }) => {
   return (
@@ -24,6 +25,7 @@ const RightBox = ({ tags, content }) => {
             <a>Follow</a>
           </S.FeatureLeft>
         </S.FeatureBox>
+        <UserInfo />
       </S.BottomBox>
       <S.Comment>Add a comment</S.Comment>
     </S.RightBox>

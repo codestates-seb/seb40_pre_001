@@ -11,7 +11,7 @@ import SignUp from './AuthPage/Signup';
 import Questions from './Questions/Questions';
 import Ask from './Questions/ASK/Ask';
 import Post from './Questions/Post/Post';
-import Users from './Users';
+import Users from './Users/Users';
 import NotFound from './404/404';
 import Search from './Search/Search';
 
