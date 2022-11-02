@@ -5,18 +5,27 @@ import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
 import { userLogin } from '../../apis/login.js';
-import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useSetRecoilState } from 'recoil';
+import usersState from '../../store/users.js';
+// import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
-  const navigator = useNavigate();
+  // const navigator = useNavigate();
+  const setIsAuthenticated = useSetRecoilState(usersState);
+  const queryClient = useQueryClient();
+  queryClient;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const { mutate } = useMutation(userLogin, {
     onSuccess: () => {
-      navigator('/questions');
+      setIsAuthenticated(true);
+      // navigator('/questions');
+    },
+    onError: () => {
+      console.log('aa');
     },
   });
 

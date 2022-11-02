@@ -12,11 +12,11 @@ const PostBox = () => {
   // Pagination
   const { selectedLimit, currentPage } = useRecoilValue(pagesState);
   const offset = (currentPage - 1) * selectedLimit;
-  const { data } = useGetAllPosts((data) =>
+  const { data: allPost } = useGetAllPosts((data) =>
     data.slice(offset, offset + selectedLimit),
   );
 
-  return data?.map((postData, i) => {
+  return allPost?.map((postData, i) => {
     return (
       <S.PostContainer key={i}>
         <PostStatus status={postData.status} />

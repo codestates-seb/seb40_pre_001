@@ -12,6 +12,7 @@ const FilterBox = () => {
 
   useEffect(
     () => setPostsLength({ ...state, postsLength: count }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [count, state.postsLength],
   );
 

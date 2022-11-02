@@ -15,12 +15,12 @@ const PostDetails = ({ data }) => {
   return (
     <S.BoxRight>
       <S.Title
-        onClick={() =>
+        onClick={() => {
           setCurrentContentId({
             ...state,
             currentContentId: contentId,
-          })
-        }
+          });
+        }}
       >
         <CustomLink path={`/questions/${userId}`}>{title}</CustomLink>
       </S.Title>

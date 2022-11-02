@@ -7,8 +7,9 @@ const Form = styled.form`
 `;
 
 const Container = styled.div`
-  width: 704.55px;
-  max-width: 773.5px !important;
+  width: ${({ isAuthenticated }) =>
+    isAuthenticated ? '773.39px' : '704.55px'};
+  max-width: 773.9px !important;
   display: flex;
 `;
 
@@ -31,7 +32,7 @@ const Input = styled.input`
   &:focus {
     outline: none !important;
     border-color: hsl(206, 93%, 83.5%);
-    box-shadow: 0 0 3px hsl(206, 93%, 83.5%);
+    box-shadow: rgba(0, 116, 204, 0.15) 0px 0px 0px 4px;
   }
 `;
 

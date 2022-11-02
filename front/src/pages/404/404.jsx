@@ -13,7 +13,6 @@ const NotFound = () => {
         <S.Content>
           <S.Header>Page not found</S.Header>
           <S.SubHeading>{`We're sorry, we couldn't find the page you requested.`}</S.SubHeading>
-
           <S.ContentBody>
             <p>
               Try <SmallBlueSpan>searching for similar questions</SmallBlueSpan>

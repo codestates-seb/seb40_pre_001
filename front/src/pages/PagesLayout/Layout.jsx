@@ -3,7 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Nav, Footer, LeftSidebar } from '../../components/@Layout';
 import * as S from './Layout.style';
 
-const paths = Object.freeze(['/login', '/signup', '/questions/ask']);
+const paths = Object.freeze(['/login', '/signup', '/questions/ask', '/404']);
 
 const Layout = () => {
   const { pathname } = useLocation();

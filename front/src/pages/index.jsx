@@ -11,6 +11,9 @@ import Users from './Users';
 
 import { ROUTES } from '../constants';
 import Ask from './Questions/ASK/Ask';
+import NotFound from './404/404';
+import Search from './Search/Search';
+// import AuthRoutes from './PagesLayout/UserRoute';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -27,6 +30,14 @@ const PAGES = [
         path: ROUTES.TAGS.path,
         element: <Tags />,
       },
+      // {
+      //   element: <AuthRoutes />,
+      //   children: {
+      //     name: ROUTES.LOGIN.name,
+      //     path: ROUTES.LOGIN.path,
+      //     element: <Login />,
+      //   },
+      // },
       {
         name: ROUTES.LOGIN.name,
         path: ROUTES.LOGIN.path,
@@ -53,6 +64,16 @@ const PAGES = [
         element: <Users />,
       },
       { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
+      {
+        name: ROUTES.NOT_FOUND.name,
+        path: ROUTES.NOT_FOUND.path,
+        element: <NotFound />,
+      },
+      {
+        name: ROUTES.SEARCH.name,
+        path: ROUTES.SEARCH.path,
+        element: <Search />,
+      },
     ],
   },
 ];
