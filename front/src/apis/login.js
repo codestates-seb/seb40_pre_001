@@ -18,7 +18,7 @@ const getGithubURL = async () => {
 
 const githubAuthPost = async () => {
   const response = await apiClient.post(
-    'https://github.com/login/oauth/authorize/',
+    'https://github.com/login/oauth/authorize',
     {
       client_id: process.env.REACT_APP_GITHUB_ID,
       redirect_uri: 'http://localhost:3000/login',
@@ -28,8 +28,9 @@ const githubAuthPost = async () => {
   return response;
 };
 
-const userLogin = (payload) => {
-  axios
+const userLogin = async (payload) => {
+  // axios 요청에 에러핸들링을 하면 react-query useMutation이 에러 캐칭을 못함
+  return await axios
     .post('https://reqres.in/api/login', payload)
     .then((response) => {
       //get token from response
@@ -40,8 +41,7 @@ const userLogin = (payload) => {
 
       //set token to axios common header
       setAuthToken(token);
-    })
-    .catch((err) => console.log(err));
+    });
 };
 
 export { getGithubURL, githubAuthPost, userLogin };

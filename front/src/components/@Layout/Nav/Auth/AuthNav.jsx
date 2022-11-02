@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   HelpIcon,
   InboxIcon,
@@ -7,17 +7,20 @@ import {
 } from '../../../@common/Icons';
 import * as S from './AuthNav.style';
 
-const Auth = () => {
-  const [auth, setAuth] = useState(true);
+import { useSetRecoilState } from 'recoil';
+import usersState from '../../../../store/users';
 
-  const deleteToken = () => {
+const Auth = () => {
+  const setIsAuthenticated = useSetRecoilState(usersState);
+
+  const handleLogin = () => {
+    setIsAuthenticated(false);
     localStorage.removeItem('token');
-    setAuth(!auth);
   };
 
   return (
-    <S.Ol>
-      <S.Li onClick={() => deleteToken()}>
+    <S.Ol style={{ marginTop: 6 }}>
+      <S.Li onClick={() => handleLogin()}>
         <S.ProfileBox>
           <img
             src='https://lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'

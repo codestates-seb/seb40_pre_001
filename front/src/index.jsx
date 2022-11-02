@@ -6,7 +6,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { worker } from './mocks/broswer';
 import { GlobalStyles, theme } from './styles';
 import App from './App';
-import setAuthToken from './components/@helper/setAuthToken';
+// import setAuthToken from './components/@helper/setAuthToken';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start();
@@ -25,10 +25,10 @@ const queryClient = new QueryClient({
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-const token = localStorage.getItem('token');
-if (token) {
-  setAuthToken(token);
-}
+// const token = localStorage.getItem('token');
+// if (token) {
+//   setAuthToken(token);
+// }
 
 root.render(
   <>

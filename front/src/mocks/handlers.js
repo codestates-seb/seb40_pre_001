@@ -47,6 +47,19 @@ export const handlers = [
     );
   }),
 
+  // Get Filtered Item by Search
+
+  rest.get('/api/search?q=:keyword', (req, res, ctx) => {
+    console.log('req', req.url.searchParams);
+    // const { keyword } = req.body;
+
+    // const filteredItems = questionData.filter((question) =>
+    //   question.title.includes(keyword),
+    // );
+
+    return res(ctx.status(200));
+  }),
+
   // Update Vote Count
 
   rest.put('/api/questions/:id', (req, res, ctx) => {

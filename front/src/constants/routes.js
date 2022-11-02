@@ -33,6 +33,14 @@ const ROUTES = Object.freeze({
     path: '/questions/ask',
     name: 'Ask Question',
   },
+  NOT_FOUND: {
+    path: '/404',
+    name: '404NotFound',
+  },
+  SEARCH: {
+    path: '/search',
+    name: 'Search',
+  },
 });
 
 export default ROUTES;

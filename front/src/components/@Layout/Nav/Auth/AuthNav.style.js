@@ -19,7 +19,6 @@ const Ol = styled.ol`
 
 const Li = styled.li`
   margin: 10px 10px;
-  padding: 2px;
   cursor: pointer;
 `;
 

@@ -7,11 +7,13 @@ import SearchInput from './SearchInput/SearchInput';
 
 import CustomLink from '../../@common/Link';
 import PopOver from './Popover/PopOver';
-import { isLoggedIn } from '../../../constants/auth';
 import Auth from './Auth/AuthNav';
 import NonAuth from './Auth/NonAuthNav';
+import { useRecoilValue } from 'recoil';
+import usersState from '../../../store/users';
 
 const Nav = () => {
+  const isAuthenticated = useRecoilValue(usersState);
   const [isClicked, setIsClicked] = useState(false);
 
   return (
@@ -25,7 +27,7 @@ const Nav = () => {
         <Navigation isClicked={isClicked} setIsClicked={setIsClicked} />
         {isClicked && <PopOver setIsClicked={setIsClicked} />}
         <SearchInput />
-        {isLoggedIn ? <Auth /> : <NonAuth />}
+        {isAuthenticated ? <Auth /> : <NonAuth />}
       </S.NavContainer>
     </S.Header>
   );

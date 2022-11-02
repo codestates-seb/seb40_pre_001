@@ -1,15 +1,22 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
+import usersState from '../../../../store/users';
 import CustomLink from '../../../@common/Link';
 import * as S from './Navigation.style';
 
-import { isLoggedIn } from '../../../../constants/auth';
-
 const Links = ({ isClicked, setIsClicked }) => {
+  const isAuthenticated = useRecoilValue(usersState);
+
+  console.log(isAuthenticated);
+
   return (
-    <S.Ol login={isLoggedIn}>
-      <S.Li>
-        <CustomLink path='/about'>About</CustomLink>
-      </S.Li>
+    <S.Ol>
+      {!isAuthenticated && (
+        <S.Li>
+          <CustomLink path='/about'>About</CustomLink>
+        </S.Li>
+      )}
+
       <S.Li>
         <a
           className={isClicked ? 'active' : undefined}
@@ -18,9 +25,11 @@ const Links = ({ isClicked, setIsClicked }) => {
           Products
         </a>
       </S.Li>
-      <S.Li>
-        <CustomLink path='/teams'>For Teams</CustomLink>
-      </S.Li>
+      {!isAuthenticated && (
+        <S.Li>
+          <CustomLink path='/teams'>For Teams</CustomLink>
+        </S.Li>
+      )}
     </S.Ol>
   );
 };
