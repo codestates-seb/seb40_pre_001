@@ -7,10 +7,17 @@ import SNS_BUTTONS from '../../constants/snsButton.js';
 import AdviceMark from '../@common/Icons/AdviceMark';
 import NewWindow from '../@common/Icons/NewWinow';
 
+//sign up
+import axios from 'axios';
+
 //로그인과 회원가입 페이지 추후 파일 위치 수정
 //버튼 스타일은 일단 복사하여 사용했는데 나중에 한 개의 style으로 합치고 재사용 가능하게 수정이 필요
 
 const SignUpForm = () => {
+  const handleClick = () => {
+    axios.post();
+  };
+
   return (
     <S.Container>
       {SNS_BUTTONS.map(({ BGC, BORDER_C, COLOR, HOVER_BG, MESSAGE, ICON }) => {
@@ -53,7 +60,7 @@ const SignUpForm = () => {
             </S.AdviceMark>
           </S.OptionChocie>
 
-          <S.SubmitButton>Sign up</S.SubmitButton>
+          <S.SubmitButton onClick={handleClick}>Sign up</S.SubmitButton>
           <S.SignUpWarn>
             By clicking “Sign up”, you agree to our
             <a> terms of service</a>, <a>privacy policy</a> and

@@ -77,4 +77,10 @@ export const handlers = [
   rest.get('/api/auth/github', (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+
+  //sign up
+
+  rest.post('/signup', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json('hello!'));
+  }),
 ];
