@@ -58,7 +58,7 @@ const Form = () => {
             onChange={(e) => setEmail(e.target.value)}
           ></S.FormInput>
           <S.PasswordTextContainer>
-            <S.FormContents>Password</S.FormContents>
+            <S.FormContents htmlFor='password'>Password</S.FormContents>
             <S.Forgot>Forgot password?</S.Forgot>
           </S.PasswordTextContainer>
           <S.FormInput
