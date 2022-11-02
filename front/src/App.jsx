@@ -1,5 +1,6 @@
 import { redirect, useLocation, useRoutes } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
+import { ROUTES } from './constants';
 import PAGES from './pages';
 import usersState from './store/users';
 
@@ -7,11 +8,7 @@ function App() {
   const isAuth = useRecoilValue(usersState);
   const { pathname: path } = useLocation();
 
-  console.log(path);
-  console.log(isAuth);
-
-  if (path === '/login' && !isAuth) {
-    console.log('aa');
+  if (path === ROUTES.LOGIN.path && !isAuth) {
     redirect('/questions');
   }
 

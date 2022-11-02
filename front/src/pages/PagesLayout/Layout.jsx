@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <>
       <Nav />
-      <S.Container className='NonMaxWidth'>
+      <S.Container>
         <LeftSidebar />
         <Outlet />
       </S.Container>

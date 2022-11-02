@@ -1,8 +1,8 @@
 import React from 'react';
 import { NotFoundIcon } from '../../components/@common/Icons';
 import { SmallBlueSpan } from '../../components/@common/Text/Text.style';
-import { Nav } from '../../components/@Layout';
 import * as S from './404.style';
+import { Nav } from '../../components/@Layout';
 
 const NotFound = () => {
   return (
@@ -21,14 +21,12 @@ const NotFound = () => {
                 Try{' '}
                 <SmallBlueSpan>searching for similar questions</SmallBlueSpan>
               </p>
-
               <p>
                 Browse our <SmallBlueSpan>recent questions</SmallBlueSpan>
               </p>
               <p>
                 Browse our <SmallBlueSpan>popular tags</SmallBlueSpan>
               </p>
-
               <p>
                 If you feel something is missing that should be here,{' '}
                 <SmallBlueSpan>contact us</SmallBlueSpan>.

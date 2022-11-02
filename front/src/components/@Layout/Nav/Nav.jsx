@@ -11,11 +11,13 @@ import Auth from './Auth/AuthNav';
 import NonAuth from './Auth/NonAuthNav';
 import { useRecoilValue } from 'recoil';
 import usersState from '../../../store/users';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 const Nav = () => {
   const isAuthenticated = useRecoilValue(usersState);
   const [isClicked, setIsClicked] = useState(false);
+  const { pathname } = useLocation();
+  const paths = ['/login', '/signup'];
 
   return (
     <>
@@ -32,7 +34,7 @@ const Nav = () => {
           {isAuthenticated ? <Auth /> : <NonAuth />}
         </S.NavContainer>
       </S.Header>
-      <Outlet />
+      {paths.includes(pathname) && <Outlet />}
     </>
   );
 };

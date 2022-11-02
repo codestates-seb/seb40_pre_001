@@ -13,7 +13,7 @@ const getAllPostData = async () => {
   return data;
 };
 
-const getPostByKeyword = async (keyword) => {
+const getPostsByKeyword = async (keyword) => {
   const { data } = await apiClient.get(`/api/search?q=${keyword}`);
 
   return data;
@@ -29,4 +29,4 @@ const putStatus = async (id, newStatus) => {
   return await apiClient.put(`/api/questions/${id}`, newStatus);
 };
 
-export { apiClient, getAllPostData, getPostByKeyword, createPost, putStatus };
+export { apiClient, getAllPostData, getPostsByKeyword, createPost, putStatus };

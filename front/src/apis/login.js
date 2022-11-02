@@ -34,6 +34,8 @@ const userLogin = async (payload) => {
     .post('https://reqres.in/api/login', payload)
     .then((response) => {
       //get token from response
+
+      console.log('response', response.headers);
       const token = response.data.token;
 
       //set JWT token to local

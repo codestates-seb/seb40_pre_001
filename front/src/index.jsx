@@ -25,11 +25,6 @@ const queryClient = new QueryClient({
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-// const token = localStorage.getItem('token');
-// if (token) {
-//   setAuthToken(token);
-// }
-
 root.render(
   <>
     <React.StrictMode>
