@@ -61,7 +61,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter { //Request당 
     }
 
     private void setAuthenticationToContext(Map<String, Object> claims) {
-        String username = (String) claims.get("username"); //JWT에서 파싱한 유저네임 가져오기
+        String username = (String) claims.get("username"); //JWT에서 파싱한 유저Id 가져오기
         List<GrantedAuthority> authorities = authorityUtils.createAuthorities((List) claims.get("roles"));
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);

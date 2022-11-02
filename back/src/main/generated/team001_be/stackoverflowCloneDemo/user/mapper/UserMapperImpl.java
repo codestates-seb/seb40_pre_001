@@ -2,13 +2,15 @@ package team001_be.stackoverflowCloneDemo.user.mapper;
 
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
-import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserLoginDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
+import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-01T04:29:46+0900",
+    date = "2022-11-02T10:42:55+0900",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 11.0.16.1 (Azul Systems, Inc.)"
 )
 @Component
@@ -30,23 +32,52 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public UserDto.Response userToUserResponseDto(User user) {
+    public User userPatchDtoToUser(UserPatchDto userPatchDto) {
+        if ( userPatchDto == null ) {
+            return null;
+        }
+
+        User user = new User();
+
+        user.setUserId( userPatchDto.getUserId() );
+        user.setEmail( userPatchDto.getEmail() );
+        user.setPassword( userPatchDto.getPassword() );
+        user.setUserNickname( userPatchDto.getUserNickname() );
+        user.setAddress( userPatchDto.getAddress() );
+        user.setBirthday( userPatchDto.getBirthday() );
+
+        return user;
+    }
+
+    @Override
+    public User userLoginDtoToUser(UserLoginDto userLoginDto) {
+        if ( userLoginDto == null ) {
+            return null;
+        }
+
+        User user = new User();
+
+        user.setEmail( userLoginDto.getEmail() );
+        user.setPassword( userLoginDto.getPassword() );
+
+        return user;
+    }
+
+    @Override
+    public UserResponseDto userToUserResponseDto(User user) {
         if ( user == null ) {
             return null;
         }
 
-        long userId = 0L;
-        String email = null;
-        String userNickname = null;
+        UserResponseDto userResponseDto = new UserResponseDto();
 
-        if ( user.getUserId() != null ) {
-            userId = user.getUserId();
-        }
-        email = user.getEmail();
-        userNickname = user.getUserNickname();
+        userResponseDto.setUserId( user.getUserId() );
+        userResponseDto.setEmail( user.getEmail() );
+        userResponseDto.setUserNickname( user.getUserNickname() );
+        userResponseDto.setDescription( user.getDescription() );
+        userResponseDto.setAddress( user.getAddress() );
+        userResponseDto.setBirthday( user.getBirthday() );
 
-        UserDto.Response response = new UserDto.Response( userId, email, userNickname );
-
-        return response;
+        return userResponseDto;
     }
 }

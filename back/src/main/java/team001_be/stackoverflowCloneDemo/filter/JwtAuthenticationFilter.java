@@ -38,8 +38,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         return authenticationManager.authenticate(authenticationToken);  //UsernamePasswordAuthenticationToken을 AuthenticationManager에게 전달하면서 인증 처리를 위임
     }
-
-    // (4)
     @Override
     protected void successfulAuthentication(HttpServletRequest request,
                                             HttpServletResponse response,

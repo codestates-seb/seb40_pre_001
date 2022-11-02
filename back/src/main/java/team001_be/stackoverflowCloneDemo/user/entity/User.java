@@ -48,7 +48,7 @@ public class User extends Auditable {
         this.birthday = birthday;
     }
 
-    // id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
+//     id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
     public static User toSaveEntity(UserDto userDto){
         User user = new User();
         user.setEmail(userDto.getEmail());

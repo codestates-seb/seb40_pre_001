@@ -26,12 +26,10 @@ public class ClientDetailsService implements UserDetailsService {
     public ClientDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userRepository.findByEmail(username);
         User findMember = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
-
         return new ClientDetails(findMember);
     }
 
     private final class ClientDetails extends User implements UserDetails {
-        // (1)
         ClientDetails(User user) {
             setUserId(user.getUserId());
             setEmail(user.getEmail());

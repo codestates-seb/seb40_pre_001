@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
@@ -9,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
@@ -22,7 +22,8 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-  
+
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
@@ -49,7 +50,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User findUser(Long userId){
+    public User findUser(Long userId) {
         return findVerifiedUserById(userId);
     }
 
@@ -61,7 +62,7 @@ public class UserService {
     public List<UserResponseDto> findAll() {
         List<User> userList = userRepository.findAll();
         List<UserResponseDto> userDtoList = new ArrayList<>();
-        for (User user : userList){
+        for (User user : userList) {
             UserResponseDto userResponseDto = userMapper.userToUserResponseDto(user);
             userDtoList.add(userResponseDto);
         }
@@ -69,7 +70,7 @@ public class UserService {
     }
 
 
-    public User updateUser(User user){
+    public User updateUser(User user) {
         User foundUser = findUser(user.getUserId());
         //user 권한 확인 jwt
         verifyUserAuthorization(user.getUserId(), foundUser.getUserId());
@@ -89,15 +90,14 @@ public class UserService {
     }
 
 
-
-    public void deleteUser(Long userId){
+    public void deleteUser(Long userId) {
         User user = findVerifiedUserById(userId);
         verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
 
         userRepository.delete(user);
     }
 
-    private User findVerifiedUserById(Long userId){
+    private User findVerifiedUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findByUserId(userId);
         User foundUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
@@ -108,9 +108,9 @@ public class UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    private void verifyUserAuthorization(Long modifiedUserId, Long oldUserId){
+    private void verifyUserAuthorization(Long modifiedUserId, Long oldUserId) {
         //수정하려는 user가 질문 작성자가 맞는지 check
-        if(!Objects.equals(modifiedUserId, oldUserId))
+        if (!Objects.equals(modifiedUserId, oldUserId))
             throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
     }
 
@@ -120,5 +120,15 @@ public class UserService {
 
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
+    }
+
+    public String getLoginUser() {
+        return getUserByToken();
+    }
+
+    public String getUserByToken() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = (String) principal;
+        return username;
     }
 }

@@ -1,6 +1,9 @@
 package team001_be.stackoverflowCloneDemo.user.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import java.time.LocalDate;
