@@ -1,24 +1,22 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { categoryButton } from '../../../../../constants';
-import useGetAllPosts from '../../../../../hooks/useGetAllPosts';
 import { pagesState } from '../../../../../store';
 import { FilterIcon } from '../../../../@common/Icons';
 import * as S from './FilterBox.style';
 
-const FilterBox = () => {
+const FilterBox = ({ length }) => {
   const [state, setPostsLength] = useRecoilState(pagesState);
-  const { data: count } = useGetAllPosts((data) => data.length);
 
   useEffect(
-    () => setPostsLength({ ...state, postsLength: count }),
+    () => setPostsLength({ ...state, postsLength: length }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [count, state.postsLength],
+    [length, state.postsLength],
   );
 
   return (
     <S.FlexBox>
-      <S.QuestionCount>{count} questions</S.QuestionCount>
+      <S.QuestionCount>{length} questions</S.QuestionCount>
       <div>
         <S.ButtonWrapper>
           <S.BoxLeft>

@@ -8,7 +8,7 @@ import {
 import * as S from './AuthNav.style';
 
 import { useSetRecoilState } from 'recoil';
-import usersState from '../../../../store/users';
+import { usersState } from '../../../../store';
 
 const Auth = () => {
   const setIsAuthenticated = useSetRecoilState(usersState);

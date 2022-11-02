@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './PopOver.style';
 import CustomLink from '../../../@common/Link';
 import { useRecoilValue } from 'recoil';
-import usersState from '../../../../store/users';
+import { usersState } from '../../../../store';
 
 const POPOVER_INFO = Object.freeze([
   {

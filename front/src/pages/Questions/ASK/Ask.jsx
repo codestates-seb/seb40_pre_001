@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import useGetAllPost from '../../../hooks/useGetAllPosts';
+import useGetAllPost from '../../../hooks/questions/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
 
 const Ask = () => {

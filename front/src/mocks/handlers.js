@@ -47,17 +47,15 @@ export const handlers = [
     );
   }),
 
-  // Get Filtered Item by Search
-
+  // Get Filtered Items by Search
   rest.get('/api/search?q=:keyword', (req, res, ctx) => {
-    console.log('req', req.url.searchParams);
-    // const { keyword } = req.body;
+    const keyword = req.url.searchParams.get('q').toUpperCase();
 
-    // const filteredItems = questionData.filter((question) =>
-    //   question.title.includes(keyword),
-    // );
+    const filteredItems = questionData.filter((question) =>
+      question.title.toUpperCase().includes(keyword),
+    );
 
-    return res(ctx.status(200));
+    return res(ctx.status(200), ctx.json(filteredItems));
   }),
 
   // Update Vote Count

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { Content } from '../../../components/Questions';
-import useGetAllPosts from '../../../hooks/useGetAllPosts';
+import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 import pagesState from '../../../store/pagesState';
 import * as S from '../Questions.style';
 

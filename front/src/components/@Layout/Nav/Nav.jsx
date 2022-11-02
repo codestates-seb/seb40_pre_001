@@ -10,7 +10,7 @@ import PopOver from './Popover/PopOver';
 import Auth from './Auth/AuthNav';
 import NonAuth from './Auth/NonAuthNav';
 import { useRecoilValue } from 'recoil';
-import usersState from '../../../store/users';
+import { usersState } from '../../../store';
 import { Outlet, useLocation } from 'react-router-dom';
 
 const Nav = () => {

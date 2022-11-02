@@ -1,21 +1,12 @@
 import React from 'react';
 import FilterBox from './FilterBox/FilterBox';
-import PostBox from './Post/PostBox';
 import TitleBox from '../../../@common/TitleBox/TitleBar';
-import { useLocation } from 'react-router-dom';
 
-const Header = () => {
-  const { pathname } = useLocation();
-
+const Header = ({ title, length }) => {
   return (
     <>
-      <TitleBox
-        title={
-          pathname.includes('/search') ? 'Search Results' : 'All Questions'
-        }
-      />
-      <FilterBox />
-      {pathname.includes('/questions') ? <PostBox /> : <div></div>}
+      <TitleBox title={title} />
+      <FilterBox length={length} />
     </>
   );
 };

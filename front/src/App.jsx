@@ -2,7 +2,7 @@ import { redirect, useLocation, useRoutes } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ROUTES } from './constants';
 import PAGES from './pages';
-import usersState from './store/users';
+import { usersState } from './store';
 
 function App() {
   const isAuth = useRecoilValue(usersState);

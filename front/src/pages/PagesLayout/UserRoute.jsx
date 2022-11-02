@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import usersState from '../../store/users';
+import { usersState } from '../../store';
 import ProtectedRoute from './ProtectedRoute';
 
 const AuthRoutes = () => {

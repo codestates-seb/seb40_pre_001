@@ -27,6 +27,7 @@ import UpDownIcon from './UpDownIcon';
 
 // Not Found
 import NotFoundIcon from './NotFoundIcon';
+import SearchNFIcon from './SearchNFIcon';
 
 // Stack Over Flow
 export {
@@ -48,7 +49,7 @@ export {
 };
 
 // NotFound
-export { NotFoundIcon };
+export { NotFoundIcon, SearchNFIcon };
 
 // SNS
 

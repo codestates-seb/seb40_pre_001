@@ -7,6 +7,7 @@ const pagesState = atom({
     currentPage: 1,
     postsLength: 0,
     currentContentId: null,
+    keyword: '',
   },
 });
 

@@ -16,6 +16,8 @@ const getAllPostData = async () => {
 const getPostsByKeyword = async (keyword) => {
   const { data } = await apiClient.get(`/api/search?q=${keyword}`);
 
+  console.log('data', data);
+
   return data;
 };
 

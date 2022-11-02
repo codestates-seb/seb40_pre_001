@@ -38,7 +38,7 @@ const ROUTES = Object.freeze({
     name: '404NotFound',
   },
   SEARCH: {
-    path: '/search?q=:keyword',
+    path: '/search',
     name: 'Search',
   },
 });

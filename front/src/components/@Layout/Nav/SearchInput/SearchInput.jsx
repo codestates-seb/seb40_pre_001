@@ -1,37 +1,36 @@
-import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import useDebounce from '../../../../hooks/useDebounce';
-import usersState from '../../../../store/users';
+import React from 'react';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import pagesState from '../../../../store/pagesState';
+import { usersState } from '../../../../store';
 import SearchIcon from '../../../@common/Icons/SearchIcon';
 
 import * as S from './SearchInput.style';
 
 const SearchInput = () => {
-  // const navigate = useNavigate();
-  const [keyword, setKeyword] = useState('');
+  const navigate = useNavigate();
+  const [state, setFilterKeyword] = useRecoilState(pagesState);
+  const keywordRef = useRef(null);
   const isAuthenticated = useRecoilValue(usersState);
-  const debounceKeyword = useDebounce(keyword);
-  debounceKeyword;
-
-  const [searchParams, setSearchParams] = useSearchParams({ q: '' });
-
-  console.log(searchParams.get('q'));
 
   return (
     <S.Form>
       <S.Container isAuthenticated={isAuthenticated}>
         <S.Input
+          ref={keywordRef}
           type='text'
           placeholder='Search...'
           autoComplete='off'
           maxLength={240}
           aria-label='Search'
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-          onKeyPress={(e) =>
-            e.key === 'Enter' && setSearchParams({ q: 'asdasd' })
-          }
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              setFilterKeyword({ ...state, keyword: keywordRef.current.value });
+              navigate(`/search?q=${keywordRef.current.value}`);
+            }
+          }}
         ></S.Input>
         <SearchIcon
           width={18}

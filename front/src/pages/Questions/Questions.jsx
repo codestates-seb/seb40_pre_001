@@ -2,17 +2,18 @@ import React from 'react';
 import * as S from './Questions.style';
 import { Widget, Header } from '../../components/Questions';
 import Pagination from '../../components/@common/Pagination/Pagination';
-import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../store';
+import PostBox from '../../components/Questions/Main/Post/PostBox';
+import useGetAllPosts from '../../hooks/questions/useGetAllPosts';
 
 const Questions = () => {
-  const { postsLength } = useRecoilValue(pagesState);
+  const { data: length } = useGetAllPosts((data) => data.length);
 
   return (
     <S.ContentWrapper>
       <S.MainContainer>
-        <Header />
-        <Pagination length={postsLength} />
+        <Header title='All Questions' length={length} />
+        <PostBox />
+        <Pagination length={length} />
       </S.MainContainer>
       <Widget />
     </S.ContentWrapper>
