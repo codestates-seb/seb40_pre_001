@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
@@ -22,10 +23,13 @@ public class UserPatchDto extends Auditable {
 
     private String password;
 
+    private String description;
+
     private String userNickname;
 
     private LocalDate birthday;
 
     private String address;
+    private User.UserStatus userStatus;
 }
 

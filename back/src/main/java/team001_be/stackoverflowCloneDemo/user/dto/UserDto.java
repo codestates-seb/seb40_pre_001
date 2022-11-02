@@ -3,6 +3,9 @@ package team001_be.stackoverflowCloneDemo.user.dto;
 import lombok.*;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 @Getter
@@ -19,11 +22,14 @@ public class UserDto {
 
     private String userNickname;
 
+    private String description;
+
     private LocalDate birthday;
 
     private String address;
 
     private User.UserStatus userStatus;
+    private boolean locked;
 
 }
 

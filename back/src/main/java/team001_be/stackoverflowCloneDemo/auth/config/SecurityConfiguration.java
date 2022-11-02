@@ -18,12 +18,13 @@ import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
 import team001_be.stackoverflowCloneDemo.filter.JwtAuthenticationFilter;
 import org.springframework.security.authentication.AuthenticationManager;
 import team001_be.stackoverflowCloneDemo.filter.JwtAuthorizationFilter;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-//@Configuration
+@Configuration
 @EnableWebSecurity(debug = true)
 public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
@@ -35,21 +36,24 @@ public class SecurityConfiguration {
         this.authorityUtils = authorityUtils;
     }
 
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http
                 .httpBasic().disable()
-                .cors(withDefaults())
-                .csrf().disable() //csrf 공격 설정 비활성화
+                .cors(withDefaults())//csrf 공격 설정 비활성화
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //토큰 기반 인증이라 세션 사용 X
                 .and()
                 .formLogin().disable()
                 .apply(new CustomFilterConfigurer())
                 .and()
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().permitAll()
+                .authorizeHttpRequests()
+                    .antMatchers("/**").permitAll()
+                    .antMatchers("/h2-console/**").permitAll()
+                .and()
+                    .headers()
+                    .addHeaderWriter(new XFrameOptionsHeaderWriter(
+                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)
                 );
         return http.build();
     }

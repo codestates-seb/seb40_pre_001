@@ -12,7 +12,7 @@ import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-01T19:23:26+0900",
+    date = "2022-11-02T12:22:36+0900",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 11.0.16 (Azul Systems, Inc.)"
 )
 @Component
@@ -57,6 +57,8 @@ public class QuestionMapperImpl implements QuestionMapper {
 
         QuestionResponseDto questionResponseDto = new QuestionResponseDto();
 
+        questionResponseDto.setCreatedAt( question.getCreatedAt() );
+        questionResponseDto.setModifiedAt( question.getModifiedAt() );
         questionResponseDto.setQuestionId( question.getQuestionId() );
         if ( question.getUserId() != null ) {
             questionResponseDto.setUserId( String.valueOf( question.getUserId() ) );
@@ -74,8 +76,6 @@ public class QuestionMapperImpl implements QuestionMapper {
             questionResponseDto.setQuestionTagList( new ArrayList<QuestionTag>( list ) );
         }
         questionResponseDto.setHasAccepted( question.isHasAccepted() );
-        questionResponseDto.setDateCreated( question.getDateCreated() );
-        questionResponseDto.setDateModified( question.getDateModified() );
 
         return questionResponseDto;
     }

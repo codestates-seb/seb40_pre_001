@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.user.entity.mapper;
+package team001_be.stackoverflowCloneDemo.user.mapper;
 
 import org.mapstruct.Mapper;
 
@@ -13,5 +13,6 @@ public interface UserMapper {
      User userPostDtoToUser(UserPostDto userPostDto);
      User userPatchDtoToUser(UserPatchDto userPatchDto);
      UserResponseDto userToUserResponseDto(User user);
+
 }
 

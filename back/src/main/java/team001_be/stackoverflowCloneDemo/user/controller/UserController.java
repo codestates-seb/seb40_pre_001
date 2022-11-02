@@ -18,7 +18,7 @@ import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 
 import team001_be.stackoverflowCloneDemo.user.entity.User;
-import team001_be.stackoverflowCloneDemo.user.entity.mapper.UserMapper;
+import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
@@ -60,10 +60,22 @@ public class UserController {
         );
     }
 
+    //profile 요청
+    @GetMapping("/{user-id}/{userNickname}")
+    public ResponseEntity getUser(
+            @PathVariable("user-id") @Positive long userId,
+            @PathVariable("userNickname")String userNickname) {
+        User user = userService.findUser(userId);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK
+        );
+    }
+
     //4. 회원 정보 전부 출력 -  완료
     @GetMapping("/all-users")
-    public List<UserResponseDto> retrieveUsers() {
-        return userService.findAll();
+    public List<UserResponseDto> userResponseDto() {
+        return userService.findAllUsers();
     }
 
 
@@ -79,10 +91,17 @@ public class UserController {
                 , HttpStatus.OK);
     }
     @DeleteMapping("/{user-id}")
-    public ResponseEntity deleteUser(@PathVariable("user-id") @Positive Long userId,
-                                         @Positive @RequestParam UserPatchDto userPatchDto){
+    public ResponseEntity deleteUser(@PathVariable("user-id") @Positive Long userId){
         userService.deleteUser(userId);
-
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PatchMapping("/withdrawal/{user-id}")
+    public ResponseEntity disableUser(@PathVariable("user-id") @Positive Long userId){
+        userService.disableUser(userId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

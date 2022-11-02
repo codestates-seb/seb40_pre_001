@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
-import team001_be.stackoverflowCloneDemo.user.entity.mapper.UserMapper;
+import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -45,6 +45,7 @@ public class UserService {
         // DB에 User Role 저장
 //        List<String> roles = authorityUtils.createRoles(user.getEmail());
 //        user.setRoles(roles);
+
         return userRepository.save(user);
     }
 
@@ -57,7 +58,7 @@ public class UserService {
     }
 
     // 전체조회 service
-    public List<UserResponseDto> findAll() {
+    public List<UserResponseDto> findAllUsers() {
         List<User> userList = userRepository.findAll();
         List<UserResponseDto> userDtoList = new ArrayList<>();
         for (User user : userList){
@@ -66,6 +67,9 @@ public class UserService {
         }
         return userDtoList;
     }
+
+
+
 
 
     public User updateUser(User user){
@@ -96,6 +100,13 @@ public class UserService {
         userRepository.delete(user);
     }
 
+    public void disableUser(Long userId){
+        User user = findVerifiedUserById(userId);
+        verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
+        User.UserStatus userStatus = User.UserStatus.USER_WITHDRAWAL;
+        userRepository.save(user);
+    }
+
     private User findVerifiedUserById(Long userId){
         Optional<User> optionalUser = userRepository.findByUserId(userId);
         User foundUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
@@ -114,9 +125,7 @@ public class UserService {
     }
 
     private void verifyExistsEmail(String email) {
-
         Optional<User> user = userRepository.findByEmail(email);
-
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }

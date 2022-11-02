@@ -39,6 +39,13 @@ public class User extends Auditable{
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
+
+
+
+
+
+    @Column(name = "locked")
+    private boolean locked;
  
     public User(String email, String userNickname, String description, String address, LocalDate birthday) {
         this.email = email;
@@ -58,12 +65,15 @@ public class User extends Auditable{
         user.setAddress(userDto.getAddress());
         return user;
     }
-  
+
     public enum UserStatus {
         USER_EXIST("이미 가입한 회원"),
-        USER_NOT_EXIST("가입하지 않은 회원");
+        USER_NOT_EXIST("가입하지 않은 회원"),
+        USER_WITHDRAWAL("탈퇴한 회원");
 
         @Getter
+        @Setter
+        @Enumerated(EnumType.STRING)
         private String status;
 
         UserStatus(String status) {
