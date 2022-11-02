@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './Pagination.style';
 import { useRecoilState } from 'recoil';
-import { pagesState } from '../../../../store';
-import { pageLimits } from '../../../../constants';
+import { pagesState } from '../../../store';
+import { pageLimits } from '../../../constants';
 
 const RightBox = () => {
   const [limit, setLimit] = useRecoilState(pagesState);

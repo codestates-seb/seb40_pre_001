@@ -1,13 +1,13 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { pagesState } from '../../../../store';
+import { pagesState } from '../../../store';
 import * as S from './Pagination.style';
 
-const LeftBox = () => {
+const LeftBox = ({ length }) => {
   const [state, setCurrentPage] = useRecoilState(pagesState);
-  const { selectedLimit, postsLength } = useRecoilValue(pagesState);
+  const { selectedLimit } = useRecoilValue(pagesState);
 
-  const lastPage = Math.ceil(postsLength / selectedLimit);
+  const lastPage = Math.ceil(length / selectedLimit);
 
   const createEmptyArray = () => {
     return Array.from(
