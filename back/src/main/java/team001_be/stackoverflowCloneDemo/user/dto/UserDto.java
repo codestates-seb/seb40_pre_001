@@ -28,9 +28,6 @@ public class UserDto {
 
     private String address;
 
-    private User.UserStatus userStatus;
-    private boolean locked;
-
 }
 
 

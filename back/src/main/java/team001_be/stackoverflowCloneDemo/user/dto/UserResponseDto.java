@@ -22,9 +22,6 @@ public class UserResponseDto extends Auditable {
     private String description;
     private String address;
     private LocalDate birthday;
-
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false)
-    private User.UserStatus userStatus = User.UserStatus.USER_EXIST;
+    private boolean active;
 
 }

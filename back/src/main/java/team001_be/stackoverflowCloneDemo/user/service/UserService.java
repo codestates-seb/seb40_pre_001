@@ -1,5 +1,10 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
+import lombok.Builder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
@@ -20,8 +25,9 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class UserService {
-  
+public class UserService implements UserDetailsService {
+
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
@@ -70,8 +76,6 @@ public class UserService {
 
 
 
-
-
     public User updateUser(User user){
         User foundUser = findUser(user.getUserId());
         //user 권한 확인 jwt
@@ -91,7 +95,12 @@ public class UserService {
         return saveUser(foundUser);
     }
 
-
+    public User disableUser(Long userId){
+        User user = findVerifiedUserById(userId);
+        verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
+        user.setActive(false);
+        return saveUser(user);
+    }
 
     public void deleteUser(Long userId){
         User user = findVerifiedUserById(userId);
@@ -100,12 +109,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public void disableUser(Long userId){
-        User user = findVerifiedUserById(userId);
-        verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
-        User.UserStatus userStatus = User.UserStatus.USER_WITHDRAWAL;
-        userRepository.save(user);
-    }
+
 
     private User findVerifiedUserById(Long userId){
         Optional<User> optionalUser = userRepository.findByUserId(userId);
@@ -129,4 +133,18 @@ public class UserService {
         if (user.isPresent())
             throw new BusinessLogicException(ExceptionCode.USER_EXISTS);
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
+
+/*    @Override
+    public UserDetails loadUserByUsername(String email)
+            throws UsernameNotFoundException {
+        Optional<User> user = Optional.ofNullable(userRepository.getOnlyClosedUser(email));
+        user.orElseThrow(() -> new UsernameNotFoundException("이미 탈퇴한 계정입니다. "));
+        return user.map(User::new).get();
+    }*/
+
 }

@@ -21,7 +21,6 @@ public class ClientDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
     private final CustomAuthorityUtils authorityUtils;
 
-
     @Override
     public ClientDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userRepository.findByEmail(username);

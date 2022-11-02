@@ -1,11 +1,16 @@
 package team001_be.stackoverflowCloneDemo.auth.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,15 +24,23 @@ import team001_be.stackoverflowCloneDemo.filter.JwtAuthenticationFilter;
 import org.springframework.security.authentication.AuthenticationManager;
 import team001_be.stackoverflowCloneDemo.filter.JwtAuthorizationFilter;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
+import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
+import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 
+import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.H2;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity(debug = true)
+
 public class SecurityConfiguration {
     private final JwtTokenizer jwtTokenizer;
+
+
+    private UserService userService;
 
     private final CustomAuthorityUtils authorityUtils;
 
@@ -45,10 +58,9 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //토큰 기반 인증이라 세션 사용 X
                 .and()
                 .formLogin().disable()
-                .apply(new CustomFilterConfigurer())
+                .apply(new CustomFilterConfigurer()) //jwt 토크나이저
                 .and()
                 .authorizeHttpRequests()
-                    .antMatchers("/**").permitAll()
                     .antMatchers("/h2-console/**").permitAll()
                 .and()
                     .headers()
@@ -57,6 +69,30 @@ public class SecurityConfiguration {
                 );
         return http.build();
     }
+/*    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService);
+    }*/
+
+  /*  @Bean
+    DataSource userDataSource() {
+        return new EmbeddedDatabaseBuilder()
+                .setType(EmbeddedDatabaseType.H2)
+                .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION) //스프링내장형 DB 수정필요!!
+                .build();
+    }
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(userDataSource())
+                .withDefaultSchema()
+                .passwordEncoder(passwordEncoder())
+                .usersByUsernameQuery(
+                        "SELECT username, password, active from userDataSource where active = true")
+                .authoritiesByUsernameQuery(
+                        "SELECT username, password, active from userDataSource where active = true");
+    }*/
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
