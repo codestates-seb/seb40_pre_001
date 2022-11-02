@@ -34,11 +34,11 @@ const ROUTES = Object.freeze({
     name: 'Ask Question',
   },
   NOT_FOUND: {
-    path: '/404',
+    path: '*',
     name: '404NotFound',
   },
   SEARCH: {
-    path: '/search',
+    path: '/search:keyword',
     name: 'Search',
   },
 });

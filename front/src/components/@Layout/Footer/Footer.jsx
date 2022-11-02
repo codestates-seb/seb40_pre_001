@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { SmallLogoIcon } from '../../@common/Icons';
 import FooterContent from './Content/Content';
 import * as S from './Footer.style';
