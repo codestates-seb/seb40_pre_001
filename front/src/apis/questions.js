@@ -27,8 +27,17 @@ const createPost = async (newPost) => {
   return data;
 };
 
-const putStatus = async (id, newStatus) => {
-  return await apiClient.put(`/api/questions/${id}`, newStatus);
+const patchMethod = async (id, newStatus) => {
+  const { data } = await apiClient.put(`/api/questions/${id}`, newStatus);
+  console.log(data);
+
+  return data;
 };
 
-export { apiClient, getAllPostData, getPostsByKeyword, createPost, putStatus };
+export {
+  apiClient,
+  getAllPostData,
+  getPostsByKeyword,
+  createPost,
+  patchMethod,
+};

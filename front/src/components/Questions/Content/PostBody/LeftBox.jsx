@@ -1,47 +1,48 @@
 import React from 'react';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 import pagesState from '../../../../store/pagesState';
-import { apiClient } from '../../../../apis/questions';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { patchMethod } from '../../../../apis/questions';
+import useGetAllPosts from '../../../../hooks/questions/useGetAllPosts';
 
-const LeftBox = ({ status }) => {
-  // const queryClient = useQueryClient();
+const LeftBox = () => {
+  // useParams 사용시에 contentId 저장이 필요없음
+  const { data, isSuccess } = useGetAllPosts((data) => {
+    return data.find((qu) => qu.contentId === 1);
+  });
+
+  const queryClient = useQueryClient();
   const { currentContentId } = useRecoilValue(pagesState);
 
-  // const updateVoteCount = useMutation(
-  //   (vote) => {
-  //     putStatus(currentContentId, vote);
-  //   },
+  const upVote = useMutation(({ id, status }) => patchMethod(id, status), {
+    onSuccess: () => {
+      console.log('success');
 
-  //   {
-  //     retry: 1,
-  //     onSuccess: () =>
-  //       queryClient.invalidateQueries(['questions'], currentContentId),
-  //   },
-  // );
-
-  const putMethod = async () => {
-    return await apiClient.put(`/api/questions/${currentContentId}`, {
-      ...status,
-      votes: status.votes + 1,
-    });
-  };
+      queryClient.invalidateQueries(['questions']);
+    },
+    retry: 1,
+  });
 
   return (
     <S.LeftBox>
       <S.VotingContainer>
         <S.IconContainer
           onClick={() => {
-            // updateVoteCount.mutate(status.votes + 1);
-            putMethod();
+            upVote.mutate({
+              id: currentContentId,
+              status: {
+                ...data?.status,
+                votes: data?.status?.votes + 1,
+              },
+            });
           }}
         >
           <ArrowIcon direction='up' />
         </S.IconContainer>
         <S.VoteCount>
-          <span>{status.votes}</span>
+          {isSuccess && <span>{data?.status?.votes}</span>}
         </S.VoteCount>
         <S.IconContainer>
           <ArrowIcon direction='down' />

@@ -36,7 +36,6 @@ const Answer = () => {
       <StyledButton
         content='Post Your Answer'
         style={{ width: 129, height: 45 }}
-        onClick={() => console.log(editor.html)}
       />
     </>
   );

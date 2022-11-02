@@ -112,6 +112,14 @@ const FeatureLeft = styled.div`
   }
 `;
 
+const UserBox = styled.div``;
+
+const Comment = styled.span`
+  cursor: pointer;
+  color: hsl(210, 8%, 55%);
+  opacity: 0.6;
+`;
+
 // Answers
 
 export {
@@ -126,4 +134,6 @@ export {
   BottomBox,
   FeatureBox,
   FeatureLeft,
+  UserBox,
+  Comment,
 };

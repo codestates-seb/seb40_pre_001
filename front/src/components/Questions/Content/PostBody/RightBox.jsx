@@ -25,7 +25,7 @@ const RightBox = ({ tags, content }) => {
           </S.FeatureLeft>
         </S.FeatureBox>
       </S.BottomBox>
-      <div>Add a comment</div>
+      <S.Comment>Add a comment</S.Comment>
     </S.RightBox>
   );
 };
