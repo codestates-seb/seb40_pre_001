@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.question.mapper.response;
+package team001_be.stackoverflowCloneDemo.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -47,6 +47,7 @@ public class User extends Auditable {
     private List<Question> questionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
     private List<Answer> answerList = new ArrayList<>();
 
     public User(String email, String userNickname, String description, String address, LocalDate birthday) {
@@ -79,4 +80,13 @@ public class User extends Auditable {
             this.status = status;
         }
     }
+
+    public void addQuestionList(Question question){
+        this.questionList.add(question);
+    }
+
+    public void addAnswerList(Answer answer){
+        this.answerList.add(answer);
+    }
+
 }

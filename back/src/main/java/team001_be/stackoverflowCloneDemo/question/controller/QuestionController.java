@@ -9,7 +9,7 @@ import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.mapper.QuestionMapper;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
-import team001_be.stackoverflowCloneDemo.question.mapper.response.SingleResponseDto;
+import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

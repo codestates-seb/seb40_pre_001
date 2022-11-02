@@ -2,6 +2,8 @@ package team001_be.stackoverflowCloneDemo.question.entity;
 
 import lombok.*;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
+import team001_be.stackoverflowCloneDemo.audit.Auditable;
+import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.persistence.*;
@@ -11,7 +13,7 @@ import java.util.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Question {
+public class Question extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "QUESTION_ID")
@@ -38,18 +40,17 @@ public class Question {
     @ToString.Exclude
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
     @ToString.Exclude
     private List<Answer> answerList = new ArrayList<>();
 
-    //erd 설계와 이름 다름
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionComment.class)
+    @ToString.Exclude
+    private List<QuestionComment> questionCommentList = new ArrayList<>();
+
     //답변을 선택했는지 여부
     @Column(nullable = false)
     private boolean hasAccepted;
-
-    private Timestamp dateCreated;
-
-    private Timestamp dateModified;
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
@@ -74,6 +75,7 @@ public class Question {
     public void updateViewCount(Long viewCount){
         this.viewCount = viewCount;
     }
+    public void updateVoteCount(Long voteCount){this.voteCount = voteCount;}
 
     public void setQuestionTitle(String questionTitle) {
         this.questionTitle = questionTitle;

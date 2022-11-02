@@ -1,4 +1,4 @@
-package team001_be.stackoverflowCloneDemo.question.mapper.response;
+package team001_be.stackoverflowCloneDemo.response;
 
 import lombok.Getter;
 import org.springframework.data.domain.Page;

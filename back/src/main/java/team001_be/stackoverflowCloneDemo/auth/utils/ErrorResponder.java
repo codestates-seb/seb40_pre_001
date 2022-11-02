@@ -3,7 +3,7 @@ package team001_be.stackoverflowCloneDemo.auth.utils;
 import com.google.gson.Gson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import team001_be.stackoverflowCloneDemo.question.mapper.response.ErrorResponse;
+import team001_be.stackoverflowCloneDemo.response.ErrorResponse;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
