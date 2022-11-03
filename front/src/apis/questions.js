@@ -28,10 +28,15 @@ const createPost = async (newPost) => {
 };
 
 const patchMethod = async (id, newStatus) => {
-  const { data } = await apiClient.put(`/api/questions/${id}`, newStatus);
-  console.log(data);
+  const { data } = await apiClient.patch(`/api/questions/${id}`, newStatus);
 
   return data;
+};
+
+const deletePost = async (id) => {
+  const response = await apiClient.delete(`/api/questions/${id}`);
+
+  return response;
 };
 
 export {
@@ -40,4 +45,5 @@ export {
   getPostsByKeyword,
   createPost,
   patchMethod,
+  deletePost,
 };

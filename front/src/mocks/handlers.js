@@ -1,16 +1,18 @@
 import { rest } from 'msw';
-import questionData from './data/questions';
+import questionsData from './data/questions';
+
+let mockData = [...questionsData];
 
 export const handlers = [
   // Get All  Post
   rest.get('/api/questions', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(questionData));
+    return res(ctx.status(200), ctx.json(mockData));
   }),
 
   // Get Post By Content Id
   rest.get('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
-    const matchIdData = questionData.find(
+    const matchIdData = mockData.find(
       ({ contentId }) => contentId === Number(id),
     );
 
@@ -19,7 +21,7 @@ export const handlers = [
 
   // Create New Post
   rest.post('/api/questions/ask', (req, res, ctx) => {
-    questionData.unshift(req.body);
+    mockData.unshift(req.body);
 
     return res(ctx.status(201), ctx.delay());
   }),
@@ -51,25 +53,40 @@ export const handlers = [
   rest.get('/api/search?q=:keyword', (req, res, ctx) => {
     const keyword = req.url.searchParams.get('q').toUpperCase();
 
-    const filteredItems = questionData.filter((question) =>
+    const Filtered = mockData.filter((question) =>
       question.title.toUpperCase().includes(keyword),
     );
 
-    return res(ctx.status(200), ctx.json(filteredItems));
+    return res(ctx.status(200), ctx.json(Filtered));
   }),
 
   // Update Vote Count
 
-  rest.put('/api/questions/:id', (req, res, ctx) => {
+  rest.patch('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
     const status = req.body;
-    const modified = { ...questionData[id], status };
+    const index = mockData.findIndex((data) => data.contentId === Number(id));
+    const modified = { ...mockData[index], status };
 
     // console.log('id', id);
-    console.log('status', status);
-    console.log('modi', modified);
+    // console.log('status', status);
+    // console.log('modi', modified);
 
-    return res(ctx.delay(), ctx.status(200), ctx.json(modified));
+    mockData[index] = modified;
+
+    return res(ctx.delay(), ctx.status(201), ctx.json(mockData));
+  }),
+
+  rest.delete('/api/questions/:id', (req, res, ctx) => {
+    const { id } = req.params;
+
+    console.log(id);
+
+    mockData = mockData.filter((question) => question.contentId !== Number(id));
+
+    console.log('deleted', mockData);
+
+    return res(ctx.status(204), ctx.delay());
   }),
 
   // Auth

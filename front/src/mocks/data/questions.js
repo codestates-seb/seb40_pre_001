@@ -20,13 +20,36 @@ const questionsData = [
     },
     answers: [
       {
+        answerId: 1,
         author: 'John doe',
-        userId: 12344,
-        createdAt: '2022-10-27',
+        userId: 1231244,
+        createdAt: '2022-1-17',
         content: {
           image: 'url',
           context: `<span>힘드렁<strong>심드렁</strong></span>`,
         },
+        status: {
+          votes: 3,
+          answers: 2,
+          views: 99,
+        },
+        tags: ['MoCkDaDa', 'Angel Di Maria'],
+      },
+      {
+        answerId: 2,
+        author: 'wowzer',
+        userId: 1231244,
+        createdAt: '2012-10-27',
+        content: {
+          image: 'url',
+          context: `<span>심드렁<strong>힘드렁</strong></span>`,
+        },
+        status: {
+          votes: 32,
+          answers: 11,
+          views: 9,
+        },
+        tags: ['MoCkDaDa', 'Leo Messi'],
       },
     ],
   },
