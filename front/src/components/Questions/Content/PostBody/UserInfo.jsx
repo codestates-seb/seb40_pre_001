@@ -1,12 +1,18 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
 
-const UserInfo = () => {
+const UserInfo = ({ author, createdAt }) => {
+  const isAuthor = author === 'keonhee Lee';
+
+  console.log(createdAt);
+
   return (
-    <S.Wrapper>
+    <S.Wrapper isAuthor={isAuthor}>
       <S.Container>
         <S.TimeContainer>
-          asked <span>1 min ago</span>
+          asked{' '}
+          <TimeAgo date={createdAt} style={{ color: 'hsl(210, 8%, 45%)' }} />
         </S.TimeContainer>
         <S.UserBox>
           <a>
@@ -20,7 +26,7 @@ const UserInfo = () => {
             </div>
           </a>
           <S.UserDetails>
-            <a>Christopher Fernandez</a>
+            <a>{author}</a>
             <div>
               <span>5 bronze badges</span>
             </div>

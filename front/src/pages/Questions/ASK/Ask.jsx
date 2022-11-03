@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 import useGetAllPost from '../../../hooks/questions/useGetAllPosts';
-import usePost from '../../../hooks/usePost';
+import { useCreatePost } from '../../../hooks/usePost';
 
 import * as S from './Ask.style';
 
@@ -17,7 +17,7 @@ const Ask = () => {
   // 예시
   const [state, setState] = useState({ title: '', author: '', context: '' });
   const { data, status } = useGetAllPost();
-  const addPost = usePost('questions', '/questions');
+  const addPost = useCreatePost('questions', '/questions');
 
   // createdAt
   const date = new Date().getDate();

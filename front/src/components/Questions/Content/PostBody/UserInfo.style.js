@@ -5,7 +5,8 @@ const Wrapper = styled.div`
   margin-right: 0;
   margin-left: 0;
   border-radius: 3px;
-  background-color: #d9eaf7;
+  // Author 여부에 따라 색 바뀜
+  background-color: ${({ isAuthor }) => (isAuthor ? '#d9eaf7' : 'transparent')};
   text-align: left;
   vertical-align: top;
   width: 200px;

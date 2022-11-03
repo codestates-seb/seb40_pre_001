@@ -7,10 +7,13 @@ import CustomLink from '../../../@common/Link';
 
 import * as S from './Post.style';
 import { TextViewer } from '../../../@common/TextEditor/TextEditor';
+import useUpdateStatus from '../../../../hooks/questions/useUpdateStatus';
 
 const PostDetails = ({ data }) => {
-  const { title, author, content, tags, createdAt, userId, contentId } = data;
+  const { title, author, content, tags, createdAt, userId, contentId, status } =
+    data;
   const [state, setCurrentContentId] = useRecoilState(pagesState);
+  const { handleStatus } = useUpdateStatus();
 
   return (
     <S.BoxRight>
@@ -20,6 +23,8 @@ const PostDetails = ({ data }) => {
             ...state,
             currentContentId: contentId,
           });
+
+          handleStatus(contentId, { ...status, views: status.views + 1 });
         }}
       >
         <CustomLink path={`/questions/${userId}`}>{title}</CustomLink>

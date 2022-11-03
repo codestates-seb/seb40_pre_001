@@ -57,6 +57,7 @@ const ViewBox = styled(VoteBox)`
 `;
 
 const BoxRight = styled.div`
+  user-select: none;
   width: 574px;
   flex-grow: 1;
   max-width: 100%;

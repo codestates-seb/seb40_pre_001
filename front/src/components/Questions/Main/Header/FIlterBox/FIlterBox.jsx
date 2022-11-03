@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { categoryButton } from '../../../../../constants';
 import { pagesState } from '../../../../../store';
@@ -21,16 +21,9 @@ const FilterBox = ({ length }) => {
       <div>
         <S.ButtonWrapper>
           <S.BoxLeft>
-            {categoryButton.map((button) => {
-              return button === 'Bountied' ? (
-                <S.CategoryButton key={button}>
-                  {button}
-                  <S.Count>{255}</S.Count>
-                </S.CategoryButton>
-              ) : (
-                <S.CategoryButton key={button}>{button}</S.CategoryButton>
-              );
-            })}
+            <S.CategoryButton className='active'>Newest</S.CategoryButton>
+            <S.CategoryButton>Unanswered</S.CategoryButton>
+            <S.CategoryButton className='moreBtn'>More</S.CategoryButton>
           </S.BoxLeft>
           <div>
             <S.FilterButton>

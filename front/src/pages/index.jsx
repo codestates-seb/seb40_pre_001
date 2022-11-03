@@ -4,7 +4,6 @@ import { ROUTES } from '../constants';
 import { Nav } from '../components/@Layout';
 
 import Layout from './PagesLayout/Layout';
-import Home from './Home';
 import Tags from './Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
@@ -14,6 +13,7 @@ import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import NotFound from './404/404';
 import Search from './Search/Search';
+import { getAllPostData } from '../apis/questions';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -21,20 +21,22 @@ const PAGES = [
     element: <Layout />,
     children: [
       {
-        name: ROUTES.HOME.name,
-        path: ROUTES.HOME.path,
-        element: <Home />,
+        name: ROUTES.INDEX.name,
+        path: ROUTES.INDEX.path,
+        element: <Questions />,
+      },
+      {
+        name: ROUTES.QUESTIONS.name,
+        path: ROUTES.QUESTIONS.path,
+        loader: () => getAllPostData(),
+        element: <Questions />,
       },
       {
         name: ROUTES.TAGS.name,
         path: ROUTES.TAGS.path,
         element: <Tags />,
       },
-      {
-        name: ROUTES.QUESTIONS.name,
-        path: ROUTES.QUESTIONS.path,
-        element: <Questions />,
-      },
+
       {
         name: ROUTES.POST.name,
         path: ROUTES.POST.path,

@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      cacheTime: 1000 * 60 * 60 * 24, // 24h 추후 설정 변경 예정
+      staleTime: 5 * 60 * 1000,
       notifyOnChangeProps: 'all',
     },
   },

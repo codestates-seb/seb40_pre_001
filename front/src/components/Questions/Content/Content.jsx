@@ -7,13 +7,26 @@ import RightBox from './PostBody/RightBox';
 import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
+import { useRecoilValue } from 'recoil';
+import { pagesState } from '../../../store';
+import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+import Answer from './Answer/Answer';
 
-const Content = ({ data }) => {
-  const { title, tags, content, status, answers } = data;
+const Content = () => {
+  const { currentContentId } = useRecoilValue(pagesState);
+  const { data } = useGetAllPosts((data) => {
+    const currentPost = data.find(
+      (post) => post.contentId === currentContentId,
+    );
+
+    return currentPost;
+  });
+
+  const { title, tags, content, status, answers, createdAt, author } = data;
 
   return (
     <div>
-      <Header title={title} />
+      <Header title={title} views={status.views} createdAt={createdAt} />
       <M.MainContainer>
         <S.ImgContainer>
           <img
@@ -26,23 +39,27 @@ const Content = ({ data }) => {
         </S.ImgContainer>
         <S.PostLayout>
           <LeftBox status={status} />
-          <RightBox tags={tags} content={content} />
+          <RightBox
+            tags={tags}
+            content={content}
+            author={author}
+            createdAt={createdAt}
+          />
         </S.PostLayout>
         {/* Answers */}
-        {answers.map(({ content }, i) => {
+        <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
+        {answers?.map(({ content, status, tags, author, createdAt }, i) => {
           return (
-            <>
-              <div>
-                <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
-              </div>
-              <S.PostLayout key={i}>
-                <LeftBox status={status} />
-                <RightBox tags={tags} content={content} />
-              </S.PostLayout>
-            </>
+            <Answer
+              key={i}
+              status={status}
+              tags={tags}
+              content={content}
+              author={author}
+              createdAt={createdAt}
+            />
           );
         })}
-
         {/* Post Answer */}
         <PostAnswer />
       </M.MainContainer>

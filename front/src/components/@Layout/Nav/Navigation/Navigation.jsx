@@ -7,8 +7,6 @@ import * as S from './Navigation.style';
 const Links = ({ isClicked, setIsClicked }) => {
   const isAuthenticated = useRecoilValue(usersState);
 
-  console.log(isAuthenticated);
-
   return (
     <S.Ol>
       {!isAuthenticated && (

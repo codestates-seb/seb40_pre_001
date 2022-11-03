@@ -9,6 +9,7 @@ const PostLayout = styled.div`
 
 // LeftBox
 const LeftBox = styled.div`
+  user-select: none;
   width: 52px;
   padding-right: 16px;
   grid-column: 1;
@@ -94,15 +95,15 @@ const FeatureBox = styled.div`
 `;
 
 const FeatureLeft = styled.div`
-  width: 110px;
+  width: 160px;
 
   display: flex;
-  justify-content: space-between;
 
   a {
     text-decoration: none;
     color: hsl(210, 8%, 45%);
     cursor: pointer;
+    margin-left: 10px;
   }
 `;
 
