@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AskZone = styled.div`
+const AskZone = styled.form`
   width: 100vw;
   /* height: 100vh; */
   display: flex;
