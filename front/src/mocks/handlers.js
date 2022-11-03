@@ -80,7 +80,7 @@ export const handlers = [
 
   //sign up
 
-  rest.post('/signup', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json('hello!'));
-  }),
+  // rest.post('/signup', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json('hello!'));
+  // }),
 ];

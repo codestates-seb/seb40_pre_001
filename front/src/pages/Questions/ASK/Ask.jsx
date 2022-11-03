@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import useGetAllPost from '../../../hooks/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
 import * as S from './Ask.style';
 

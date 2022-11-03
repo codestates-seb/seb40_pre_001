@@ -10,36 +10,32 @@ import { useState } from 'react';
 
 //sign up
 // import axios from 'axios';
-// import SignUpApi from '../../apis/signup';
-import axios from 'axios';
+import handleChange from '../../apis/signup';
+// import axios from 'axios';
 
 //로그인과 회원가입 페이지 추후 파일 위치 수정
 //버튼 스타일은 일단 복사하여 사용했는데 나중에 한 개의 style으로 합치고 재사용 가능하게 수정이 필요
+
+// console.log(nickName, email, password);
+// return await axios({
+//   method: 'post',
+//   url: 'https://630c-125-177-243-74.jp.ngrok.io/users/signup',
+//   data: {
+//     email: email,
+//     userNickname: nickName,
+//     password: password,
+//   },
+// })
+//   .then(console.log('sucess'))
+//   .catch((error) => {
+//     console.log(error);
+//   })
+//   .then(axios.get('https://630c-125-177-243-74.jp.ngrok.io/users/1'));
 
 const SignUpForm = () => {
   const [email, setEmail] = useState(null);
   const [nickName, setNickName] = useState(null);
   const [password, setPassword] = useState(null);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-
-    console.log(nickName, email, password);
-    axios({
-      method: 'post',
-      url: 'https://d499-125-177-243-74.jp.ngrok.io/users/signup',
-      data: {
-        email: email,
-        userNickname: nickName,
-        password: password,
-      },
-    })
-      .then(console.log('sucess'))
-      .catch((error) => {
-        console.log(error);
-      })
-      .then(axios.get('https://d499-125-177-243-74.jp.ngrok.io/users/1'));
-  };
 
   return (
     <S.Container>
@@ -56,7 +52,7 @@ const SignUpForm = () => {
           />
         );
       })}
-      <S.FormContainer onSubmit={handleChange}>
+      <S.FormContainer>
         <S.LoginForm>
           <S.FormContents>Display name</S.FormContents>
           <S.FormInput
@@ -97,7 +93,9 @@ const SignUpForm = () => {
             </S.AdviceMark>
           </S.OptionChocie>
 
-          <S.SubmitButton type='submit'>Sign up</S.SubmitButton>
+          <S.SubmitButton type='submit' onClick={(e) => handleChange(e)}>
+            Sign up
+          </S.SubmitButton>
           <S.SignUpWarn>
             By clicking “Sign up”, you agree to our
             <a> terms of service</a>, <a>privacy policy</a> and

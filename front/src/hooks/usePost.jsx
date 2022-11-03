@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { createPost } from '../apis/questions';
 
 const usePost = (queryKey, path) => {
+  //key 값이 바뀌지 않아도 변경되게 해준다
   const queryClient = useQueryClient();
+  //양식이 제출되거나 event 발생시 url 조작 > question 페이지 리다이렉션
   const navigate = useNavigate();
 
   return useMutation((Post) => createPost(Post), {
@@ -12,6 +14,7 @@ const usePost = (queryKey, path) => {
       queryClient.invalidateQueries([queryKey]);
       // 성공시에 페이지 리다이렉션 to path
       navigate(path);
+      console.log();
     },
     onError: (error) => {
       console.log(error);
