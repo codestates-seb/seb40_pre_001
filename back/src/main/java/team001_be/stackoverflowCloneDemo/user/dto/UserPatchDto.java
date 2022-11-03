@@ -26,6 +26,7 @@ public class UserPatchDto extends Auditable {
     private String description;
 
     private LocalDate birthday;
+    /*private boolean active = true;*/
 
 }
 

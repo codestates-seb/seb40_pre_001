@@ -27,6 +27,7 @@ public class UserDto {
     private LocalDate birthday;
 
     private String address;
+    /*private boolean active = true;*/
 
 }
 

@@ -69,6 +69,12 @@ public class SecurityConfiguration {
                 );
         return http.build();
     }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
 /*    @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService);
@@ -93,11 +99,6 @@ public class SecurityConfiguration {
                         "SELECT username, password, active from userDataSource where active = true");
     }*/
 
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
 
 
     @Bean

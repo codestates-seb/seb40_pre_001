@@ -48,6 +48,7 @@ public class UserController {
         User user = mapper.userPostDtoToUser(userPostDto);
         User createdUser = userService.createUser(user);
 
+
         UserResponseDto response = mapper.userToUserResponseDto(createdUser);
         return new ResponseEntity<>(
                 new SingleResponseDto<>(response),
@@ -103,7 +104,7 @@ public class UserController {
     }
 
     // 개인 비활성화 (deactivation)
-    @PutMapping("/deactivate/{user-id}")
+/*    @PutMapping("/deactivate/{user-id}")
     public ResponseEntity disableUser(@PathVariable("user-id") @Positive Long userId,
                                       @Valid @RequestBody UserPatchDto userPatchDto){
         userPatchDto.setUserId(userId);
@@ -112,7 +113,7 @@ public class UserController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user))
                 , HttpStatus.OK);
-    }
+    }*/
 
     // 로그인 실패처리
     @GetMapping("/login?error")

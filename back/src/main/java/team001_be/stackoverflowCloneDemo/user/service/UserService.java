@@ -1,6 +1,7 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
 import lombok.Builder;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -95,12 +97,12 @@ public class UserService implements UserDetailsService {
         return saveUser(foundUser);
     }
 
-    public User disableUser(Long userId){
+ /*   public User disableUser(Long userId){
         User user = findVerifiedUserById(userId);
         verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
         user.setActive(false);
         return saveUser(user);
-    }
+    }*/
 
     public void deleteUser(Long userId){
         User user = findVerifiedUserById(userId);
@@ -146,5 +148,6 @@ public class UserService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("이미 탈퇴한 계정입니다. "));
         return user.map(User::new).get();
     }*/
+
 
 }

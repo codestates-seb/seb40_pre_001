@@ -13,13 +13,15 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
 @Entity
 @Table(name = "\"User\"")
-public class User extends Auditable implements UserDetails{
-    public User(Long userId, String email, String password, String userNickname, String description, String address, LocalDate birthday, List<String> roles, boolean active) {
+public class User extends Auditable /*implements UserDetails*/{
+
+    @Builder
+    public User(Long userId, String email, String password, String userNickname, String description, String address, LocalDate birthday/*, List<String> roles*//*, boolean active*/) {
         this.userId = userId;
         this.email = email;
         this.password = password;
@@ -27,8 +29,8 @@ public class User extends Auditable implements UserDetails{
         this.description = description;
         this.address = address;
         this.birthday = birthday;
-        this.roles = roles;
-        this.active = active;
+       /* this.roles = roles;*/
+        /*this.active = active*/;
     }
 
     @Id
@@ -57,8 +59,8 @@ public class User extends Auditable implements UserDetails{
     private List<String> roles = new ArrayList<>();
 
 
-    @Column(name = "active")
-    private boolean active = true;
+/*    @Column(name = "active")
+    private boolean active = true;*/
 
 
 
@@ -74,7 +76,7 @@ public class User extends Auditable implements UserDetails{
         return user;
     }
 
-    @Override
+    /*@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.emptyList();
     }
@@ -102,7 +104,7 @@ public class User extends Auditable implements UserDetails{
     @Override
     public boolean isEnabled() {
         return active;
-    }
+    }*/
 
 
    /* public enum UserStatus {

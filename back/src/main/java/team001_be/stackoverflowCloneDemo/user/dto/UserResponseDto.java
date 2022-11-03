@@ -22,6 +22,6 @@ public class UserResponseDto extends Auditable {
     private String description;
     private String address;
     private LocalDate birthday;
-    private boolean active;
+    /*private boolean active;*/
 
 }
