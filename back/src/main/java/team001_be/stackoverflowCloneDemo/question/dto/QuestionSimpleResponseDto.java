@@ -2,8 +2,6 @@ package team001_be.stackoverflowCloneDemo.question.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
-import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
 import java.sql.Timestamp;
@@ -12,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class QuestionResponseDto {
+public class QuestionSimpleResponseDto {
     private Long questionId;
     private Long userId;
     private String questionTitle;
@@ -20,8 +18,6 @@ public class QuestionResponseDto {
     private int viewCount;
     private int voteCount;
     private List<QuestionTag> questionTagList;
-    private List<Answer> answerList;
-    private List<QuestionComment> questionCommentList;
     private boolean hasAccepted;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

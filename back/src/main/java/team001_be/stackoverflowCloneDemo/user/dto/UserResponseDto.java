@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,5 +18,6 @@ public class UserResponseDto {
     private String description;
     private String address;
     private LocalDate birthday;
-
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 }

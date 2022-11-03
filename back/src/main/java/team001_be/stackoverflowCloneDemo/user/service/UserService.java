@@ -99,7 +99,7 @@ public class UserService {
 
 
     private User findVerifiedUserById(Long userId) {
-        Optional<User> optionalUser = userRepository.findByUserId(userId);
+        Optional<User> optionalUser = userRepository.findById(userId);
         User foundUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         return foundUser;

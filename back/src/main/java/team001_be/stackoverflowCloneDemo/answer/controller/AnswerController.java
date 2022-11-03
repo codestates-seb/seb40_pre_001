@@ -43,7 +43,7 @@ public class AnswerController {
                 HttpStatus.CREATED);
     }
 
-    @GetMapping("/{question-id}/all-answers")
+//    @GetMapping("/{question-id}/all-answers")
 
     @DeleteMapping("/{question-id}/{answer-id}")
     public ResponseEntity deleteAnswer(@PathVariable("question-id") @Positive Long questionId,

@@ -50,6 +50,8 @@ public interface AnswerMapper {
         answerResponseDto.answerId( answer.getAnswerId() );
         answerResponseDto.context( answer.getContext() );
         answerResponseDto.voteCount( answer.getVoteCount() );
+        answerResponseDto.createdAt(answer.getCreatedAt());
+        answerResponseDto.modifiedAt(answer.getModifiedAt());
 
         return answerResponseDto.build();
     }

@@ -1,6 +1,8 @@
 package team001_be.stackoverflowCloneDemo.question.entity;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
@@ -20,7 +22,7 @@ public class Question extends Auditable {
     private Long questionId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     @ToString.Exclude
     @Setter
     private User user;
@@ -37,6 +39,7 @@ public class Question extends Auditable {
 
 //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
     private List<QuestionTag> questionTagList = new ArrayList<>();
 

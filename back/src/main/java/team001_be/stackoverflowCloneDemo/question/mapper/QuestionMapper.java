@@ -3,7 +3,7 @@ package team001_be.stackoverflowCloneDemo.question.mapper;
 import org.mapstruct.Mapper;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPatchDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
-import team001_be.stackoverflowCloneDemo.question.dto.QuestionResponseDto;
+import team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
@@ -15,29 +15,31 @@ public interface QuestionMapper {
     Question questionPostDtoToQuestion(QuestionPostDto questionPostDto);
     Question questionPatchDtoToQuestion(QuestionPatchDto questionPatchDto);
 
-    default QuestionResponseDto questionToQuestionResponseDto(Question question) {
+    default QuestionSimpleResponseDto questionToQuestionSimpleResponseDto(Question question) {
         if ( question == null ) {
             return null;
         }
 
-        QuestionResponseDto questionResponseDto = new QuestionResponseDto();
+        QuestionSimpleResponseDto questionSimpleResponseDto = new QuestionSimpleResponseDto();
 
-        questionResponseDto.setQuestionId( question.getQuestionId() );
-        questionResponseDto.setUserId(question.getUser().getUserId());
-        questionResponseDto.setQuestionTitle( question.getQuestionTitle() );
-        questionResponseDto.setContext( question.getContext() );
+        questionSimpleResponseDto.setQuestionId( question.getQuestionId() );
+        questionSimpleResponseDto.setUserId(question.getUser().getUserId());
+        questionSimpleResponseDto.setQuestionTitle( question.getQuestionTitle() );
+        questionSimpleResponseDto.setContext( question.getContext() );
         if ( question.getViewCount() != null ) {
-            questionResponseDto.setViewCount( question.getViewCount().intValue() );
+            questionSimpleResponseDto.setViewCount( question.getViewCount().intValue() );
         }
         if ( question.getVoteCount() != null ) {
-            questionResponseDto.setVoteCount( question.getVoteCount().intValue() );
+            questionSimpleResponseDto.setVoteCount( question.getVoteCount().intValue() );
         }
         List<QuestionTag> list = question.getQuestionTagList();
-        if ( list != null ) {
-            questionResponseDto.setQuestionTagList( new ArrayList<QuestionTag>( list ) );
+        if ( list != null && !list.isEmpty() ) {
+            questionSimpleResponseDto.setQuestionTagList( new ArrayList<QuestionTag>( list ) );
         }
-        questionResponseDto.setHasAccepted( question.isHasAccepted() );
+        questionSimpleResponseDto.setHasAccepted( question.isHasAccepted() );
+        questionSimpleResponseDto.setCreatedAt(question.getCreatedAt());
+        questionSimpleResponseDto.setModifiedAt(question.getModifiedAt());
 
-        return questionResponseDto;
+        return questionSimpleResponseDto;
     }
 }
