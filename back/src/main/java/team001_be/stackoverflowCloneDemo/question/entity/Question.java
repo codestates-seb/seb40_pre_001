@@ -27,7 +27,7 @@ public class Question extends Auditable {
     @Setter
     private User user;
 
-    @Column(length = 100, nullable = false, unique = true)
+    @Column(length = 100, nullable = false, unique = false)
     private String questionTitle;
 
     @Column(length = 65535, nullable = false)
