@@ -36,13 +36,14 @@ public class AnswerController {
 
         //answer 생성
         Answer answer = answerMapper.answerPostDtoToAnswer(answerPostDto);
-
         answer = answerService.createAnswer(answer, questionId);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(answerMapper.answerToAnswerResponseDto(answer)),
                 HttpStatus.CREATED);
     }
+
+    @GetMapping("/{question-id}/all-answers")
 
     @DeleteMapping("/{question-id}/{answer-id}")
     public ResponseEntity deleteAnswer(@PathVariable("question-id") @Positive Long questionId,
