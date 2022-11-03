@@ -34,9 +34,7 @@ import java.util.List;
 @Slf4j
 public class UserController {
     @Autowired
-    private final UserRepository userRepository;
-    private final JwtTokenizer jwtTokenizer;
-    private final PasswordEncoder passwordEncoder;
+
     private final UserMapper mapper;
     private final UserService userService;
 
@@ -60,7 +58,7 @@ public class UserController {
         );
     }
 
-    @GetMapping("/login")
+    @GetMapping("/info")
     public String getUser(){
         return  userService.getLoginUser();
     }

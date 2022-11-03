@@ -100,9 +100,6 @@ public class QuestionService {
         return foundQuestion;
     }
 
-
-
-
     private Question saveQuestion(Question question){
         return questionRepository.saveAndFlush(question);
     }

@@ -1,6 +1,8 @@
 package team001_be.stackoverflowCloneDemo.question.entity;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
@@ -12,6 +14,7 @@ import java.util.*;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Question extends Auditable {
     @Id
@@ -20,7 +23,7 @@ public class Question extends Auditable {
     private Long questionId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     @ToString.Exclude
     @Setter
     private User user;
@@ -38,14 +41,17 @@ public class Question extends Auditable {
 //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answerList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionComment.class)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL , targetEntity = QuestionComment.class)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionComment> questionCommentList = new ArrayList<>();
 
     //답변을 선택했는지 여부

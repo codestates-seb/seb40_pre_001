@@ -8,6 +8,8 @@ public enum ExceptionCode {
     TAG_NOT_FOUND(404, "Tag not found"),
     QUESTION_NOT_FOUND(404, "Question not found"),
 
+    COMMENT_NOT_FOUND(404, "Comment not found"),
+
     UNAUTHORIZED_USER(403, "not authorized user");
 
 

@@ -98,7 +98,7 @@ public class UserService {
     }
 
     private User findVerifiedUserById(Long userId) {
-        Optional<User> optionalUser = userRepository.findByUserId(userId);
+        Optional<User> optionalUser = userRepository.findById(userId);
         User foundUser = optionalUser.orElseThrow(() -> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
 
         return foundUser;
@@ -130,5 +130,12 @@ public class UserService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = (String) principal;
         return username;
+    }
+
+    public String getUserNickname(Long userId){
+        User user = findUser(userId);
+        String foundUserNickname = user.getUserNickname();
+
+        return foundUserNickname;
     }
 }
