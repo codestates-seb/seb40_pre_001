@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
@@ -19,12 +20,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Service
 public class UserService {
 
 
+
     private final UserRepository userRepository;
+
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
     private final UserMapper userMapper;
@@ -59,10 +63,10 @@ public class UserService {
     }
 
     // 전체조회 service
-    public List<UserResponseDto> findAll() {
+    public List<UserResponseDto> findAllUsers() {
         List<User> userList = userRepository.findAll();
         List<UserResponseDto> userDtoList = new ArrayList<>();
-        for (User user : userList) {
+        for (User user : userList){
             UserResponseDto userResponseDto = userMapper.userToUserResponseDto(user);
             userDtoList.add(userResponseDto);
         }
@@ -88,6 +92,13 @@ public class UserService {
 
         return saveUser(foundUser);
     }
+
+     /*   public User disableUser(Long userId){
+        User user = findVerifiedUserById(userId);
+        verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
+        user.setActive(false);
+        return saveUser(user);
+    }*/
 
 
     public void deleteUser(Long userId) {
@@ -132,4 +143,5 @@ public class UserService {
         String username = (String) principal;
         return username;
     }
+
 }

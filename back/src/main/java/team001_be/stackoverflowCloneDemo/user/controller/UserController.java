@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.user.controller;
 
+import io.jsonwebtoken.io.IOException;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
 
+import team001_be.stackoverflowCloneDemo.user.dto.UserEmailDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
@@ -33,6 +35,7 @@ import java.util.List;
 @Validated
 @Slf4j
 public class UserController {
+
     @Autowired
     private final UserRepository userRepository;
     private final JwtTokenizer jwtTokenizer;
@@ -40,10 +43,12 @@ public class UserController {
     private final UserMapper mapper;
     private final UserService userService;
 
+    //회원가입
     @PostMapping("/signup")
     public ResponseEntity postUser(@Valid @RequestBody UserPostDto userPostDto) {
         User user = mapper.userPostDtoToUser(userPostDto);
         User createdUser = userService.createUser(user);
+
 
         UserResponseDto response = mapper.userToUserResponseDto(createdUser);
         return new ResponseEntity<>(
@@ -51,6 +56,29 @@ public class UserController {
                 HttpStatus.CREATED);
     }
 
+    // 개인 회원 정보 수정
+    @PatchMapping("/edit/{user-id}")
+    public ResponseEntity updateUser(@PathVariable("user-id") @Positive Long userId, @Valid @RequestBody UserPatchDto userPatchDto){
+        userPatchDto.setUserId(userId);
+        User user = userService.updateUser(mapper.userPatchDtoToUser(userPatchDto));
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user))
+                , HttpStatus.OK);
+    }
+
+
+    // 개인 이메일 수정
+    @PatchMapping("/email/settings/{user-id}")
+    public ResponseEntity updateUser(@PathVariable("user-id") @Positive Long userId,
+                                     @Valid @RequestBody UserEmailDto UserEmailDto){
+        UserEmailDto.setUserId(userId);
+        User user = userService.updateUser(mapper.userEmailDtoToUser(UserEmailDto));
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user))
+                , HttpStatus.OK);
+    }
+
+    //개인 회원 profile 요청
     @GetMapping("/{user-id}")
     public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId) {
         User user = userService.findUser(userId);
@@ -60,27 +88,51 @@ public class UserController {
         );
     }
 
+    //개인 회원 Stats 요청
+  /*  @GetMapping("/{user-id}/{userNickname}?tab=profile")
+    public ResponseEntity getUser(@PathVariable("user-id") @Positive long userId) {
+        User user = userService.findUser(userId);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK
+        );
+    }*/
+
     @GetMapping("/login")
     public String getUser(){
         return  userService.getLoginUser();
     }
 
-    //4. 회원 정보 전부 출력 -  완료
-    @GetMapping("/all-users")
-    public List<UserResponseDto> retrieveUsers() {
-        return userService.findAll();
+    @GetMapping("/login?error")
+    public String fail() throws IOException {
+        return "redirect:/?error";
     }
 
+    // 회원 정보 전부 출력 -  완료
+    @GetMapping()
+    public List<UserResponseDto> userResponseDto() {
+        return userService.findAllUsers();
+    }
 
-    //5. 회원 정보 수정
-    @PatchMapping("/edit/{user-id}")
-    public ResponseEntity updateUser(@PathVariable("user-id") @Positive Long userId,
-                                     @Valid @RequestBody UserPatchDto userPatchDto){
+    // 개인 비활성화 (deactivation)
+/*    @PutMapping("/deactivate/{user-id}")
+    public ResponseEntity disableUser(@PathVariable("user-id") @Positive Long userId,
+                                      @Valid @RequestBody UserPatchDto userPatchDto){
         userPatchDto.setUserId(userId);
-        User user = userService.updateUser(mapper.userPatchDtoToUser(userPatchDto));
+        User user = userService.disableUser(userId);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user))
                 , HttpStatus.OK);
+    }*/
+
+    // 회원삭제
+    @DeleteMapping("/delete/{user-id}")
+    public ResponseEntity deleteUser(@PathVariable("user-id") @Positive Long userId){
+        userService.deleteUser(userId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+
 }

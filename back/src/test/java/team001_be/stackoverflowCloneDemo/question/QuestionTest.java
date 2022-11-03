@@ -8,7 +8,7 @@ import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 
 public class QuestionTest {
-    @DisplayName("Question 단위 테스트")
+   /* @DisplayName("Question 단위 테스트")
     @Test
     public void test1(){
         String title = "@builder 선언 위치 관련 질문";
@@ -21,5 +21,5 @@ public class QuestionTest {
 
         assertEquals(q1.getQuestionTitle(), title);
         assertEquals(q1.getContext(), context);
-    }
+    }*/
 }
