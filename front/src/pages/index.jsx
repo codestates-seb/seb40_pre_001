@@ -2,13 +2,13 @@ import React from 'react';
 
 import Layout from './PagesLayout/Layout';
 import Home from './Home';
-import Tags from './Tags';
+import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 import Questions from './Questions/Questions';
 import Post from './Questions/Post/Post';
-import Users from './Users';
-
+import Users from './Users/Users';
+import UserProfile from './UserProfile/UserProfile';
 import { ROUTES } from '../constants';
 import Ask from './Questions/ASK/Ask';
 
@@ -51,6 +51,11 @@ const PAGES = [
         name: ROUTES.USERS.name,
         path: ROUTES.USERS.path,
         element: <Users />,
+      },
+      {
+        name: ROUTES.USERPROFILE.name,
+        path: ROUTES.USERPROFILE.path,
+        element: <UserProfile />,
       },
       { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
     ],
