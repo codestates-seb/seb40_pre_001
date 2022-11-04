@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableJpaAuditing
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@EnableJpaAuditing
 public class StackoverflowCloneDemoApplication {
 
 	public static void main(String[] args) {

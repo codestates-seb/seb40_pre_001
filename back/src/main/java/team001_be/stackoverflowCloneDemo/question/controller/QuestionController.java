@@ -38,7 +38,7 @@ public class QuestionController {
     }
 
     @PostMapping("/ask")
-    public ResponseEntity<SingleResponseDto<team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto>> postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto){
+    public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto){
         Question question = questionService.createQuestion(questionMapper.questionPostDtoToQuestion(questionPostDto), questionPostDto.getUserId());
 
         return new ResponseEntity<>(
@@ -47,8 +47,8 @@ public class QuestionController {
     }
 
     @PatchMapping("/edit/{question-id}")
-    public ResponseEntity<SingleResponseDto<team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto>> patchQuestion(@PathVariable("question-id") @Positive Long questionId,
-                                                                                                                                     @Valid @RequestBody QuestionPatchDto questionPatchDto){
+    public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive Long questionId,
+                                        @Valid @RequestBody QuestionPatchDto questionPatchDto){
         questionPatchDto.setQuestionId(questionId);
         Question question = questionService.updateQuestion(questionMapper.questionPatchDtoToQuestion(questionPatchDto), questionPatchDto.getUserId());
 
@@ -59,8 +59,7 @@ public class QuestionController {
 
     //간단히 질문만 조회하는 함수
     @GetMapping("/simple/{question-id}")
-    public ResponseEntity<SingleResponseDto<team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto>> getQuestionSimple(@PathVariable("question-id") @Positive Long questionId,
-                                                                                                                                         HttpServletRequest req, HttpServletResponse res){
+    public ResponseEntity getQuestionSimple(@PathVariable("question-id") @Positive Long questionId){
 
         Question question = questionService.findQuestion(questionId);
         questionService.updateQuestionViewCount(question, question.getViewCount());
@@ -73,8 +72,7 @@ public class QuestionController {
     //질문 관련된 모든 것 조회하는 함수(질문, 질문 댓글, 답변, 답변 댓글)
     //아직 질문 댓글, 답변 댓글 수정 안됨
     @GetMapping("/{question-id}")
-    public ResponseEntity<SingleResponseDto<team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto>>
-    getQuestion(@PathVariable("question-id") @Positive Long questionId,
+    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive Long questionId,
                 HttpServletRequest req, HttpServletResponse res){
         Question question = questionService.findQuestion(questionId);
         questionService.updateQuestionViewCount(question, question.getViewCount());
@@ -106,8 +104,6 @@ public class QuestionController {
                 , HttpStatus.OK);
 
     }
-
-
 
     @DeleteMapping("/{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,
