@@ -15,16 +15,17 @@ import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.util.stream.IntStream;
 
-@DataJpaTest
-//@RunWith(SpringRunner.class)
+//@DataJpaTest
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserRepositoryTest {
-    @Resource
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @BeforeEach
-    final void insertDummyUsers() {
+    public void insertDummyUsers() {
         IntStream.rangeClosed(20, 50).forEach(i -> {
             User user = User.builder()
                     .email("yhwang" + i + "@spring.com")
