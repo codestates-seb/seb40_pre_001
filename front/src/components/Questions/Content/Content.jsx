@@ -7,36 +7,25 @@ import RightBox from './PostBody/RightBox';
 import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
-import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../../store';
 import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 import Answer from './Answer/Answer';
+import { useParams } from 'react-router-dom';
 
 const Content = () => {
-  const { currentContentId } = useRecoilValue(pagesState);
-  const { data, status: fetchingStatus } = useGetAllPosts((data) => {
-    const currentPost = data.find(
-      (post) => post.contentId === currentContentId,
-    );
+  const { id } = useParams();
+  const { data, status: fetchingStatus } = useGetAllPosts((data) =>
+    data.find((post) => post.questionId === Number(id)),
+  );
 
-    return currentPost;
-  });
-
-  const {
-    title,
-    tags,
-    content,
-    status,
-    answers,
-    createdAt,
-    author,
-    upVotedUsers,
-    downVotedUsers,
-  } = data;
+  // const author = getUserById(id).userNickname;
 
   return fetchingStatus === 'success' ? (
     <div>
-      <Header title={title} views={status.views} createdAt={createdAt} />
+      <Header
+        title={data.questionTitle}
+        views={data.status.views}
+        createdAt={data.createdAt}
+      />
       <M.MainContainer>
         <S.ImgContainer>
           <img
@@ -44,28 +33,28 @@ const Content = () => {
             border='0'
             width='728'
             height='90'
-            alt=''
+            alt='googleImage'
           />
         </S.ImgContainer>
         <S.PostLayout>
           <LeftBox
-            status={status}
-            upVotedUsers={upVotedUsers}
-            downVotedUsers={downVotedUsers}
+            status={data.status}
+            upVotedUsers={data.upVotedUsers}
+            downVotedUsers={data.downVotedUsers}
           />
           <RightBox
-            tags={tags}
-            content={content}
-            author={author}
-            createdAt={createdAt}
+            tags={data.tags}
+            content={data.content}
+            author={data?.author}
+            createdAt={data.createdAt}
           />
         </S.PostLayout>
         {/* Answers */}
 
-        {answers && (
+        {data?.answers && (
           <>
-            <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
-            {answers.map(
+            <S.AnswerHeader>{data.answers.length} Answer</S.AnswerHeader>
+            {data.answers.map(
               (
                 {
                   content,
@@ -94,7 +83,6 @@ const Content = () => {
             )}
           </>
         )}
-
         {/* Post Answer */}
         <PostAnswer />
       </M.MainContainer>

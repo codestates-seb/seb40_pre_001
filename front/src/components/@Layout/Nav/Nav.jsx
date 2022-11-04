@@ -4,7 +4,6 @@ import { LogoIcon } from '../../@common/Icons';
 
 import Navigation from './Navigation/Navigation';
 import SearchInput from './SearchInput/SearchInput';
-
 import CustomLink from '../../@common/Link';
 import PopOver from './Popover/PopOver';
 import Auth from './Auth/AuthNav';

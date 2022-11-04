@@ -10,9 +10,6 @@ const LeftBox = ({ status, upVotedUsers, downVotedUsers }) => {
   const { handleStatus } = useUpdateStatus();
   const currentUserId = 1231244;
 
-  console.log('upVoted', upVotedUsers);
-  console.log('downVoted', downVotedUsers);
-
   return (
     <S.LeftBox>
       <S.VotingContainer>

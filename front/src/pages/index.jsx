@@ -13,7 +13,6 @@ import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import NotFound from './404/404';
 import Search from './Search/Search';
-import { getAllPostData } from '../apis/questions';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -28,7 +27,6 @@ const PAGES = [
       {
         name: ROUTES.QUESTIONS.name,
         path: ROUTES.QUESTIONS.path,
-        loader: () => getAllPostData(),
         element: <Questions />,
       },
       {

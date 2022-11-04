@@ -27,7 +27,7 @@ const Ask = () => {
 
   const onClick = () => {
     const mockData = Object.assign({
-      contentId: data.length + 1,
+      questionId: data.length + 1,
       userId: Math.floor(Math.random() * 123456),
       title: state.title,
       author: state.author,
@@ -52,9 +52,9 @@ const Ask = () => {
       : null;
   };
 
-  const AskForm = ({ key, title, script, button, markdown }) => {
+  const AskForm = ({ title, script, button, markdown }) => {
     return (
-      <S.AskForm type={key}>
+      <S.AskForm>
         <div className='title'>{title}</div>
         <div className='content'>{script}</div>
         {markdown ? null : <input></input>}

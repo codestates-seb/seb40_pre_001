@@ -9,7 +9,7 @@ const Post = () => {
   // const { currentContentId } = useRecoilValue(pagesState);
   // const { data, status } = useGetAllPosts((data) => {
   //   const currentPost = data.find(
-  //     (post) => post.contentId === currentContentId,
+  //     (post) => post.questionId === currentContentId,
   //   );
 
   //   return currentPost;

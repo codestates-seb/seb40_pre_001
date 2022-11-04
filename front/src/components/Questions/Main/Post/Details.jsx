@@ -8,10 +8,19 @@ import CustomLink from '../../../@common/Link';
 import * as S from './Post.style';
 import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import useUpdateStatus from '../../../../hooks/questions/useUpdateStatus';
+// import useGetAllPosts from '../../../../hooks/questions/useGetAllPosts';
 
 const PostDetails = ({ data }) => {
-  const { title, author, content, tags, createdAt, userId, contentId, status } =
-    data;
+  const {
+    questionTitle,
+    author,
+    content,
+    tags,
+    createdAt,
+    questionId,
+    status,
+  } = data;
+
   const [state, setCurrentContentId] = useRecoilState(pagesState);
   const { handleStatus } = useUpdateStatus();
 
@@ -21,15 +30,17 @@ const PostDetails = ({ data }) => {
         onClick={() => {
           setCurrentContentId({
             ...state,
-            currentContentId: contentId,
+            currentContentId: questionId,
           });
 
-          handleStatus(contentId, { ...status, views: status.views + 1 });
+          handleStatus(questionId, { ...status, views: status?.views + 1 });
         }}
       >
-        <CustomLink path={`/questions/${userId}`}>{title}</CustomLink>
+        <CustomLink path={`/questions/${questionId}`}>
+          {questionTitle}
+        </CustomLink>
       </S.Title>
-      <TextViewer initialValue={content.context.replace(/<[^>]+>/g, '')} />
+      <TextViewer initialValue={content?.context.replace(/<[^>]+>/g, '')} />
       {/* Tag Box */}
       <S.ExtraDetailsBox>
         <S.TagBox>

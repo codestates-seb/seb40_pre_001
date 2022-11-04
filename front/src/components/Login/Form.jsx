@@ -4,11 +4,11 @@ import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
-import { userLogin } from '../../apis/login.js';
 import { useMutation } from '@tanstack/react-query';
 import { useSetRecoilState } from 'recoil';
 import { usersState } from '../../store';
-import { getUserById, postRegister } from '../../apis/RealLogin.js';
+import { postLogin } from '../../apis/auth';
+import { getCurrentUser } from '../../apis/users.js';
 
 const Form = () => {
   const setIsAuthenticated = useSetRecoilState(usersState);
@@ -16,29 +16,21 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { mutate } = useMutation(userLogin, {
+  const { mutate } = useMutation(postLogin, {
     onSuccess: () => {
       setIsAuthenticated(true);
+      getCurrentUser();
     },
     onError: () => {
-      console.log('aa');
+      console.log('Failed to Login');
     },
   });
-
-  mutate;
-
-  // API 적용
 
   // const credential = {
   //   email: 'test94@gamil.com',
   //   password: 'a12345678',
   //   userNickname: 'test12345',
   // };
-
-  const loginInfo = {
-    email: 'test@test.com',
-    password: 'test12345',
-  };
 
   return (
     <S.Container>
@@ -63,7 +55,6 @@ const Form = () => {
           },
         )}
       </S.SnsButtonContainer>
-
       <S.FormContainer>
         <S.LoginForm>
           {/* label */}
@@ -84,10 +75,7 @@ const Form = () => {
           <S.SubmitButton
             onClick={async (e) => {
               e.preventDefault();
-              postRegister(loginInfo);
-              getUserById();
-
-              // mutate({ email, password });
+              mutate({ email: 'test@test.com', password: 'test1234' });
             }}
           >
             Log in
