@@ -4,6 +4,7 @@ import UserProfileButton from '../../components/UserProfileButton/UserProfileBut
 import UserProfileTab from '../../components/UserprofileTab/UserProfileTab';
 import UserContents from '../../components/UserContents/UserContents';
 import UserCommunities from '../../components/UserCommunities/UserCommunities';
+import UserAnswers from '../../components/UserAnswers/UserAnswers';
 
 import CakeIcon from '../../components/@common/Icons/CakeIcon';
 import CalendarIcon from '../../components/@common/Icons/CalendarIcon';
@@ -31,13 +32,17 @@ const UserProfile = () => {
       {/* contnets */}
       <S.StatsContainer>
         <S.ContentsTitle>Status</S.ContentsTitle>
+        <S.ContentsTitle style={{ width: '15%' }}>About</S.ContentsTitle>
       </S.StatsContainer>
       <S.UserGridBox>
         <UserStatsBox />
         <UserContents />
       </S.UserGridBox>
-      <S.ContentsTitle>Communities</S.ContentsTitle>
-      <UserCommunities />
+      <S.ContentsTitle style={{ marginTop: 15 }}>Communities</S.ContentsTitle>
+      <div style={{ display: 'flex' }}>
+        <UserCommunities />
+        <UserAnswers>asdasd</UserAnswers>
+      </div>
     </S.Container>
   );
 };

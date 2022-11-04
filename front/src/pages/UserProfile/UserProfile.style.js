@@ -37,17 +37,20 @@ const UserAnchor = styled.span`
 `;
 
 const StatsContainer = styled.div`
-  width: 100%;
+  width: 350px;
+  display: flex;
+  margin-bottom: 12px;
 `;
 
 const ContentsTitle = styled.div`
   font-size: 21px;
-  width: 100%;
+  width: 76%;
 `;
 
 const UserGridBox = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 4fr;
+  grid-template-columns: 1.2fr 4fr;
+  gap: 20px;
 `;
 export {
   Container,
