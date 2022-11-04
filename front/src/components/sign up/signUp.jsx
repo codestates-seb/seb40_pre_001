@@ -7,7 +7,7 @@ import SNS_BUTTONS from '../../constants/snsButton.js';
 import AdviceMark from '../@common/Icons/AdviceMark';
 import NewWindow from '../@common/Icons/NewWinow';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 //sign up
 import axios from 'axios';
 // import axios from 'axios';
@@ -19,6 +19,8 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = async (e) => {
     e.preventDefault();
@@ -37,9 +39,19 @@ const SignUpForm = () => {
           withCredentials: true,
         },
       )
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.status);
+        if (res.status === 201) {
+          window.alert('가입을 축하합니다');
+          navigate('/login');
+        }
+      })
       .catch((error) => {
-        console.log(error);
+        console.log(error.request.status);
+        if (error.request.status === 500) {
+          window.alert('이미 가입된 회원입니다');
+          navigate('/login');
+        }
       });
   };
 
