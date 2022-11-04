@@ -27,15 +27,7 @@ public class QuestionCommentService {
     private final UserService userService;
 
     public QuestionComment createQuestionComment(QuestionComment questionComment, Long userId){
-//        questionComment.setUser(userService.findUser(userId));
-//        User user = verifyUser(userId); //User 있는지 확인
-//
-//        questionComment.setQuestion(questionService.findQuestion(questionComment.getQuestion().getQuestionId()));
-//        Long questionId = questionComment.getQuestion().getQuestionId();
-//        Question question = verifyQuestion(questionId); //Question 있는지 확인
-//        questionComment.setQuestionCommentUsername(user.getUserNickname());
-//
-//        return questionCommentRepository.save(questionComment);
+
 
         questionComment.setUser(userService.findUser(userId));
         verifiedUser(questionComment);
@@ -55,15 +47,10 @@ public class QuestionCommentService {
 
 
     public QuestionComment updateQuestionComment(QuestionComment questionComment, Long userId){
-//        Long questionCommentId = questionComment.getQuestionCommentId();
-//        QuestionComment foundQuestionComment = findVerifiedCommentById(questionCommentId); //Comment 있는지 확인
-//        Long postUserId = foundQuestionComment.getUser().getUserId();
-//        verifyWriter(postUserId, userId);
+
         QuestionComment foundQuestionComment = findQuestionComment(questionComment.getQuestionCommentId());
         verifyWriter(userId,questionComment.getUser().getUserId());
 
-        Optional.ofNullable(questionComment.getUser())
-                .ifPresent(foundQuestionComment::setUser);
         Optional.ofNullable(questionComment.getQuestionCommentContent())
                 .ifPresent(foundQuestionComment::setQuestionCommentContent);
         Optional.ofNullable(questionComment.getQuestionCommentUsername())
@@ -78,19 +65,6 @@ public class QuestionCommentService {
         verifyWriter(postUserId, userId);
         questionCommentRepository.delete(foundQuestionComment);
     }
-    private User verifyUser(Long userId){
-        Optional<User> optionalUser = userRepository.findById(userId);
-        User user = optionalUser.orElseThrow(()-> new BusinessLogicException(ExceptionCode.USER_NOT_FOUND));
-
-        return user;
-    }
-
-    private Question verifyQuestion(Long questionId){
-        Optional<Question> optionalQuestion = questionRepository.findById(questionId);
-        Question question = optionalQuestion.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
-        return question;
-    }
-
     private QuestionComment findVerifiedCommentById(Long questionCommentId){
         Optional<QuestionComment> optionalQuestionComment = questionCommentRepository.findById(questionCommentId);
         QuestionComment questionComment = optionalQuestionComment.orElseThrow(() -> new BusinessLogicException(ExceptionCode.COMMENT_NOT_FOUND));

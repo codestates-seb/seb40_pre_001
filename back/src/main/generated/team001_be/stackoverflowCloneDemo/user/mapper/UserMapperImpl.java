@@ -2,6 +2,7 @@ package team001_be.stackoverflowCloneDemo.user.mapper;
 
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
+import team001_be.stackoverflowCloneDemo.user.dto.UserEmailDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserLoginDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
@@ -10,7 +11,7 @@ import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-04T03:28:10+0900",
+    date = "2022-11-04T16:20:32+0900",
     comments = "version: 1.5.1.Final, compiler: javac, environment: Java 11.0.16.1 (Azul Systems, Inc.)"
 )
 @Component
@@ -22,13 +23,13 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setEmail( userPostDto.getEmail() );
-        user.setPassword( userPostDto.getPassword() );
-        user.setUserNickname( userPostDto.getUserNickname() );
+        user.email( userPostDto.getEmail() );
+        user.password( userPostDto.getPassword() );
+        user.userNickname( userPostDto.getUserNickname() );
 
-        return user;
+        return user.build();
     }
 
     @Override
@@ -37,16 +38,16 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setUserId( userPatchDto.getUserId() );
-        user.setEmail( userPatchDto.getEmail() );
-        user.setPassword( userPatchDto.getPassword() );
-        user.setUserNickname( userPatchDto.getUserNickname() );
-        user.setAddress( userPatchDto.getAddress() );
-        user.setBirthday( userPatchDto.getBirthday() );
+        user.userId( userPatchDto.getUserId() );
+        user.email( userPatchDto.getEmail() );
+        user.password( userPatchDto.getPassword() );
+        user.userNickname( userPatchDto.getUserNickname() );
+        user.address( userPatchDto.getAddress() );
+        user.birthday( userPatchDto.getBirthday() );
 
-        return user;
+        return user.build();
     }
 
     @Override
@@ -55,12 +56,26 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setEmail( userLoginDto.getEmail() );
-        user.setPassword( userLoginDto.getPassword() );
+        user.email( userLoginDto.getEmail() );
+        user.password( userLoginDto.getPassword() );
 
-        return user;
+        return user.build();
+    }
+
+    @Override
+    public User userEmailDtoToUser(UserEmailDto userEmailDto) {
+        if ( userEmailDto == null ) {
+            return null;
+        }
+
+        User.UserBuilder user = User.builder();
+
+        user.userId( userEmailDto.getUserId() );
+        user.email( userEmailDto.getEmail() );
+
+        return user.build();
     }
 
     @Override
@@ -77,6 +92,8 @@ public class UserMapperImpl implements UserMapper {
         userResponseDto.setDescription( user.getDescription() );
         userResponseDto.setAddress( user.getAddress() );
         userResponseDto.setBirthday( user.getBirthday() );
+        userResponseDto.setCreatedAt( user.getCreatedAt() );
+        userResponseDto.setModifiedAt( user.getModifiedAt() );
 
         return userResponseDto;
     }
