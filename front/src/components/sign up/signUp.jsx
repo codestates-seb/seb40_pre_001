@@ -2,15 +2,32 @@ import React from 'react';
 import * as S from './signUp.style';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
+import axios from 'axios';
 
 //icon
 import AdviceMark from '../@common/Icons/AdviceMark';
 import NewWindow from '../@common/Icons/NewWinow';
+// import { r } from 'msw/lib/glossary-dc3fd077';
 
 //로그인과 회원가입 페이지 추후 파일 위치 수정
 //버튼 스타일은 일단 복사하여 사용했는데 나중에 한 개의 style으로 합치고 재사용 가능하게 수정이 필요
 
 const SignUpForm = () => {
+  const handleChange = async (e) => {
+    e.preventDefault();
+    return await axios
+      .get('https://630c-125-177-243-74.jp.ngrok.io/users', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        withCredentials: true,
+      })
+      .then((res) => console.log(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <S.Container>
       {SNS_BUTTONS.map(({ BGC, BORDER_C, COLOR, HOVER_BG, MESSAGE, ICON }) => {
@@ -53,7 +70,9 @@ const SignUpForm = () => {
             </S.AdviceMark>
           </S.OptionChocie>
 
-          <S.SubmitButton>Sign up</S.SubmitButton>
+          <S.SubmitButton type='submit' onClick={handleChange}>
+            Sign up
+          </S.SubmitButton>
           <S.SignUpWarn>
             By clicking “Sign up”, you agree to our
             <a> terms of service</a>, <a>privacy policy</a> and

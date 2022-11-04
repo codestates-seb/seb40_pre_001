@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 import questionData from './data/questions';
 import tagsData from './data/tags';
-import usersData from './data/users';
+// import usersData from './data/users';
 
 export const handlers = [
   // Get All  Post
@@ -86,7 +86,7 @@ export const handlers = [
   }),
 
   //users
-  rest.get('/api/users', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(usersData));
-  }),
+  // rest.get('/api/users', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json(usersData));
+  // }),
 ];
