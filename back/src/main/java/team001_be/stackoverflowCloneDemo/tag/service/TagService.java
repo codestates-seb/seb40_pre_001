@@ -17,6 +17,15 @@ public class TagService {
         this.tagRepository = tagRepository;
     }
 
+
+    public Tag createTag(Tag tag){
+        Optional<Tag> foundTag =  tagRepository.findById(tag.getTagId());
+        if(foundTag.isPresent()){
+            throw new BusinessLogicException(ExceptionCode.TAG_DUPLICATE);
+        }
+        return tagRepository.save(tag);
+    }
+
     public Tag findTag(Long tagId){
         return findVerifiedTag(tagId);
     }
