@@ -9,8 +9,7 @@ import NewWindow from '../@common/Icons/NewWinow';
 import { useState } from 'react';
 
 //sign up
-// import axios from 'axios';
-import handleChange from '../../apis/signup';
+import axios from 'axios';
 // import axios from 'axios';
 
 //로그인과 회원가입 페이지 추후 파일 위치 수정
@@ -33,9 +32,33 @@ import handleChange from '../../apis/signup';
 //   .then(axios.get('https://630c-125-177-243-74.jp.ngrok.io/users/1'));
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState(null);
-  const [nickName, setNickName] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState('');
+  const [nickName, setNickName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = async (e) => {
+    console.log(email, password, nickName);
+    e.preventDefault();
+    return await axios
+      .post(
+        'https://630c-125-177-243-74.jp.ngrok.io/users/signup',
+        {
+          email: email,
+          userNickname: nickName,
+          password: password,
+        },
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+          withCredentials: true,
+        },
+      )
+      .then((res) => console.log(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <S.Container>
