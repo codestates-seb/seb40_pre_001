@@ -142,4 +142,12 @@ public class UserService {
         return username;
     }
 
+
+    public String getUserNickname(Long userId){
+        User user = findUser(userId);
+        String foundUserNickname = user.getUserNickname();
+
+        return foundUserNickname;
+    }
+
 }

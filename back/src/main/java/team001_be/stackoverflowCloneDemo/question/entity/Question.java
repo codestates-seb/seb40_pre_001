@@ -13,6 +13,7 @@ import java.util.*;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Question extends Auditable {
     @Id
@@ -40,16 +41,21 @@ public class Question extends Auditable {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
     @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
     @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answerList = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionComment.class)
     @LazyCollection(LazyCollectionOption.FALSE)
+
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionComment> questionCommentList = new ArrayList<>();
 
     //답변을 선택했는지 여부
