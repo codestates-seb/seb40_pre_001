@@ -32,7 +32,7 @@ const NavContainer = styled.nav`
   vertical-align: baseline;
 `;
 
-const LogoBox = styled.a`
+const LogoBox = styled.div`
   display: flex;
   background-color: transparent;
   width: 166px;

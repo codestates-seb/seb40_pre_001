@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
 
-import useGetAllPost from '../../../hooks/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
 // import { useRef } from 'react';
 
@@ -14,13 +13,14 @@ import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import AskForm from './AskForm';
+import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
   // 예시
   const [state, setState] = useState({ title: '', author: '', context: '' });
-  const { data, status } = useGetAllPost();
-  const addPost = usePost('questions', '/questions');
+  const { data, status } = useGetAllPosts();
+  const addPost = useCreatePost('questions', '/questions');
 
   // createdAt
   const date = new Date().getDate();
@@ -30,7 +30,7 @@ const Ask = () => {
 
   const onClick = () => {
     const mockData = Object.assign({
-      contentId: data.length + 1,
+      questionId: data.length + 1,
       userId: Math.floor(Math.random() * 123456),
       title: state.title,
       author: state.author,

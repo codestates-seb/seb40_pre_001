@@ -1,19 +1,19 @@
 import { rest } from 'msw';
-import questionData from './data/questions';
-import tagsData from './data/tags';
-// import usersData from './data/users';
+import questionsData from './data/questions';
+
+let mockData = [...questionsData];
 
 export const handlers = [
   // Get All  Post
   rest.get('/api/questions', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(questionData));
+    return res(ctx.status(200), ctx.json(mockData));
   }),
 
   // Get Post By Content Id
   rest.get('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
-    const matchIdData = questionData.find(
-      ({ contentId }) => contentId === Number(id),
+    const matchIdData = mockData.find(
+      ({ questionId }) => questionId === Number(id),
     );
 
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
@@ -21,7 +21,7 @@ export const handlers = [
 
   // Create New Post
   rest.post('/api/questions/ask', (req, res, ctx) => {
-    questionData.unshift(req.body);
+    mockData.unshift(req.body);
 
     return res(ctx.status(201), ctx.delay());
   }),
@@ -30,6 +30,8 @@ export const handlers = [
   rest.post('/api/login', (req, res, ctx) => {
     const { authToken } = req.cookies;
     const { id } = req.body;
+
+    console.log(id);
 
     if (authToken === id) {
       return res(
@@ -47,50 +49,47 @@ export const handlers = [
     );
   }),
 
-  // Update Vote Count
+  // Get Filtered Items by Search
+  rest.get('/api/search?q=:keyword', (req, res, ctx) => {
+    const keyword = req.url.searchParams.get('q').toUpperCase();
 
-  rest.put('/api/questions/:id', (req, res, ctx) => {
-    const { id } = req.params;
-
-    console.log(req.body);
-    const votes = req.body;
-
-    const question = questionData.find(
-      (question) => question.contentId === Number(id),
+    const Filtered = mockData.filter((question) =>
+      question.title.toUpperCase().includes(keyword),
     );
 
-    if (question === undefined) {
-      throw new Error('글을 찾을수 없습니다.');
-    }
-
-    question.status.votes = votes;
-
-    return res(ctx.status(200));
+    return res(ctx.status(200), ctx.json(Filtered));
   }),
 
-  // login
+  // Update Vote Count
 
-  // response Cookies
-  rest.get('/api/login', (req, res, ctx) => {
-    return res(ctx.delay(), ctx.cookie('authToken', 'mock1234'));
+  rest.patch('/api/questions/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    const status = req.body;
+    const index = mockData.findIndex((data) => data.questionId === Number(id));
+    const modified = { ...mockData[index], status };
+
+    // console.log('id', id);
+    // console.log('status', status);
+    // console.log('modi', modified);
+
+    mockData[index] = modified;
+
+    return res(ctx.delay(), ctx.status(201), ctx.json(mockData));
   }),
 
-  // GitHub Auth
-  rest.get('/api/auth/github', (req, res, ctx) => {
-    return res(ctx.status(200));
+  rest.delete('/api/questions/:id', (req, res, ctx) => {
+    const { id } = req.params;
+
+    console.log(id);
+
+    mockData = mockData.filter(
+      (question) => question.questionId !== Number(id),
+    );
+
+    console.log('deleted', mockData);
+
+    return res(ctx.status(204), ctx.delay());
   }),
 
-  //sign up
-
-  // rest.post('/signup', (req, res, ctx) => {
-  //   return res(ctx.status(200), ctx.json('hello!'));
-  // Tags
-  rest.get('/api/tags', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(tagsData));
-  }),
-
-  //users
-  // rest.get('/api/users', (req, res, ctx) => {
-  //   return res(ctx.status(200), ctx.json(usersData));
-  // }),
+  // Auth
 ];

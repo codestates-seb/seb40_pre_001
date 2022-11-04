@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SquareButton = styled.button`
   position: relative;
   display: inline-block;
-  padding: 0.5em 0.8em 0.5em 0.8em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   color: ${({ color }) => color || 'hsl(0,0%,100%)'};
   border: 1px solid ${({ borderColor }) => borderColor || 'transparent'};
   border-radius: 3px;

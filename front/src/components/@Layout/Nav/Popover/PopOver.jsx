@@ -1,7 +1,8 @@
 import React from 'react';
 import * as S from './PopOver.style';
 import CustomLink from '../../../@common/Link';
-import { isLoggedIn } from '../../../../constants/auth';
+import { useRecoilValue } from 'recoil';
+import { usersState } from '../../../../store';
 
 const POPOVER_INFO = Object.freeze([
   {
@@ -27,8 +28,10 @@ const POPOVER_INFO = Object.freeze([
 ]);
 
 const PopOver = ({ setIsClicked }) => {
+  const isAuthenticated = useRecoilValue(usersState);
+
   return (
-    <S.Container login={isLoggedIn}>
+    <S.Container login={isAuthenticated}>
       <S.UpArrow />
       <ol>
         {POPOVER_INFO.map(({ title, desc, path }, i) => {

@@ -25,6 +25,10 @@ import QuestionIcon from './QuestionIcon';
 import TrophyIcon from './TrophyIcon';
 import UpDownIcon from './UpDownIcon';
 
+// Not Found
+import NotFoundIcon from './NotFoundIcon';
+import SearchNFIcon from './SearchNFIcon';
+
 // Stack Over Flow
 export {
   LogoIcon,
@@ -43,6 +47,9 @@ export {
   HistoryIcon,
   SaveIcon,
 };
+
+// NotFound
+export { NotFoundIcon, SearchNFIcon };
 
 // SNS
 

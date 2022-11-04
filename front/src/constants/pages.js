@@ -4,13 +4,7 @@ import WS02Icon from '../assets/wso2.svg';
 
 const pageLimits = Object.freeze([15, 30, 50]);
 
-const categoryButton = Object.freeze([
-  'Newest',
-  'Active',
-  `Bountied`,
-  'Unanswered',
-  'More',
-]);
+const categoryButton = Object.freeze(['Newest', 'Unanswered', 'More']);
 
 const UsersCategoryButton = Object.freeze([
   'Reputation',

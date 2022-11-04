@@ -42,8 +42,8 @@ const SideBarTop = () => {
             );
           })}
           <S.CollectiveBox>
-            <S.HeaderText>COLLECTIVES</S.HeaderText>
-            <InfoIcon style={{ marginRight: 8, marginTop: 17 }} />
+            <S.HeaderText style={{ fontSize: 11 }}>COLLECTIVES</S.HeaderText>
+            <InfoIcon style={{ marginRight: 8, marginTop: 25 }} />
           </S.CollectiveBox>
           <S.Li style={{ marginTop: 15 }}>
             <CustomLink>

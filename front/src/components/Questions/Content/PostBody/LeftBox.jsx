@@ -1,49 +1,41 @@
 import React from 'react';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 import pagesState from '../../../../store/pagesState';
-import { apiClient } from '../../../../apis/questions';
+import useUpdateStatus from '../../../../hooks/questions/useUpdateStatus';
 
-const LeftBox = ({ status }) => {
-  // const queryClient = useQueryClient();
+const LeftBox = ({ status, upVotedUsers, downVotedUsers }) => {
   const { currentContentId } = useRecoilValue(pagesState);
-
-  // const updateVoteCount = useMutation(
-  //   (vote) => {
-  //     putStatus(currentContentId, vote);
-  //   },
-
-  //   {
-  //     retry: 1,
-  //     onSuccess: () =>
-  //       queryClient.invalidateQueries(['questions'], currentContentId),
-  //   },
-  // );
-
-  const putMethod = async () => {
-    return await apiClient.put(`/api/questions/${currentContentId}`, {
-      ...status,
-      votes: status.votes + 1,
-    });
-  };
+  const { handleStatus } = useUpdateStatus();
+  const currentUserId = 1231244;
 
   return (
     <S.LeftBox>
       <S.VotingContainer>
         <S.IconContainer
-          onClick={() => {
-            // updateVoteCount.mutate(status.votes + 1);
-            putMethod();
-          }}
+          onClick={() =>
+            handleStatus(currentContentId, {
+              ...status,
+              upVotedUsers: [...upVotedUsers, currentUserId],
+              votes: status?.votes + 1,
+            })
+          }
         >
           <ArrowIcon direction='up' />
         </S.IconContainer>
         <S.VoteCount>
-          <span>{status.votes}</span>
+          <span>{status?.votes}</span>
         </S.VoteCount>
-        <S.IconContainer>
+        <S.IconContainer
+          onClick={() =>
+            handleStatus(currentContentId, {
+              ...status,
+              downVotedUsers: [...downVotedUsers, currentUserId],
+              votes: status?.votes - 1,
+            })
+          }
+        >
           <ArrowIcon direction='down' />
         </S.IconContainer>
         <SaveIcon style={{ margin: '10px 0 10px 12px' }} />

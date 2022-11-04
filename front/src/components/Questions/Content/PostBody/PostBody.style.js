@@ -9,6 +9,7 @@ const PostLayout = styled.div`
 
 // LeftBox
 const LeftBox = styled.div`
+  user-select: none;
   width: 52px;
   padding-right: 16px;
   grid-column: 1;
@@ -70,9 +71,6 @@ const PostBody = styled.div`
   word-spacing: 1.1em;
   font-size: 15px;
   overflow-wrap: break-word;
-
-  // 추후 삭제 예정
-  height: 600px;
 `;
 
 const TagBox = styled.div`
@@ -87,9 +85,6 @@ const BottomBox = styled.div`
   align-items: flex-start;
   justify-content: flex-end;
   flex-wrap: wrap;
-
-  // 추후 삭제 예정
-  height: 100px;
 `;
 
 const FeatureBox = styled.div`
@@ -100,16 +95,24 @@ const FeatureBox = styled.div`
 `;
 
 const FeatureLeft = styled.div`
-  width: 110px;
+  width: 160px;
 
   display: flex;
-  justify-content: space-between;
 
   a {
     text-decoration: none;
     color: hsl(210, 8%, 45%);
     cursor: pointer;
+    margin-left: 10px;
   }
+`;
+
+const UserBox = styled.div``;
+
+const Comment = styled.span`
+  cursor: pointer;
+  color: hsl(210, 8%, 55%);
+  opacity: 0.6;
 `;
 
 // Answers
@@ -126,4 +129,6 @@ export {
   BottomBox,
   FeatureBox,
   FeatureLeft,
+  UserBox,
+  Comment,
 };
