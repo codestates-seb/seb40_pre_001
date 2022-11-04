@@ -7,13 +7,16 @@ import Layout from './PagesLayout/Layout';
 import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
-import Questions from './Questions/Questions';
+// import Questions from './Questions/Questions';
 import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import UserProfile from './UserProfile/UserProfile';
 import Ask from './Questions/ASK/Ask';
 import NotFound from './404/404';
 import Search from './Search/Search';
+import { lazy } from 'react';
+
+const Questions = lazy(() => import('./Questions/Questions'));
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
