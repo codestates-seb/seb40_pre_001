@@ -93,7 +93,6 @@ public class SecurityConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-//
 //        configuration.addAllowedHeader("*");
 //        configuration.setAllowCredentials(true);
 //        configuration.addExposedHeader("Authorization");

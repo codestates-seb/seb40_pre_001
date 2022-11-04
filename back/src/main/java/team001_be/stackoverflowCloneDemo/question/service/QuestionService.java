@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -41,6 +42,18 @@ public class QuestionService {
 
     public Question findQuestion(Long questionId){
         return findVerifiedQuestionById(questionId);
+    }
+
+    public List<Question> getAllQuestions(){
+        List<Question> questionList = questionRepository.findAll();
+        return questionList;
+    }
+
+    public List<Question> searchQuestionsByTitle(String title){
+        Optional<List<Question>> questionList = questionRepository.findByQuestionTitleContaining(title);
+        List<Question> foundQuestionList = questionList.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+        //수정 필요!!!! stream으로 찾아야??
+        return foundQuestionList;
     }
 
     public void updateQuestionViewCount(Question question, Long viewCount){
@@ -91,12 +104,12 @@ public class QuestionService {
         return foundQuestion;
     }
 
-    private Question findVerifiedQuestionByTitle(String questionTitle){
-        Optional<Question> optionalQuestion = questionRepository.findByQuestionTitle(questionTitle);
-        Question foundQuestion = optionalQuestion.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
-
-        return foundQuestion;
-    }
+//    private Question findVerifiedQuestionByTitle(String questionTitle){
+//        Optional<Question> optionalQuestion = questionRepository.findByQuestionTitle(questionTitle);
+//        Question foundQuestion = optionalQuestion.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+//
+//        return foundQuestion;
+//    }
 
     private Question saveQuestion(Question question){
         return questionRepository.saveAndFlush(question);

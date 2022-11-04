@@ -6,7 +6,6 @@ import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPatchDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
-import team001_be.stackoverflowCloneDemo.question.dto.QuestionResponseDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
