@@ -3,10 +3,10 @@ import LeftBox from './LeftBox';
 import RightBox from './RightBox';
 import * as S from './Pagination.style';
 
-const Pagination = () => {
+const Pagination = ({ length }) => {
   return (
     <S.Container>
-      <LeftBox />
+      <LeftBox length={length} />
       <RightBox />
     </S.Container>
   );

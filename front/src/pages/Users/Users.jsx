@@ -1,29 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import UserInfo from '../../components/Users/UserInfo';
 import * as S from './Users.style.js';
 import Title from '../../components/Title/Title';
 import UsersTab from '../../components/UsersTab/UsersTab';
 import UsersFilter from '../../components/UsersFilter/UsersFilter';
-import UsersPagiNation from '../../components/Questions/Main/UsersPaginaton/UsersPagination';
-import UserData from '../../components/Users/UserData';
+import axios from 'axios';
+import LeftBox from '../../components/Questions/Main/Pagination/LeftBox';
 
 const Users = () => {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await axios.get('http://localhost:3000/api/users');
+
+    if (response) {
+      setData(response.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <S.Container>
-      <Title></Title>
+      <Title title={'Users'} />
       <UsersFilter />
       <UsersTab />
       <S.UsersContainer>
-        {UserData.map((UserData) => {
-          return <UserInfo key={name} UserData={UserData} />;
+        {data?.map(({ content, i }) => {
+          return <UserInfo key={i}>{content}</UserInfo>;
         })}
-        <UserInfo />
       </S.UsersContainer>
       <S.UsersfooterContainer>
         <S.UsersLegend>
           weekly / monthly / quarterly resutatiom leagues
         </S.UsersLegend>
-        <UsersPagiNation />
+
+        <S.PagiNationContainer>
+          <LeftBox length={data?.length} />
+        </S.PagiNationContainer>
       </S.UsersfooterContainer>
     </S.Container>
   );

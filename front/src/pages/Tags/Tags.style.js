@@ -5,13 +5,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 1114px;
   margin: 50px auto 0;
   padding: 24px;
   margin-left: 164px;
-  overflow: hidden;
 `;
-const UsersContainer = styled.div`
+const TagsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   row-gap: 10px;
@@ -22,19 +21,12 @@ const UsersContainer = styled.div`
   overflow: hidden;
 `;
 
-const UsersfooterContainer = styled.div`
+const TagsfooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
 `;
-
-const UsersLegend = styled.div`
-  color: #0074cc;
-  font-size: 13px;
-  font-weight: bold;
-`;
-
 const PagiNationContainer = styled.div`
   .active {
     background-color: hsl(27, 90%, 55%);
@@ -42,10 +34,4 @@ const PagiNationContainer = styled.div`
   }
 `;
 
-export {
-  UsersContainer,
-  Container,
-  UsersLegend,
-  UsersfooterContainer,
-  PagiNationContainer,
-};
+export { Container, TagsContainer, TagsfooterContainer, PagiNationContainer };
