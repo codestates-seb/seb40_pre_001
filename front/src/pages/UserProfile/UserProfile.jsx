@@ -1,16 +1,18 @@
 import React from 'react';
 import * as S from './UserProfile.style';
-import UserProfileButton from '../../components/UserProfileButton/UserProfileButton';
-import UserProfileTab from '../../components/UserprofileTab/UserProfileTab';
-import UserContents from '../../components/UserContents/UserContents';
-import UserCommunities from '../../components/UserCommunities/UserCommunities';
-import UserAnswers from '../../components/UserAnswers/UserAnswers';
+import UserProfileButton from '../../components/UserProfile/UserProfileButton/UserProfileButton';
+import UserProfileTab from '../../components/UserProfile/UserprofileTab/UserProfileTab';
+import UserContents from '../../components/UserProfile/UserContents/UserContents';
+import UserCommunities from '../../components/UserProfile/UserCommunities/UserCommunities';
+import UserAnswers from '../../components/UserProfile/UserAnswers/UserAnswers';
+import UserAnswersContents from '../../components/UserProfile/UserAnswersContent/UserAnswersContent';
+import UserQuestionsContents from '../../components/UserProfile/UserQuestionsContent/UserQuestionsContent';
 
 import CakeIcon from '../../components/@common/Icons/CakeIcon';
 import CalendarIcon from '../../components/@common/Icons/CalendarIcon';
 import ClockIcon from '../../components/@common/Icons/ClockIcon';
 // import Eeeaaaooo from '../../components/@common/img';
-import UserStatsBox from '../../components/UserStatusBox/UserStatsBox';
+import UserStatsBox from '../../components/UserProfile/UserStatusBox/UserStatsBox';
 
 const UserProfile = () => {
   return (
@@ -39,9 +41,14 @@ const UserProfile = () => {
         <UserContents />
       </S.UserGridBox>
       <S.ContentsTitle style={{ marginTop: 15 }}>Communities</S.ContentsTitle>
-      <div style={{ display: 'flex' }}>
+      <S.AnswersContainer>
         <UserCommunities />
-        <UserAnswers>asdasd</UserAnswers>
+        <UserAnswers />
+      </S.AnswersContainer>
+
+      <div style={{ display: 'flex' }}>
+        <UserAnswersContents />
+        <UserQuestionsContents />
       </div>
     </S.Container>
   );

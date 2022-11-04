@@ -19,6 +19,14 @@ const UsersCategoryButton = Object.freeze([
   'Editors',
   'Moderators',
 ]);
+const UserAnswersButton = Object.freeze(['Score', 'Activity', 'Newest']);
+
+const UserQuestionButton = Object.freeze([
+  'Score',
+  'Activity',
+  'Newest',
+  'Views',
+]);
 
 const TagsCategoryButton = Object.freeze(['Popular', 'Name', 'New']);
 
@@ -29,6 +37,7 @@ const UsersTabButton = Object.freeze([
   'year',
   'all',
 ]);
+
 const COLLECTIVE_DETAILS = Object.freeze([
   {
     title: 'Google Cloud',
@@ -142,4 +151,6 @@ export {
   UsersTabButton,
   TagsCategoryButton,
   MOCK_MD_CONTENT,
+  UserAnswersButton,
+  UserQuestionButton,
 };
