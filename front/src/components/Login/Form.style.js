@@ -84,6 +84,26 @@ const SnsButtonContainer = styled.div`
   margin: -4px 0px 16px;
 `;
 
+const EmailCheck = styled.div`
+  font-size: 12px;
+  color: red;
+`;
+
+const EmailEmpty = styled.div`
+  font-size: 12px;
+  color: red;
+`;
+
+const EmailType = styled.div`
+  font-size: 12px;
+  color: red;
+`;
+
+const PasswordEmpty = styled.div`
+  font-size: 12px;
+  color: red;
+`;
+
 export {
   FormContainer,
   LoginForm,
@@ -96,4 +116,5 @@ export {
   IconContainer,
 };
 
+export { EmailEmpty, EmailCheck, EmailType, PasswordEmpty };
 export { SnsButtonContainer };

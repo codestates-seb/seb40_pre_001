@@ -33,6 +33,10 @@ const ROUTES = Object.freeze({
     path: '/questions/ask',
     name: 'Ask Question',
   },
+  USERPROFILE: {
+    path: '/userprofile',
+    name: 'UserPofile',
+  },
 });
 
 export default ROUTES;

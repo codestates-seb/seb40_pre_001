@@ -20,6 +20,8 @@ const UsersCategoryButton = Object.freeze([
   'Moderators',
 ]);
 
+const TagsCategoryButton = Object.freeze(['Popular', 'Name', 'New']);
+
 const UsersTabButton = Object.freeze([
   'week',
   'month',
@@ -138,5 +140,6 @@ export {
   FOOTER_CONTENTS,
   UsersCategoryButton,
   UsersTabButton,
+  TagsCategoryButton,
   MOCK_MD_CONTENT,
 };
