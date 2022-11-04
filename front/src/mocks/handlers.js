@@ -80,6 +80,10 @@ export const handlers = [
     return res(ctx.status(200));
   }),
 
+  //sign up
+
+  // rest.post('/signup', (req, res, ctx) => {
+  //   return res(ctx.status(200), ctx.json('hello!'));
   // Tags
   rest.get('/api/tags', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(tagsData));

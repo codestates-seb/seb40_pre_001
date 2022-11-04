@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UserInfo from '../../components/Users/UserInfo';
+import UserInfo from '../../components/Users/Userinfo';
 import * as S from './Users.style.js';
 import Title from '../../components/Title/Title';
 import UsersTab from '../../components/UsersTab/UsersTab';
@@ -28,7 +28,7 @@ const Users = () => {
       <UsersFilter />
       <UsersTab />
       <S.UsersContainer>
-        {data?.map(({ content, i }) => {
+        {data?.map(({ content }, i) => {
           return <UserInfo key={i}>{content}</UserInfo>;
         })}
       </S.UsersContainer>
