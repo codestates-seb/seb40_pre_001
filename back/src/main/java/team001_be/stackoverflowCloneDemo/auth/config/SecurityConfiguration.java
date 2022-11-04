@@ -95,7 +95,6 @@ public class SecurityConfiguration {
 
 //        configuration.addAllowedHeader("*");
 //        configuration.setAllowCredentials(true);
-
 //        configuration.addAllowedOrigin("*");   // 모든 출처(Origin)에 대해 스크립트 기반의 HTTP 통신을 허용하도록 설정한다
 //        configuration.addAllowedMethod("*");  // 모든 파라미터에 HTTP Method에 대한 HTTP 통신을 허용한다.
 

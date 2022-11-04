@@ -7,6 +7,7 @@ import team001_be.stackoverflowCloneDemo.tag.entity.Tag;
 import team001_be.stackoverflowCloneDemo.tag.repository.TagRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +25,10 @@ public class TagService {
             throw new BusinessLogicException(ExceptionCode.TAG_DUPLICATE);
         }
         return tagRepository.save(tag);
+    }
+
+    public List<Tag> getAllTag(){
+        return tagRepository.findAll();
     }
 
     public Tag findTag(Long tagId){
