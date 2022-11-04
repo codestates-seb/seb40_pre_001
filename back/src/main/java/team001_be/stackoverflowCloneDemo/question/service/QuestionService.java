@@ -6,11 +6,9 @@ import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
-import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.transaction.Transactional;
-import java.util.Objects;
 import java.util.Optional;
 
 

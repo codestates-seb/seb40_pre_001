@@ -1,10 +1,6 @@
 package team001_be.stackoverflowCloneDemo.question;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import team001_be.stackoverflowCloneDemo.question.entity.Question;
-import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 
 public class QuestionTest {

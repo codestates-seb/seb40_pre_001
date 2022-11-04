@@ -9,7 +9,6 @@ import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.*;
 
 @NoArgsConstructor
@@ -27,7 +26,7 @@ public class Question extends Auditable {
     @Setter
     private User user;
 
-    @Column(length = 100, nullable = false, unique = true)
+    @Column(length = 100, nullable = false)
     private String questionTitle;
 
     @Column(length = 65535, nullable = false)
@@ -44,10 +43,12 @@ public class Question extends Auditable {
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
     private List<Answer> answerList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionComment.class)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
     private List<QuestionComment> questionCommentList = new ArrayList<>();
 
@@ -72,6 +73,13 @@ public class Question extends Auditable {
         this.questionTagList.add(questiontag);
         if(questiontag.getQuestion() != this){
             questiontag.addQuestion(this);
+        }
+    }
+
+    public void addAnswerList(Answer answer){
+        this.answerList.add(answer);
+        if(answer.getQuestion() != this){
+            answer.setQuestion(this);
         }
     }
 

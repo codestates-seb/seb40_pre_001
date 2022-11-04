@@ -1,6 +1,5 @@
 package team001_be.stackoverflowCloneDemo.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import team001_be.stackoverflowCloneDemo.auth.utils.CustomAuthorityUtils;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 @Service
 public class UserService {

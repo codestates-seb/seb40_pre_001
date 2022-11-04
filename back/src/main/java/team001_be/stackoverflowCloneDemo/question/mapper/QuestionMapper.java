@@ -15,6 +15,7 @@ public interface QuestionMapper {
     Question questionPostDtoToQuestion(QuestionPostDto questionPostDto);
     Question questionPatchDtoToQuestion(QuestionPatchDto questionPatchDto);
 
+
     default QuestionSimpleResponseDto questionToQuestionSimpleResponseDto(Question question) {
         if ( question == null ) {
             return null;
