@@ -24,7 +24,7 @@ public class UserRepositoryTest {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @BeforeEach
+    @Test
     public void insertDummyUsers() {
         IntStream.rangeClosed(20, 50).forEach(i -> {
             User user = User.builder()
@@ -33,8 +33,9 @@ public class UserRepositoryTest {
                     /*.active(true)*/
                     .password(passwordEncoder.encode("abcd00000"))
                     .build();
-            userRepository.save(user);
+            System.out.println(userRepository.save(user));
         });
+
     }
 }
 

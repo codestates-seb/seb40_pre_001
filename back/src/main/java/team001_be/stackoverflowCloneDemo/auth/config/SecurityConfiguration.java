@@ -40,7 +40,7 @@ public class SecurityConfiguration {
         this.authorityUtils = authorityUtils;
     }
 
-    @Bean
+   /* @Bean
     public UserDetailsManager userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
@@ -57,7 +57,7 @@ public class SecurityConfiguration {
                         .build();
 
         return new InMemoryUserDetailsManager(user, admin);
-    }
+    }*/
 
 
 

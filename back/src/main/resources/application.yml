@@ -19,7 +19,7 @@ spring:
       # show_sql: true # 쿼리를 출력해준다.
       # format_sql: true # 쿼리를 예쁘게 출력해준다.
       # generate_statistics: true # 쿼리 수행 통계를 확인할 수 있다.
-      ddl-auto: create-drop  # (1) ??? ?? ??
+      ddl-auto: create  # (1) ??? ?? ??
     show-sql: true      # (2) SQL ?? ??
     open-in-view: false
 

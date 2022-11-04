@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "\"User\"")
+@Table(name = "\"user\"")
 public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
