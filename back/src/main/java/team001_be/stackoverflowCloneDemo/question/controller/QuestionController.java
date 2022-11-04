@@ -2,6 +2,7 @@ package team001_be.stackoverflowCloneDemo.question.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.answer.mapper.AnswerMapper;
@@ -19,6 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -57,13 +59,20 @@ public class QuestionController {
                 , HttpStatus.OK);
     }
 
+//    @PatchMapping("/{question-id}/accept")
+//    public ResponseEntity acceptAnswer(@PathVariable("question-id") @Positive Long questionId,
+//                                       @RequestParam Long answerId){
+//        Question question = questionService.setAcceptAnswer()
+//
+//
+//        return new SingleResponseDto<>();
+//    }
+
     //간단히 질문만 조회하는 함수
     @GetMapping("/simple/{question-id}")
-    public ResponseEntity getQuestionSimple(@PathVariable("question-id") @Positive Long questionId,
-                                            HttpServletRequest req, HttpServletResponse res) {
-
+    public ResponseEntity getQuestionSimple(@PathVariable("question-id") @Positive Long questionId){
+    
         Question question = questionService.findQuestion(questionId);
-        questionService.updateQuestionViewCount(question, question.getViewCount());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(questionMapper.questionToQuestionSimpleResponseDto(question))
@@ -73,9 +82,9 @@ public class QuestionController {
     //질문 관련된 모든 것 조회하는 함수(질문, 질문 댓글, 답변, 답변 댓글)
     //아직 질문 댓글, 답변 댓글 수정 안됨
     @GetMapping("/{question-id}")
-    public ResponseEntity
-    getQuestion(@PathVariable("question-id") @Positive Long questionId,
-                HttpServletRequest req, HttpServletResponse res) {
+    public ResponseEntity getQuestion(@PathVariable("question-id") @Positive Long questionId,
+                HttpServletRequest req, HttpServletResponse res){
+
         Question question = questionService.findQuestion(questionId);
         questionService.updateQuestionViewCount(question, question.getViewCount());
 
@@ -104,9 +113,29 @@ public class QuestionController {
                 new MultiResponseDto(questionMapper.questionToQuestionSimpleResponseDto(question),
                         answerMapper.answerToAnswerResponseDtos(question.getAnswerList()))
                 , HttpStatus.OK);
-
     }
 
+    //전체 질문 조회(생성일 기준 최신순)
+    @GetMapping("")
+    public ResponseEntity getAllQuestions(){
+        List<Question> questionList = questionService.getAllQuestions();
+
+        return new ResponseEntity<>(questionMapper.questionListToQuestionSimpleResponseDtos(questionList),
+                HttpStatus.OK);
+    }
+
+    //"searchTitle"이 제목에 포함된 질문 조회
+    //미완. 현재는 대소문자 구분해서 검색함. 추후 대소문자 구분없이 검색하도록 수정 요망
+    @GetMapping("/search")
+    public ResponseEntity getQuestionsBySearchTitle(@RequestParam String searchTitle){
+        System.out.println("검색어: " + searchTitle);
+        List<Question> questionList = questionService.searchQuestionsByTitle(searchTitle);
+        System.out.println("검색된 질문 수" + questionList.size());
+
+
+        return new ResponseEntity<>(questionMapper.questionListToQuestionSimpleResponseDtos(questionList),
+                HttpStatus.OK);
+    }
 
     @DeleteMapping("/{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,

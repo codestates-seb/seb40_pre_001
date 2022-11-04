@@ -21,6 +21,8 @@ public class UserPatchDto {
 
     private String password;
 
+    private String description;
+
     private String userNickname;
 
     private LocalDate birthday;

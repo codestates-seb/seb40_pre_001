@@ -61,18 +61,6 @@ public class User extends Auditable {
         this.address = address;
         this.birthday = birthday;
     }
-
-
-//     id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
-    public static User toSaveEntity(UserDto userDto){
-        User user = new User();
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-        user.setUserNickname(userDto.getUserNickname());
-        user.setBirthday(userDto.getBirthday());
-        user.setAddress(userDto.getAddress());
-        return user;
-    }
   
     public enum UserStatus {
         USER_EXIST("이미 가입한 회원"),
