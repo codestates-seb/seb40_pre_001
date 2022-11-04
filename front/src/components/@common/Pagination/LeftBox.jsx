@@ -12,7 +12,7 @@ const LeftBox = ({ length }) => {
   const createEmptyArray = () => {
     return Array.from(
       { length: lastPage < 5 ? lastPage - 1 : 5 },
-      (v, i) => i++,
+      (_, i) => i++,
     );
   };
 

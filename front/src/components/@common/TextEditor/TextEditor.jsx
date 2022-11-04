@@ -17,6 +17,7 @@ const TextEditor = forwardRef(({ onChange, ...props }, ref) => {
         useCommandShortcut={true}
         onChange={onChange}
         viewer='true'
+        onBlur='true'
         {...props}
       />
     </div>

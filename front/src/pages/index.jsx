@@ -4,13 +4,14 @@ import { ROUTES } from '../constants';
 import { Nav } from '../components/@Layout';
 
 import Layout from './PagesLayout/Layout';
-import Tags from './Tags';
+import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 import Questions from './Questions/Questions';
-import Ask from './Questions/ASK/Ask';
 import Post from './Questions/Post/Post';
 import Users from './Users/Users';
+import UserProfile from './UserProfile/UserProfile';
+import Ask from './Questions/ASK/Ask';
 import NotFound from './404/404';
 import Search from './Search/Search';
 
@@ -49,6 +50,11 @@ const PAGES = [
         name: ROUTES.USERS.name,
         path: ROUTES.USERS.path,
         element: <Users />,
+      },
+      {
+        name: ROUTES.USERPROFILE.name,
+        path: ROUTES.USERPROFILE.path,
+        element: <UserProfile />,
       },
       { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
     ],

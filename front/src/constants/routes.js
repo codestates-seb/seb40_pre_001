@@ -41,6 +41,10 @@ const ROUTES = Object.freeze({
     path: '/search',
     name: 'Search',
   },
+  USERPROFILE: {
+    path: '/userprofile',
+    name: 'UserProfile',
+  },
 });
 
 export default ROUTES;

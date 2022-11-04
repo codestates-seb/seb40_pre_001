@@ -4,6 +4,7 @@ import { createPost, deletePost } from '../apis/questions';
 
 const useCreatePost = (queryKey, path) => {
   const queryClient = useQueryClient();
+  //양식이 제출되거나 event 발생시 url 조작 > question 페이지 리다이렉션
   const navigate = useNavigate();
 
   return useMutation((Post) => createPost(Post), {
@@ -12,6 +13,7 @@ const useCreatePost = (queryKey, path) => {
       queryClient.invalidateQueries([queryKey]);
       // 성공시에 페이지 리다이렉션 to path
       navigate(path);
+      console.log();
     },
     onError: (error) => {
       console.log(error);
