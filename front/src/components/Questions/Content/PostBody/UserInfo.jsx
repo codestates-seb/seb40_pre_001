@@ -3,10 +3,8 @@ import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
 
 const UserInfo = ({ author, createdAt }) => {
-  const isAuthor = author === 'keonhee Lee';
-
   return (
-    <S.Wrapper isAuthor={isAuthor}>
+    <S.Wrapper isAuthor={undefined}>
       <S.Container>
         <S.TimeContainer>
           asked{' '}

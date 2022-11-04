@@ -9,6 +9,8 @@ import { useSetRecoilState } from 'recoil';
 import { usersState } from '../../store';
 import { postLogin } from '../../apis/auth';
 import { getCurrentUser } from '../../apis/users.js';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 
 const Form = () => {
   const setIsAuthenticated = useSetRecoilState(usersState);
@@ -17,16 +19,24 @@ const Form = () => {
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwdvalid] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
 
-  const { mutate } = useMutation(postLogin, {
-    onSuccess: () => {
-      setIsAuthenticated(true);
-      getCurrentUser();
+  const { mutate } = useMutation(
+    postLogin,
+    {
+      onSuccess: () => {
+        setIsAuthenticated(true);
+        getCurrentUser();
+        navigate(ROUTES.QUESTIONS.path);
+      },
+      onError: () => {
+        console.log('Failed to Login');
+      },
     },
-    onError: () => {
-      console.log('Failed to Login');
+    {
+      retry: false,
     },
-  });
+  );
 
   // const credential = {
   //   email: 'test94@gamil.com',

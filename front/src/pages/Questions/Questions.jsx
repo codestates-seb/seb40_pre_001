@@ -6,14 +6,14 @@ import PostBox from '../../components/Questions/Main/Post/PostBox';
 import useGetAllPosts from '../../hooks/questions/useGetAllPosts';
 
 const Questions = () => {
-  const { data: length } = useGetAllPosts((data) => data.length);
+  const { data } = useGetAllPosts();
 
   return (
     <S.ContentWrapper>
       <S.MainContainer>
-        <Header title='All Questions' length={length} />
-        <PostBox />
-        <Pagination length={length} />
+        <Header title='All Questions' length={data?.length} />
+        <PostBox data={data} />
+        <Pagination length={data?.length} />
       </S.MainContainer>
       <Widget />
     </S.ContentWrapper>

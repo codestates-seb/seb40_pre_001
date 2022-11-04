@@ -17,13 +17,21 @@ body {
   overflow-x: hidden;
   display : flex;
   flex-direction : column;
-}
+
 
 button {
   cursor: pointer;
 }
 
 
-`;
+.ReactQueryDevtoolsPanel {
+  * {
+    color : white;
+  }
+
+}
+
+
+}`;
 
 export default GlobalStyles;

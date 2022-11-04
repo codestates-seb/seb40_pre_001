@@ -4,7 +4,7 @@ import { usersState } from '../../store';
 import ProtectedRoute from './ProtectedRoute';
 
 const AuthRoutes = () => {
-  const isAuthenticated = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
 
   console.log('isAuth', isAuthenticated);
 

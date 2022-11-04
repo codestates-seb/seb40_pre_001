@@ -7,24 +7,33 @@ import RightBox from './PostBody/RightBox';
 import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 import Answer from './Answer/Answer';
 import { useParams } from 'react-router-dom';
+import useGetPostById from '../../../hooks/questions/useGetPostById';
+import Spinner from '../../@common/Spinner';
 
 const Content = () => {
   const { id } = useParams();
-  const { data, status: fetchingStatus } = useGetAllPosts((data) =>
-    data.find((post) => post.questionId === Number(id)),
-  );
+  const { data, isSuccess } = useGetPostById(id);
 
-  // const author = getUserById(id).userNickname;
+  const {
+    questionTitle,
+    userId,
+    viewCount,
+    voteCount,
+    createdAt,
+    modifiedAt,
+    answers,
+    context,
+  } = data;
 
-  return fetchingStatus === 'success' ? (
+  return isSuccess ? (
     <div>
       <Header
-        title={data.questionTitle}
-        views={data.status.views}
-        createdAt={data.createdAt}
+        title={questionTitle}
+        viewCount={viewCount}
+        createdAt={createdAt}
+        modifiedAt={modifiedAt}
       />
       <M.MainContainer>
         <S.ImgContainer>
@@ -37,50 +46,16 @@ const Content = () => {
           />
         </S.ImgContainer>
         <S.PostLayout>
-          <LeftBox
-            status={data.status}
-            upVotedUsers={data.upVotedUsers}
-            downVotedUsers={data.downVotedUsers}
-          />
-          <RightBox
-            tags={data.tags}
-            content={data.content}
-            author={data?.author}
-            createdAt={data.createdAt}
-          />
+          <LeftBox votes={voteCount} />
+          <RightBox context={context} userId={userId} createdAt={createdAt} />
         </S.PostLayout>
         {/* Answers */}
-
-        {data?.answers && (
+        {answers && (
           <>
-            <S.AnswerHeader>{data.answers.length} Answer</S.AnswerHeader>
-            {data.answers.map(
-              (
-                {
-                  content,
-                  status,
-                  tags,
-                  author,
-                  createdAt,
-                  upVotedUsers,
-                  downVotedUsers,
-                },
-                i,
-              ) => {
-                return (
-                  <Answer
-                    key={i}
-                    status={status}
-                    tags={tags}
-                    content={content}
-                    author={author}
-                    createdAt={createdAt}
-                    upVotedUsers={upVotedUsers}
-                    downVotedUsers={downVotedUsers}
-                  />
-                );
-              },
-            )}
+            <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
+            {answers.map((answer, i) => {
+              return <Answer detail={answer} key={i} />;
+            })}
           </>
         )}
         {/* Post Answer */}
@@ -89,7 +64,7 @@ const Content = () => {
       <Widget />
     </div>
   ) : (
-    <div>loading...</div>
+    <Spinner />
   );
 };
 
