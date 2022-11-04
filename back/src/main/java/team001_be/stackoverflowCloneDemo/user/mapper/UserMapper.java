@@ -2,8 +2,8 @@ package team001_be.stackoverflowCloneDemo.user.mapper;
 
 import org.mapstruct.Mapper;
 
-import team001_be.stackoverflowCloneDemo.user.dto.*;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
+import team001_be.stackoverflowCloneDemo.user.dto.*;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

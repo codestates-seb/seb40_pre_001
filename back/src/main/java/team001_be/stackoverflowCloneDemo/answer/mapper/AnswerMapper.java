@@ -1,15 +1,17 @@
 package team001_be.stackoverflowCloneDemo.answer.mapper;
 
 import org.mapstruct.Mapper;
-import team001_be.stackoverflowCloneDemo.answer.dto.AnswerDeleteDto;
 import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPatchDto;
 import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPostDto;
 import team001_be.stackoverflowCloneDemo.answer.dto.AnswerResponseDto;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface AnswerMapper {
+    List<AnswerResponseDto> answerToAnswerResponseDtos(List<Answer> answerList);
 
     default Answer answerPostDtoToAnswer(AnswerPostDto answerPostDto) {
         if ( answerPostDto == null ) {

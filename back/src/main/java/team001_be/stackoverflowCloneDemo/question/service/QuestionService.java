@@ -7,7 +7,6 @@ import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
-import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -98,9 +97,6 @@ public class QuestionService {
 
         return foundQuestion;
     }
-
-
-
 
     private Question saveQuestion(Question question){
         return questionRepository.saveAndFlush(question);

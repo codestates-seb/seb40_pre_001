@@ -26,7 +26,6 @@ import team001_be.stackoverflowCloneDemo.filter.JwtAuthorizationFilter;
 
 import java.util.Arrays;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -58,7 +57,6 @@ public class SecurityConfiguration {
 
         return new InMemoryUserDetailsManager(user, admin);
     }*/
-
 
 
     @Bean
@@ -94,11 +92,14 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        // configuration.setAllowCredentials(true);
-        configuration.addAllowedOriginPattern("*");
+
+     // configuration.addAllowedOrigin("http://localhost:3000");
+     
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
         configuration.addExposedHeader("Authorization");
-        configuration.setAllowedOrigins(Arrays.asList("*"));   // 모든 출처(Origin)에 대해 스크립트 기반의 HTTP 통신을 허용하도록 설정한다
-        configuration.setAllowedMethods(Arrays.asList("*"));  // 모든 파라미터에 HTTP Method에 대한 HTTP 통신을 허용한다.
+        configuration.addAllowedOrigin("*");   // 모든 출처(Origin)에 대해 스크립트 기반의 HTTP 통신을 허용하도록 설정한다
+        configuration.addAllowedMethod("*");  // 모든 파라미터에 HTTP Method에 대한 HTTP 통신을 허용한다.
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();   //  CorsConfigurationSource 인터페이스의 구현 클래스인 UrlBasedCorsConfigurationSource 클래스의 객체를 생성한다.
         source.registerCorsConfiguration("/**", configuration);

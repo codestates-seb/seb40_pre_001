@@ -12,16 +12,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.auth.jwt.JwtTokenizer;
-import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
-
 import team001_be.stackoverflowCloneDemo.user.dto.UserEmailDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
-
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
+import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
+
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.validation.Valid;
@@ -37,9 +36,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private final UserRepository userRepository;
-    private final JwtTokenizer jwtTokenizer;
-    private final PasswordEncoder passwordEncoder;
+
     private final UserMapper mapper;
     private final UserService userService;
 
@@ -87,6 +84,7 @@ public class UserController {
                 new SingleResponseDto<>(mapper.userToUserResponseDto(user)), HttpStatus.OK
         );
     }
+
 
     //개인 회원 Stats 요청
   /*  @GetMapping("/{user-id}/{userNickname}?tab=profile")
