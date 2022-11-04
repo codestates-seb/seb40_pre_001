@@ -1,20 +1,18 @@
-import { getPostsByKeyword } from '../../apis/questions';
-
 import { useQuery } from '@tanstack/react-query';
+import { getAnswersById } from '../../apis/questions';
 
-const useGetFilteredPost = (keyword) => {
+const useGetAnswersById = (id) => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['filtered-post', 'questions'],
-    () => getPostsByKeyword(keyword),
+    ['answers'],
+    () => getAnswersById(id),
     {
       refetchOnWindowFocus: false,
       staleTime: 5000 * 2 * 60,
       suspense: true,
-      enabled: true,
     },
   );
 
   return { data, isSuccess, isLoading, isError };
 };
 
-export default useGetFilteredPost;
+export default useGetAnswersById;
