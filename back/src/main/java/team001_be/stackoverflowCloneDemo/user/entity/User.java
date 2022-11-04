@@ -19,6 +19,7 @@ import java.util.List;
 public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
     private Long userId;
 
     @Column(nullable = false, updatable = false, unique = true)
@@ -50,13 +51,17 @@ public class User extends Auditable {
     @ToString.Exclude
     private List<Answer> answerList = new ArrayList<>();
 
-    public User(String email, String userNickname, String description, String address, LocalDate birthday) {
+    @Builder
+    public User(Long userId,String email, String password, String userNickname, String description, String address, LocalDate birthday) {
+        this.userId = userId;
         this.email = email;
+        this.password = password;
         this.userNickname = userNickname;
         this.description = description;
         this.address = address;
         this.birthday = birthday;
     }
+
 
 //     id 가 없기 때문에, update 쿼리가 아니라 , insert 쿼리 가 나감.
     public static User toSaveEntity(UserDto userDto){

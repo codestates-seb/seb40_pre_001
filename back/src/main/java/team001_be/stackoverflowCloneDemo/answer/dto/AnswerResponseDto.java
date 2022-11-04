@@ -3,6 +3,8 @@ package team001_be.stackoverflowCloneDemo.answer.dto;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 public class AnswerResponseDto {
@@ -12,4 +14,6 @@ public class AnswerResponseDto {
     private String context;
     private int voteCount;
     private boolean isAccepted;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
 }

@@ -2,11 +2,8 @@ package team001_be.stackoverflowCloneDemo.user.mapper;
 
 import org.mapstruct.Mapper;
 
-import team001_be.stackoverflowCloneDemo.user.dto.UserLoginDto;
-import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;
-import team001_be.stackoverflowCloneDemo.user.dto.UserPostDto;
-import team001_be.stackoverflowCloneDemo.user.dto.UserResponseDto;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
+import team001_be.stackoverflowCloneDemo.user.dto.*;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
@@ -15,6 +12,7 @@ public interface UserMapper {
      User userPatchDtoToUser(UserPatchDto userPatchDto);
 
      User userLoginDtoToUser(UserLoginDto userLoginDto);
+     User userEmailDtoToUser(UserEmailDto userEmailDto);
      UserResponseDto userToUserResponseDto(User user);
 }
 

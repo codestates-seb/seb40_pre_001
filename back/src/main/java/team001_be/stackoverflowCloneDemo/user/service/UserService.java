@@ -24,7 +24,9 @@ import java.util.Optional;
 public class UserService {
 
 
+
     private final UserRepository userRepository;
+
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
     private final UserMapper userMapper;
@@ -59,10 +61,10 @@ public class UserService {
     }
 
     // 전체조회 service
-    public List<UserResponseDto> findAll() {
+    public List<UserResponseDto> findAllUsers() {
         List<User> userList = userRepository.findAll();
         List<UserResponseDto> userDtoList = new ArrayList<>();
-        for (User user : userList) {
+        for (User user : userList){
             UserResponseDto userResponseDto = userMapper.userToUserResponseDto(user);
             userDtoList.add(userResponseDto);
         }
@@ -72,7 +74,7 @@ public class UserService {
 
     public User updateUser(User user) {
         User foundUser = findUser(user.getUserId());
-        //user 권한 확인 jwt
+        //user 권한 확인
         verifyUserAuthorization(user.getUserId(), foundUser.getUserId());
 
         Optional.ofNullable(user.getEmail())
@@ -89,6 +91,13 @@ public class UserService {
         return saveUser(foundUser);
     }
 
+     /*   public User disableUser(Long userId){
+        User user = findVerifiedUserById(userId);
+        verifyUserAuthorization(userId, findUser(user.getUserId()).getUserId());
+        user.setActive(false);
+        return saveUser(user);
+    }*/
+
 
     public void deleteUser(Long userId) {
         User user = findVerifiedUserById(userId);
@@ -96,6 +105,7 @@ public class UserService {
 
         userRepository.delete(user);
     }
+
 
     private User findVerifiedUserById(Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
@@ -108,10 +118,10 @@ public class UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    private void verifyUserAuthorization(Long modifiedUserId, Long oldUserId) {
-        //수정하려는 user가 질문 작성자가 맞는지 check
-        if (!Objects.equals(modifiedUserId, oldUserId))
-            throw new BusinessLogicException(ExceptionCode.USER_NOT_FOUND);
+    public void verifyUserAuthorization(Long authorizedUserId, Long tryingUserId) {
+        //user의 권한 확인
+        if (!Objects.equals(authorizedUserId, tryingUserId))
+            throw new BusinessLogicException(ExceptionCode.UNAUTHORIZED_USER);
     }
 
     private void verifyExistsEmail(String email) {
@@ -132,10 +142,12 @@ public class UserService {
         return username;
     }
 
+
     public String getUserNickname(Long userId){
         User user = findUser(userId);
         String foundUserNickname = user.getUserNickname();
 
         return foundUserNickname;
     }
+
 }
