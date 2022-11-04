@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './UserContents.stlye';
 const UserContents = () => {
-  return <S.Container>asdasd</S.Container>;
+  return <S.Container>test</S.Container>;
 };
 
 export default UserContents;
