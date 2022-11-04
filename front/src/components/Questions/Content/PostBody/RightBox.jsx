@@ -9,10 +9,9 @@ import useDeletePost from '../../../../hooks/questions/useDeletePost';
 const RightBox = ({ questionId, context, userId, createdAt }) => {
   const { data: user } = useGetUserById(userId);
   const { handleDelete } = useDeletePost();
+
   const currentUser = localStorage.getItem('user') || 'anonymous';
-
   const tags = ['Javascript', 'Django', 'styled-components'];
-
   const isAuthor = user?.email === currentUser;
 
   return (

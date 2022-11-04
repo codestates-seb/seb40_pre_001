@@ -10,8 +10,8 @@ const PostBox = ({ data }) => {
   const { selectedLimit, currentPage } = useRecoilValue(pagesState);
   const offset = (currentPage - 1) * selectedLimit;
 
-  return data.slice(offset, offset + selectedLimit).map((post) => (
-    <S.PostContainer key={post.questionsId}>
+  return data.slice(offset, offset + selectedLimit).map((post, i) => (
+    <S.PostContainer key={i}>
       {/* BoxLeft */}
       <PostStatus votes={post.voteCount} views={post.viewCount} />
       {/* BoxRight */}
