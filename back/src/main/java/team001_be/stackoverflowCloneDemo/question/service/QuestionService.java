@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.question.service;
 
+import org.springframework.boot.web.server.Cookie;
 import org.springframework.stereotype.Service;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
 import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
@@ -8,7 +9,12 @@ import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
 
@@ -39,10 +45,10 @@ public class QuestionService {
 
     public void updateQuestionViewCount(Question question, Long viewCount){
         Question foundQuestion = findQuestion(question.getQuestionId());
-
-        question.updateViewCount(viewCount);
+        question.updateViewCount(viewCount + 1);
         saveQuestion(question);
     }
+
 
     public Question updateQuestion(Question question, Long userId){
         Question foundQuestion = findQuestion(question.getQuestionId());
@@ -95,4 +101,60 @@ public class QuestionService {
     private Question saveQuestion(Question question){
         return questionRepository.saveAndFlush(question);
     }
+
+
+
+
+
+/*
+    private final static String VIEWCOOKIENAME = "alreadyViewCookie";
+
+    @Transactional
+    public int updateView(Long questionId, HttpServletRequest request, HttpServletResponse response) {
+        javax.servlet.http.Cookie[] cookies = request.getCookies();
+        boolean checkCookie = false;
+        int result = 0;
+        if (cookies != null) {
+            for (javax.servlet.http.Cookie cookie : cookies) {
+                // 이미 조회를 한 경우 체크
+                if (cookie.getName().equals(VIEWCOOKIENAME + questionId)) checkCookie = true;
+            }
+            if (!checkCookie) {
+                Cookie newCookie = createCookieForForNotOverlap(questionId);
+                response.addCookie(newCookie);
+                result = QuestionRepository.updateView(questionId);
+            }
+        } else {
+            Cookie newCookie = createCookieForForNotOverlap(questionId);
+            response.addCookie(newCookie);
+            result = QuestionRepository.updateView(questionId);
+        }
+        return result;
+    }
+
+        */
+/*
+         * 조회수 중복 방지를 위한 쿠키 생성 메소드
+         * @param cookie
+         * @return
+         * *//*
+
+        private Cookie createCookieForForNotOverlap(Long questionId) {
+            Cookie cookie = new Cookie(VIEWCOOKIENAME+questionId, String.valueOf(questionId));
+            cookie.setComment("조회수 중복 증가 방지 쿠키");	    // 쿠키 용도 설명 기재
+            cookie.setMaxAge(getRemainSecondForTomorrow()); 	    // 하루를 준다.
+            cookie.setHttpOnly(true);				          // 서버에서만 조작 가능
+            return cookie;
+        }
+
+        // 다음 날 정각까지 남은 시간(초)
+        private int getRemainSecondForTomorrow() {
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime tomorrow = LocalDateTime.now().plusDays(1L).truncatedTo(ChronoUnit.DAYS);
+            return (int) now.until(tomorrow, ChronoUnit.SECONDS);
+    }
+*/
+
+
+
 }

@@ -6,8 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -34,6 +38,25 @@ public class SecurityConfiguration {
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
     }
+
+   /* @Bean
+    public UserDetailsManager userDetailsService() {
+        UserDetails user =
+                User.withDefaultPasswordEncoder()
+                        .username("kevin@gmail.com")
+                        .password("1111")
+                        .roles("USER")
+                        .build();
+
+        UserDetails admin =
+                User.withDefaultPasswordEncoder()
+                        .username("admin@gmail.com")
+                        .password("2222")
+                        .roles("ADMIN")
+                        .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
+    }*/
 
 
     @Bean

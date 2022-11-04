@@ -27,13 +27,20 @@ public class Question extends Auditable {
     @Setter
     private User user;
 
+
+
     @Column(length = 100, nullable = false)
     private String questionTitle;
 
     @Column(length = 65535, nullable = false)
     private String context;
 
-    private Long viewCount;
+    public void setViewCount(Long viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private Long viewCount; //조회수
 
     private Long voteCount;
 
