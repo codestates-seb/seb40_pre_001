@@ -6,7 +6,7 @@ import TagsAll from './TagsAll';
 import TagsFilter from '../../components/TagsFilter/TagsFilter';
 import axios from 'axios';
 import Contents from '../../components/Tags/Contents';
-import LeftBox from '../../components/Questions/Main/Pagination/LeftBox';
+import LeftBox from '../../components/Questions/Content/PostBody/LeftBox';
 
 const Tags = () => {
   const [data, setData] = useState([]);

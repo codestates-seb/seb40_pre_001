@@ -16,12 +16,9 @@ const apiClient2 = axios.create({
 });
 
 const demoGetAllPosts = async () => {
-  // 서버에 반영 아직 x
-  const response = await apiClient2.get('/questions');
+  const { data } = await apiClient2.get('/questions');
 
-  console.log(response);
-
-  return response;
+  return data;
 };
 
 const demoCreatePost = async (question) => {

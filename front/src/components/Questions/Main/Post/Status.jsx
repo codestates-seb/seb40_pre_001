@@ -1,7 +1,8 @@
 import React from 'react';
 import * as S from './Post.style';
 
-const PostStatus = ({ status }) => {
+const PostStatus = ({ data }) => {
+  const status = { votes: data.voteCount, views: data.viewCount, answers: 4 };
   return (
     <S.BoxLeft>
       <S.VoteBox>

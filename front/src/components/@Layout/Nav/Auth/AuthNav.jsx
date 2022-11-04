@@ -9,8 +9,6 @@ import * as S from './AuthNav.style';
 
 import LogoutPopOver from './LogoutPopOver';
 
-import { demoGetSimplePostById } from '../../../../apis/questions';
-
 const Auth = () => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -27,7 +25,7 @@ const Auth = () => {
           <span>1</span>
         </S.ProfileBox>
       </S.Li>
-      <S.Li style={{ marginLeft: 15 }} onClick={() => demoGetSimplePostById(1)}>
+      <S.Li style={{ marginLeft: 15 }}>
         <InboxIcon />
       </S.Li>
       <S.Li>

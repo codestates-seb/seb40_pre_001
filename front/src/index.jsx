@@ -6,7 +6,6 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { worker } from './mocks/broswer';
 import { GlobalStyles, theme } from './styles';
 import App from './App';
-// import setAuthToken from './components/@helper/setAuthToken';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start();
