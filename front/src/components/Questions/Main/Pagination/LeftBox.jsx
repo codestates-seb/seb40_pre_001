@@ -8,7 +8,6 @@ const LeftBox = ({ length }) => {
   const { selectedLimit } = useRecoilValue(pagesState);
 
   const lastPage = Math.ceil(length / selectedLimit);
-  console.log('len', length);
 
   const createEmptyArray = () => {
     return Array.from(

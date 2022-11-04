@@ -15,29 +15,12 @@ import axios from 'axios';
 //로그인과 회원가입 페이지 추후 파일 위치 수정
 //버튼 스타일은 일단 복사하여 사용했는데 나중에 한 개의 style으로 합치고 재사용 가능하게 수정이 필요
 
-// console.log(nickName, email, password);
-// return await axios({
-//   method: 'post',
-//   url: 'https://630c-125-177-243-74.jp.ngrok.io/users/signup',
-//   data: {
-//     email: email,
-//     userNickname: nickName,
-//     password: password,
-//   },
-// })
-//   .then(console.log('sucess'))
-//   .catch((error) => {
-//     console.log(error);
-//   })
-//   .then(axios.get('https://630c-125-177-243-74.jp.ngrok.io/users/1'));
-
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = async (e) => {
-    console.log(email, password, nickName);
     e.preventDefault();
     return await axios
       .post(
@@ -62,10 +45,10 @@ const SignUpForm = () => {
 
   return (
     <S.Container>
-      {SNS_BUTTONS.map(({ BGC, BORDER_C, COLOR, HOVER_BG, MESSAGE, ICON }) => {
+      {SNS_BUTTONS.map(({ BGC, BORDER_C, COLOR, HOVER_BG, ICON }, i) => {
         return (
           <SnsButton
-            key={MESSAGE}
+            key={i}
             borderColor={BORDER_C}
             backgroundColor={BGC}
             color={COLOR}

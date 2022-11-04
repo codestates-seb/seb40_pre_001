@@ -7,7 +7,7 @@ import { SquareButton } from '../../../components/@common/Buttons/Button.style';
 
 const inputDone = [];
 
-const AskForm = ({ key, title, script, index, markdown, placeholder }) => {
+const AskForm = ({ title, script, index, markdown, placeholder }) => {
   const [liveButton, SetLiveButton] = useState(false);
   const [textdone, SetTextDone] = useState('');
 
@@ -18,34 +18,25 @@ const AskForm = ({ key, title, script, index, markdown, placeholder }) => {
 
   const DoneQuestion = () => {
     let check = textdone.replace(/\s/g, '');
-    // console.log(check.length);
+
     if (check.length > 15 && !inputDone.includes(index)) {
       inputDone.push(index);
-      console.log(inputDone);
     }
   };
 
   const editorRef = useRef();
 
   const handleRegisterButton = () => {
-    // 입력창에 입력한 내용을 HTML 태그 형태로 취득
-    // console.log(editorRef.current?.getInstance().getHTML());
-    // 입력창에 입력한 내용을 MarkDown 형태로 취득
-    // console.log(editorRef.current?.getInstance().getMarkdown());
     const EditorText = editorRef.current?.getInstance().getMarkdown();
     SetTextDone(EditorText);
     DoneQuestion(textdone);
-    console.log(textdone);
   };
-
-  //   const onBlur = () => {};
 
   //1. toast ui 15글자 못넘으면 blur 처리 하기
   //2. 버튼 누르면 blur 풀기
 
   return (
     <S.AskForm
-      type={key}
       onClick={() => SetLiveButton(true)}
       onBlur={changeButton}
       onChange={DoneQuestion}
