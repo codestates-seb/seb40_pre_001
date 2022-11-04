@@ -13,7 +13,7 @@ export const handlers = [
   rest.get('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
     const matchIdData = mockData.find(
-      ({ contentId }) => contentId === Number(id),
+      ({ questionId }) => questionId === Number(id),
     );
 
     return res(ctx.status(200), ctx.json(matchIdData), ctx.delay());
@@ -65,7 +65,7 @@ export const handlers = [
   rest.patch('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
     const status = req.body;
-    const index = mockData.findIndex((data) => data.contentId === Number(id));
+    const index = mockData.findIndex((data) => data.questionId === Number(id));
     const modified = { ...mockData[index], status };
 
     // console.log('id', id);
@@ -82,7 +82,9 @@ export const handlers = [
 
     console.log(id);
 
-    mockData = mockData.filter((question) => question.contentId !== Number(id));
+    mockData = mockData.filter(
+      (question) => question.questionId !== Number(id),
+    );
 
     console.log('deleted', mockData);
 

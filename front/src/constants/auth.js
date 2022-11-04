@@ -7,4 +7,6 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-export { GITHUB, USER_REGEX, PWD_REGEX };
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+export { GITHUB, USER_REGEX, PWD_REGEX, BASE_URL };

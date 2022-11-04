@@ -2,12 +2,12 @@
 
 const questionsData = [
   {
-    contentId: 1,
+    questionId: 1,
     userId: 12345,
-    title:
+    questionTitle:
       'Inquirer will not wait to select in async function, JavascriptInquirer will not wait to select in async function,',
-    author: 'keonhee Lee',
     createdAt: '2022-10-27',
+    modifiedAt: '2022-10-28',
     tags: ['javascript', 'react'],
     status: {
       votes: 10,
@@ -23,7 +23,6 @@ const questionsData = [
     answers: [
       {
         answerId: 1,
-        author: 'John doe',
         userId: 1231244,
         createdAt: '2022-1-17',
         content: {
@@ -41,7 +40,6 @@ const questionsData = [
       },
       {
         answerId: 2,
-        author: 'wowzer',
         userId: 1231244,
         createdAt: '2012-10-27',
         content: {
@@ -60,11 +58,10 @@ const questionsData = [
     ],
   },
   {
-    contentId: 2,
+    questionId: 2,
     userId: 12343,
-    title:
+    questionTitle:
       'instead of finding flutter-debug.aar gradle try to find flutter-debug.jar',
-    author: 'dameun Choi',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'flutter'],
     status: {
@@ -83,7 +80,6 @@ const questionsData = [
     answers: [
       {
         answerId: 1213,
-        author: 'Jodsxchn doe',
         userId: 12341244,
         createdAt: '2021-1-17',
         content: {
@@ -101,7 +97,6 @@ const questionsData = [
       },
       {
         answerId: 2,
-        author: 'wowsdzer',
         userId: 1231244,
         createdAt: '2012-10-27',
         content: {
@@ -120,10 +115,9 @@ const questionsData = [
     ],
   },
   {
-    contentId: 3,
+    questionId: 3,
     userId: 123435,
-    title: 'How to get server time with KOA js',
-    author: 'wontae Cho',
+    questionTitle: 'How to get server time with KOA js',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'ui'],
     status: {
@@ -139,10 +133,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 4,
+    questionId: 4,
     userId: 1232345,
-    title: 'where to find my wallet',
-    author: 'anonymous',
+    questionTitle: 'where to find my wallet',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -158,10 +151,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 5,
+    questionId: 5,
     userId: 1232345,
-    title: 'Rails includes for self-referential associations',
-    author: 'God G',
+    questionTitle: 'Rails includes for self-referential associations',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -177,10 +169,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 6,
+    questionId: 6,
     userId: 1232345,
-    title: 'How to subset rows of df based on unique values?',
-    author: 'yun jae Hwang',
+    questionTitle: 'How to subset rows of df based on unique values?',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -196,10 +187,10 @@ const questionsData = [
     },
   },
   {
-    contentId: 7,
+    questionId: 7,
     userId: 1232345,
-    title: 'How to implement Individual Column Searching using checkboxes?',
-    author: 'young un Oh',
+    questionTitle:
+      'How to implement Individual Column Searching using checkboxes?',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -215,11 +206,10 @@ const questionsData = [
     },
   },
   {
-    contentId: 8,
+    questionId: 8,
     userId: 1232345,
-    title:
+    questionTitle:
       'Why the font color setting button does not shown in Ckeditor4 Tool bar',
-    author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -235,10 +225,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 9,
+    questionId: 9,
     userId: 1232345,
-    title: 'where to find my wallet',
-    author: 'anonymous',
+    questionTitle: 'where to find my wallet',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -254,10 +243,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 10,
+    questionId: 10,
     userId: 1232345,
-    title: 'How to do two conditions in same if statement? c++',
-    author: 'anonymous',
+    questionTitle: 'How to do two conditions in same if statement? c++',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -273,11 +261,10 @@ const questionsData = [
     },
   },
   {
-    contentId: 11,
+    questionId: 11,
     userId: 12312345,
-    title:
+    questionTitle:
       'is there another way to print an output to the user without using console.log? [duplicate]',
-    author: 'anonymous',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -293,10 +280,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 12,
+    questionId: 12,
     userId: 12323345,
-    title: 'How to print the api response to the console? Xcode 14',
-    author: 'anonymous',
+    questionTitle: 'How to print the api response to the console? Xcode 14',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -312,10 +298,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 13,
+    questionId: 13,
     userId: 12322345,
-    title: 'OAuth2.0 and Custom Account Creation with PostgreSQL',
-    author: 'anonymous',
+    questionTitle: 'OAuth2.0 and Custom Account Creation with PostgreSQL',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -331,10 +316,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 14,
+    questionId: 14,
     userId: 123122345,
-    title: 'Matrix size in Back Propagation',
-    author: 'anonymous',
+    questionTitle: 'Matrix size in Back Propagation',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -350,10 +334,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -369,10 +352,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -388,10 +370,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -407,10 +388,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -426,10 +406,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -445,10 +424,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -464,10 +442,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -483,10 +460,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -502,10 +478,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -521,10 +496,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -540,10 +514,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -559,10 +532,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -578,10 +550,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -597,10 +568,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -616,10 +586,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -635,10 +604,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -654,10 +622,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -673,10 +640,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -692,10 +658,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -711,10 +676,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -730,10 +694,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -749,10 +712,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -768,10 +730,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -787,10 +748,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -806,10 +766,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -825,10 +784,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -844,10 +802,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -863,10 +820,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
@@ -882,10 +838,9 @@ const questionsData = [
     },
   },
   {
-    contentId: 15,
+    questionId: 15,
     userId: 12322345,
-    title: 'Run flask application on linux server with nohup',
-    author: 'anonymous',
+    questionTitle: 'Run flask application on linux server with nohup',
     createdAt: '2022-01-20',
     tags: ['javascript', 'react', 'money'],
     status: {
