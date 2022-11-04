@@ -2,11 +2,14 @@ import React from 'react';
 import * as S from './UserProfile.style';
 import UserProfileButton from '../../components/UserProfileButton/UserProfileButton';
 import UserProfileTab from '../../components/UserprofileTab/UserProfileTab';
+import UserContents from '../../components/UserContents/UserContents';
+import UserCommunities from '../../components/UserCommunities/UserCommunities';
 
 import CakeIcon from '../../components/@common/Icons/CakeIcon';
 import CalendarIcon from '../../components/@common/Icons/CalendarIcon';
 import ClockIcon from '../../components/@common/Icons/ClockIcon';
 // import Eeeaaaooo from '../../components/@common/img';
+import UserStatsBox from '../../components/UserStatusBox/UserStatsBox';
 
 const UserProfile = () => {
   return (
@@ -29,6 +32,12 @@ const UserProfile = () => {
       <S.StatsContainer>
         <S.ContentsTitle>Status</S.ContentsTitle>
       </S.StatsContainer>
+      <S.UserGridBox>
+        <UserStatsBox />
+        <UserContents />
+      </S.UserGridBox>
+      <S.ContentsTitle>Communities</S.ContentsTitle>
+      <UserCommunities />
     </S.Container>
   );
 };

@@ -20,7 +20,6 @@ const UserContainer = styled.div`
 const Userimg = styled.img`
   width: 128px;
   height: 128px;
-  /* background-image: url(); */
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: black;
@@ -38,13 +37,17 @@ const UserAnchor = styled.span`
 `;
 
 const StatsContainer = styled.div`
-  display: flex;
   width: 100%;
 `;
 
 const ContentsTitle = styled.div`
   font-size: 21px;
   width: 100%;
+`;
+
+const UserGridBox = styled.div`
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
 `;
 export {
   Container,
@@ -56,4 +59,4 @@ export {
 };
 
 // contnets
-export { StatsContainer, ContentsTitle };
+export { StatsContainer, ContentsTitle, UserGridBox };
