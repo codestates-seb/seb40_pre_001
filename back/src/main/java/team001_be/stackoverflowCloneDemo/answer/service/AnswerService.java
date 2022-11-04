@@ -47,7 +47,7 @@ public class AnswerService {
         answerRepository.delete(answer);
     }
 
-    private Answer findAnswer(Long answerId){
+    public Answer findAnswer(Long answerId){
         Optional<Answer> answer = answerRepository.findById(answerId);
         if(answer.isEmpty()){
             throw new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND);
@@ -55,5 +55,14 @@ public class AnswerService {
         return answer.get();
     }
 
+    public Answer updateAnswer(Answer answer, Long userId){
+        Answer foundAnswer = findAnswer(answer.getAnswerId());
 
+        userService.verifyUserAuthorization(userId, foundAnswer.getUser().getUserId());
+
+        Optional.ofNullable(answer.getContext())
+                .ifPresent(foundAnswer::setContext);
+
+        return saveAnswer(foundAnswer);
+    }
 }

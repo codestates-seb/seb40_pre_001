@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPatchDto;
 import team001_be.stackoverflowCloneDemo.answer.dto.AnswerPostDto;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.mapper.AnswerMapper;
@@ -43,6 +44,17 @@ public class AnswerController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(answerMapper.answerToAnswerResponseDto(answer)),
                 HttpStatus.CREATED);
+    }
+
+    @PatchMapping("answer/edit/{answer-id}")
+    public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive Long answerId,
+                                      @Valid @RequestBody AnswerPatchDto answerPatchDto){
+
+        answerPatchDto.setAnswerId(answerId);
+        Answer answer = answerService.updateAnswer(answerMapper.answerPatchDtoToAnswer(answerPatchDto), answerPatchDto.getUserId());
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(answerMapper.answerToAnswerResponseDto(answer)), HttpStatus.OK);
     }
 
     @GetMapping("/{question-id}/all-answers")

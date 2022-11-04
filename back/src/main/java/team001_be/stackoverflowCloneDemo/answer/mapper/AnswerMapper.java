@@ -22,7 +22,7 @@ public interface AnswerMapper {
 
         Answer.AnswerBuilder answer = Answer.builder();
         answer.user(user);
-        answer.context( answerPostDto.getContext() );
+        answer.context( answerPostDto.getContext());
 
         return answer.build();
     }
@@ -36,6 +36,7 @@ public interface AnswerMapper {
 
         Answer.AnswerBuilder answer = Answer.builder();
         answer.user(user);
+        answer.answerId(answerPatchDto.getAnswerId());
         answer.context( answerPatchDto.getContext());
 
         return answer.build();

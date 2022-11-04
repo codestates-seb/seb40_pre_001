@@ -40,7 +40,7 @@ public class QuestionController {
     }
 
     @PostMapping("/ask")
-    public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto){
+    public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto) {
         Question question = questionService.createQuestion(questionMapper.questionPostDtoToQuestion(questionPostDto), questionPostDto.getUserId());
 
         return new ResponseEntity<>(
@@ -50,7 +50,7 @@ public class QuestionController {
 
     @PatchMapping("/edit/{question-id}")
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive Long questionId,
-                                        @Valid @RequestBody QuestionPatchDto questionPatchDto){
+                                        @Valid @RequestBody QuestionPatchDto questionPatchDto) {
         questionPatchDto.setQuestionId(questionId);
         Question question = questionService.updateQuestion(questionMapper.questionPatchDtoToQuestion(questionPatchDto), questionPatchDto.getUserId());
 
@@ -71,7 +71,7 @@ public class QuestionController {
     //간단히 질문만 조회하는 함수
     @GetMapping("/simple/{question-id}")
     public ResponseEntity getQuestionSimple(@PathVariable("question-id") @Positive Long questionId){
-
+    
         Question question = questionService.findQuestion(questionId);
 
         return new ResponseEntity<>(
@@ -84,13 +84,14 @@ public class QuestionController {
     @GetMapping("/{question-id}")
     public ResponseEntity getQuestion(@PathVariable("question-id") @Positive Long questionId,
                 HttpServletRequest req, HttpServletResponse res){
+
         Question question = questionService.findQuestion(questionId);
         questionService.updateQuestionViewCount(question, question.getViewCount());
 
         javax.servlet.http.Cookie[] cookies = req.getCookies();
         Map<String, String> mapCookie = new HashMap<String, String>();
 
-        if(req.getCookies() != null){
+        if (req.getCookies() != null) {
             for (javax.servlet.http.Cookie obj : cookies) {
                 mapCookie.put(obj.getName(), obj.getValue());
             }
@@ -98,8 +99,8 @@ public class QuestionController {
         String readCount = (mapCookie.get("read_count"));
         String newReadCount = ("|" + questionId);
 
-        if(readCount != null){
-            if(readCount.contains(newReadCount)) {
+        if (readCount != null) {
+            if (readCount.contains(newReadCount)) {
                 javax.servlet.http.Cookie cookieSample =
                         new javax.servlet.http.Cookie("read_count", readCount + newReadCount);
                 cookieSample.setMaxAge(1000);
@@ -131,15 +132,16 @@ public class QuestionController {
         List<Question> questionList = questionService.searchQuestionsByTitle(searchTitle);
         System.out.println("검색된 질문 수" + questionList.size());
 
+
         return new ResponseEntity<>(questionMapper.questionListToQuestionSimpleResponseDtos(questionList),
                 HttpStatus.OK);
     }
 
     @DeleteMapping("/{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,
-                                         @Positive @RequestParam Long userId){
+                                         @Positive @RequestParam Long userId) {
         questionService.deleteQuestion(questionId, userId);
 
-        return new ResponseEntity<>("success",HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("success", HttpStatus.NO_CONTENT);
     }
 }

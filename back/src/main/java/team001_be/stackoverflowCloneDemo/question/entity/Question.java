@@ -28,7 +28,6 @@ public class Question extends Auditable {
     private User user;
 
 
-
     @Column(length = 100, nullable = false)
     private String questionTitle;
 
@@ -44,14 +43,12 @@ public class Question extends Auditable {
 
     private Long voteCount;
 
-//    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
+    //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
-    @LazyCollection(LazyCollectionOption.FALSE)
     @ToString.Exclude
     private List<Answer> answerList = new ArrayList<>();
 
@@ -67,7 +64,7 @@ public class Question extends Auditable {
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
-    public Question(Long questionId, User user, String questionTitle, String context){
+    public Question(Long questionId, User user, String questionTitle, String context) {
         this.questionId = questionId;
         this.user = user;
         this.questionTitle = questionTitle;
@@ -78,24 +75,27 @@ public class Question extends Auditable {
         //dateCreated, dateModified 별도로 생성자에서 설정해줘야 하는지?
     }
 
-    public void addQuestionTag(QuestionTag questiontag){
+    public void addQuestionTag(QuestionTag questiontag) {
         this.questionTagList.add(questiontag);
-        if(questiontag.getQuestion() != this){
+        if (questiontag.getQuestion() != this) {
             questiontag.addQuestion(this);
         }
     }
 
-    public void addAnswerList(Answer answer){
+    public void addAnswerList(Answer answer) {
         this.answerList.add(answer);
-        if(answer.getQuestion() != this){
+        if (answer.getQuestion() != this) {
             answer.setQuestion(this);
         }
     }
 
-    public void updateViewCount(Long viewCount){
+    public void updateViewCount(Long viewCount) {
         this.viewCount = viewCount;
     }
-    public void updateVoteCount(Long voteCount){this.voteCount = voteCount;}
+
+    public void updateVoteCount(Long voteCount) {
+        this.voteCount = voteCount;
+    }
 
     public void setQuestionTitle(String questionTitle) {
         this.questionTitle = questionTitle;

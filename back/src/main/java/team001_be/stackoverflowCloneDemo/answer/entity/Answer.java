@@ -9,9 +9,9 @@ import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Answer extends Auditable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
@@ -39,12 +39,12 @@ public class Answer extends Auditable {
     private boolean isAccepted;
 
     @Builder
-    public Answer(Long answerId,String context, User user, Question question){
+    public Answer(Long answerId, Question question, User user, String context, int voteCount, boolean isAccepted) {
+        this.answerId = answerId;
         this.question = question;
         this.user = user;
-        this.answerId = answerId;
         this.context = context;
-        this.voteCount = 0;
-        this.isAccepted = false;
+        this.voteCount = voteCount;
+        this.isAccepted = isAccepted;
     }
 }

@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("/questions")
 @AllArgsConstructor
 @Validated
 @Slf4j
@@ -28,20 +28,16 @@ public class QuestionCommentController {
     private final QuestionCommentMapper questionCommentMapper;
 
 
-    @PostMapping("/question")
+    @PostMapping("/comments")
     public ResponseEntity postQuestionComment(@Valid @RequestBody QuestionCommentPostDto questionCommentPostDto) {
         QuestionComment questionComment = questionCommentService.createQuestionComment(
                 questionCommentMapper.questionCommentPostToComment(questionCommentPostDto), questionCommentPostDto.getUserId());
 
-        return new ResponseEntity<>(new SingleResponseDto<>(questionCommentMapper.questionCommentToCommentResponse(questionComment)), HttpStatus.CREATED);
-//        QuestionComment questionComment = questionCommentMapper.questionCommentPostToComment(questionCommentPostDto);
-//        QuestionComment createdQuestionComment = questionCommentService.createQuestionComment(questionComment, questionCommentPostDto.getUserId());
-//
-//        QuestionCommentResponseDto response = questionCommentMapper.questionCommentToCommentResponse(createdQuestionComment);
-//        return new ResponseEntity<>(new SingleResponseDto<>(response), HttpStatus.CREATED);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(questionCommentMapper.questionCommentToCommentResponse(questionComment)), HttpStatus.CREATED);
     }
 
-    @GetMapping("/question/{questionComment-Id}")
+    @GetMapping("/comments/{questionComment-Id}")
     public ResponseEntity getQuestionComment(@PathVariable("questionComment-Id") @Positive Long questionCommentId) {
         QuestionComment questionComment = questionCommentService.findQuestionComment(questionCommentId);
 
@@ -49,17 +45,18 @@ public class QuestionCommentController {
                 new SingleResponseDto<>(questionCommentMapper.questionCommentToCommentResponse(questionComment)), HttpStatus.OK);
     }
 
-    @PatchMapping("/question/edit/{questionComment-Id}")
+    @PatchMapping("/comments/edit/{questionComment-Id}")
     public ResponseEntity patchQuestionComment(@PathVariable("questionComment-Id") @Positive Long questionCommentId,
                                                @Valid @RequestBody QuestionCommentPatchDto questionCommentPatchDto) {
         questionCommentPatchDto.setQuestionCommentId(questionCommentId);
-        QuestionComment questionComment = questionCommentService.updateQuestionComment(questionCommentMapper.questionCommentPatchToComment(questionCommentPatchDto), questionCommentPatchDto.getUserId());
+        QuestionComment questionComment = questionCommentService.updateQuestionComment(
+                questionCommentMapper.questionCommentPatchToComment(questionCommentPatchDto), questionCommentPatchDto.getUserId());
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(questionCommentMapper.questionCommentToCommentResponse(questionComment)), HttpStatus.OK);
     }
 
-    @DeleteMapping("/question/{questionComment-Id}")
+    @DeleteMapping("/comments/{questionComment-Id}")
     public ResponseEntity deleteQuestionComment(@PathVariable("questionComment-Id") @Positive Long questionCommentId,
                                                 @Positive @RequestParam Long userId){
         questionCommentService.deleteQuestionComment(questionCommentId,userId);
