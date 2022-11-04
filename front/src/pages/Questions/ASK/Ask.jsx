@@ -14,6 +14,7 @@ import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import AskForm from './AskForm';
 import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+import { useCreatePost } from '../../../hooks/usePost';
 
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??

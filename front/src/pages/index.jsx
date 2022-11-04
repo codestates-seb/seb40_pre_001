@@ -14,6 +14,7 @@ import UserProfile from './UserProfile/UserProfile';
 import Ask from './Questions/ASK/Ask';
 import NotFound from './404/404';
 import Search from './Search/Search';
+import Question from './PagesLayout/Question';
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -56,7 +57,6 @@ const PAGES = [
         path: ROUTES.USERPROFILE.path,
         element: <UserProfile />,
       },
-      { name: ROUTES.ASK.name, path: ROUTES.ASK.path, element: <Ask /> },
     ],
   },
   {
@@ -71,6 +71,16 @@ const PAGES = [
         name: ROUTES.SIGNUP.name,
         path: ROUTES.SIGNUP.path,
         element: <SignUp />,
+      },
+    ],
+  },
+  {
+    element: <Question />,
+    children: [
+      {
+        name: ROUTES.ASK.name,
+        path: ROUTES.ASK.path,
+        element: <Ask />,
       },
     ],
   },
