@@ -28,7 +28,7 @@ const Users = () => {
       <UsersFilter />
       <UsersTab />
       <S.UsersContainer>
-        {data?.map(({ content, i }) => {
+        {data?.map(({ content }, i) => {
           return <UserInfo key={i}>{content}</UserInfo>;
         })}
       </S.UsersContainer>

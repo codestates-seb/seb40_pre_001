@@ -30,7 +30,7 @@ const Tags = () => {
       <TagsAll />
       <TagsFilter />
       <S.TagsContainer>
-        {data?.map((content, i) => {
+        {data?.map(({ content }, i) => {
           return <Contents key={i}>{content}</Contents>;
         })}
       </S.TagsContainer>
