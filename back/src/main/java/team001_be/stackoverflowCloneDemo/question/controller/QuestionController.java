@@ -114,6 +114,7 @@ public class QuestionController {
                 , HttpStatus.OK);
     }
 
+    //전체 질문 조회(생성일 기준 최신순)
     @GetMapping("")
     public ResponseEntity getAllQuestions(){
         List<Question> questionList = questionService.getAllQuestions();
@@ -123,6 +124,7 @@ public class QuestionController {
     }
 
     //"searchTitle"이 제목에 포함된 질문 조회
+    //미완. 현재는 대소문자 구분해서 검색함. 추후 대소문자 구분없이 검색하도록 수정 요망
     @GetMapping("/search")
     public ResponseEntity getQuestionsBySearchTitle(@RequestParam String searchTitle){
         System.out.println("검색어: " + searchTitle);

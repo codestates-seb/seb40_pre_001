@@ -11,9 +11,7 @@ import java.util.Optional;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     Optional<List<Question>> findByQuestionTitleContaining(String questionTitle);
-
+    Optional<List<Question>> findAllByOrderByCreatedAtDesc();
     //이외 필요한 sql 쿼리 있으면 추가하면 됨.
-
-
 
 }

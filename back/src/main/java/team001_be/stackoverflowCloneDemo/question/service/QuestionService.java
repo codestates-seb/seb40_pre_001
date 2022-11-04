@@ -45,7 +45,9 @@ public class QuestionService {
     }
 
     public List<Question> getAllQuestions(){
-        List<Question> questionList = questionRepository.findAll();
+//        List<Question> questionList = questionRepository.findAll();
+        List<Question> questionList = questionRepository.findAllByOrderByCreatedAtDesc().orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
+
         return questionList;
     }
 
