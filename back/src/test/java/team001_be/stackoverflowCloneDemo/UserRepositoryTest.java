@@ -1,18 +1,13 @@
 package team001_be.stackoverflowCloneDemo;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
-
-import javax.annotation.Resource;
-import javax.transaction.Transactional;
 import java.util.stream.IntStream;
 
 //@DataJpaTest
