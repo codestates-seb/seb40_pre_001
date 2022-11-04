@@ -1,6 +1,7 @@
 import GoogleCloudIcon from '../assets/googleCloudIcon.svg';
 import TwilloIcon from '../assets/twilio.svg';
 import WS02Icon from '../assets/wso2.svg';
+
 const pageLimits = Object.freeze([15, 30, 50]);
 
 const categoryButton = Object.freeze([
