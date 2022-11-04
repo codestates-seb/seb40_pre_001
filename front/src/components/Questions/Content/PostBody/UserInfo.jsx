@@ -2,9 +2,9 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
 
-const UserInfo = ({ author, createdAt }) => {
+const UserInfo = ({ author, createdAt, isAuthor }) => {
   return (
-    <S.Wrapper isAuthor={undefined}>
+    <S.Wrapper isAuthor={isAuthor}>
       <S.Container>
         <S.TimeContainer>
           asked{' '}

@@ -10,7 +10,6 @@ const useGetAllPosts = (select) => {
     },
     select,
     refetchOnWindowFocus: false,
-    staleTime: 5000 * 2 * 60,
     suspense: true,
   });
 };

@@ -3,7 +3,7 @@ import { getUserById } from '../apis/users';
 
 const useGetUserById = (id) => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['userById'],
+    ['userById', id],
     () => getUserById(id),
     {
       refetchOnWindowFocus: false,

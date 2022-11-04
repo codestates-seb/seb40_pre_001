@@ -13,7 +13,6 @@ const useCreatePost = (queryKey, path) => {
       queryClient.invalidateQueries([queryKey]);
       // 성공시에 페이지 리다이렉션 to path
       navigate(path);
-      console.log();
     },
     onError: (error) => {
       console.log(error);

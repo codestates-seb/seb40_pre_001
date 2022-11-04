@@ -4,12 +4,16 @@ import { TagButton } from '../../../@common/Buttons';
 import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import * as S from './PostBody.style';
 import UserInfo from './UserInfo';
+import useDeletePost from '../../../../hooks/questions/useDeletePost';
 
-const RightBox = ({ context, userId, createdAt }) => {
-  const tags = ['Javascript', 'Django', 'styled-components'];
-  console.log(userId);
-
+const RightBox = ({ questionId, context, userId, createdAt }) => {
   const { data: user } = useGetUserById(userId);
+  const { handleDelete } = useDeletePost();
+  const currentUser = localStorage.getItem('user') || 'anonymous';
+
+  const tags = ['Javascript', 'Django', 'styled-components'];
+
+  const isAuthor = user?.email === currentUser;
 
   return (
     <S.RightBox>
@@ -25,14 +29,20 @@ const RightBox = ({ context, userId, createdAt }) => {
         <S.FeatureBox>
           <S.FeatureLeft>
             <a style={{ margin: 0 }}>Share</a>
-            {/* 글쓴이에게만 보이게 */}
-            <a>Edit</a>
-            <a>Delete</a>
-            {/*  */}
+            {isAuthor && (
+              <>
+                <a>Edit</a>
+                <a onClick={() => handleDelete(questionId, userId)}>Delete</a>
+              </>
+            )}
             <a>Follow</a>
           </S.FeatureLeft>
         </S.FeatureBox>
-        <UserInfo author={user?.userNickname} createdAt={createdAt} />
+        <UserInfo
+          author={user?.userNickname}
+          createdAt={createdAt}
+          isAuthor={isAuthor}
+        />
       </S.BottomBox>
       <S.Comment>Add a comment</S.Comment>
     </S.RightBox>

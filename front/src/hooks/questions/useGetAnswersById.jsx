@@ -3,11 +3,10 @@ import { getAnswersById } from '../../apis/questions';
 
 const useGetAnswersById = (id) => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['answers'],
+    ['answers', id],
     () => getAnswersById(id),
     {
       refetchOnWindowFocus: false,
-      staleTime: 5000 * 2 * 60,
       suspense: true,
     },
   );

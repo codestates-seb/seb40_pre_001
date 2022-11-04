@@ -5,8 +5,9 @@ import TagButton from '../../../@common/Buttons/Tag';
 import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import UserCard from './UserCard';
 
-const PostDetails = ({ data }) => {
-  const { questionId, questionTitle, context, createdAt, userId } = data;
+const PostDetails = ({
+  data: { questionId, questionTitle, context, createdAt, userId },
+}) => {
   const questionTagList = ['javascript', 'java', 'python'];
 
   return (

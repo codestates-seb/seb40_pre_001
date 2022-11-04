@@ -15,7 +15,7 @@ const apiClient2 = axios.create({
   withCredentials: true,
 });
 
-const demoGetAllPosts = async () => {
+const getAllPosts = async () => {
   const { data } = await apiClient2.get('/questions');
 
   return data;
@@ -39,16 +39,14 @@ const demoCreatePost = async (question) => {
   return response;
 };
 
-const demoGetPostById = async (id) => {
+const getAnswersById = async (id) => {
   // 성공
   // id === questionId
   // Answer 도 포함
 
-  const response = await apiClient2.get(`/questions/${id}`);
+  const { data } = await apiClient2.get(`/questions/${id}`);
 
-  console.log(response);
-
-  return response;
+  return data?.answers;
 };
 
 const demoUpdateQuestionById = async (id, newDetails) => {
@@ -67,18 +65,20 @@ const demoUpdateQuestionById = async (id, newDetails) => {
   return response;
 };
 
-const demoGetSimplePostById = async (id) => {
+const getSimplePostById = async (id) => {
   // id === questionId
   // 성공
   const response = await apiClient2.get(`questions/simple/${id}`);
 
-  console.log(response);
+  console.log(response.data.data);
 
-  return response;
+  return response.data.data;
 };
 
-const demoDeletePost = async (id, userId) => {
-  const response = await apiClient2.delete(`/questions/${id}`, userId);
+const deletePost = async (id, userId) => {
+  const response = await apiClient2.delete(`/questions/${id}`, {
+    params: { userId },
+  });
 
   console.log(response);
 
@@ -86,11 +86,6 @@ const demoDeletePost = async (id, userId) => {
 };
 
 // MSW
-const getAllPostData = async () => {
-  const { data } = await apiClient.get('/api/questions');
-
-  return data;
-};
 
 const getPostsByKeyword = async (keyword) => {
   const { data } = await apiClient.get(`/api/search?q=${keyword}`);
@@ -112,26 +107,8 @@ const patchMethod = async (id, newStatus) => {
   return data;
 };
 
-const deletePost = async (id) => {
-  const response = await apiClient.delete(`/api/questions/${id}`);
+export { apiClient, getPostsByKeyword, createPost, patchMethod };
 
-  return response;
-};
+export { demoCreatePost, demoUpdateQuestionById };
 
-export {
-  apiClient,
-  getAllPostData,
-  getPostsByKeyword,
-  createPost,
-  patchMethod,
-  deletePost,
-};
-
-export {
-  demoGetAllPosts,
-  demoCreatePost,
-  demoGetPostById,
-  demoUpdateQuestionById,
-  demoGetSimplePostById,
-  demoDeletePost,
-};
+export { getAllPosts, getSimplePostById, getAnswersById, deletePost };

@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import { getSimplePostById } from '../../apis/questions';
+import { getAllUsers } from '../apis/users';
 
-const useGetPostById = (id) => {
+const useGetAllUsers = () => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['postById', id],
-    () => getSimplePostById(id),
+    ['allUsers'],
+    getAllUsers,
     {
-      retry: false,
       refetchOnWindowFocus: false,
       suspense: true,
     },
@@ -15,4 +14,4 @@ const useGetPostById = (id) => {
   return { data, isSuccess, isLoading, isError };
 };
 
-export default useGetPostById;
+export default useGetAllUsers;

@@ -1,10 +1,9 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 import TitleBox from '../../@common/TitleBox/TitleBar';
-
 import * as S from './Content.style';
 
-const Header = ({ title, viewCount, createdAt, modifiedAt }) => {
+const Header = ({ title, createdAt, modifiedAt, viewCount }) => {
   return (
     <>
       <TitleBox title={title} style={{ width: 1051 }} />
@@ -15,7 +14,6 @@ const Header = ({ title, viewCount, createdAt, modifiedAt }) => {
             date={createdAt}
             style={{ color: 'hsl(210, 8%, 15%)', fontSize: 13 }}
           />
-          {/* <p>today</p> */}
         </S.TextBox>
         <S.TextBox>
           <span>modified</span>

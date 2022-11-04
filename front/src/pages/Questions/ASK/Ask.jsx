@@ -1,7 +1,6 @@
-/*eslint-disable*/
-import React, { useState } from 'react';
+import React from 'react';
 
-import usePost from '../../../hooks/usePost';
+// import usePost from '../../../hooks/usePost';
 // import { useRef } from 'react';
 
 import * as S from './Ask.style';
@@ -13,54 +12,54 @@ import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import AskForm from './AskForm';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+// import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
-  // 예시
-  const [state, setState] = useState({ title: '', author: '', context: '' });
-  const { data, status } = useGetAllPosts();
-  const addPost = useCreatePost('questions', '/questions');
+  // // 예시
+  // const [state, setState] = useState({ title: '', author: '', context: '' });
+  // const { data, status } = useGetAllPosts();
+  // const addPost = useCreatePost('questions', '/questions');
 
   // createdAt
-  const date = new Date().getDate();
-  const day = new Date().getDay();
-  const year = new Date().getFullYear();
-  const randomDate = `${year}-${day}-${date}`;
+  // const date = new Date().getDate();
+  // const day = new Date().getDay();
+  // const year = new Date().getFullYear();
+  // const randomDate = `${year}-${day}-${date}`;
 
-  const onClick = () => {
-    const mockData = Object.assign({
-      questionId: data.length + 1,
-      userId: Math.floor(Math.random() * 123456),
-      title: state.title,
-      author: state.author,
-      createdAt: randomDate,
-      tags: ['Mock', 'Service', 'Network'],
-      status: {
-        votes: 2022,
-        answers: 12,
-        views: 25,
-      },
-      content: {
-        image: 'url',
-        context: state.context,
-        code: `<div>code</div>`,
-      },
-    });
+  // const onClick = () => {
+  //   const mockData = Object.assign({
+  //     questionId: data.length + 1,
+  //     userId: Math.floor(Math.random() * 123456),
+  //     title: state.title,
+  //     author: state.author,
+  //     createdAt: randomDate,
+  //     tags: ['Mock', 'Service', 'Network'],
+  //     status: {
+  //       votes: 2022,
+  //       answers: 12,
+  //       views: 25,
+  //     },
+  //     content: {
+  //       image: 'url',
+  //       context: state.context,
+  //       code: `<div>code</div>`,
+  //     },
+  //   });
 
-    status === 'success'
-      ? addPost.mutate(mockData)
-      : status === 'error'
-      ? console.log('Failed to add new Post')
-      : null;
-  };
+  //   status === 'success'
+  //     ? addPost.mutate(mockData)
+  //     : status === 'error'
+  //     ? console.log('Failed to add new Post')
+  //     : null;
+  // };
 
-  const [liveButton, SetLiveButton] = useState(null);
+  // const [liveButton, SetLiveButton] = useState(null);
 
-  function clickButton() {
-    SetLiveButton(index);
-    console.log(liveButton === index);
-  }
+  // function clickButton() {
+  //   SetLiveButton(index);
+  //   console.log(liveButton === index);
+  // }
 
   return (
     <S.AskZone>

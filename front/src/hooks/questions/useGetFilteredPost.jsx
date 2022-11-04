@@ -8,7 +8,6 @@ const useGetFilteredPost = (keyword) => {
     () => getPostsByKeyword(keyword),
     {
       refetchOnWindowFocus: false,
-      staleTime: 5000 * 2 * 60,
       suspense: true,
       enabled: true,
     },

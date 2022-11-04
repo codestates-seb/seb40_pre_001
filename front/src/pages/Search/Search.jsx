@@ -12,8 +12,6 @@ const Search = () => {
   const { keyword } = useRecoilValue(pagesState);
   const { data, isSuccess } = useGetFilteredPost(keyword);
 
-  console.log('len', data?.length);
-
   const length = data?.length;
 
   return (
