@@ -6,8 +6,6 @@ import ProtectedRoute from './ProtectedRoute';
 const AuthRoutes = () => {
   const { isAuthenticated } = useRecoilValue(usersState);
 
-  console.log('isAuth', isAuthenticated);
-
   // if (!isAuthenticated) {
   //   return <ProtectedRoute when={isAuthenticated} />;
   // }
