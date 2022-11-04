@@ -6,16 +6,16 @@ const UserStatsBox = () => {
     <S.Container>
       <S.StatsBox>
         <S.StatsBoxContentsCount>
-          1<S.StatsBoxContentsItem>asdasd</S.StatsBoxContentsItem>
+          1<S.StatsBoxContentsItem>reputation</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          1<S.StatsBoxContentsItem>asdasd</S.StatsBoxContentsItem>
+          0<S.StatsBoxContentsItem>reached</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          1<S.StatsBoxContentsItem>asdasd</S.StatsBoxContentsItem>
+          0<S.StatsBoxContentsItem>answers</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          1<S.StatsBoxContentsItem>asdasd</S.StatsBoxContentsItem>
+          0<S.StatsBoxContentsItem>questions</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
       </S.StatsBox>
     </S.Container>
