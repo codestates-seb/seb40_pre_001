@@ -18,6 +18,8 @@ const questionsData = [
       image: 'url',
       context: `<h3>this question is pretty much out of context tho <br></h3><p>skladjklzcxxz</p><h2><br></h2><div contenteditable="false"><hr><code>const html = '21'</code></div><p><strong>lkjdslfjsdlkf</strong></p><p><br></p><p>sadkljzxclkjxzldeasdm,nsadqw</p>`,
     },
+    upVotedUsers: [312],
+    downVotedUsers: [],
     answers: [
       {
         answerId: 1,
@@ -34,6 +36,8 @@ const questionsData = [
           views: 99,
         },
         tags: ['MoCkDaDa', 'Angel Di Maria'],
+        upVotedUsers: [],
+        downVotedUsers: [],
       },
       {
         answerId: 2,
@@ -50,6 +54,8 @@ const questionsData = [
           views: 9,
         },
         tags: ['MoCkDaDa', 'Leo Messi'],
+        upVotedUsers: [],
+        downVotedUsers: [],
       },
     ],
   },
@@ -72,6 +78,46 @@ const questionsData = [
         'instead of finding flutter-debug.aar gradle try to find flutter-debug.ja',
       code: `<div>code</div>`,
     },
+    upVotedUsers: [],
+    downVotedUsers: [],
+    answers: [
+      {
+        answerId: 1213,
+        author: 'Jodsxchn doe',
+        userId: 12341244,
+        createdAt: '2021-1-17',
+        content: {
+          image: 'url',
+          context: `<span>ow<strong>sdzczxcx</strong></span>`,
+        },
+        status: {
+          votes: 3,
+          answers: 21,
+          views: 39,
+        },
+        tags: ['MoCkDaDa', 'Angel Di Maria'],
+        upVotedUsers: [],
+        downVotedUsers: [],
+      },
+      {
+        answerId: 2,
+        author: 'wowsdzer',
+        userId: 1231244,
+        createdAt: '2012-10-27',
+        content: {
+          image: 'url',
+          context: `<span>심드렁<strong>힘드렁</strong></span>`,
+        },
+        status: {
+          votes: 2,
+          answers: 11,
+          views: 94,
+        },
+        tags: ['MoCksdDaDa', 'Leo Messi'],
+        upVotedUsers: [],
+        downVotedUsers: [],
+      },
+    ],
   },
   {
     contentId: 3,

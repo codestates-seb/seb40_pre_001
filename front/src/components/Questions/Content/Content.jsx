@@ -14,7 +14,7 @@ import Answer from './Answer/Answer';
 
 const Content = () => {
   const { currentContentId } = useRecoilValue(pagesState);
-  const { data } = useGetAllPosts((data) => {
+  const { data, status: fetchingStatus } = useGetAllPosts((data) => {
     const currentPost = data.find(
       (post) => post.contentId === currentContentId,
     );
@@ -22,9 +22,19 @@ const Content = () => {
     return currentPost;
   });
 
-  const { title, tags, content, status, answers, createdAt, author } = data;
+  const {
+    title,
+    tags,
+    content,
+    status,
+    answers,
+    createdAt,
+    author,
+    upVotedUsers,
+    downVotedUsers,
+  } = data;
 
-  return (
+  return fetchingStatus === 'success' ? (
     <div>
       <Header title={title} views={status.views} createdAt={createdAt} />
       <M.MainContainer>
@@ -38,7 +48,11 @@ const Content = () => {
           />
         </S.ImgContainer>
         <S.PostLayout>
-          <LeftBox status={status} />
+          <LeftBox
+            status={status}
+            upVotedUsers={upVotedUsers}
+            downVotedUsers={downVotedUsers}
+          />
           <RightBox
             tags={tags}
             content={content}
@@ -47,24 +61,47 @@ const Content = () => {
           />
         </S.PostLayout>
         {/* Answers */}
-        <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
-        {answers?.map(({ content, status, tags, author, createdAt }, i) => {
-          return (
-            <Answer
-              key={i}
-              status={status}
-              tags={tags}
-              content={content}
-              author={author}
-              createdAt={createdAt}
-            />
-          );
-        })}
+
+        {answers && (
+          <>
+            <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
+            {answers.map(
+              (
+                {
+                  content,
+                  status,
+                  tags,
+                  author,
+                  createdAt,
+                  upVotedUsers,
+                  downVotedUsers,
+                },
+                i,
+              ) => {
+                return (
+                  <Answer
+                    key={i}
+                    status={status}
+                    tags={tags}
+                    content={content}
+                    author={author}
+                    createdAt={createdAt}
+                    upVotedUsers={upVotedUsers}
+                    downVotedUsers={downVotedUsers}
+                  />
+                );
+              },
+            )}
+          </>
+        )}
+
         {/* Post Answer */}
         <PostAnswer />
       </M.MainContainer>
       <Widget />
     </div>
+  ) : (
+    <div>loading...</div>
   );
 };
 

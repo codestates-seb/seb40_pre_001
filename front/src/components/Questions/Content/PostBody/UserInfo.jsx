@@ -5,8 +5,6 @@ import * as S from './UserInfo.style';
 const UserInfo = ({ author, createdAt }) => {
   const isAuthor = author === 'keonhee Lee';
 
-  console.log(createdAt);
-
   return (
     <S.Wrapper isAuthor={isAuthor}>
       <S.Container>

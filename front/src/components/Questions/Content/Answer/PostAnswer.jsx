@@ -28,7 +28,7 @@ const PostAnswer = () => {
           <SmallBlueSpan content='email' />, <SmallBlueSpan content='Twitter' />
           , or <SmallBlueSpan content='Facebook' />.
         </S.Helper>
-        <S.Header> Your Answer</S.Header>
+        <S.Header>Your Answer</S.Header>
         <TextEditor
           ref={editorRef}
           width='727'

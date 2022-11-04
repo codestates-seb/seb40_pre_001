@@ -5,9 +5,13 @@ import { useRecoilValue } from 'recoil';
 import pagesState from '../../../../store/pagesState';
 import useUpdateStatus from '../../../../hooks/questions/useUpdateStatus';
 
-const LeftBox = ({ status }) => {
+const LeftBox = ({ status, upVotedUsers, downVotedUsers }) => {
   const { currentContentId } = useRecoilValue(pagesState);
   const { handleStatus } = useUpdateStatus();
+  const currentUserId = 1231244;
+
+  console.log('upVoted', upVotedUsers);
+  console.log('downVoted', downVotedUsers);
 
   return (
     <S.LeftBox>
@@ -16,6 +20,7 @@ const LeftBox = ({ status }) => {
           onClick={() =>
             handleStatus(currentContentId, {
               ...status,
+              upVotedUsers: [...upVotedUsers, currentUserId],
               votes: status?.votes + 1,
             })
           }
@@ -23,12 +28,13 @@ const LeftBox = ({ status }) => {
           <ArrowIcon direction='up' />
         </S.IconContainer>
         <S.VoteCount>
-          <span>{status.votes}</span>
+          <span>{status?.votes}</span>
         </S.VoteCount>
         <S.IconContainer
           onClick={() =>
             handleStatus(currentContentId, {
               ...status,
+              downVotedUsers: [...downVotedUsers, currentUserId],
               votes: status?.votes - 1,
             })
           }

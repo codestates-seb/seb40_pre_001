@@ -8,6 +8,7 @@ import { userLogin } from '../../apis/login.js';
 import { useMutation } from '@tanstack/react-query';
 import { useSetRecoilState } from 'recoil';
 import { usersState } from '../../store';
+import { getUserById, postRegister } from '../../apis/RealLogin.js';
 
 const Form = () => {
   const setIsAuthenticated = useSetRecoilState(usersState);
@@ -23,6 +24,21 @@ const Form = () => {
       console.log('aa');
     },
   });
+
+  mutate;
+
+  // API 적용
+
+  // const credential = {
+  //   email: 'test94@gamil.com',
+  //   password: 'a12345678',
+  //   userNickname: 'test12345',
+  // };
+
+  const loginInfo = {
+    email: 'test@test.com',
+    password: 'test12345',
+  };
 
   return (
     <S.Container>
@@ -66,9 +82,12 @@ const Form = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></S.FormInput>
           <S.SubmitButton
-            onClick={(e) => {
+            onClick={async (e) => {
               e.preventDefault();
-              mutate({ email, password });
+              postRegister(loginInfo);
+              getUserById();
+
+              // mutate({ email, password });
             }}
           >
             Log in
@@ -76,7 +95,6 @@ const Form = () => {
         </S.LoginForm>
       </S.FormContainer>
       <LoginHelp />
-
       <p>email: eve.holt@reqres.in</p>
       <p>password: cityslicka</p>
     </S.Container>
