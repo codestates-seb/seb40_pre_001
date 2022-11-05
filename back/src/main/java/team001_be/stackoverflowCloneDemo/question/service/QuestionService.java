@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
 import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
+import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Transactional
@@ -36,7 +38,14 @@ public class QuestionService {
     public Question createQuestion(Question question, Long userId){
         question.setUser(userService.findUser(userId));
         verifyQuestion(question); //존재하는 회원, tag인지 check
-
+        //여기에 question -> questionTagList의 questionTag별로 question저장하는 로직 추가
+        List<QuestionTag> questionTags = question.getQuestionTagList().stream()
+                .map(questionTag -> {
+                    questionTag.setQuestion(question);
+                    questionTag.setTag(tagService.findTag(questionTag.getTag().getTagId()));
+                    return questionTag;
+                }).collect(Collectors.toList());
+        question.setQuestionTagList(questionTags);
         return saveQuestion(question);
     }
 

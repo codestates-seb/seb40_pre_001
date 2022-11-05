@@ -1,5 +1,7 @@
 package team001_be.stackoverflowCloneDemo.user.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
@@ -45,10 +47,12 @@ public class User extends Auditable {
 
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Question> questionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answerList = new ArrayList<>();
 
     @Builder

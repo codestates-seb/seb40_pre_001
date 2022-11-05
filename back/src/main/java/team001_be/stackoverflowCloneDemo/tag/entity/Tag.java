@@ -2,6 +2,8 @@ package team001_be.stackoverflowCloneDemo.tag.entity;
 
 import com.sun.xml.bind.v2.runtime.Name;
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 
 import javax.persistence.*;
@@ -24,13 +26,15 @@ public class Tag {
     private String tagDescription;
 
     @Builder
-    public Tag(String tagName, String tagDescription){
+    public Tag(Long tagId, String tagName, String tagDescription){
+        this.tagId = tagId;
         this.tagName = tagName;
         this.tagDescription = tagDescription;
     }
 
     @OneToMany(mappedBy = "tag", targetEntity = QuestionTag.class)
     @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
     public void addQuestionTag(QuestionTag questionTag){

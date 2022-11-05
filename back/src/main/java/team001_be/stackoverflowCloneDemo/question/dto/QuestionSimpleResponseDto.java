@@ -3,6 +3,7 @@ package team001_be.stackoverflowCloneDemo.question.dto;
 import lombok.Getter;
 import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
+import team001_be.stackoverflowCloneDemo.tag.dto.TagSimpleResponseDto;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ public class QuestionSimpleResponseDto {
     private String context;
     private int viewCount;
     private int voteCount;
-    private List<QuestionTag> questionTagList;
+    private List<TagSimpleResponseDto> TagList;
     private boolean hasAccepted;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

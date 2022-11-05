@@ -66,7 +66,7 @@ public class Question extends Auditable {
 
     //@Builder를 사용함. 이건 팀원들과 이야기해봐야 할 듯
     @Builder
-    public Question(Long questionId, User user, String questionTitle, String context) {
+    public Question(Long questionId, User user, String questionTitle, String context, List<QuestionTag> questionTagList) {
         this.questionId = questionId;
         this.user = user;
         this.questionTitle = questionTitle;
@@ -74,7 +74,7 @@ public class Question extends Auditable {
         this.viewCount = 0L;
         this.voteCount = 0L;
         this.hasAccepted = false;
-        //dateCreated, dateModified 별도로 생성자에서 설정해줘야 하는지?
+        this.questionTagList = questionTagList;
     }
 
     public void addQuestionTag(QuestionTag questiontag) {

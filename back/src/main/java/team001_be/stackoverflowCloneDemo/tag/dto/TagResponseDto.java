@@ -16,11 +16,14 @@ public class TagResponseDto {
     private String tagName;
     @NotBlank
     private String tagDescription;
+    @NotNull
+    private int usedTagCnt;
 
     @Builder
-    public TagResponseDto(Long tagId, String tagName, String tagDescription) {
+    public TagResponseDto(Long tagId, String tagName, String tagDescription, int usedTagCnt) {
         this.tagId = tagId;
         this.tagName = tagName;
         this.tagDescription = tagDescription;
+        this.usedTagCnt = usedTagCnt;
     }
 }

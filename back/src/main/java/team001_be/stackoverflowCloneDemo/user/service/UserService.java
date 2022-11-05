@@ -15,11 +15,13 @@ import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.mapper.UserMapper;
 import team001_be.stackoverflowCloneDemo.user.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class UserService {
     private final UserRepository userRepository;
