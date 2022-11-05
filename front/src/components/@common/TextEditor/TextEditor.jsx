@@ -11,7 +11,7 @@ const TextEditor = forwardRef(({ onChange, ...props }, ref) => {
     <div>
       <Editor
         ref={ref}
-        initialValue='.'
+        initialValue='&nbsp;'
         previewStyle='vertical'
         initialEditType='wysiwyg'
         useCommandShortcut={true}
