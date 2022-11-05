@@ -4,10 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.comment.entity.QuestionComment;
-import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
-import team001_be.stackoverflowCloneDemo.tag.dto.TagSimpleResponseDto;
+import team001_be.stackoverflowCloneDemo.tag.dto.TagSimplePostDto;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class QuestionResponseDto {
     private String context;
     private int viewCount;
     private int voteCount;
-    private List<TagSimpleResponseDto> TagList;
+    private List<TagSimplePostDto> TagList;
     private List<Answer> answerList;
     private List<QuestionComment> questionCommentList;
     private boolean hasAccepted;

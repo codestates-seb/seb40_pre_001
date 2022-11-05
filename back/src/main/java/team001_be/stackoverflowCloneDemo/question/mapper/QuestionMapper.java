@@ -4,14 +4,11 @@ import org.mapstruct.Mapper;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPatchDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto;
-import team001_be.stackoverflowCloneDemo.question.dto.QuestionTagPostDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
-import team001_be.stackoverflowCloneDemo.tag.dto.TagSimpleResponseDto;
+import team001_be.stackoverflowCloneDemo.tag.dto.TagSimplePostDto;
 import team001_be.stackoverflowCloneDemo.tag.entity.Tag;
-import team001_be.stackoverflowCloneDemo.user.entity.User;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,10 +38,10 @@ public interface QuestionMapper {
         List<QuestionTag> list = question.getQuestionTagList();
         if ( list != null && !list.isEmpty() ) {
 
-            List<TagSimpleResponseDto> tags = list.stream().map(questionTag -> {
-                       TagSimpleResponseDto tagSimpleResponseDto = new TagSimpleResponseDto();
-                       tagSimpleResponseDto.setTagId(questionTag.getTag().getTagId());
-                       return tagSimpleResponseDto;
+            List<TagSimplePostDto> tags = list.stream().map(questionTag -> {
+                       TagSimplePostDto tagSimplePostDto = new TagSimplePostDto();
+                       tagSimplePostDto.setTagId(questionTag.getTag().getTagId());
+                       return tagSimplePostDto;
                     }).collect(Collectors.toList());
             questionSimpleResponseDto.setTagList(tags);
         }
@@ -68,10 +65,10 @@ public interface QuestionMapper {
 
         Question question = questionBuilder.build();
 
-        List<QuestionTag> questionTagList = questionPostDto.getQuestionTags().stream()
-                .map(questionTagPostDto -> {
+        List<QuestionTag> questionTagList = questionPostDto.getTagIdList().stream()
+                .map(tagSimplePostDto -> {
                     Tag.TagBuilder tag = Tag.builder();
-                    tag.tagId(questionTagPostDto.getTagId());
+                    tag.tagId(tagSimplePostDto.getTagId());
 
                     QuestionTag.QuestionTagBuilder questionTag = QuestionTag.builder();
 //                    questionTag.question(question); //이때 저장된 question은 questionTagList가 저장 안됐는데 괜찮나??
