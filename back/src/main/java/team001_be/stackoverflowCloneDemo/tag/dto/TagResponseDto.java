@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.tag.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,4 +16,11 @@ public class TagResponseDto {
     private String tagName;
     @NotBlank
     private String tagDescription;
+
+    @Builder
+    public TagResponseDto(Long tagId, String tagName, String tagDescription) {
+        this.tagId = tagId;
+        this.tagName = tagName;
+        this.tagDescription = tagDescription;
+    }
 }

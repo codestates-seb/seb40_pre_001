@@ -20,7 +20,7 @@ public class TagService {
 
 
     public Tag createTag(Tag tag){
-        Optional<Tag> foundTag =  tagRepository.findById(tag.getTagId());
+        Optional<Tag> foundTag =  tagRepository.findByTagName(tag.getTagName());
         if(foundTag.isPresent()){
             throw new BusinessLogicException(ExceptionCode.TAG_DUPLICATE);
         }
