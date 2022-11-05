@@ -19,6 +19,20 @@ const PostAnswer = ({ questionId }) => {
 
   const editorRef = useRef(null);
 
+  const textEditorValidator = (text) => {
+    let isValid = false;
+
+    if (text.length < 30) {
+      alert('30자 이상 작성하셔야 합니다.');
+
+      return isValid;
+    }
+
+    isValid = true;
+
+    return isValid;
+  };
+
   const handleChange = () => {
     const editor_instance = editorRef.current?.getInstance();
     if (editor_instance) {
@@ -50,13 +64,15 @@ const PostAnswer = ({ questionId }) => {
       <StyledButton
         content='Post Your Answer'
         style={{ width: 129, height: 45 }}
-        onClick={() =>
-          mutate({
-            questionId,
-            userId: currentUser?.userId,
-            context: editor.html,
-          })
-        }
+        onClick={() => {
+          if (textEditorValidator(editor.md.replace(/<[^>]+>/g, ''))) {
+            mutate({
+              questionId,
+              userId: currentUser?.userId,
+              context: editor.html,
+            });
+          }
+        }}
       />
     </>
   );

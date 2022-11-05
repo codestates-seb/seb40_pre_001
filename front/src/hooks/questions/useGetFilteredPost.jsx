@@ -1,6 +1,5 @@
-import { getPostsByKeyword } from '../../apis/questions';
-
 import { useQuery } from '@tanstack/react-query';
+import { getPostsByKeyword } from '../../apis/questions';
 
 const useGetFilteredPost = (keyword) => {
   const { data, isSuccess, isLoading, isError } = useQuery(

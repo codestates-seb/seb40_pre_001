@@ -10,9 +10,9 @@ const usePostAnswer = (id) => {
     ({ questionId, userId, context }) =>
       createAnswer(questionId, userId, context),
     {
-      onSuccess: () => (
-        queryClient.setQueryData(['questions', id]),
-        navigate(`/questions/${id}`)
+      onMutate: () => (
+        // navigate 변경되어야함
+        queryClient.invalidateQueries(['answers', id]), navigate(`/questions`)
       ),
     },
   );

@@ -6,13 +6,12 @@ import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
 import Answer from './Answer/Answer';
+import Spinner from '../../@common/Spinner';
 
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
 import { useParams } from 'react-router-dom';
 import useGetPostById from '../../../hooks/questions/useGetPostById';
-
-import Spinner from '../../@common/Spinner';
 
 const Content = () => {
   const { id } = useParams();
@@ -24,7 +23,6 @@ const Content = () => {
   }
 
   if (isSuccess) {
-    console.log(data.question);
     const {
       questionTitle,
       questionId,

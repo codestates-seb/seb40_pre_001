@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const AnswerContainer = styled.div`
   border-top: 1px solid gray;
   margin-top: 10px;
+  max-width: 730px;
 `;
 
 const Header = styled.h1`
@@ -30,9 +31,10 @@ const PreviewText = styled.span`
   padding: 0px;
   font-size: 20px !important;
   word-spacing: 1px;
-  max-width: 720px;
-  overflow: auto;
+  max-width: 720px !important;
+  overflow: hidden;
   word-wrap: break-word;
+  overflow-wrap: break-word;
 `;
 
 export { AnswerContainer, Header, Helper, PreviewText };

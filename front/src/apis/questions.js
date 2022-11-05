@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
-  headers: {
-    'Content-type': 'application/json',
-  },
-});
-
 const apiClient2 = axios.create({
   baseURL: 'https://630c-125-177-243-74.jp.ngrok.io',
   headers: {
@@ -21,7 +14,7 @@ const getAllPosts = async () => {
   return data;
 };
 
-const demoCreatePost = async (question) => {
+const createPost = async (question) => {
   // 성공
   // questionTagList null
   // {
@@ -45,8 +38,6 @@ const getPostById = async (id) => {
   // Answer 도 포함
 
   const { data } = await apiClient2.get(`/questions/${id}`);
-
-  console.log(data);
 
   return data;
 };
@@ -77,12 +68,20 @@ const getSimplePostById = async (id) => {
   return response.data.data;
 };
 
+const getPostsByKeyword = async (keyword) => {
+  const { data } = await apiClient2.get('/questions/search', {
+    params: { searchTitle: keyword },
+  });
+
+  console.log(data);
+
+  return data;
+};
+
 const deletePost = async (id, userId) => {
   const response = await apiClient2.delete(`/questions/${id}`, {
     params: { userId },
   });
-
-  console.log(response);
 
   return response;
 };
@@ -93,41 +92,17 @@ const createAnswer = async (questionId, userId, context) => {
     context,
   });
 
-  console.log(response);
-
   return response;
 };
 
-// MSW
-
-const getPostsByKeyword = async (keyword) => {
-  const { data } = await apiClient.get(`/api/search?q=${keyword}`);
-
-  console.log('data', data);
-
-  return data;
-};
-
-const createPost = async (newPost) => {
-  const { data } = await apiClient.post('/api/questions/ask', newPost);
-
-  return data;
-};
-
-const patchMethod = async (id, newStatus) => {
-  const { data } = await apiClient.patch(`/api/questions/${id}`, newStatus);
-
-  return data;
-};
-
-export { apiClient, getPostsByKeyword, createPost, patchMethod };
-
-export { demoCreatePost, demoUpdateQuestionById };
+export { demoUpdateQuestionById };
 
 export {
+  createPost,
   getAllPosts,
   getSimplePostById,
   getPostById,
   deletePost,
   createAnswer,
+  getPostsByKeyword,
 };
