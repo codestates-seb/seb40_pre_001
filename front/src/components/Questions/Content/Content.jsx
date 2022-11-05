@@ -24,17 +24,19 @@ const Content = () => {
   }
 
   if (isSuccess) {
+    console.log(data.question);
     const {
       questionTitle,
+      questionId,
       createdAt,
       modifiedAt,
       viewCount,
       voteCount,
-      questionId,
       context,
       userId,
-      answers,
-    } = data;
+    } = data.question;
+
+    const { answers } = data;
 
     return (
       <div>
@@ -57,6 +59,7 @@ const Content = () => {
           <S.PostLayout>
             <LeftBox votes={voteCount} />
             <RightBox
+              type='post'
               questionId={questionId}
               context={context}
               userId={userId}
@@ -73,7 +76,7 @@ const Content = () => {
             </>
           )}
           {/* Post Answer */}
-          <PostAnswer />
+          <PostAnswer questionId={questionId} userId={userId} />
         </M.MainContainer>
         <Widget />
       </div>

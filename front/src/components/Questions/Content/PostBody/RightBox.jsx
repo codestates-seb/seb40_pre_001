@@ -6,7 +6,14 @@ import * as S from './PostBody.style';
 import UserInfo from './UserInfo';
 import useDeletePost from '../../../../hooks/questions/useDeletePost';
 
-const RightBox = ({ questionId, context, userId, createdAt }) => {
+const RightBox = ({
+  type,
+  questionId,
+  answerId,
+  context,
+  userId,
+  createdAt,
+}) => {
   const { data: user } = useGetUserById(userId);
   const { handleDelete } = useDeletePost();
 
@@ -31,7 +38,17 @@ const RightBox = ({ questionId, context, userId, createdAt }) => {
             {isAuthor && (
               <>
                 <a>Edit</a>
-                <a onClick={() => handleDelete(questionId, userId)}>Delete</a>
+                <a
+                  onClick={() => {
+                    type === 'answer'
+                      ? handleDelete(answerId, userId)
+                      : type === 'post'
+                      ? handleDelete(questionId, userId)
+                      : null;
+                  }}
+                >
+                  Delete
+                </a>
               </>
             )}
             <a>Follow</a>

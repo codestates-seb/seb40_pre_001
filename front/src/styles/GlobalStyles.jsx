@@ -31,6 +31,21 @@ button {
 
 }
 
+.toastui-editor-contents,
+  .toastui-editor-contents p,
+  .toastui-editor-contents h1,
+  .toastui-editor-contents h2,
+  .toastui-editor-contents h3,
+  .toastui-editor-contents h4,
+  .toastui-editor-contents h5,
+  .toastui-editor-contents h6 {
+    margin: 0px !important;
+    padding : 0px !important;
+    font-size: 16px !important;
+    word-spacing: 1px !important;
+  }
+
+
 
 }`;
 

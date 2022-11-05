@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { getSimplePostById } from '../../apis/questions';
+import { getPostById } from '../../apis/questions';
 
 const useGetPostById = (id) => {
   const { data, isSuccess, isLoading, isError } = useQuery(
     ['postById', id],
-    () => getSimplePostById(id),
+    () => getPostById(id),
     {
       retry: false,
       refetchOnWindowFocus: false,

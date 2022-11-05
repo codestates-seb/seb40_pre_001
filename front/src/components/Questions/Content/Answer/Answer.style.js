@@ -25,4 +25,14 @@ const Helper = styled.h2`
   }
 `;
 
-export { AnswerContainer, Header, Helper };
+const PreviewText = styled.span`
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px !important;
+  word-spacing: 1px;
+  max-width: 720px;
+  overflow: auto;
+  word-wrap: break-word;
+`;
+
+export { AnswerContainer, Header, Helper, PreviewText };

@@ -24,13 +24,10 @@ const createUser = async (registerInfo) => {
 // 추후 네이밍 수정 필요
 const postLogin = async (loginInfo) => {
   // 성공
-  return await apiClient.post('/auth/login', loginInfo).then(() => {
-    const example =
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInN1YiI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2Njc1MzM2MDAsImV4cCI6MTY2NzYwNTYwMH0.BDnDQW2VKT5yzAbwpzPHiw5H4ZlKhl1tjC4lMMyioS4';
+  return await apiClient.post('/auth/login', loginInfo).then((res) => {
+    const token = res.headers.get('Authorization');
 
-    // const token = res.headers.get('Authorization');
-
-    const [_, jwt] = example.split(' ');
+    const [_, jwt] = token.split(' ');
     _;
 
     // console.log('type', type);

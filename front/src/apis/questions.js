@@ -39,14 +39,16 @@ const demoCreatePost = async (question) => {
   return response;
 };
 
-const getAnswersById = async (id) => {
+const getPostById = async (id) => {
   // 성공
   // id === questionId
   // Answer 도 포함
 
   const { data } = await apiClient2.get(`/questions/${id}`);
 
-  return data?.answers;
+  console.log(data);
+
+  return data;
 };
 
 const demoUpdateQuestionById = async (id, newDetails) => {
@@ -85,6 +87,17 @@ const deletePost = async (id, userId) => {
   return response;
 };
 
+const createAnswer = async (questionId, userId, context) => {
+  const response = await apiClient2.post(`/questions/${questionId}`, {
+    userId,
+    context,
+  });
+
+  console.log(response);
+
+  return response;
+};
+
 // MSW
 
 const getPostsByKeyword = async (keyword) => {
@@ -111,4 +124,10 @@ export { apiClient, getPostsByKeyword, createPost, patchMethod };
 
 export { demoCreatePost, demoUpdateQuestionById };
 
-export { getAllPosts, getSimplePostById, getAnswersById, deletePost };
+export {
+  getAllPosts,
+  getSimplePostById,
+  getPostById,
+  deletePost,
+  createAnswer,
+};
