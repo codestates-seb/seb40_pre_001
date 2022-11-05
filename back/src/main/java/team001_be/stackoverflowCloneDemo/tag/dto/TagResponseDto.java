@@ -10,13 +10,13 @@ import javax.validation.constraints.NotNull;
 @Getter
 @NoArgsConstructor
 public class TagResponseDto {
-    @NotNull
+
     private Long tagId;
-    @NotBlank
+
     private String tagName;
-    @NotBlank
+
     private String tagDescription;
-    @NotNull
+
     private int usedTagCnt;
 
     @Builder
