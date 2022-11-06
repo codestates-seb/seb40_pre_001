@@ -5,11 +5,9 @@ import { TextEditor } from '../../../@common/TextEditor/TextEditor';
 import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
 import usePostAnswer from '../../../../hooks/questions/usePostAnswer';
 import * as S from './Answer.style';
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 
-const PostAnswer = ({ questionId }) => {
+const PostAnswer = ({ questionId, currentUser }) => {
   const { id } = useParams();
-  const { currentUser } = useGetCurrentUser();
   const { mutate } = usePostAnswer(id);
 
   const [editor, setEditor] = useState('');

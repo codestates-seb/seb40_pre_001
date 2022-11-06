@@ -12,9 +12,11 @@ import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
 import { useParams } from 'react-router-dom';
 import useGetPostById from '../../../hooks/questions/useGetPostById';
+import useGetCurrentUser from '../../../hooks/useGetCurrentUser';
 
 const Content = () => {
   const { id } = useParams();
+  const { currentUser } = useGetCurrentUser();
 
   const { data, isSuccess, isLoading } = useGetPostById(id);
 
@@ -55,7 +57,12 @@ const Content = () => {
             />
           </S.ImgContainer>
           <S.PostLayout>
-            <LeftBox votes={voteCount} />
+            <LeftBox
+              type='post'
+              questionId={questionId}
+              currentUser={currentUser}
+              votes={voteCount}
+            />
             <RightBox
               type='post'
               questionId={questionId}
@@ -74,7 +81,7 @@ const Content = () => {
             </>
           )}
           {/* Post Answer */}
-          <PostAnswer questionId={questionId} userId={userId} />
+          <PostAnswer questionId={questionId} currentUser={currentUser} />
         </M.MainContainer>
         <Widget />
       </div>

@@ -129,11 +129,29 @@ const deleteAnswer = async (userId, questionId, answerId) => {
 // Comment related
 
 const createComment = async (userId, questionId, questionCommentContent) => {
-  const response = apiClient2.post('/question/comments', {
+  const response = await apiClient2.post('/questions/comments', {
     userId,
     questionId,
     questionCommentContent,
   });
+
+  return response;
+};
+
+const postUpVote = async (questionId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/upvote/${questionId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+
+const postDownVote = async (questionId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/downvote/${questionId}?userId=${userId}`,
+  );
 
   console.log(response);
 
@@ -155,3 +173,5 @@ export {
 export { createAnswer, modifyAnswer, deleteAnswer };
 
 export { createComment };
+
+export { postUpVote, postDownVote };
