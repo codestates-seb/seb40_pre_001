@@ -76,7 +76,9 @@ const Content = () => {
             <>
               <S.AnswerHeader>{answers?.length} Answer</S.AnswerHeader>
               {answers.map((answer, i) => {
-                return <Answer detail={answer} key={i} />;
+                return (
+                  <Answer detail={answer} currentUser={currentUser} key={i} />
+                );
               })}
             </>
           )}

@@ -158,6 +158,25 @@ const postDownVote = async (questionId, userId) => {
   return response;
 };
 
+const answerUpVote = async (questionId, answerId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/upvote/${questionId}/${answerId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+const answerDownVote = async (questionId, answerId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/downvote/${questionId}/${answerId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+
 export { demoUpdateQuestionById };
 
 export {
@@ -174,4 +193,4 @@ export { createAnswer, modifyAnswer, deleteAnswer };
 
 export { createComment };
 
-export { postUpVote, postDownVote };
+export { postUpVote, postDownVote, answerUpVote, answerDownVote };
