@@ -24,6 +24,7 @@ const SignUpForm = () => {
 
   const handleChange = async (e) => {
     e.preventDefault();
+    console.log(email, nickName);
     return await axios
       .post(
         'https://630c-125-177-243-74.jp.ngrok.io/users/signup',
@@ -52,6 +53,9 @@ const SignUpForm = () => {
           window.alert('이미 가입된 회원입니다');
           navigate('/login');
         }
+        if (error.request.status === 400) {
+          window.alert('입력 값을 확인하여 주십시오');
+        }
       });
   };
 
@@ -77,21 +81,21 @@ const SignUpForm = () => {
             type='text'
             name='nickName'
             value={nickName}
-            onChange={(e) => setNickName(e.target.value)}
+            onChange={(e) => setNickName(e.target.value.replace(/\s/g, ''))}
           ></S.FormInput>
           <S.FormContents>Email</S.FormContents>
           <S.FormInput
             name='email'
             type='text'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.replace(/\s/g, ''))}
           ></S.FormInput>
           <S.FormContents>Password</S.FormContents>
           <S.FormInput
             name='password'
-            type='text'
+            type='password'
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value.replace(/\s/g, ''))}
           ></S.FormInput>
           <S.PasswordTextDirection>
             Passwords must contain at least eight characters, including at least
