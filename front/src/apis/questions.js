@@ -42,7 +42,7 @@ const getPostById = async (id) => {
   return data;
 };
 
-const demoUpdateQuestionById = async (id, newDetails) => {
+const updateQuestionById = async (id, newDetails) => {
   // 성공
   // id === questionId
   // {
@@ -137,6 +137,24 @@ const createComment = async (userId, questionId, questionCommentContent) => {
   return response;
 };
 
+const createAnswerComment = async (userId, answerId, answerCommentContent) => {
+  const response = await apiClient2.post(`/answers/comments`, {
+    userId,
+    answerId,
+    answerCommentContent,
+  });
+
+  return response;
+};
+
+const getCommentsByAnswerId = async (answerCommentId) => {
+  const response = await apiClient2.get(`/answers/comments/${answerCommentId}`);
+
+  console.log(response);
+
+  return response;
+};
+
 const postUpVote = async (questionId, userId) => {
   const response = await apiClient2.post(
     `/questions/upvote/${questionId}?userId=${userId}`,
@@ -176,7 +194,35 @@ const answerDownVote = async (questionId, answerId, userId) => {
   return response;
 };
 
-export { demoUpdateQuestionById };
+const deleteAnswerComment = async (answerCommentId, userId) => {
+  const response = await apiClient2.delete(
+    `/answers/comments/${answerCommentId}?userId=${userId}`,
+  );
+
+  return response;
+};
+
+const deletePostComment = async (postCommentId, userId) => {
+  const response = await apiClient2.delete(
+    `/questions/comments/${postCommentId}?userId=${userId}`,
+  );
+
+  return response;
+};
+
+const updateAnswerComment = async (
+  answerCommentId,
+  userId,
+  answerId,
+  content,
+) => {
+  const response = await apiClient2.patch(
+    `/answers/comments/edit/${answerCommentId}`,
+    { userId, answerId, content },
+  );
+
+  return response;
+};
 
 export {
   createPost,
@@ -186,10 +232,18 @@ export {
   deletePost,
   getPostsByKeyword,
   modifyPost,
+  updateQuestionById,
 };
 
 export { createAnswer, modifyAnswer, deleteAnswer };
 
-export { createComment };
+export {
+  createComment,
+  createAnswerComment,
+  getCommentsByAnswerId,
+  deleteAnswerComment,
+  deletePostComment,
+  updateAnswerComment,
+};
 
 export { postUpVote, postDownVote, answerUpVote, answerDownVote };

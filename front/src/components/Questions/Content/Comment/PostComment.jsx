@@ -1,28 +1,35 @@
 import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import useCreateComment from '../../../../hooks/questions/useCreateComment';
+import useCreateAnswerComment from './hooks/useCreateAnswerComment';
+import useCreateComment from './hooks/useCreateComment';
 import * as S from './PostComment.style';
 
-const PostComment = ({ type, isClicked, setIsClicked, currentUser }) => {
+const PostComment = ({
+  type,
+  isClicked,
+  setIsClicked,
+  currentUser,
+  answerId,
+}) => {
   const { id } = useParams();
   const textRef = useRef(null);
   const { handleCreate: handleCreateComment } = useCreateComment();
-
+  const { handleCreate: handleCreateAnswerComment } = useCreateAnswerComment();
   return (
     <S.PostCommentBox isClicked={isClicked}>
       <S.TextArea ref={textRef} placeholder='write your comment here' />
       <S.submitButton
+        id={answerId}
         onClick={(e) => {
           e.preventDefault();
-
           setIsClicked(!isClicked);
           type === 'post'
-            ? handleCreateComment(
+            ? handleCreateComment(currentUser.userId, id, textRef.current.value)
+            : handleCreateAnswerComment(
                 currentUser.userId,
-                Number(id),
+                e.target.id,
                 textRef.current.value,
-              )
-            : console.log(type);
+              );
         }}
       >
         Submit

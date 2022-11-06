@@ -89,7 +89,7 @@ const RightBox = ({
           isAuthor={isAuthor}
         />
       </S.BottomBox>
-      <CommentBox type={type} currentUser={responseUser} />
+      <CommentBox type={type} currentUser={responseUser} answerId={answerId} />
     </S.RightBox>
   );
 };
