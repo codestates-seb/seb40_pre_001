@@ -52,6 +52,10 @@ const UserGridBox = styled.div`
   grid-template-columns: 1.2fr 4fr;
   gap: 20px;
 `;
+
+const AnswersContainer = styled.div`
+  display: flex;
+`;
 export {
   Container,
   ContainerHeader,
@@ -62,4 +66,4 @@ export {
 };
 
 // contnets
-export { StatsContainer, ContentsTitle, UserGridBox };
+export { StatsContainer, ContentsTitle, UserGridBox, AnswersContainer };

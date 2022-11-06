@@ -4,13 +4,13 @@ import { RecoilRoot } from 'recoil';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { worker } from './mocks/broswer';
+// import { worker } from './mocks/broswer';
 import { GlobalStyles, theme } from './styles';
 import App from './App';
 
-if (process.env.NODE_ENV === 'development') {
-  worker.start();
-}
+// if (process.env.NODE_ENV === 'development') {
+//   worker.start();
+// }
 
 // react-query
 const queryClient = new QueryClient({

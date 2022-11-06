@@ -1,28 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from './Tags.style';
 import Title from '../../components/Title/Title';
 import TagsTitleText from './TagsTitleText';
 import TagsAll from './TagsAll';
-import TagsFilter from '../../components/TagsFilter/TagsFilter';
+import TagsFilter from '../../components/TagsPage/TagsFilter/TagsFilter';
 import axios from 'axios';
-import Contents from '../../components/Tags/Contents';
+import Contents from '../../components/TagsPage/Tags/Contents';
 import LeftBox from '../../components/Questions/Content/PostBody/LeftBox';
+// import { getAlltagsData } from '../../apis/tags';
+import { useQuery } from '@tanstack/react-query';
 
 const Tags = () => {
-  const [data, setData] = useState([]);
-
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3000/api/tags');
-
-    if (response) {
-      setData(response.data);
-    }
+    const response = await axios.get(
+      'https://630c-125-177-243-74.jp.ngrok.io/tags',
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        withCredentials: true,
+      },
+    );
+    return response.data;
   };
+  const { data, status } = useQuery(['tags'], fetchData);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
 
+  if (status === 'error') {
+    return <div>Error</div>;
+  }
+
+  // getAlltagsData();
   return (
     <S.Container>
       <Title title={'Tags'} />
@@ -30,9 +41,12 @@ const Tags = () => {
       <TagsAll />
       <TagsFilter />
       <S.TagsContainer>
-        {data?.map(({ content }, i) => {
-          return <Contents key={i}>{content}</Contents>;
+        {/* {data.results.map((tags) => {
+          <Contents>{tags.tagName}</Contents>;
         })}
+        {console.log(data.results)} */}
+        <Contents />
+        {console.log(data)}
       </S.TagsContainer>
       <S.PagiNationContainer>
         <LeftBox />

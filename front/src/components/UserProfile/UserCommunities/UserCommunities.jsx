@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './UserCommunities.style';
 
-import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
+import SmallLogoIcon from '../../@common/Icons/SmallLogoIcon';
 const UserCommunities = () => {
   return (
     <S.Container>
