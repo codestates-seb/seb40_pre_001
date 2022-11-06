@@ -49,7 +49,7 @@ public class Question extends Auditable {
 
 
     //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, targetEntity = QuestionTag.class)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.PERSIST, targetEntity = QuestionTag.class)
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionTag> questionTagList = new ArrayList<>();

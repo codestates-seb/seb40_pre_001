@@ -114,7 +114,7 @@ public class UserController {
     public String getUser(){
         return  userService.getLoginUser();
     }
-    
+
 
     // 회원 정보 전부 출력 -  완료
     @GetMapping()
