@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './introduce.style';
+import * as S from './Introduce.style';
 import SIGNUP_INTRO from '../../constants/SignUp';
 import IntroLine from './IntroLine';
 
