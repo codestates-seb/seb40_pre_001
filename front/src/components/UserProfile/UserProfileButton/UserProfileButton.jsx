@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './UserProfileButton.style';
 
-import PencilIcon from '../@common/Icons/PencilIcon';
-import { StackExChangeIcon } from '../@common/Icons/StackExIcon';
+import PencilIcon from '../../@common/Icons/PencilIcon';
+import { StackExChangeIcon } from '../../@common/Icons/StackExIcon';
 const UserProfileButton = () => {
   return (
     <S.Container>
