@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './signUp.style';
+import * as S from './SignUp.style';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
 

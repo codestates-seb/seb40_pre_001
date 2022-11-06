@@ -25,14 +25,9 @@ const createUser = async (registerInfo) => {
 const postLogin = async (loginInfo) => {
   // 성공
   return await apiClient.post('/auth/login', loginInfo).then((res) => {
-    console.log(res.headers);
+    const token = res.headers.get('Authorization');
 
-    const example =
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W10sInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSIsInN1YiI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2Njc1MzM2MDAsImV4cCI6MTY2NzYwNTYwMH0.BDnDQW2VKT5yzAbwpzPHiw5H4ZlKhl1tjC4lMMyioS4';
-
-    // const token = res.headers.get('Authorization');
-
-    const [_, jwt] = example.split(' ');
+    const [_, jwt] = token.split(' ');
     _;
 
     // console.log('type', type);

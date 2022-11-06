@@ -12,8 +12,6 @@ const getAllUsers = async () => {
   // 성공
   const { data } = await apiClient.get('/users');
 
-  console.log(data);
-
   return data;
 };
 
@@ -21,9 +19,7 @@ const getUserById = async (id) => {
   // 성공
   const response = await apiClient.get(`/users/${id}`);
 
-  console.log(response.data.data);
-
-  return response;
+  return response.data.data;
 };
 
 const deleteUser = async (id) => {

@@ -1,10 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
-const useTextEditor = () => {
+const useTextEditor = (editorRef) => {
   const [editor, setEditor] = useState({ html: '', md: '' });
-  const editorRef = useRef(null);
 
-  const handleSubmit = () => {
+  const handleChange = () => {
     const editor_instance = editorRef.current?.getInstance();
 
     if (editor_instance) {
@@ -15,7 +14,9 @@ const useTextEditor = () => {
     }
   };
 
-  return [editor, handleSubmit];
+  console.log(editor);
+
+  return { editor, handleChange };
 };
 
 export default useTextEditor;

@@ -10,8 +10,9 @@ const LogoutPopOver = () => {
   const setIsAuthenticated = useSetRecoilState(usersState);
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    setIsAuthenticated({ isAuthenticated: false, currentUser: 'anonymous' });
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   };
 
   return (

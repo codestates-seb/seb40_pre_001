@@ -98,16 +98,14 @@ const FeatureLeft = styled.div`
   width: 160px;
 
   display: flex;
-
-  a {
-    text-decoration: none;
-    color: hsl(210, 8%, 45%);
-    cursor: pointer;
-    margin-left: 10px;
-  }
 `;
 
 const UserBox = styled.div``;
+
+const CommentSection = styled.div`
+  width: 641px;
+  max-width: 641px;
+`;
 
 const Comment = styled.span`
   cursor: pointer;
@@ -116,6 +114,13 @@ const Comment = styled.span`
 `;
 
 // Answers
+
+const FeatureSpan = styled.span`
+  text-decoration: none;
+  color: hsl(210, 8%, 45%);
+  cursor: pointer;
+  margin-left: 10px;
+`;
 
 export {
   PostLayout,
@@ -130,5 +135,7 @@ export {
   FeatureBox,
   FeatureLeft,
   UserBox,
+  CommentSection,
   Comment,
+  FeatureSpan,
 };

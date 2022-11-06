@@ -1,41 +1,18 @@
 import React from 'react';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
-import { useRecoilValue } from 'recoil';
-import pagesState from '../../../../store/pagesState';
-import useUpdateStatus from '../../../../hooks/questions/useUpdateStatus';
 
-const LeftBox = ({ status, upVotedUsers, downVotedUsers }) => {
-  const { currentContentId } = useRecoilValue(pagesState);
-  const { handleStatus } = useUpdateStatus();
-  const currentUserId = 1231244;
-
+const LeftBox = ({ votes }) => {
   return (
     <S.LeftBox>
       <S.VotingContainer>
-        <S.IconContainer
-          onClick={() =>
-            handleStatus(currentContentId, {
-              ...status,
-              upVotedUsers: [...upVotedUsers, currentUserId],
-              votes: status?.votes + 1,
-            })
-          }
-        >
+        <S.IconContainer>
           <ArrowIcon direction='up' />
         </S.IconContainer>
         <S.VoteCount>
-          <span>{status?.votes}</span>
+          <span>{votes}</span>
         </S.VoteCount>
-        <S.IconContainer
-          onClick={() =>
-            handleStatus(currentContentId, {
-              ...status,
-              downVotedUsers: [...downVotedUsers, currentUserId],
-              votes: status?.votes - 1,
-            })
-          }
-        >
+        <S.IconContainer>
           <ArrowIcon direction='down' />
         </S.IconContainer>
         <SaveIcon style={{ margin: '10px 0 10px 12px' }} />

@@ -15,8 +15,7 @@ import App from './App';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000,
-      notifyOnChangeProps: 'all',
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -26,15 +25,16 @@ const root = createRoot(container);
 
 root.render(
   <>
-    <React.StrictMode>
-      <GlobalStyles theme={theme} />
-      <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <Router>
-            <App />
-          </Router>
-        </RecoilRoot>
-      </QueryClientProvider>
-    </React.StrictMode>
+    {/* <React.StrictMode> */}
+    <GlobalStyles theme={theme} />
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <RecoilRoot>
+        <Router>
+          <App />
+        </Router>
+      </RecoilRoot>
+    </QueryClientProvider>
+    {/* </React.StrictMode> */}
   </>,
 );

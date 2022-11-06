@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
-  headers: {
-    'Content-type': 'application/json',
-  },
-});
-
 const apiClient2 = axios.create({
   baseURL: 'https://630c-125-177-243-74.jp.ngrok.io',
   headers: {
@@ -15,13 +8,14 @@ const apiClient2 = axios.create({
   withCredentials: true,
 });
 
-const demoGetAllPosts = async () => {
+// Post Related
+const getAllPosts = async () => {
   const { data } = await apiClient2.get('/questions');
 
   return data;
 };
 
-const demoCreatePost = async (question) => {
+const createPost = async (question) => {
   // 성공
   // questionTagList null
   // {
@@ -39,16 +33,14 @@ const demoCreatePost = async (question) => {
   return response;
 };
 
-const demoGetPostById = async (id) => {
+const getPostById = async (id) => {
   // 성공
   // id === questionId
   // Answer 도 포함
 
-  const response = await apiClient2.get(`/questions/${id}`);
+  const { data } = await apiClient2.get(`/questions/${id}`);
 
-  console.log(response);
-
-  return response;
+  return data;
 };
 
 const demoUpdateQuestionById = async (id, newDetails) => {
@@ -67,71 +59,99 @@ const demoUpdateQuestionById = async (id, newDetails) => {
   return response;
 };
 
-const demoGetSimplePostById = async (id) => {
+const getSimplePostById = async (id) => {
   // id === questionId
   // 성공
   const response = await apiClient2.get(`questions/simple/${id}`);
 
-  console.log(response);
+  console.log(response.data.data);
 
-  return response;
-};
-
-const demoDeletePost = async (id, userId) => {
-  const response = await apiClient2.delete(`/questions/${id}`, userId);
-
-  console.log(response);
-
-  return response;
-};
-
-// MSW
-const getAllPostData = async () => {
-  const { data } = await apiClient.get('/api/questions');
-
-  return data;
+  return response.data.data;
 };
 
 const getPostsByKeyword = async (keyword) => {
-  const { data } = await apiClient.get(`/api/search?q=${keyword}`);
+  const { data } = await apiClient2.get('/questions/search', {
+    params: { searchTitle: keyword },
+  });
 
-  console.log('data', data);
-
-  return data;
-};
-
-const createPost = async (newPost) => {
-  const { data } = await apiClient.post('/api/questions/ask', newPost);
+  console.log(data);
 
   return data;
 };
 
-const patchMethod = async (id, newStatus) => {
-  const { data } = await apiClient.patch(`/api/questions/${id}`, newStatus);
-
-  return data;
-};
-
-const deletePost = async (id) => {
-  const response = await apiClient.delete(`/api/questions/${id}`);
+const deletePost = async (id, userId) => {
+  const response = await apiClient2.delete(`/questions/${id}`, {
+    params: { userId },
+  });
 
   return response;
 };
 
-export {
-  apiClient,
-  getAllPostData,
-  getPostsByKeyword,
-  createPost,
-  patchMethod,
-  deletePost,
+const modifyPost = async (questionId, id, modifiedContent) => {
+  const response = await apiClient2.patch(`/questions/edit/${questionId}`, {
+    ...modifiedContent,
+    id,
+  });
+
+  console.log(response);
+
+  return response;
 };
 
-export {
-  demoGetAllPosts,
-  demoCreatePost,
-  demoGetPostById,
-  demoUpdateQuestionById,
-  demoGetSimplePostById,
-  demoDeletePost,
+// Answer related
+const createAnswer = async (questionId, userId, context) => {
+  const response = await apiClient2.post(`/questions/${questionId}`, {
+    userId,
+    context,
+  });
+
+  return response;
 };
+
+const modifyAnswer = async (answerId, userId, context) => {
+  const response = await apiClient2.patch(
+    `/questions/answer/edit/${answerId}`,
+    {
+      userId,
+      context,
+    },
+  );
+
+  return response;
+};
+
+const deleteAnswer = async (userId, questionId, answerId) => {
+  return await apiClient2.delete(`/questions/${questionId}/${answerId}`, {
+    params: { userId },
+  });
+};
+
+// Comment related
+
+const createComment = async (userId, questionId, questionCommentContent) => {
+  const response = apiClient2.post('/question/comments', {
+    userId,
+    questionId,
+    questionCommentContent,
+  });
+
+  console.log(response);
+
+  return response;
+};
+
+export { demoUpdateQuestionById };
+
+export {
+  createPost,
+  getAllPosts,
+  getSimplePostById,
+  getPostById,
+  deletePost,
+  getPostsByKeyword,
+  modifyPost,
+};
+
+export { createAnswer, modifyAnswer, deleteAnswer };
+
+export { createComment };

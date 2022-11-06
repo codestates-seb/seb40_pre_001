@@ -5,7 +5,7 @@ import CustomLink from '../../../@common/Link';
 import * as S from './Navigation.style';
 
 const Links = ({ isClicked, setIsClicked }) => {
-  const isAuthenticated = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
 
   return (
     <S.Ol>
