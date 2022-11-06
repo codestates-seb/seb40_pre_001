@@ -10,7 +10,7 @@ const Answer = ({ detail }) => {
   return (
     <>
       <S.PostLayout>
-        <LeftBox votes={voteCount} />
+        <LeftBox type='answer' votes={voteCount} />
         <RightBox
           type='answer'
           answerId={answerId}

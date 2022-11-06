@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TimeAgo from 'react-timeago';
 import { PencilIcon } from '../../../@common/Icons';
 import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
 import * as S from './Comment.style';
+import PostComment from './PostComment';
 
-const CommentBox = ({ type }) => {
-  type;
+const CommentBox = ({ type, currentUser }) => {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <S.Container>
       <S.CommentList>
         <S.Li>
           <S.TextContainer>
             <S.CommentBody>
+              {/* comment Context */}
               <S.Copy>
                 Your array contains strings, not html elements as you are
                 storing the elements value in the array, push the element into
@@ -20,8 +23,10 @@ const CommentBox = ({ type }) => {
               </S.Copy>
               <S.Author>
                 &nbsp;-&nbsp;
+                {/* author */}
                 <SmallBlueSpan content='Ryan Wilson' />
               </S.Author>
+              {/* createdAt */}
               <TimeAgo
                 date={'2022-10-22'}
                 style={{
@@ -38,6 +43,15 @@ const CommentBox = ({ type }) => {
           </S.TextContainer>
         </S.Li>
       </S.CommentList>
+      <S.Comment isClicked={isClicked} onClick={() => setIsClicked(!isClicked)}>
+        Add a comment
+      </S.Comment>
+      <PostComment
+        type={type}
+        isClicked={isClicked}
+        setIsClicked={setIsClicked}
+        currentUser={currentUser}
+      />
     </S.Container>
   );
 };

@@ -102,17 +102,6 @@ const FeatureLeft = styled.div`
 
 const UserBox = styled.div``;
 
-const CommentSection = styled.div`
-  width: 641px;
-  max-width: 641px;
-`;
-
-const Comment = styled.span`
-  cursor: pointer;
-  color: hsl(210, 8%, 55%);
-  opacity: 0.6;
-`;
-
 // Answers
 
 const FeatureSpan = styled.span`
@@ -135,7 +124,5 @@ export {
   FeatureBox,
   FeatureLeft,
   UserBox,
-  CommentSection,
-  Comment,
   FeatureSpan,
 };

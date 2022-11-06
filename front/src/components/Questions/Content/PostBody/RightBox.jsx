@@ -91,20 +91,9 @@ const RightBox = ({
           isAuthor={isAuthor}
         />
       </S.BottomBox>
-      <S.CommentSection>
-        <CommentBox type={type} />
-        <S.Comment>Add a comment</S.Comment>
-      </S.CommentSection>
+      <CommentBox type={type} currentUser={responseUser} />
     </S.RightBox>
   );
 };
 
 export default RightBox;
-
-// const onClick = (id) => {
-//   status === 'success'
-//     ? deletePost.mutate(id)
-//     : status === 'error'
-//     ? console.log('Failed to Delete Post')
-//     : null;
-// };

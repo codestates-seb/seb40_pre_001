@@ -61,6 +61,13 @@ const EditButton = styled.span`
   padding: 0;
   top: 3px;
 `;
+
+const Comment = styled.span`
+  display: ${({ isClicked }) => (isClicked ? 'none' : 'block')};
+  cursor: pointer;
+  color: hsl(210, 8%, 55%);
+  opacity: 0.6;
+`;
 export {
   Container,
   CommentList,
@@ -70,4 +77,5 @@ export {
   Copy,
   Author,
   EditButton,
+  Comment,
 };
