@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
@@ -10,6 +11,7 @@ import team001_be.stackoverflowCloneDemo.audit.Auditable;
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.chrono.MinguoChronology;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,12 +50,20 @@ public class User extends Auditable {
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     private List<Question> questionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     private List<Answer> answerList = new ArrayList<>();
+
+    private int userViewCounts;
+
+    public void updateUserViewCounts(int userViewCounts) {
+        this.userViewCounts = userViewCounts;
+    }
 
     @Builder
     public User(Long userId,String email, String password, String userNickname, String description, String address, LocalDate birthday) {

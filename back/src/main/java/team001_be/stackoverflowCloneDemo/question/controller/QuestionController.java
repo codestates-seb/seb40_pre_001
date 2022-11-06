@@ -97,6 +97,7 @@ public class QuestionController {
         Question question = questionService.findQuestion(questionId);
         questionService.updateQuestionViewCount(question, question.getViewCount());
 
+
         javax.servlet.http.Cookie[] cookies = req.getCookies();
         Map<String, String> mapCookie = new HashMap<String, String>();
 
@@ -115,6 +116,7 @@ public class QuestionController {
                 cookieSample.setMaxAge(1000);
                 res.addCookie(cookieSample);
                 questionService.updateQuestionViewCount(question, question.getViewCount()); //증가
+
             }
         }
         List<AnswerCommentResponseDto> answerCommentResponseDtoList = new ArrayList<>();

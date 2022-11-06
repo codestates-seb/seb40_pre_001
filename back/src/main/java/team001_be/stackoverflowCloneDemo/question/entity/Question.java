@@ -41,7 +41,12 @@ public class Question extends Auditable {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private Long viewCount; //조회수
 
+
+
     private Long voteCount;
+
+
+
 
     //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, targetEntity = QuestionTag.class)
