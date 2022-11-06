@@ -9,6 +9,8 @@ import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { pagesState } from '../../../../store';
 import CommentBox from '../Comment/Comment';
+import useDeleteAnswer from '../../../../hooks/questions/useDeleteAnswer';
+import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 
 const RightBox = ({
   type,
@@ -22,16 +24,16 @@ const RightBox = ({
   const [state, setCurrentQuestionId] = useRecoilState(pagesState);
   const { data: user } = useGetUserById(userId);
   const { handleDelete: handleDeletePost } = useDeletePost();
+  const { handleDelete: handleDeleteAnswer } = useDeleteAnswer();
+  const { currentUser: responseUser } = useGetCurrentUser();
+  // const handleDeleteAnswer = () =>
+  //   console.log(responseUser.userId, questionId, answerId);
 
   useEffect(() => {
     setCurrentQuestionId({ ...state, currentQuestionId: questionId });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionId]);
-
-  const handleDeleteAnswer = () => {
-    return;
-  };
 
   const currentUser = localStorage.getItem('user') || 'anonymous';
   const tags = ['Javascript', 'Django', 'styled-components'];
@@ -65,7 +67,11 @@ const RightBox = ({
                 <S.FeatureSpan
                   onClick={() => {
                     type === 'answer'
-                      ? handleDeleteAnswer(answerId, userId)
+                      ? handleDeleteAnswer(
+                          responseUser.userId,
+                          questionId,
+                          answerId,
+                        )
                       : type === 'post'
                       ? handleDeletePost(questionId, userId)
                       : null;

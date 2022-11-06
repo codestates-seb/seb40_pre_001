@@ -120,6 +120,12 @@ const modifyAnswer = async (answerId, userId, context) => {
   return response;
 };
 
+const deleteAnswer = async (userId, questionId, answerId) => {
+  return await apiClient2.delete(`/questions/${questionId}/${answerId}`, {
+    params: { userId },
+  });
+};
+
 // Comment related
 
 const createComment = async (userId, questionId, questionCommentContent) => {
@@ -146,6 +152,6 @@ export {
   modifyPost,
 };
 
-export { createAnswer, modifyAnswer };
+export { createAnswer, modifyAnswer, deleteAnswer };
 
 export { createComment };
