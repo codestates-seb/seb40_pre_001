@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './UsersTab.style';
-import { UsersTabButton } from '../../constants/pages';
+import { UsersTabButton } from '../../../constants/pages';
 const UsersTab = () => {
   return (
     <S.UsersTabContainer>
