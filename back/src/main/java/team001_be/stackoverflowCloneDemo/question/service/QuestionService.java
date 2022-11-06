@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -35,49 +36,49 @@ public class QuestionService {
         this.tagService = tagService;
     }
 
-    public Question createQuestion(Question question, Long userId){
+    public Question createQuestion(Question question, Long userId) {
         question.setUser(userService.findUser(userId));
         verifyQuestion(question); //존재하는 회원, tag인지 check
-        //여기에 question -> questionTagList의 questionTag별로 question저장하는 로직 추가
-        if(question.getQuestionTagList() != null) {
-            List<QuestionTag> questionTags = question.getQuestionTagList().stream()
-                    .map(questionTag -> {
-                        questionTag.setQuestion(question);
-                        questionTag.setTag(tagService.findTag(questionTag.getTag().getTagId()));
-                        return questionTag;
-                    }).collect(Collectors.toList());
-            question.setQuestionTagList(questionTags);
-        }
+
+        //question -> questionTagList의 questionTag별로 question저장하는 로직
+        List<QuestionTag> questionTags = question.getQuestionTagList().stream()
+                .map(questionTag -> {
+                    questionTag.setQuestion(question);
+                    questionTag.setTag(tagService.findTag(questionTag.getTag().getTagId()));
+                    return questionTag;
+                }).collect(Collectors.toList());
+        question.setQuestionTagList(questionTags);
+
 
         return saveQuestion(question);
     }
 
-    public Question findQuestion(Long questionId){
+    public Question findQuestion(Long questionId) {
         return findVerifiedQuestionById(questionId);
     }
 
-    public List<Question> getAllQuestions(){
+    public List<Question> getAllQuestions() {
 //        List<Question> questionList = questionRepository.findAll();
         List<Question> questionList = questionRepository.findAllByOrderByCreatedAtDesc().orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
         return questionList;
     }
 
-    public List<Question> searchQuestionsByTitle(String title){
+    public List<Question> searchQuestionsByTitle(String title) {
         Optional<List<Question>> questionList = questionRepository.findByQuestionTitleContaining(title);
         List<Question> foundQuestionList = questionList.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
         //수정 필요!!!! stream으로 찾아야??
         return foundQuestionList;
     }
 
-    public void updateQuestionViewCount(Question question, Long viewCount){
+    public void updateQuestionViewCount(Question question, Long viewCount) {
         Question foundQuestion = findQuestion(question.getQuestionId());
         question.updateViewCount(viewCount + 1);
         saveQuestion(question);
     }
 
 
-    public Question updateQuestion(Question question, Long userId){
+    public Question updateQuestion(Question question, Long userId) {
         Question foundQuestion = findQuestion(question.getQuestionId());
 
         //user 권한 확인하기.. jwt 구현되면 다시 살펴봐야 할듯
@@ -95,17 +96,17 @@ public class QuestionService {
         return saveQuestion(foundQuestion);
     }
 
-    public void deleteQuestion(Long questionId, Long userId){
+    public void deleteQuestion(Long questionId, Long userId) {
         Question question = findVerifiedQuestionById(questionId);
         userService.verifyUserAuthorization(question.getUser().getUserId(), userId);
 
         questionRepository.delete(question);
     }
 
-    private void verifyQuestion(Question question){
+    private void verifyQuestion(Question question) {
         //회원이 존재하는지 확인, @Transactional이기에 runtime exception발생시 자동 롤백됨
         userService.findUser(question.getUser().getUserId());
-        if(question.getQuestionId()!= null){
+        if (question.getQuestionId() != null) {
             //Tag 존재하는지 확인
             question.getQuestionTagList()
                     .forEach(questionTag -> tagService.findTag(questionTag.getTag().getTagId()));
@@ -113,7 +114,7 @@ public class QuestionService {
 
     }
 
-    private Question findVerifiedQuestionById(Long questionId){
+    private Question findVerifiedQuestionById(Long questionId) {
         Optional<Question> optionalQuestion = questionRepository.findById(questionId);
         Question foundQuestion = optionalQuestion.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
 
@@ -127,7 +128,7 @@ public class QuestionService {
 //        return foundQuestion;
 //    }
 
-    private Question saveQuestion(Question question){
+    private Question saveQuestion(Question question) {
         return questionRepository.saveAndFlush(question);
     }
 
@@ -162,11 +163,11 @@ public class QuestionService {
     }
 
         */
-/*
-         * 조회수 중복 방지를 위한 쿠키 생성 메소드
-         * @param cookie
-         * @return
-         * *//*
+    /*
+     * 조회수 중복 방지를 위한 쿠키 생성 메소드
+     * @param cookie
+     * @return
+     * *//*
 
         private Cookie createCookieForForNotOverlap(Long questionId) {
             Cookie cookie = new Cookie(VIEWCOOKIENAME+questionId, String.valueOf(questionId));
@@ -183,7 +184,6 @@ public class QuestionService {
             return (int) now.until(tomorrow, ChronoUnit.SECONDS);
     }
 */
-
 
 
 }

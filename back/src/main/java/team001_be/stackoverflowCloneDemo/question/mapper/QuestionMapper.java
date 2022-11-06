@@ -64,7 +64,7 @@ public interface QuestionMapper {
         questionBuilder.context( questionPostDto.getContext() );
 
         Question question = questionBuilder.build();
-        if(question.getQuestionTagList()!= null) {
+        if(questionPostDto.getTagIdList() != null) {
             List<QuestionTag> questionTagList = questionPostDto.getTagIdList().stream()
                     .map(tagSimplePostDto -> {
                         Tag.TagBuilder tag = Tag.builder();
