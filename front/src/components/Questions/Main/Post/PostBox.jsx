@@ -13,7 +13,11 @@ const PostBox = ({ data }) => {
   return data.slice(offset, offset + selectedLimit).map((post, i) => (
     <S.PostContainer key={i}>
       {/* BoxLeft */}
-      <PostStatus votes={post.voteCount} views={post.viewCount} />
+      <PostStatus
+        id={post.questionId}
+        votes={post.voteCount}
+        views={post.viewCount}
+      />
       {/* BoxRight */}
       <PostDetails data={post} />
     </S.PostContainer>

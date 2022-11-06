@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPostById } from '../../apis/questions';
 
-const useGetPostById = (id) => {
+const useGetAnswersLength = (id) => {
   const { data, isSuccess, isLoading, isError, status } = useQuery(
     ['postById', id],
     () => getPostById(id),
@@ -11,8 +11,10 @@ const useGetPostById = (id) => {
     },
   );
 
+  const length = data?.answers?.length;
+
   return {
-    data,
+    length,
     isSuccess,
     isLoading,
     isError,
@@ -20,4 +22,4 @@ const useGetPostById = (id) => {
   };
 };
 
-export default useGetPostById;
+export default useGetAnswersLength;

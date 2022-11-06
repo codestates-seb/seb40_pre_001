@@ -8,7 +8,7 @@ import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 // import Questions from './Questions/Questions';
-import Post from './Questions/Post/Post';
+// import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import UserProfile from './UserProfile/UserProfile';
 import Ask from './Questions/ASK/Ask';
@@ -19,6 +19,7 @@ import EditPostPage from './Questions/Edit/EditPost';
 import EditAnswerPage from './Questions/Edit/EditAnswer';
 
 const Questions = lazy(() => import('./Questions/Questions'));
+const Post = lazy(() => import('./Questions/Post/Post'));
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [

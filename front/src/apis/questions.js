@@ -62,7 +62,7 @@ const demoUpdateQuestionById = async (id, newDetails) => {
 const getSimplePostById = async (id) => {
   // id === questionId
   // 성공
-  const response = await apiClient2.get(`questions/simple/${id}`);
+  const response = await apiClient2.get(`/questions/simple/${id}`);
 
   console.log(response.data.data);
 
@@ -70,9 +70,9 @@ const getSimplePostById = async (id) => {
 };
 
 const getPostsByKeyword = async (keyword) => {
-  const { data } = await apiClient2.get('/questions/search', {
-    params: { searchTitle: keyword },
-  });
+  const { data } = await apiClient2.get(
+    `/questions/search?searchTitle=${keyword}`,
+  );
 
   console.log(data);
 
