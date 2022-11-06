@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import { StyledButton } from '../@common/Buttons';
 import { useRecoilValue } from 'recoil';
 import { pagesState } from '../../store';
-import useEditAnswer from '../../hooks/questions/useEditAnswer';
+import useEditAnswer from './hooks/useEditAnswer';
 
 const EditAnswer = () => {
   const { id } = useParams();

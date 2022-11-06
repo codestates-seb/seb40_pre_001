@@ -4,14 +4,10 @@ import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
-import { useMutation } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
 import { usersState } from '../../store';
-import { postLogin } from '../../apis/auth';
-import { getCurrentUser } from '../../apis/users.js';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../constants';
 import { useEffect } from 'react';
+import useLogin from './hooks/useLogin.jsx';
 
 const Form = () => {
   const [authState, setIsAuthenticated] = useRecoilState(usersState);
@@ -20,29 +16,7 @@ const Form = () => {
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwdvalid] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const navigate = useNavigate();
-
-  // hooks 로 분리 필요
-  const { mutate } = useMutation(
-    postLogin,
-    {
-      onSuccess: () => {
-        getCurrentUser();
-        setIsAuthenticated({
-          ...authState,
-          isAuthenticated: true,
-        });
-
-        navigate(ROUTES.QUESTIONS.path);
-      },
-      onError: () => {
-        console.log('으악');
-      },
-    },
-    {
-      retry: false,
-    },
-  );
+  const { mutate } = useLogin();
 
   useEffect(() => {
     setIsAuthenticated({
@@ -50,12 +24,6 @@ const Form = () => {
       currentUser: localStorage.getItem('user'),
     });
   }, []);
-
-  // const credential = {
-  //   email: 'test94@gamil.com',
-  //   password: 'a12345678',
-  //   userNickname: 'test12345',
-  // };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);

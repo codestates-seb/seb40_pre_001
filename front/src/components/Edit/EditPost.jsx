@@ -8,7 +8,7 @@ import { TextEditor } from '../@common/TextEditor/TextEditor';
 import { useRef } from 'react';
 import { StyledButton } from '../@common/Buttons';
 import useGetCurrentUser from '../../hooks/useGetCurrentUser';
-import useEditPost from '../../hooks/questions/useEditPost';
+import useEditPost from './hooks/useEditPost';
 
 const EditPost = () => {
   const { id } = useParams();

@@ -9,10 +9,7 @@ import * as S from './Answer.style';
 const PostAnswer = ({ questionId, currentUser }) => {
   const { id } = useParams();
   const { mutate } = useCreateAnswer(id);
-
   const [editor, setEditor] = useState('');
-  setEditor;
-
   const editorRef = useRef('');
 
   const textEditorValidator = (text) => {
