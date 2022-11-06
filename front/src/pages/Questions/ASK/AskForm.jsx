@@ -55,11 +55,11 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
 
   const editorRef = useRef();
 
-  const handleRegisterButton = () => {
-    const EditorText = editorRef.current?.getInstance().getMarkdown();
-    SetTextDone(EditorText);
-    DoneQuestion(textdone);
-  };
+  // const handleRegisterButton = () => {
+  //   const EditorText = editorRef.current?.getInstance().getMarkdown();
+  //   SetTextDone(EditorText);
+  //   DoneQuestion(textdone);
+  // };
 
   return (
     <S.AskForm

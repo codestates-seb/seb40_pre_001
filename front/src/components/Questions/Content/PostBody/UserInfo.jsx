@@ -2,14 +2,12 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
 
-const UserInfo = ({ author, createdAt }) => {
-  const isAuthor = author === 'keonhee Lee';
-
+const UserInfo = ({ type, author, createdAt, isAuthor }) => {
   return (
     <S.Wrapper isAuthor={isAuthor}>
       <S.Container>
         <S.TimeContainer>
-          asked{' '}
+          {type === 'post' ? 'asked' : 'answered'}{' '}
           <TimeAgo date={createdAt} style={{ color: 'hsl(210, 8%, 45%)' }} />
         </S.TimeContainer>
         <S.UserBox>

@@ -1,96 +1,85 @@
 import React from 'react';
-import * as S from './Content.style';
-import * as M from '../../../pages/Questions/Questions.style';
 
 import Header from './Header.';
 import RightBox from './PostBody/RightBox';
 import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 import Answer from './Answer/Answer';
+import Spinner from '../../@common/Spinner';
+
+import * as S from './Content.style';
+import * as M from '../../../pages/Questions/Questions.style';
 import { useParams } from 'react-router-dom';
+import useGetPostById from '../../../hooks/questions/useGetPostById';
 
 const Content = () => {
   const { id } = useParams();
-  const { data, status: fetchingStatus } = useGetAllPosts((data) =>
-    data.find((post) => post.questionId === Number(id)),
-  );
 
-  // const author = getUserById(id).userNickname;
+  const { data, isSuccess, isLoading } = useGetPostById(id);
 
-  return fetchingStatus === 'success' ? (
-    <div>
-      <Header
-        title={data.questionTitle}
-        views={data.status.views}
-        createdAt={data.createdAt}
-      />
-      <M.MainContainer>
-        <S.ImgContainer>
-          <img
-            src='https://tpc.googlesyndication.com/simgad/10582817586221403560'
-            border='0'
-            width='728'
-            height='90'
-            alt='googleImage'
-          />
-        </S.ImgContainer>
-        <S.PostLayout>
-          <LeftBox
-            status={data.status}
-            upVotedUsers={data.upVotedUsers}
-            downVotedUsers={data.downVotedUsers}
-          />
-          <RightBox
-            tags={data.tags}
-            content={data.content}
-            author={data?.author}
-            createdAt={data.createdAt}
-          />
-        </S.PostLayout>
-        {/* Answers */}
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-        {data?.answers && (
-          <>
-            <S.AnswerHeader>{data.answers.length} Answer</S.AnswerHeader>
-            {data.answers.map(
-              (
-                {
-                  content,
-                  status,
-                  tags,
-                  author,
-                  createdAt,
-                  upVotedUsers,
-                  downVotedUsers,
-                },
-                i,
-              ) => {
-                return (
-                  <Answer
-                    key={i}
-                    status={status}
-                    tags={tags}
-                    content={content}
-                    author={author}
-                    createdAt={createdAt}
-                    upVotedUsers={upVotedUsers}
-                    downVotedUsers={downVotedUsers}
-                  />
-                );
-              },
-            )}
-          </>
-        )}
-        {/* Post Answer */}
-        <PostAnswer />
-      </M.MainContainer>
-      <Widget />
-    </div>
-  ) : (
-    <div>loading...</div>
-  );
+  if (isSuccess) {
+    const { answers } = data;
+
+    const {
+      questionTitle,
+      questionId,
+      createdAt,
+      modifiedAt,
+      viewCount,
+      voteCount,
+      context,
+      userId,
+    } = data.question;
+
+    return (
+      <div>
+        <Header
+          title={questionTitle}
+          createdAt={createdAt}
+          modifiedAt={modifiedAt}
+          viewCount={viewCount}
+        />
+        <M.MainContainer>
+          <S.ImgContainer>
+            <img
+              src='https://tpc.googlesyndication.com/simgad/10582817586221403560'
+              border='0'
+              width='728'
+              height='90'
+              alt='googleImage'
+            />
+          </S.ImgContainer>
+          <S.PostLayout>
+            <LeftBox votes={voteCount} />
+            <RightBox
+              type='post'
+              questionId={questionId}
+              context={context}
+              userId={userId}
+              createdAt={createdAt}
+            />
+          </S.PostLayout>
+          {/* Answers */}
+          {answers.length !== 0 && (
+            <>
+              <S.AnswerHeader>{answers?.length} Answer</S.AnswerHeader>
+              {answers.map((answer, i) => {
+                return <Answer detail={answer} key={i} />;
+              })}
+            </>
+          )}
+          {/* Post Answer */}
+          <PostAnswer questionId={questionId} userId={userId} />
+        </M.MainContainer>
+        <Widget />
+      </div>
+    );
+  }
 };
 
 export default Content;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PencilIcon = ({ fill }) => {
+const PencilIcon = ({ fill, ...rest }) => {
   return (
     <svg
       aria-hidden='true'
@@ -8,6 +8,7 @@ const PencilIcon = ({ fill }) => {
       width='14'
       height='14'
       viewBox='0 0 14 14'
+      {...rest}
     >
       <path
         fill={fill}

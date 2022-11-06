@@ -5,28 +5,51 @@ import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
 import { useMutation } from '@tanstack/react-query';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { usersState } from '../../store';
 import { postLogin } from '../../apis/auth';
 import { getCurrentUser } from '../../apis/users.js';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants';
+import { useEffect } from 'react';
 
 const Form = () => {
-  const setIsAuthenticated = useSetRecoilState(usersState);
+  const [authState, setIsAuthenticated] = useRecoilState(usersState);
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwdvalid] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
 
-  const { mutate } = useMutation(postLogin, {
-    onSuccess: () => {
-      setIsAuthenticated(true);
-      getCurrentUser();
+  // hooks 로 분리 필요
+  const { mutate } = useMutation(
+    postLogin,
+    {
+      onSuccess: () => {
+        getCurrentUser();
+        setIsAuthenticated({
+          ...authState,
+          isAuthenticated: true,
+        });
+
+        navigate(ROUTES.QUESTIONS.path);
+      },
+      onError: () => {
+        console.log('으악');
+      },
     },
-    onError: () => {
-      console.log('Failed to Login');
+    {
+      retry: false,
     },
-  });
+  );
+
+  useEffect(() => {
+    setIsAuthenticated({
+      ...authState,
+      currentUser: localStorage.getItem('user'),
+    });
+  }, []);
 
   // const credential = {
   //   email: 'test94@gamil.com',
@@ -66,8 +89,6 @@ const Form = () => {
   const handleSubmit = async (e) => {
     setDisabled(true);
     e.preventDefault();
-
-    console.log('aa');
   };
 
   handleSubmit;
@@ -124,7 +145,7 @@ const Form = () => {
             disabled={disabled}
             onClick={(e) => {
               e.preventDefault();
-              mutate({ email: 'test@test.com', password: 'test1234' });
+              mutate({ email: 'test1@test1.com', password: 'test1234' });
             }}
           >
             Log in

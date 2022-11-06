@@ -6,12 +6,12 @@ import Form from '../../components/Login/Form';
 import { usersState } from '../../store';
 
 const Login = () => {
-  const isAuth = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuth) navigate('/questions');
-  }, [isAuth, navigate]);
+    if (isAuthenticated) navigate('/questions');
+  }, [isAuthenticated, navigate]);
   return (
     <div>
       <Form />

@@ -7,7 +7,7 @@ import Layout from './PagesLayout/Layout';
 import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
-import Questions from './Questions/Questions';
+// import Questions from './Questions/Questions';
 import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import UserProfile from './UserProfile/UserProfile';
@@ -15,6 +15,11 @@ import Ask from './Questions/ASK/Ask';
 import NotFound from './404/404';
 import Search from './Search/Search';
 import Question from './PagesLayout/Question';
+import { lazy } from 'react';
+import EditPostPage from './Questions/Edit/EditPost';
+import EditAnswerPage from './Questions/Edit/EditAnswer';
+
+const Questions = lazy(() => import('./Questions/Questions'));
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [
@@ -30,6 +35,18 @@ const PAGES = [
         name: ROUTES.QUESTIONS.name,
         path: ROUTES.QUESTIONS.path,
         element: <Questions />,
+      },
+      {
+        // post 관련 edit은 params 앞에 7 이 붙는다
+        name: ROUTES.EDIT_POST.name,
+        path: ROUTES.EDIT_POST.path,
+        element: <EditPostPage />,
+      },
+      {
+        // answer 관련 edit은 params 앞에 8 이 붙는다
+        name: ROUTES.EDIT_ANSWER.name,
+        path: ROUTES.EDIT_ANSWER.path,
+        element: <EditAnswerPage />,
       },
       {
         name: ROUTES.TAGS.name,

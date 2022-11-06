@@ -12,27 +12,21 @@ const Search = () => {
   const { keyword } = useRecoilValue(pagesState);
   const { data, isSuccess } = useGetFilteredPost(keyword);
 
-  console.log('len', data?.length);
-
-  const length = data?.length;
-
   return (
     <S.ContentWrapper>
       <S.MainContainer>
-        {isSuccess ? (
+        {isSuccess && (
           <>
-            <Header title='Search Results' length={length} />
+            <Header title='Search Results' length={data.length} />
             {data.length !== 0 ? (
               <>
                 <FilteredPostBox data={data} />
-                <Pagination length={length} />
+                <Pagination length={data.length} />
               </>
             ) : (
               <SearchNotFound />
             )}
           </>
-        ) : (
-          <div>loading...</div>
         )}
       </S.MainContainer>
       <Widget />

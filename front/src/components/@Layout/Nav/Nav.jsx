@@ -13,7 +13,7 @@ import { usersState } from '../../../store';
 import { Outlet, useLocation } from 'react-router-dom';
 
 const Nav = () => {
-  const isAuthenticated = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
   const [isClicked, setIsClicked] = useState(false);
   const { pathname } = useLocation();
   const paths = ['/login', '/signup'];

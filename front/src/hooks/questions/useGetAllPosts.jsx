@@ -1,19 +1,31 @@
-// import { getAllPostData } from '../../apis/questions';
-
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { demoGetAllPosts } from '../../apis/questions';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getAllPosts } from '../../apis/questions';
 
 const useGetAllPosts = (select) => {
-  const queryClient = useQueryClient();
+  const [questionsData, setQuestionsData] = useState([]);
 
-  return useQuery(['questions'], demoGetAllPosts, {
-    initialData: () => {
-      queryClient.getQueryData(['questions']);
+  const queryClient = useQueryClient();
+  const { data, status, isLoading, isSuccess } = useQuery(
+    ['questions'],
+    getAllPosts,
+    {
+      initialData: () => {
+        queryClient.getQueryData(['questions']);
+      },
+      select,
+      refetchOnWindowFocus: false,
     },
-    select,
-    refetchOnWindowFocus: false,
-    staleTime: 5000 * 2 * 60,
-  });
+  );
+
+  useEffect(() => {
+    if (isSuccess) {
+      setQuestionsData(data);
+    }
+  }, [data, isSuccess]);
+
+  return { questionsData, status, isLoading, isSuccess };
 };
 
 export default useGetAllPosts;

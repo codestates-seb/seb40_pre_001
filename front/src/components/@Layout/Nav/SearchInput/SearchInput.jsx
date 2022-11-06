@@ -11,7 +11,7 @@ const SearchInput = ({ ...rest }) => {
   const navigate = useNavigate();
   const [keyword, setKeyword] = useState('');
   const [state, setFilterKeyword] = useRecoilState(pagesState);
-  const isAuthenticated = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
 
   const userLocation = pathname === '/users';
 

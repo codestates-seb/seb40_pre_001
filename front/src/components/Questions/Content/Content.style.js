@@ -17,7 +17,7 @@ const Status = styled.div`
 const TextBox = styled.div`
   display: flex;
   justify-content: space-between;
-  max-width: 150px;
+  max-width: 160px;
   margin-right: 16px;
 
   span {
