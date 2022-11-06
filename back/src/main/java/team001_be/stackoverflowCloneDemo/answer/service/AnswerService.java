@@ -1,10 +1,12 @@
 package team001_be.stackoverflowCloneDemo.answer.service;
 
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.repository.AnswerRepository;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
 import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
+import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
@@ -64,5 +66,79 @@ public class AnswerService {
                 .ifPresent(foundAnswer::setContext);
 
         return saveAnswer(foundAnswer);
+    }
+
+    public void setUpVote(Long answerId, Long userId) {
+
+        userService.findUser(userId); //존재하는 user인지 유효성 검사
+
+        Answer answer = findAnswer(answerId);
+        VoteStatus status = getUserVoteStatus(answer, userId);
+        Long voteCnt = answer.getVoteCount();
+
+        if(status == VoteStatus.NO_VOTE){
+            answer.upVotedUserId.add(userId);
+            voteCnt++;
+        }else if(status == VoteStatus.DID_UP_VOTE){
+            //이 경우 그냥 아무 로직도 하지 않기로
+        }else if(status == VoteStatus.DID_DOWN_VOTE){
+            answer.downVotedUserId.remove(userId);
+            voteCnt++;
+        }
+
+        answer.updateVoteCount(voteCnt);
+    }
+
+    public void setDownVote(Long answerId, Long userId){
+
+        userService.findUser(userId); //존재하는 user인지 검사
+
+        Answer answer = findAnswer(answerId);
+        VoteStatus status = getUserVoteStatus(answer, userId);
+        Long voteCnt = answer.getVoteCount();
+
+        if(status == VoteStatus.NO_VOTE){
+            answer.downVotedUserId.add(userId);
+            voteCnt--;
+        }else if(status == VoteStatus.DID_UP_VOTE){
+            answer.upVotedUserId.remove(userId);
+            voteCnt--;
+        }else if(status == VoteStatus.DID_DOWN_VOTE){
+            //이 경우 그냥 아무 로직도 하지 않기로
+        }
+
+        answer.updateVoteCount(voteCnt);
+    }
+
+    private VoteStatus getUserVoteStatus(Answer answer, Long userId){
+        if (answer.getUpVotedUserId().contains(userId)){
+            return VoteStatus.DID_UP_VOTE;
+        }else if(answer.getDownVotedUserId().contains(userId)){
+            return VoteStatus.DID_DOWN_VOTE;
+        }else{
+            return VoteStatus.NO_VOTE;
+        }
+    }
+
+    public Long getVoteCount(Long answerId) {
+        return findAnswer(answerId).getVoteCount();
+    }
+
+
+    public enum VoteStatus {
+        DID_UP_VOTE(1, "did up vote"),
+        NO_VOTE(2, "did no vote"),
+        DID_DOWN_VOTE(3, "did down vote");
+
+        @Getter
+        private int status;
+
+        @Getter
+        private String message;
+
+        VoteStatus(int code, String message) {
+            this.status = code;
+            this.message = message;
+        }
     }
 }

@@ -75,4 +75,25 @@ public class AnswerController {
 
         return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping(value = "/upvote/{question-id}/{answer-id}")
+    public ResponseEntity setUpVote(@PathVariable("question-id") @Positive Long questionId,
+                                    @PathVariable("answer-id") @Positive Long answerId,
+                                    @Positive @RequestParam Long userId){
+        answerService.setUpVote(answerId, userId);
+
+
+        return new ResponseEntity(new SingleResponseDto<>(answerService.getVoteCount(answerId))
+                , HttpStatus.OK);
+    }
+
+    @PostMapping("/downvote/{question-id}/{answer-id}")
+    public ResponseEntity setDownVote(@PathVariable("question-id") @Positive Long questionId,
+                                      @PathVariable("answer-id") @Positive Long answerId,
+                                      @Positive @RequestParam Long userId){
+        answerService.setDownVote(answerId, userId);
+
+        return new ResponseEntity(new SingleResponseDto<>(answerService.getVoteCount(answerId))
+                , HttpStatus.OK);
+    }
 }

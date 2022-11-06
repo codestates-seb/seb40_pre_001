@@ -12,7 +12,7 @@ public class AnswerResponseDto {
     private Long questionId;
     private Long userId;
     private String context;
-    private int voteCount;
+    private Long voteCount;
     private boolean isAccepted;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;

@@ -43,18 +43,28 @@ public class Answer extends Auditable {
     private String context;
 
     @Setter
-    private int voteCount;
+    private Long voteCount;
 
     @Setter
     private boolean isAccepted;
 
+    @ElementCollection
+    public List<Long> upVotedUserId = new ArrayList<>();
+
+    @ElementCollection
+    public List<Long> downVotedUserId = new ArrayList<>();
+
     @Builder
-    public Answer(Long answerId, Question question, User user, String context, int voteCount, boolean isAccepted) {
+    public Answer(Long answerId, Question question, User user, String context, boolean isAccepted) {
         this.answerId = answerId;
         this.question = question;
         this.user = user;
         this.context = context;
-        this.voteCount = voteCount;
+        this.voteCount = 0L;
         this.isAccepted = isAccepted;
+    }
+
+    public void updateVoteCount(Long voteCnt) {
+        this.voteCount = voteCnt;
     }
 }
