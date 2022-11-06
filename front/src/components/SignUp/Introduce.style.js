@@ -19,7 +19,7 @@ const IntroHeader = styled.div`
   margin-bottom: 32px;
 `;
 
-const IntroElment = styled.div`
+const IntroElement = styled.div`
   vertical-align: baseline;
   margin-bottom: 24px;
   display: flex;
@@ -44,4 +44,4 @@ const PrivateIntro = styled.div`
   }
 `;
 
-export { JoinIntroZone, IntroHeader, IntroElment, PrivateIntro };
+export { JoinIntroZone, IntroHeader, IntroElement, PrivateIntro };

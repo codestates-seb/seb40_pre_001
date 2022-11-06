@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const AnswerContainer = styled.div`
   border-top: 1px solid gray;
   margin-top: 10px;
+  max-width: 730px;
 `;
 
 const Header = styled.h1`
@@ -25,4 +26,15 @@ const Helper = styled.h2`
   }
 `;
 
-export { AnswerContainer, Header, Helper };
+const PreviewText = styled.span`
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px !important;
+  word-spacing: 1px;
+  max-width: 720px !important;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+`;
+
+export { AnswerContainer, Header, Helper, PreviewText };

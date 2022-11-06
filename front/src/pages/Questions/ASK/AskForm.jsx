@@ -26,11 +26,11 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
 
   const editorRef = useRef();
 
-  const handleRegisterButton = () => {
-    const EditorText = editorRef.current?.getInstance().getMarkdown();
-    SetTextDone(EditorText);
-    DoneQuestion(textdone);
-  };
+  // const handleRegisterButton = () => {
+  //   const EditorText = editorRef.current?.getInstance().getMarkdown();
+  //   SetTextDone(EditorText);
+  //   DoneQuestion(textdone);
+  // };
 
   //1. toast ui 15글자 못넘으면 blur 처리 하기
   //2. 버튼 누르면 blur 풀기
@@ -44,11 +44,7 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
       <div className='title'>{title}</div>
       <div className='content'>{script}</div>
       {markdown ? (
-        <TextEditor
-          ref={editorRef}
-          onChange={() => handleRegisterButton()}
-          onBlur='blur'
-        ></TextEditor>
+        <TextEditor ref={editorRef}></TextEditor>
       ) : (
         <input
           style={{

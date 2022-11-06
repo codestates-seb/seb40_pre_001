@@ -17,13 +17,28 @@ body {
   overflow-x: hidden;
   display : flex;
   flex-direction : column;
-}
+
 
 button {
   cursor: pointer;
 }
 
 
-`;
+.ReactQueryDevtoolsPanel {
+  * {
+    color : white;
+  }
+
+}
+
+  .textViewer {
+    margin: 0px !important;
+    padding: 0px !important;
+    font-size: 13px !important;
+    word-spacing: 1px !important;
+    word-break: break-all;
+  }
+
+}`;
 
 export default GlobalStyles;

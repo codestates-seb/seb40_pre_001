@@ -1,12 +1,12 @@
 import React from 'react';
-import * as S from './introduce.style';
+import * as S from './Introduce.style';
 
 const IntroLine = ({ icon, content }) => {
   return (
-    <S.IntroElment>
+    <S.IntroElement>
       {icon}
       <div className='content'> {content}</div>
-    </S.IntroElment>
+    </S.IntroElement>
   );
 };
 

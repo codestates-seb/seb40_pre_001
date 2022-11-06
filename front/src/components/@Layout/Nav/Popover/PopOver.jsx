@@ -28,7 +28,7 @@ const POPOVER_INFO = Object.freeze([
 ]);
 
 const PopOver = ({ setIsClicked }) => {
-  const isAuthenticated = useRecoilValue(usersState);
+  const { isAuthenticated } = useRecoilValue(usersState);
 
   return (
     <S.Container login={isAuthenticated}>
