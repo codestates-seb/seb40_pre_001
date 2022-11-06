@@ -8,6 +8,7 @@ const apiClient2 = axios.create({
   withCredentials: true,
 });
 
+// Post Related
 const getAllPosts = async () => {
   const { data } = await apiClient2.get('/questions');
 
@@ -86,11 +87,49 @@ const deletePost = async (id, userId) => {
   return response;
 };
 
+const modifyPost = async (questionId, id, modifiedContent) => {
+  const response = await apiClient2.patch(`/questions/edit/${questionId}`, {
+    ...modifiedContent,
+    id,
+  });
+
+  console.log(response);
+
+  return response;
+};
+
+// Answer related
 const createAnswer = async (questionId, userId, context) => {
   const response = await apiClient2.post(`/questions/${questionId}`, {
     userId,
     context,
   });
+
+  return response;
+};
+
+const modifyAnswer = async (answerId, userId, context) => {
+  const response = await apiClient2.patch(
+    `/questions/answer/edit/${answerId}`,
+    {
+      userId,
+      context,
+    },
+  );
+
+  return response;
+};
+
+// Comment related
+
+const createComment = async (userId, questionId, questionCommentContent) => {
+  const response = apiClient2.post('/question/comments', {
+    userId,
+    questionId,
+    questionCommentContent,
+  });
+
+  console.log(response);
 
   return response;
 };
@@ -103,6 +142,10 @@ export {
   getSimplePostById,
   getPostById,
   deletePost,
-  createAnswer,
   getPostsByKeyword,
+  modifyPost,
 };
+
+export { createAnswer, modifyAnswer };
+
+export { createComment };

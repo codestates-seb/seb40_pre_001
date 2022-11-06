@@ -8,16 +8,13 @@ import * as S from './Answer.style';
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 
 const PostAnswer = ({ questionId }) => {
-  // 현재 접속한 유저 아이디 가져와야함
-  // views 얘기해봐야함
-  // 유효성 검사
   const { id } = useParams();
   const { currentUser } = useGetCurrentUser();
   const { mutate } = usePostAnswer(id);
 
   const [editor, setEditor] = useState({ html: '', md: '' });
 
-  const editorRef = useRef(null);
+  const editorRef = useRef('');
 
   const textEditorValidator = (text) => {
     let isValid = false;
@@ -34,11 +31,12 @@ const PostAnswer = ({ questionId }) => {
   };
 
   const handleChange = () => {
-    const editor_instance = editorRef.current?.getInstance();
+    const editor_instance = editorRef.current.getInstance();
+
     if (editor_instance) {
       setEditor({
-        html: editor_instance?.getHTML(),
-        md: editor_instance?.getMarkdown(),
+        html: editor_instance.getHTML(),
+        md: editor_instance.getMarkdown(),
       });
     }
   };
@@ -57,7 +55,7 @@ const PostAnswer = ({ questionId }) => {
           ref={editorRef}
           width='727'
           height='255px'
-          onChange={handleChange}
+          onChange={() => handleChange()}
         />
         <S.PreviewText>{editor.md.replace(/<[^>]+>/g, '')}</S.PreviewText>
       </S.AnswerContainer>

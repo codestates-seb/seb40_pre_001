@@ -6,6 +6,7 @@ import * as S from '../Content.style';
 const Answer = ({ detail }) => {
   const { context, createdAt, questionId, userId, voteCount, answerId } =
     detail;
+
   return (
     <>
       <S.PostLayout>

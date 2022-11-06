@@ -6,23 +6,25 @@ import 'prismjs/themes/prism.css';
 import Prism from 'prismjs';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
-const TextEditor = forwardRef(({ onChange, ...props }, ref) => {
-  return (
-    <div style={{ maxWidth: 730 }}>
-      <Editor
-        ref={ref}
-        initialValue='&nbsp;'
-        previewStyle='vertical'
-        initialEditType='wysiwyg'
-        useCommandShortcut={true}
-        onChange={onChange}
-        viewer='true'
-        onBlur='true'
-        {...props}
-      />
-    </div>
-  );
-});
+const TextEditor = forwardRef(
+  ({ initialValue, changeEvent, ...props }, ref) => {
+    return (
+      <div>
+        <Editor
+          ref={ref}
+          initialValue={initialValue || '&nbsp;'}
+          previewStyle='vertical'
+          initialEditType='wysiwyg'
+          useCommandShortcut={true}
+          onChange={() => changeEvent()}
+          viewer='true'
+          onBlur='true'
+          {...props}
+        />
+      </div>
+    );
+  },
+);
 
 TextEditor.displayName = 'TextEditor';
 

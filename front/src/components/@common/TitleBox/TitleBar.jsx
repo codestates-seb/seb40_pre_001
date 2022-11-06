@@ -6,7 +6,7 @@ import { StyledButton } from '../Buttons';
 const TitleBox = ({ title, ...rest }) => {
   return (
     <S.TitleContainer {...rest}>
-      <h1>{title}</h1>
+      <h1 style={{ maxWidth: 900 }}>{title}</h1>
       <S.ButtonContainer>
         <CustomLink path='/questions/ask'>
           <StyledButton

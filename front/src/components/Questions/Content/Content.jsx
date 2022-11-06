@@ -65,9 +65,9 @@ const Content = () => {
             />
           </S.PostLayout>
           {/* Answers */}
-          {answers && (
+          {answers.length !== 0 && (
             <>
-              <S.AnswerHeader>{answers.length} Answer</S.AnswerHeader>
+              <S.AnswerHeader>{answers?.length} Answer</S.AnswerHeader>
               {answers.map((answer, i) => {
                 return <Answer detail={answer} key={i} />;
               })}

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { redirect, useLocation, useRoutes } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
+import { getAllUsers } from './apis/users';
 import { ROUTES } from './constants';
 import PAGES from './pages';
 import { usersState } from './store';
@@ -14,6 +15,8 @@ function App() {
     if (path === ROUTES.LOGIN.path && !isAuthenticated) {
       redirect(ROUTES.QUESTIONS.path);
     }
+
+    getAllUsers();
   }, [isAuthenticated, path]);
 
   const pages = useRoutes(PAGES);

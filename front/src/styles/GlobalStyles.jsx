@@ -40,12 +40,11 @@ button {
   .toastui-editor-contents h5,
   .toastui-editor-contents h6 {
     margin: 0px !important;
-    padding : 0px !important;
-    font-size: 16px !important;
+    padding: 0px !important;
+    font-size: 13px !important;
     word-spacing: 1px !important;
+    word-break: break-all;
   }
-
-
 
 }`;
 

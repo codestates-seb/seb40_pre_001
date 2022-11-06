@@ -15,6 +15,8 @@ import Ask from './Questions/ASK/Ask';
 import NotFound from './404/404';
 import Search from './Search/Search';
 import { lazy } from 'react';
+import EditPostPage from './Questions/Edit/EditPost';
+import EditAnswerPage from './Questions/Edit/EditAnswer';
 
 const Questions = lazy(() => import('./Questions/Questions'));
 
@@ -32,6 +34,18 @@ const PAGES = [
         name: ROUTES.QUESTIONS.name,
         path: ROUTES.QUESTIONS.path,
         element: <Questions />,
+      },
+      {
+        // post 관련 edit은 params 앞에 7 이 붙는다
+        name: ROUTES.EDIT_POST.name,
+        path: ROUTES.EDIT_POST.path,
+        element: <EditPostPage />,
+      },
+      {
+        // answer 관련 edit은 params 앞에 8 이 붙는다
+        name: ROUTES.EDIT_ANSWER.name,
+        path: ROUTES.EDIT_ANSWER.path,
+        element: <EditAnswerPage />,
       },
       {
         name: ROUTES.TAGS.name,

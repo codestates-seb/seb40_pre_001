@@ -45,6 +45,14 @@ const ROUTES = Object.freeze({
     path: '/userprofile',
     name: 'UserProfile',
   },
+  EDIT_POST: {
+    path: '/questions/7:id/edit',
+    name: 'EditPost',
+  },
+  EDIT_ANSWER: {
+    path: '/questions/8:id/edit',
+    name: 'EditAnswer',
+  },
 });
 
 export default ROUTES;
