@@ -8,7 +8,6 @@ const useGetPostById = (id) => {
     {
       retry: false,
       refetchOnWindowFocus: false,
-      suspense: true,
     },
   );
 

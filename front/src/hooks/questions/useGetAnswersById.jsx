@@ -7,7 +7,6 @@ const useGetAnswersById = (id) => {
     () => getAnswersById(id),
     {
       refetchOnWindowFocus: false,
-      suspense: true,
     },
   );
 

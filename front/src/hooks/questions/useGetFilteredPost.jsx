@@ -7,8 +7,6 @@ const useGetFilteredPost = (keyword) => {
     () => getPostsByKeyword(keyword),
     {
       refetchOnWindowFocus: false,
-      suspense: true,
-      enabled: true,
     },
   );
 
