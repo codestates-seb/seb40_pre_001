@@ -1,15 +1,18 @@
+/*eslint-disable*/
 import React, { useState, useRef } from 'react';
 import * as S from './Ask.style';
 import { TextEditor } from '../../../components/@common/TextEditor/TextEditor';
 
 import { SquareButton } from '../../../components/@common/Buttons/Button.style';
-// import { text } from 'express';
+import { useRecoilState } from 'recoil';
+import { questions } from '../../../store/questions';
 
-const inputDone = [];
+const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
+  const inputDone = [];
 
-const AskForm = ({ title, script, index, markdown, placeholder }) => {
   const [liveButton, SetLiveButton] = useState(false);
   const [textdone, SetTextDone] = useState('');
+  const [state, setInputVale] = useRecoilState(questions);
 
   function changeButton() {
     SetLiveButton(true);
@@ -22,6 +25,32 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
     if (check.length > 15 && !inputDone.includes(index)) {
       inputDone.push(index);
     }
+
+    if (index === 1) {
+      setInputVale({
+        ...state,
+        title: textdone,
+      });
+    }
+    if (index === 2) {
+      setInputVale({
+        ...state,
+        questionsUp: textdone,
+      });
+    }
+    if (index === 3) {
+      setInputVale({
+        ...state,
+        questionsDown: textdone,
+      });
+    }
+    if (index === 4) {
+      // setInputVale({
+      //   ...state,
+      //   tags: state.tags.push(textdone),
+      // });
+    }
+    // console.log(state);
   };
 
   const editorRef = useRef();
@@ -31,9 +60,6 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
     SetTextDone(EditorText);
     DoneQuestion(textdone);
   };
-
-  //1. toast ui 15글자 못넘으면 blur 처리 하기
-  //2. 버튼 누르면 blur 풀기
 
   return (
     <S.AskForm
@@ -46,8 +72,8 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
       {markdown ? (
         <TextEditor
           ref={editorRef}
-          onChange={() => handleRegisterButton()}
-          onBlur='blur'
+          onChange={(e) => handleRegisterButton()}
+          required
         ></TextEditor>
       ) : (
         <input
@@ -60,7 +86,10 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
           type='text'
           value={textdone}
           placeholder={placeholder}
-          onChange={(e) => SetTextDone(e.target.value)}
+          onChange={(e) => {
+            SetTextDone(e.target.value);
+          }}
+          required
         ></input>
       )}
       {liveButton ? (
@@ -70,4 +99,4 @@ const AskForm = ({ title, script, index, markdown, placeholder }) => {
   );
 };
 
-export default AskForm;
+export { AskForm };
