@@ -86,8 +86,8 @@ public class UserController {
     }
 
 
-    //개인 회원 Stats 요청, 일단 질문개수
-    @GetMapping("/{user-id}/posts")
+    //개인 회원 Stats 요청,  질문개수, 답변개수, 질문조회수
+    @GetMapping("/{user-id}/profile")
     public ResponseEntity getPostsByUser(@PathVariable("user-id") @Positive Long userId) {
         Optional<User> user = Optional.ofNullable(userService.findUser(userId));
         Integer questionCounts = user.map(value -> value.getQuestionList().size()).orElse(0);
