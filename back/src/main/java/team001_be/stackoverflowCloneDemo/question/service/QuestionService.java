@@ -8,6 +8,7 @@ import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 import team001_be.stackoverflowCloneDemo.question.repository.QuestionRepository;
 import team001_be.stackoverflowCloneDemo.tag.service.TagService;
+import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,9 +73,13 @@ public class QuestionService {
     }
 
     public void updateQuestionViewCount(Question question, Long viewCount) {
-        Question foundQuestion = findQuestion(question.getQuestionId());
+        /*Question foundQuestion = findQuestion(question.getQuestionId());*/
         question.updateViewCount(viewCount + 1);
         saveQuestion(question);
+
+        User user = userService.findUser(question.getUser().getUserId());
+        user.updateUserViewCounts(user.getUserViewCounts() + 1);
+        userService.saveUser(user);
     }
 
 

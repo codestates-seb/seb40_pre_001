@@ -113,7 +113,7 @@ public class UserService {
         return foundUser;
     }
 
-    private User saveUser(User user) {
+    public User saveUser(User user) {
         return userRepository.saveAndFlush(user);
     }
 
@@ -148,5 +148,7 @@ public class UserService {
 
         return foundUserNickname;
     }
+
+
 
 }
