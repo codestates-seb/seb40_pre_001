@@ -2,7 +2,6 @@ import React from 'react';
 import * as S from './Post.style';
 import CustomLink from '../../../@common/Link';
 import TagButton from '../../../@common/Buttons/Tag';
-import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import UserCard from './UserCard';
 
 const PostDetails = ({
@@ -17,7 +16,7 @@ const PostDetails = ({
           {questionTitle}
         </CustomLink>
       </S.Title>
-      <TextViewer initialValue={context.replace(/<[^>]+>/g, '')} />
+      <p className='textViewer'>{context.replace(/<[^>]+>/g, '')}</p>
       {/* Tag Box */}
       <S.ExtraDetailsBox>
         <S.TagBox>

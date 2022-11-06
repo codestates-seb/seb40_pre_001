@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getUserById } from '../../../../apis/users';
+import { getAllTags } from '../../../../apis/tags';
 import {
   HelpIcon,
   InboxIcon,
@@ -29,7 +29,7 @@ const Auth = () => {
       <S.Li style={{ marginLeft: 15 }}>
         <InboxIcon />
       </S.Li>
-      <S.Li onClick={() => console.log(getUserById(2))}>
+      <S.Li onClick={() => getAllTags()}>
         <TrophyIcon fill1='hsl(210,8%,35%)' style={{ width: 18, height: 18 }} />
       </S.Li>
       <S.Li>

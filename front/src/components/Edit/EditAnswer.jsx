@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import * as S from './EditContent.style';
 import { Widget } from '../Questions';
 import { useParams } from 'react-router-dom';
@@ -16,7 +16,7 @@ const EditAnswer = () => {
   const { currentQuestionId } = useRecoilValue(pagesState);
 
   const editorRef = useRef(null);
-  const [editor, setEditor] = useState({ html: '', md: '' });
+  const [editor, setEditor] = useState('');
   const { data, isLoading } = useGetPostById(currentQuestionId);
 
   const textEditorValidator = (text) => {
@@ -34,16 +34,10 @@ const EditAnswer = () => {
   };
 
   const { mutate: updateAnswer } = useEditAnswer(currentQuestionId);
-  const handleChange = () => {
-    const editor_instance = editorRef.current.getInstance();
 
-    if (editor_instance) {
-      setEditor({
-        html: editor_instance.getHTML(),
-        md: editor_instance.getMarkdown(),
-      });
-    }
-  };
+  const handleEditor = useCallback(() => {
+    setEditor(editorRef?.current?.getInstance().getMarkdown());
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
@@ -54,8 +48,6 @@ const EditAnswer = () => {
   );
 
   const { context, answerId, userId } = answersData;
-
-  console.log(userId);
 
   return (
     <S.EditLayout>
@@ -77,20 +69,19 @@ const EditAnswer = () => {
           <S.Title>Answer</S.Title>
           <TextEditor
             ref={editorRef}
-            initialValue={context}
+            value={context}
             width='861px'
             height='255px'
-            onChange={() => handleChange()}
+            onChange={handleEditor}
           />
         </S.Section>
-
         <S.ButtonBox>
           <StyledButton
             className='save-edit'
             content='Save edits'
             onClick={() => {
-              if (textEditorValidator(editor.html.replace(/<[^>]+>/g, ''))) {
-                updateAnswer({ answerId, userId, context: editor.html });
+              if (textEditorValidator(editor.replace(/<[^>]+>/g, ''))) {
+                updateAnswer({ answerId, userId, context: editor });
               }
             }}
           />

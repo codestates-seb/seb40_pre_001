@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { StyledButton } from '../../../@common/Buttons';
 import { TextEditor } from '../../../@common/TextEditor/TextEditor';
@@ -12,7 +12,8 @@ const PostAnswer = ({ questionId }) => {
   const { currentUser } = useGetCurrentUser();
   const { mutate } = usePostAnswer(id);
 
-  const [editor, setEditor] = useState({ html: '', md: '' });
+  const [editor, setEditor] = useState('');
+  setEditor;
 
   const editorRef = useRef('');
 
@@ -30,16 +31,9 @@ const PostAnswer = ({ questionId }) => {
     return isValid;
   };
 
-  const handleChange = () => {
-    const editor_instance = editorRef.current.getInstance();
-
-    if (editor_instance) {
-      setEditor({
-        html: editor_instance.getHTML(),
-        md: editor_instance.getMarkdown(),
-      });
-    }
-  };
+  const handleEditor = useCallback(() => {
+    setEditor(editorRef?.current?.getInstance().getMarkdown());
+  }, []);
 
   return (
     <>
@@ -53,21 +47,22 @@ const PostAnswer = ({ questionId }) => {
         <S.Header>Your Answer</S.Header>
         <TextEditor
           ref={editorRef}
-          width='727'
+          width='727px'
           height='255px'
-          onChange={() => handleChange()}
+          onChange={handleEditor}
+          value={editor}
         />
-        <S.PreviewText>{editor.md.replace(/<[^>]+>/g, '')}</S.PreviewText>
+        <S.PreviewText>{editor.replace(/<[^>]+>/g, '')}</S.PreviewText>
       </S.AnswerContainer>
       <StyledButton
         content='Post Your Answer'
         style={{ width: 129, height: 45 }}
         onClick={() => {
-          if (textEditorValidator(editor.md.replace(/<[^>]+>/g, ''))) {
+          if (textEditorValidator(editor.replace(/<[^>]+>/g, ''))) {
             mutate({
               questionId,
               userId: currentUser?.userId,
-              context: editor.html,
+              context: editor,
             });
           }
         }}

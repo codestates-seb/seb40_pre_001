@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import useGetUserById from '../../../../hooks/useGetUserById';
 import { TagButton } from '../../../@common/Buttons';
-import { TextViewer } from '../../../@common/TextEditor/TextEditor';
 import * as S from './PostBody.style';
 import UserInfo from './UserInfo';
 import useDeletePost from '../../../../hooks/questions/useDeletePost';
@@ -41,7 +40,7 @@ const RightBox = ({
   return (
     <S.RightBox>
       <S.PostBody>
-        <TextViewer initialValue={context} />
+        <p className='textViewer'>{context.replace(/<[^>]+>/g, '')}</p>
       </S.PostBody>
       <S.TagBox>
         {tags.map((tag) => {

@@ -23,6 +23,8 @@ const Content = () => {
   }
 
   if (isSuccess) {
+    const { answers } = data;
+
     const {
       questionTitle,
       questionId,
@@ -33,8 +35,6 @@ const Content = () => {
       context,
       userId,
     } = data.question;
-
-    const { answers } = data;
 
     return (
       <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import * as S from './EditContent.style';
 import { Widget } from '../Questions';
 import { useParams } from 'react-router-dom';
@@ -15,7 +15,7 @@ const EditPost = () => {
 
   const titleRef = useRef(null);
   const editorRef = useRef(null);
-  const [editor, setEditor] = useState({ html: '', md: '' });
+  const [editor, setEditor] = useState('');
   const { data, isLoading } = useGetPostById(id);
   const { currentUser } = useGetCurrentUser();
 
@@ -34,16 +34,10 @@ const EditPost = () => {
   };
 
   const { mutate: updatePost } = useEditPost(id);
-  const handleChange = () => {
-    const editor_instance = editorRef.current.getInstance();
 
-    if (editor_instance) {
-      setEditor({
-        html: editor_instance.getHTML(),
-        md: editor_instance.getMarkdown(),
-      });
-    }
-  };
+  const handleEditor = useCallback(() => {
+    setEditor(editorRef?.current?.getInstance().getMarkdown());
+  }, []);
 
   if (isLoading) {
     return <Spinner />;
@@ -76,10 +70,10 @@ const EditPost = () => {
           <S.Title>Body</S.Title>
           <TextEditor
             ref={editorRef}
-            initialValue={context}
+            value={context}
             width='861px'
             height='255px'
-            onChange={() => handleChange()}
+            onChange={handleEditor}
           />
         </S.Section>
 
@@ -88,13 +82,13 @@ const EditPost = () => {
             className='save-edit'
             content='Save edits'
             onClick={() => {
-              if (textEditorValidator(editor.html.replace(/<[^>]+>/g, ''))) {
+              if (textEditorValidator(editor.replace(/<[^>]+>/g, ''))) {
                 updatePost({
                   questionId,
                   modifiedContent: {
                     questionTitle: titleRef.current.value,
                     userId: currentUser.userId,
-                    context: editor.html,
+                    context: editor,
                   },
                 });
               }

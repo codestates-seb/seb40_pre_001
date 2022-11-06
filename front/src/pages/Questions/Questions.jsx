@@ -8,7 +8,7 @@ import Spinner from '../../components/@common/Spinner';
 import useGetAllPosts from '../../hooks/questions/useGetAllPosts';
 
 const Questions = () => {
-  const { data, isLoading, isError } = useGetAllPosts();
+  const { questionsData: data, isLoading, isError } = useGetAllPosts();
 
   if (isLoading) {
     return <Spinner />;
@@ -21,9 +21,9 @@ const Questions = () => {
   return (
     <S.ContentWrapper>
       <S.MainContainer>
-        <Header title='All Questions' length={data.length} />
+        <Header title='All Questions' length={data?.length} />
         <PostBox data={data} />
-        <Pagination length={data.length} />
+        <Pagination length={data?.length} />
       </S.MainContainer>
       <Widget />
     </S.ContentWrapper>
