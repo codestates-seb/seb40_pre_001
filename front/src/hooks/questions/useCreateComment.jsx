@@ -5,10 +5,11 @@ const useCreateComment = () => {
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
+    ['postById'],
     ({ userId, questionId, questionCommentContent }) =>
       createComment(userId, questionId, questionCommentContent),
     {
-      onSuccess: () => queryClient.invalidateQueries(['questions']),
+      onSuccess: () => queryClient.invalidateQueries(['postById']),
     },
   );
 

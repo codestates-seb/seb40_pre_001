@@ -5,7 +5,7 @@ const useAnswerUpVote = () => {
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
-    ['questions', 'postById'],
+    ['postById'],
     ({ questionId, answerId, userId }) =>
       answerUpVote(questionId, answerId, userId),
     {
@@ -23,7 +23,7 @@ const useAnswerDownVote = () => {
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
-    ['questions', 'postById'],
+    ['postById'],
     ({ questionId, answerId, userId }) =>
       answerDownVote(questionId, answerId, userId),
     {

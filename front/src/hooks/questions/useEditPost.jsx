@@ -11,9 +11,8 @@ const useEditPost = (id) => {
     ({ questionId, modifiedContent }) =>
       modifyPost(questionId, id, modifiedContent),
     {
-      onSuccess: (data) => (
-        console.log(data),
-        queryClient.invalidateQueries(['questions', id]),
+      onSuccess: () => (
+        queryClient.invalidateQueries(['postById']),
         navigate(`/questions/${id}`)
       ),
     },

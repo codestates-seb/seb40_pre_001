@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom';
 import { StyledButton } from '../../../@common/Buttons';
 import { TextEditor } from '../../../@common/TextEditor/TextEditor';
 import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
-import usePostAnswer from '../../../../hooks/questions/usePostAnswer';
+import useCreateAnswer from '../../../../hooks/questions/useCreateAnswer';
 import * as S from './Answer.style';
 
 const PostAnswer = ({ questionId, currentUser }) => {
   const { id } = useParams();
-  const { mutate } = usePostAnswer(id);
+  const { mutate } = useCreateAnswer(id);
 
   const [editor, setEditor] = useState('');
   setEditor;
