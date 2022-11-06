@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 // import { worker } from './mocks/broswer';
 import { GlobalStyles, theme } from './styles';
 import App from './App';
