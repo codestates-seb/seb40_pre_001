@@ -49,7 +49,6 @@ public class AnswerController {
     @PatchMapping("answer/edit/{answer-id}")
     public ResponseEntity patchAnswer(@PathVariable("answer-id") @Positive Long answerId,
                                       @Valid @RequestBody AnswerPatchDto answerPatchDto){
-
         answerPatchDto.setAnswerId(answerId);
         Answer answer = answerService.updateAnswer(answerMapper.answerPatchDtoToAnswer(answerPatchDto), answerPatchDto.getUserId());
 

@@ -1,5 +1,6 @@
 package team001_be.stackoverflowCloneDemo.answer.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -10,13 +11,14 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class AnswerPatchDto {
-
+    @NotNull
     private Long userId;
     private Long answerId;
     @NotBlank
     @Length(min = 30, max = 65535, message = "대답은 최소 30자를 입력하여야 합니다 ")
     private String context;
 
+    @Builder
     public AnswerPatchDto(Long userId, Long answerId, String context) {
         this.userId = userId;
         this.answerId = answerId;
