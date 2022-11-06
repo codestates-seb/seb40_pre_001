@@ -7,10 +7,6 @@ const Container = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1264px;
-
-  &.NonMaxWidth {
-    max-width: none;
-  }
 `;
 
 export { Container };

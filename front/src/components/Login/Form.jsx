@@ -4,16 +4,35 @@ import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
-import { loginUser } from '../../apis/questions';
+import { useMutation } from '@tanstack/react-query';
+import { useSetRecoilState } from 'recoil';
+import { usersState } from '../../store';
+import { postLogin } from '../../apis/auth';
+import { getCurrentUser } from '../../apis/users.js';
 
 const Form = () => {
+  const setIsAuthenticated = useSetRecoilState(usersState);
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
-
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwdvalid] = useState(false);
-
   const [disabled, setDisabled] = useState(false);
+
+  const { mutate } = useMutation(postLogin, {
+    onSuccess: () => {
+      setIsAuthenticated(true);
+      getCurrentUser();
+    },
+    onError: () => {
+      console.log('Failed to Login');
+    },
+  });
+
+  // const credential = {
+  //   email: 'test94@gamil.com',
+  //   password: 'a12345678',
+  //   userNickname: 'test12345',
+  // };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -44,13 +63,14 @@ const Form = () => {
   //   alert(JSON.stringify(values,null,2))
   // }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (e) => {
     setDisabled(true);
-    event.preventDefault();
-    await new Promise((r) => setTimeout(r, 1000));
-    alert('로그인완료');
-    console.log(loginUser.data);
+    e.preventDefault();
+
+    console.log('aa');
   };
+
+  handleSubmit;
   return (
     <S.Container>
       <S.IconContainer>
@@ -74,7 +94,7 @@ const Form = () => {
           },
         )}
       </S.SnsButtonContainer>
-      <S.FormContainer onSubmit={handleSubmit}>
+      <S.FormContainer>
         <S.LoginForm>
           <S.FormContents htmlFor='email'>Email</S.FormContents>
           <S.FormInput
@@ -99,7 +119,14 @@ const Form = () => {
           {!pwValid && pw.length < 1 && (
             <S.PasswordEmpty>Password cannot be empty.</S.PasswordEmpty>
           )}
-          <S.SubmitButton type='submit' disabled={disabled}>
+          <S.SubmitButton
+            type='submit'
+            disabled={disabled}
+            onClick={(e) => {
+              e.preventDefault();
+              mutate({ email: 'test@test.com', password: 'test1234' });
+            }}
+          >
             Log in
           </S.SubmitButton>
         </S.LoginForm>

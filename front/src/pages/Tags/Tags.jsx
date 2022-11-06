@@ -6,7 +6,7 @@ import TagsAll from './TagsAll';
 import TagsFilter from '../../components/TagsFilter/TagsFilter';
 import axios from 'axios';
 import Contents from '../../components/Tags/Contents';
-import LeftBox from '../../components/Questions/Main/Pagination/LeftBox';
+import LeftBox from '../../components/Questions/Content/PostBody/LeftBox';
 
 const Tags = () => {
   const [data, setData] = useState([]);
@@ -30,7 +30,7 @@ const Tags = () => {
       <TagsAll />
       <TagsFilter />
       <S.TagsContainer>
-        {data?.map((content, i) => {
+        {data?.map(({ content }, i) => {
           return <Contents key={i}>{content}</Contents>;
         })}
       </S.TagsContainer>

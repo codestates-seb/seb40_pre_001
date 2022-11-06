@@ -1,8 +1,8 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
 
-import useGetAllPost from '../../../hooks/useGetAllPosts';
 import usePost from '../../../hooks/usePost';
+// import { useRef } from 'react';
 
 import * as S from './Ask.style';
 
@@ -12,12 +12,15 @@ import { SquareButton } from '../../../components/@common/Buttons/Button.style';
 import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
+import AskForm from './AskForm';
+import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+
 const Ask = () => {
   // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
   // 예시
   const [state, setState] = useState({ title: '', author: '', context: '' });
-  const { data, status } = useGetAllPost();
-  const addPost = usePost('questions', '/questions');
+  const { data, status } = useGetAllPosts();
+  const addPost = useCreatePost('questions', '/questions');
 
   // createdAt
   const date = new Date().getDate();
@@ -27,7 +30,7 @@ const Ask = () => {
 
   const onClick = () => {
     const mockData = Object.assign({
-      contentId: data.length + 1,
+      questionId: data.length + 1,
       userId: Math.floor(Math.random() * 123456),
       title: state.title,
       author: state.author,
@@ -52,18 +55,12 @@ const Ask = () => {
       : null;
   };
 
-  const AskForm = ({ key, title, script, button, markdown }) => {
-    return (
-      <S.AskForm type={key}>
-        <div className='title'>{title}</div>
-        <div className='content'>{script}</div>
-        {markdown ? null : <input></input>}
-        {button ? (
-          <SquareButton style={{ width: '49px' }}>Next</SquareButton>
-        ) : null}
-      </S.AskForm>
-    );
-  };
+  const [liveButton, SetLiveButton] = useState(null);
+
+  function clickButton() {
+    SetLiveButton(index);
+    console.log(liveButton === index);
+  }
 
   return (
     <S.AskZone>
@@ -99,14 +96,15 @@ const Ask = () => {
         </S.WritGoodQue>
         <S.Wrapper>
           <S.LeftWrapper>
-            {ASK_FORM.map(({ TITLE, SCRIPT, BUTTON, MARKDOWN }) => {
+            {ASK_FORM.map(({ TITLE, SCRIPT, INDEX, MARKDOWN, PLACEHOLDER }) => {
               return (
                 <AskForm
                   key={TITLE}
                   title={TITLE}
                   script={SCRIPT}
-                  button={BUTTON}
+                  index={INDEX}
                   markdown={MARKDOWN}
+                  placeholder={PLACEHOLDER}
                 ></AskForm>
               );
             })}

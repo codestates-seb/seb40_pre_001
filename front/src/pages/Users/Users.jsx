@@ -5,7 +5,7 @@ import Title from '../../components/Title/Title';
 import UsersTab from '../../components/UsersTab/UsersTab';
 import UsersFilter from '../../components/UsersFilter/UsersFilter';
 import axios from 'axios';
-import LeftBox from '../../components/Questions/Main/Pagination/LeftBox';
+import LeftBox from '../../components/Questions/Content/PostBody/LeftBox';
 
 const Users = () => {
   const [data, setData] = useState([]);
@@ -28,7 +28,7 @@ const Users = () => {
       <UsersFilter />
       <UsersTab />
       <S.UsersContainer>
-        {data?.map(({ content, i }) => {
+        {data?.map(({ content }, i) => {
           return <UserInfo key={i}>{content}</UserInfo>;
         })}
       </S.UsersContainer>

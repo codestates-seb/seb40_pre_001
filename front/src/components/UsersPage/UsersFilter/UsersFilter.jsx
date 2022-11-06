@@ -6,12 +6,7 @@ import SearchInput from '.././@Layout/Nav/SearchInput/SearchInput';
 const UsersFilter = () => {
   return (
     <S.UsersFilterBoxContainer>
-      <SearchInput
-        width={'190px'}
-        placeholder={'Filter by user'}
-        height={'40px'}
-        padding={'0'}
-      />
+      <SearchInput style={{ width: 190, height: 40, margin: 0 }} />
       <UsersFilterBox />
     </S.UsersFilterBoxContainer>
   );

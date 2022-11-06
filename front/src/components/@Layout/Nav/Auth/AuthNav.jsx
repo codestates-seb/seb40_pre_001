@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   HelpIcon,
   InboxIcon,
@@ -7,13 +7,17 @@ import {
 } from '../../../@common/Icons';
 import * as S from './AuthNav.style';
 
+import LogoutPopOver from './LogoutPopOver';
+
 const Auth = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
-    <S.Ol>
+    <S.Ol style={{ marginTop: 6 }}>
       <S.Li>
         <S.ProfileBox>
           <img
-            src='https://lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'
+            src='https:lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'
             alt="Keonhee Lee's user avatar"
             width='24'
             height='24'
@@ -30,8 +34,9 @@ const Auth = () => {
       <S.Li>
         <HelpIcon />
       </S.Li>
-      <S.Li>
+      <S.Li onClick={() => setIsClicked(!isClicked)}>
         <StackExchangeIcon2 />
+        {isClicked && <LogoutPopOver />}
       </S.Li>
     </S.Ol>
   );

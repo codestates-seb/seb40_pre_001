@@ -28,6 +28,33 @@ const BoxLeft = styled.div`
   margin-top: 2px;
   border: 1px solid hsl(210, 8%, 65%);
   border-radius: 4px;
+
+  .moreBtn {
+    border-right: none;
+    width: 65px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      right: 10px;
+      top: calc(50% - 2px);
+      border-style: solid;
+      border-top-width: 4px;
+      border-bottom-width: 0;
+
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+  }
+
+  .active {
+    border: none;
+    border-radius: 0;
+    background-color: hsl(210, 8%, 90%);
+    color: hsl(210, 8%, 25%);
+  }
 `;
 
 const CategoryButton = styled.button`
@@ -50,26 +77,6 @@ const CategoryButton = styled.button`
   user-select: none;
 
   height: 35px;
-
-  &:nth-child(5) {
-    border-right: none;
-    width: 65px;
-
-    &:after {
-      position: absolute;
-      content: '';
-      right: 10px;
-      top: calc(50% - 2px);
-      border-style: solid;
-      border-top-width: 4px;
-      border-bottom-width: 0;
-
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-    }
-  }
 
   &:hover {
     background-color: hsl(210, 8%, 97.5%);

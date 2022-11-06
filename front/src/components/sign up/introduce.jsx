@@ -7,10 +7,8 @@ const Introduce = () => {
   return (
     <S.JoinIntroZone>
       <S.IntroHeader>Join the Stack Overflow community</S.IntroHeader>
-      {SIGNUP_INTRO.map(({ SCRIPT, ICON }) => {
-        return (
-          <IntroLine key={SCRIPT} icon={ICON} content={SCRIPT}></IntroLine>
-        );
+      {SIGNUP_INTRO.map(({ SCRIPT, ICON }, i) => {
+        return <IntroLine key={i} icon={ICON} content={SCRIPT}></IntroLine>;
       })}
       <S.PrivateIntro>
         Collaborate and share knowledge with a private group for FREE.

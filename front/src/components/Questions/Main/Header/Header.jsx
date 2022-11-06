@@ -1,14 +1,12 @@
 import React from 'react';
 import FilterBox from './FilterBox/FilterBox';
-import PostBox from './Post/PostBox';
 import TitleBox from '../../../@common/TitleBox/TitleBar';
 
-const Header = () => {
+const Header = ({ title, length }) => {
   return (
     <>
-      <TitleBox title={'All Questions'} />
-      <FilterBox />
-      <PostBox />
+      <TitleBox title={title} />
+      <FilterBox length={length} />
     </>
   );
 };

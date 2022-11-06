@@ -17,7 +17,7 @@ const Status = styled.div`
 const TextBox = styled.div`
   display: flex;
   justify-content: space-between;
-  max-width: 100px;
+  max-width: 150px;
   margin-right: 16px;
 
   span {
@@ -41,4 +41,11 @@ const PostLayout = styled.div`
   grid-template-columns: max-content 1fr;
 `;
 
-export { Status, TextBox, ImgContainer, PostLayout };
+const AnswerHeader = styled.h2`
+  font-size: 19px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 30px;
+`;
+
+export { Status, TextBox, ImgContainer, PostLayout, AnswerHeader };
