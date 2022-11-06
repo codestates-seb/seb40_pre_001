@@ -1,28 +1,28 @@
 package team001_be.stackoverflowCloneDemo.question.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import team001_be.stackoverflowCloneDemo.answer.mapper.AnswerMapper;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPatchDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
+import team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.mapper.QuestionMapper;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
 import team001_be.stackoverflowCloneDemo.response.MultiResponseDto;
 import team001_be.stackoverflowCloneDemo.response.SingleResponseDto;
+import team001_be.stackoverflowCloneDemo.response.SuccessDeleteResponseDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @RestController
@@ -138,11 +138,34 @@ public class QuestionController {
                 HttpStatus.OK);
     }
 
-    @DeleteMapping("/{question-id}")
+    @DeleteMapping(value = "/{question-id}")
     public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,
                                          @Positive @RequestParam Long userId) {
         questionService.deleteQuestion(questionId, userId);
 
-        return new ResponseEntity<>("success", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
+    @PostMapping(value = "/upvote/{question-id}")
+    public ResponseEntity setUpVote(@PathVariable("question-id") @Positive Long questionId,
+                                  @Positive @RequestParam Long userId){
+        questionService.setUpVote(questionId, userId);
+
+
+        return new ResponseEntity(new SingleResponseDto<>(questionService.getVoteCount(questionId))
+                , HttpStatus.OK);
+    }
+
+    @PostMapping("/downvote/{question-id}")
+    public ResponseEntity setDownVote(@PathVariable("question-id") @Positive Long questionId,
+                                    @Positive @RequestParam Long userId){
+        questionService.setDownVote(questionId, userId);
+
+        return new ResponseEntity(new SingleResponseDto<>(questionService.getVoteCount(questionId))
+                , HttpStatus.OK);
+    }
+
+
+
 }

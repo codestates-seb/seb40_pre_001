@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 public interface QuestionMapper {
     Question questionPatchDtoToQuestion(QuestionPatchDto questionPatchDto);
 
+//    Question questionToSuccessDeleteResponseDto(Question question);
+
     List<QuestionSimpleResponseDto> questionListToQuestionSimpleResponseDtos(List<Question> questionList);
 
     default QuestionSimpleResponseDto questionToQuestionSimpleResponseDto(Question question) {

@@ -61,6 +61,6 @@ public class QuestionCommentController {
                                                 @Positive @RequestParam Long userId){
         questionCommentService.deleteQuestionComment(questionCommentId,userId);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>( new SingleResponseDto<>("delete success"), HttpStatus.NO_CONTENT);
     }
 }

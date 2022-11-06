@@ -73,6 +73,6 @@ public class AnswerController {
 
         answerService.deleteAnswer(answerId, userId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
 }

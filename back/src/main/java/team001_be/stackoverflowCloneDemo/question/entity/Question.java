@@ -60,6 +60,12 @@ public class Question extends Auditable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionComment> questionCommentList = new ArrayList<>();
 
+    @ElementCollection
+    public List<Long> upVotedUserId = new ArrayList<>();
+
+    @ElementCollection
+    public List<Long> downVotedUserId = new ArrayList<>();
+
     //답변을 선택했는지 여부
     @Column(nullable = false)
     private boolean hasAccepted;
