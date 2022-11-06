@@ -26,8 +26,6 @@ const RightBox = ({
   const { handleDelete: handleDeletePost } = useDeletePost();
   const { handleDelete: handleDeleteAnswer } = useDeleteAnswer();
   const { currentUser: responseUser } = useGetCurrentUser();
-  // const handleDeleteAnswer = () =>
-  //   console.log(responseUser.userId, questionId, answerId);
 
   useEffect(() => {
     setCurrentQuestionId({ ...state, currentQuestionId: questionId });

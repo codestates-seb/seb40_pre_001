@@ -5,7 +5,7 @@ const usePostUpVote = () => {
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
-    ['questions', 'postById'],
+    ['postById'],
     ({ questionId, userId }) => postUpVote(questionId, userId),
     {
       onSuccess: () => queryClient.invalidateQueries(['postById']),
@@ -22,7 +22,7 @@ const usePostDownVote = () => {
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
-    ['questions', 'postById'],
+    ['postById'],
     ({ questionId, userId }) => postDownVote(questionId, userId),
     {
       onSuccess: () => queryClient.invalidateQueries(['postById']),

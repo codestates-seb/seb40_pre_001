@@ -7,7 +7,7 @@ const useEditPost = (id) => {
   const navigate = useNavigate();
 
   const { mutate, status } = useMutation(
-    ['questions', 'postById'],
+    ['postById'],
     ({ questionId, modifiedContent }) =>
       modifyPost(questionId, id, modifiedContent),
     {
@@ -15,6 +15,7 @@ const useEditPost = (id) => {
         queryClient.invalidateQueries(['postById']),
         navigate(`/questions/${id}`)
       ),
+      retry: false,
     },
   );
 

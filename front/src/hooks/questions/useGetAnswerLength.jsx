@@ -6,8 +6,9 @@ const useGetAnswersLength = (id) => {
     ['postById', id],
     () => getPostById(id),
     {
-      retry: 1,
+      retry: false,
       refetchOnWindowFocus: false,
+      staleTime: 50000,
     },
   );
 

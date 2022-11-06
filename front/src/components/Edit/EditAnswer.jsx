@@ -17,7 +17,7 @@ const EditAnswer = () => {
 
   const editorRef = useRef(null);
   const [editor, setEditor] = useState('');
-  const { data, isLoading } = useGetPostById(currentQuestionId);
+  const { data, isLoading, isSuccess } = useGetPostById(currentQuestionId);
 
   const textEditorValidator = (text) => {
     let isValid = false;
@@ -43,62 +43,64 @@ const EditAnswer = () => {
     return <Spinner />;
   }
 
-  const answersData = data.answers.find(
-    (answer) => answer.answerId === Number(id),
-  );
+  if (isSuccess) {
+    const answersData = data?.answers.find(
+      (answer) => answer.answerId === Number(id),
+    );
 
-  const { context, answerId, userId } = answersData;
+    const { context, answerId, userId } = answersData;
 
-  return (
-    <S.EditLayout>
-      <S.LeftBox>
-        <S.Header>
-          <p style={{ marginBottom: 10 }}>
-            Your edit will be placed in a queue until it is peer reviewed.
-          </p>{' '}
-          <p>
-            We welcome edits that make the post easier to understand and more
-            valuable for readers. Because community members review edits, please
-            try to make the post substantially better than how you found it, for
-            example, by fixing grammar or adding additional resources and
-            hyperlinks.
-          </p>
-        </S.Header>
+    return (
+      <S.EditLayout>
+        <S.LeftBox>
+          <S.Header>
+            <p style={{ marginBottom: 10 }}>
+              Your edit will be placed in a queue until it is peer reviewed.
+            </p>{' '}
+            <p>
+              We welcome edits that make the post easier to understand and more
+              valuable for readers. Because community members review edits,
+              please try to make the post substantially better than how you
+              found it, for example, by fixing grammar or adding additional
+              resources and hyperlinks.
+            </p>
+          </S.Header>
 
-        <S.Section>
-          <S.Title>Answer</S.Title>
-          <TextEditor
-            ref={editorRef}
-            value={context}
-            width='861px'
-            height='255px'
-            onChange={handleEditor}
-          />
-        </S.Section>
-        <S.ButtonBox>
-          <StyledButton
-            className='save-edit'
-            content='Save edits'
-            onClick={() => {
-              if (textEditorValidator(editor.replace(/<[^>]+>/g, ''))) {
-                updateAnswer({ answerId, userId, context: editor });
-              }
-            }}
-          />
-          <StyledButton
-            className='cancel'
-            content='cancel'
-            style={{
-              backgroundColor: 'transparent',
-              color: 'hsl(206,100%,40%)',
-              marginLeft: 10,
-            }}
-          />
-        </S.ButtonBox>
-      </S.LeftBox>
-      <Widget />
-    </S.EditLayout>
-  );
+          <S.Section>
+            <S.Title>Answer</S.Title>
+            <TextEditor
+              ref={editorRef}
+              value={context}
+              width='861px'
+              height='255px'
+              onChange={handleEditor}
+            />
+          </S.Section>
+          <S.ButtonBox>
+            <StyledButton
+              className='save-edit'
+              content='Save edits'
+              onClick={() => {
+                if (textEditorValidator(editor.replace(/<[^>]+>/g, ''))) {
+                  updateAnswer({ answerId, userId, context: editor });
+                }
+              }}
+            />
+            <StyledButton
+              className='cancel'
+              content='cancel'
+              style={{
+                backgroundColor: 'transparent',
+                color: 'hsl(206,100%,40%)',
+                marginLeft: 10,
+              }}
+            />
+          </S.ButtonBox>
+        </S.LeftBox>
+        <Widget />
+      </S.EditLayout>
+    );
+  }
 };
 
 export default EditAnswer;

@@ -14,8 +14,10 @@ const useGetAllPosts = (select) => {
       initialData: () => {
         queryClient.getQueryData(['questions']);
       },
+
       select,
       refetchOnWindowFocus: false,
+      retry: false,
     },
   );
 

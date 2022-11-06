@@ -13,15 +13,14 @@ const useLogin = () => {
   const { mutate, status } = useMutation(
     postLogin,
     {
-      onSuccess: () => {
-        getCurrentUser();
+      onSuccess: () => (
+        getCurrentUser(),
         setIsAuthenticated({
           ...authState,
           isAuthenticated: true,
-        });
-
-        navigate(ROUTES.QUESTIONS.path);
-      },
+        }),
+        navigate(ROUTES.QUESTIONS.path)
+      ),
       onError: () => {
         console.log('으악 로그인 실패');
       },

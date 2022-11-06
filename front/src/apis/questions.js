@@ -19,10 +19,9 @@ const createPost = async (question) => {
   // 성공
   // questionTagList null
   // {
-  //   userId: 1,
-  //   questionTitle: 'new title new title new title new title',
-  //   context:
-  //     'sakljdsalkdjskaldjksaljdoisjvklzxclkxzjclasm,nelkjsakljfoiwqjnkldasnmkldjwqiojdas',
+  //   userId,
+  //   questionTitle,
+  //   context,
   //   questionTagList: ['Java', 'Javasciprt', 'Python'],
   // }
 
