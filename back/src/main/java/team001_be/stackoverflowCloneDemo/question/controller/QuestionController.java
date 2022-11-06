@@ -68,14 +68,6 @@ public class QuestionController {
                 , HttpStatus.OK);
     }
 
-//    @PatchMapping("/{question-id}/accept")
-//    public ResponseEntity acceptAnswer(@PathVariable("question-id") @Positive Long questionId,
-//                                       @RequestParam Long answerId){
-//        Question question = questionService.setAcceptAnswer()
-//
-//
-//        return new SingleResponseDto<>();
-//    }
 
     //간단히 질문만 조회하는 함수
     @GetMapping("/simple/{question-id}")
