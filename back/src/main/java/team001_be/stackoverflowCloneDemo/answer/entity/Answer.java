@@ -1,11 +1,16 @@
 package team001_be.stackoverflowCloneDemo.answer.entity;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import team001_be.stackoverflowCloneDemo.acomment.entity.AnswerComment;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -27,6 +32,11 @@ public class Answer extends Auditable {
     @ToString.Exclude
     @Setter
     private User user;
+
+    @OneToMany(mappedBy = "answer", cascade = {CascadeType.REMOVE}, targetEntity = AnswerComment.class)
+    @ToString.Exclude
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<AnswerComment> answerCommentList = new ArrayList<>();
 
     @Column(length = 65535, nullable = false)
     @Setter

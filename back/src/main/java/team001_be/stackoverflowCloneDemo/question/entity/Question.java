@@ -44,18 +44,18 @@ public class Question extends Auditable {
     private Long voteCount;
 
     //    CascadeType.All을 하면 question이 수정/삭제될때 questionTagList도 따라서 수정/삭제됨
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionTag.class)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, targetEntity = QuestionTag.class)
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = Answer.class)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, targetEntity = Answer.class)
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Answer> answerList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, targetEntity = QuestionComment.class)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, targetEntity = QuestionComment.class)
     @ToString.Exclude
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<QuestionComment> questionCommentList = new ArrayList<>();

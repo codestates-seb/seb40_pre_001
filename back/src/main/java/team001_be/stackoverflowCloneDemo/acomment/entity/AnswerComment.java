@@ -25,14 +25,13 @@ public class AnswerComment extends Auditable {
     @Setter
     private User user;
 
-
     @Column(columnDefinition = "TEXT", length = 200, nullable = false)
     private String answerCommentContent;
 
     private String answerCommentUsername;
 
     @ManyToOne
-    @JoinColumn(name = "QUESTION_ID")
+    @JoinColumn(name = "ANSWER_ID")
     @ToString.Exclude
     @Setter
     private Answer answer;
