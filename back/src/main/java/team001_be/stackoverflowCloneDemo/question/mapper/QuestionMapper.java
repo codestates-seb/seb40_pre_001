@@ -9,7 +9,7 @@ import team001_be.stackoverflowCloneDemo.question.entity.QuestionTag;
 import team001_be.stackoverflowCloneDemo.tag.dto.TagSimplePostDto;
 import team001_be.stackoverflowCloneDemo.tag.entity.Tag;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
@@ -64,20 +64,22 @@ public interface QuestionMapper {
         questionBuilder.context( questionPostDto.getContext() );
 
         Question question = questionBuilder.build();
+        if(question.getQuestionTagList()!= null) {
+            List<QuestionTag> questionTagList = questionPostDto.getTagIdList().stream()
+                    .map(tagSimplePostDto -> {
+                        Tag.TagBuilder tag = Tag.builder();
+                        tag.tagId(tagSimplePostDto.getTagId());
 
-        List<QuestionTag> questionTagList = questionPostDto.getTagIdList().stream()
-                .map(tagSimplePostDto -> {
-                    Tag.TagBuilder tag = Tag.builder();
-                    tag.tagId(tagSimplePostDto.getTagId());
-
-                    QuestionTag.QuestionTagBuilder questionTag = QuestionTag.builder();
+                        QuestionTag.QuestionTagBuilder questionTag = QuestionTag.builder();
 //                    questionTag.question(question); //이때 저장된 question은 questionTagList가 저장 안됐는데 괜찮나??
-                    questionTag.tag(tag.build());
-                    return questionTag.build();
-                        }).collect(Collectors.toList());
-
-        question.setQuestionTagList(questionTagList);
-
+                        questionTag.tag(tag.build());
+                        return questionTag.build();
+                    }).collect(Collectors.toCollection(ArrayList::new));
+            question.setQuestionTagList(questionTagList);
+        }else{
+            List<QuestionTag> questionTagList = new ArrayList<>();
+            question.setQuestionTagList(questionTagList);
+        }
         return question;
     }
 }

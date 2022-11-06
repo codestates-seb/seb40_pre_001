@@ -39,13 +39,16 @@ public class QuestionService {
         question.setUser(userService.findUser(userId));
         verifyQuestion(question); //존재하는 회원, tag인지 check
         //여기에 question -> questionTagList의 questionTag별로 question저장하는 로직 추가
-        List<QuestionTag> questionTags = question.getQuestionTagList().stream()
-                .map(questionTag -> {
-                    questionTag.setQuestion(question);
-                    questionTag.setTag(tagService.findTag(questionTag.getTag().getTagId()));
-                    return questionTag;
-                }).collect(Collectors.toList());
-        question.setQuestionTagList(questionTags);
+        if(question.getQuestionTagList() != null) {
+            List<QuestionTag> questionTags = question.getQuestionTagList().stream()
+                    .map(questionTag -> {
+                        questionTag.setQuestion(question);
+                        questionTag.setTag(tagService.findTag(questionTag.getTag().getTagId()));
+                        return questionTag;
+                    }).collect(Collectors.toList());
+            question.setQuestionTagList(questionTags);
+        }
+
         return saveQuestion(question);
     }
 
@@ -102,10 +105,12 @@ public class QuestionService {
     private void verifyQuestion(Question question){
         //회원이 존재하는지 확인, @Transactional이기에 runtime exception발생시 자동 롤백됨
         userService.findUser(question.getUser().getUserId());
+        if(question.getQuestionId()!= null){
+            //Tag 존재하는지 확인
+            question.getQuestionTagList()
+                    .forEach(questionTag -> tagService.findTag(questionTag.getTag().getTagId()));
+        }
 
-        //Tag 존재하는지 확인
-        question.getQuestionTagList()
-                .forEach(questionTag -> tagService.findTag(questionTag.getTag().getTagId()));
     }
 
     private Question findVerifiedQuestionById(Long questionId){
