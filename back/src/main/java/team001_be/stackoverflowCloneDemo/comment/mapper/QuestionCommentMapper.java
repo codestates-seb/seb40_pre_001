@@ -11,9 +11,12 @@ import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Mapper(componentModel = "spring",  unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface QuestionCommentMapper {
+
+    List<QuestionCommentResponseDto> questionCommentToCommentResponseDtos(List<QuestionComment> questionCommentList);
 
     default QuestionComment questionCommentPostToComment(QuestionCommentPostDto questionCommentPostDto) {
         if (questionCommentPostDto == null) {

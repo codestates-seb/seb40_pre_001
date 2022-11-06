@@ -9,9 +9,13 @@ import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AnswerCommentMapper {
+    //a1
+    List<AnswerCommentResponseDto> answerCommentToCommentResponseDtos(List<AnswerComment> answerCommentList);
+    //a2
 
     default AnswerComment answerCommentPostToComment(AnswerCommentPostDto answerCommentPostDto){
         if (answerCommentPostDto == null){

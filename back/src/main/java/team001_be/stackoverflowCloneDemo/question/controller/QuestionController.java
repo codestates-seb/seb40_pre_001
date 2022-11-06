@@ -5,7 +5,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import team001_be.stackoverflowCloneDemo.acomment.dto.AnswerCommentResponseDto;
+import team001_be.stackoverflowCloneDemo.acomment.mapper.AnswerCommentMapper;
+import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.mapper.AnswerMapper;
+import team001_be.stackoverflowCloneDemo.comment.mapper.QuestionCommentMapper;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPatchDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
 import team001_be.stackoverflowCloneDemo.question.dto.QuestionSimpleResponseDto;
@@ -20,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,12 +37,15 @@ public class QuestionController {
     private final QuestionService questionService;
     private final QuestionMapper questionMapper;
     private final AnswerMapper answerMapper;
+    private final QuestionCommentMapper questionCommentMapper;
+    private final AnswerCommentMapper answerCommentMapper;
 
-
-    public QuestionController(QuestionService questionService, QuestionMapper questionMapper, AnswerMapper answerMapper) {
+    public QuestionController(QuestionService questionService, QuestionMapper questionMapper, AnswerMapper answerMapper, QuestionCommentMapper questionCommentMapper, AnswerCommentMapper answerCommentMapper) {
         this.questionService = questionService;
         this.questionMapper = questionMapper;
         this.answerMapper = answerMapper;
+        this.questionCommentMapper = questionCommentMapper;
+        this.answerCommentMapper = answerCommentMapper;
     }
 
     @PostMapping("/ask")
@@ -109,11 +117,19 @@ public class QuestionController {
                 questionService.updateQuestionViewCount(question, question.getViewCount()); //증가
             }
         }
+        List<AnswerCommentResponseDto> answerCommentResponseDtoList = new ArrayList<>();
+        List<AnswerCommentResponseDto> tmp;
+        List<Answer> answerList = question.getAnswerList();
+        for(Answer answer : answerList){
+            tmp = answerCommentMapper.answerCommentToCommentResponseDtos(answer.getAnswerCommentList());
+            answerCommentResponseDtoList.addAll(tmp);
+        }
 
         return new ResponseEntity<>(
                 new MultiResponseDto(questionMapper.questionToQuestionSimpleResponseDto(question),
-                        answerMapper.answerToAnswerResponseDtos(question.getAnswerList()))
-                , HttpStatus.OK);
+                        answerMapper.answerToAnswerResponseDtos(question.getAnswerList()),
+                questionCommentMapper.questionCommentToCommentResponseDtos(question.getQuestionCommentList()),
+                        answerCommentResponseDtoList), HttpStatus.OK);
     }
 
     //전체 질문 조회(생성일 기준 최신순)
