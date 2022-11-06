@@ -110,15 +110,11 @@ public class UserController {
         );
     }*/
 
-    @GetMapping("/login")
+    @GetMapping("/info")
     public String getUser(){
         return  userService.getLoginUser();
     }
-
-    @GetMapping("/login?error")
-    public String fail() throws IOException {
-        return "redirect:/?error";
-    }
+    
 
     // 회원 정보 전부 출력 -  완료
     @GetMapping()
