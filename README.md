@@ -22,10 +22,19 @@
 
 
 ## ⚡️ 백엔드 기술 스택 
-
+  JAVA
+  SPRING BOOT
+  GRADLE
+  JWT
+  SPRING SECURITY
+  MAPSTRUCT
+  MYSQL
+  HIBERNATE
+  SPRIGN DATA JPA
+  LOMBOK
 
 ## ⚙️ 인프라 기술 스택 
-
+  
 
 ## 🕊 프론트엔드 인프라 구조  
 
