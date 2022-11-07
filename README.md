@@ -99,7 +99,6 @@
 - 답변의 댓글 CRUD 기능 (ManyToOne) 
 - 질문의 댓글 CRUD 기능 (ManyToOne)
 - 질문의  CRUD 기능 (ManyToMany)
-- Dummy 유저 데이터 생성을 통한 Spring Test 기능 
   
 ## 🤝 팀문화
 
