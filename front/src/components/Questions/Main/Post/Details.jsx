@@ -3,11 +3,19 @@ import CustomLink from '../../../@common/Link';
 import TagButton from '../../../@common/Buttons/Tag';
 import UserCard from './UserCard';
 import * as S from './Post.style';
+import useGetAllTags from '../../../../hooks/tags/useGetAllTags';
 
 const PostDetails = ({
-  data: { questionId, questionTitle, context, createdAt, userId },
+  data: { questionId, questionTitle, context, createdAt, userId, tagList },
 }) => {
-  const questionTagList = ['javascript', 'java', 'python'];
+  // const questionTagList = ['javascript', 'java', 'python'];
+  const { data: tags, status } = useGetAllTags();
+
+  const getTag = (tagId) => {
+    const tag = tags?.find((tag) => tag.tagId === tagId);
+
+    return tag.tagName;
+  };
 
   return (
     <S.BoxRight>
@@ -22,9 +30,10 @@ const PostDetails = ({
         <S.TagBox>
           <ul>
             <li>
-              {questionTagList.map((tag) => {
-                return <TagButton key={tag} content={tag} />;
-              })}
+              {status === 'success' &&
+                tagList?.map(({ tagId }, i) => {
+                  return <TagButton key={i} content={getTag(tagId)} />;
+                })}
             </li>
           </ul>
         </S.TagBox>

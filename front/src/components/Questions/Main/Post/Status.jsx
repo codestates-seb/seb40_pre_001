@@ -16,7 +16,7 @@ const PostStatus = ({ id, views, votes }) => {
         <span>answers</span>
       </S.AnswerBox>
       <S.ViewBox>
-        <span>{views}</span>
+        <span>{Math.ceil(views / 3)}</span>
         <span>views</span>
       </S.ViewBox>
     </S.BoxLeft>

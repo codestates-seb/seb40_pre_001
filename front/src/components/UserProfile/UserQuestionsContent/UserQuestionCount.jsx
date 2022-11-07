@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './UserQuestionCount.stlye';
-const UserQeustionCount = () => {
+const UserQeustionCount = ({ number }) => {
   return (
     <div>
-      <S.Container>100042</S.Container>
+      <S.Container>{number}</S.Container>
     </div>
   );
 };

@@ -20,6 +20,12 @@ const getUserById = async (id) => {
   return response.data.data;
 };
 
+const getUserStatus = async (userId) => {
+  const response = await apiClient.get(`/users/${userId}/profile`);
+
+  return response.data;
+};
+
 const deleteUser = async (id) => {
   const response = await apiClient
     .delete(`/users/delete/${id}`)
@@ -58,8 +64,9 @@ const getCurrentUser = async () => {
 
 export {
   getAllUsers,
-  updateUserInfo,
+  getUserStatus,
   getUserById,
+  updateUserInfo,
   getCurrentUser,
   updateUserEmail,
   deleteUser,

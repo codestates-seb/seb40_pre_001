@@ -13,7 +13,6 @@ const UserAnswers = () => {
         <S.Title>Answers</S.Title>
         <UserViewAll />
       </S.TitleContainer>
-
       <S.BoxLeft>
         {UserAnswersButton.map((button) => {
           return button === 'Answers' ? (
@@ -27,7 +26,6 @@ const UserAnswers = () => {
         <S.Title>Questions</S.Title>
         <UserViewAll />
       </S.TitleContainer>
-
       {/* qeustions */}
       <S.BoxLeft>
         {UserQuestionButton.map((button) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import pagesState from '../../../../store/pagesState';
+import { pagesState } from '../../../../store/';
 import { usersState } from '../../../../store';
 import SearchIcon from '../../../@common/Icons/SearchIcon';
 import * as S from './SearchInput.style';
