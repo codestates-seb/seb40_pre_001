@@ -35,6 +35,8 @@ const PostComment = ({
                 e.target.id,
                 textRef.current.value,
               );
+
+          textRef.current.value = '';
         }}
       >
         Submit

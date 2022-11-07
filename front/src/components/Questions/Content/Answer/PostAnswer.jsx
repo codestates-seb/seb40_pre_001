@@ -45,7 +45,6 @@ const PostAnswer = ({ questionId, currentUser }) => {
           width='727px'
           height='255px'
           onChange={handleEditor}
-          value={editor || ''}
         />
         <S.PreviewText>{editor.replace(/<[^>]+>/g, '')}</S.PreviewText>
       </S.AnswerContainer>
@@ -59,7 +58,6 @@ const PostAnswer = ({ questionId, currentUser }) => {
               userId: currentUser?.userId,
               context: editor,
             });
-            setEditor('');
           }
         }}
       />

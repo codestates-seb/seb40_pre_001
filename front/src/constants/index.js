@@ -7,6 +7,7 @@ import {
   COLLECTIVE_DETAILS,
   SIDEBAR_LIST,
   FOOTER_CONTENTS,
+  TagsCategoryButton,
 } from './pages';
 
 // Routes
@@ -22,4 +23,5 @@ export {
   COLLECTIVE_DETAILS,
   SIDEBAR_LIST,
   FOOTER_CONTENTS,
+  TagsCategoryButton,
 };

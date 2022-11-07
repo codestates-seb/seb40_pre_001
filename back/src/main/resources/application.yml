@@ -5,12 +5,25 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #url: jdbc:mysql://pre-project-database.czoivzztz1lz.ap-northeast-2.rds.amazonaws.com:3306/stackoverflow?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
-    #username: admin
-    #password: david1aa
+    url: jdbc:mysql://pre-project-database.czoivzztz1lz.ap-northeast-2.rds.amazonaws.com:3306/stackoverflow?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: admin
+    password: david1aa
+
+#
+#spring:
+#  h2:
+#    console:
+#      enabled: true  # H2 Console을 사용할지 여부 (H2 Console은 H2 Database를 UI로 제공해주는 기능)
+#      path: /h2-console  # H2 Console의 Path
+#  datasource:
+#    driver-class-name: org.h2.Driver  # Database를 H2로 사용하겠다.
+#    url: jdbc:h2:~/test;AUTO_SERVER=TRUE      # H2 접속 정보
+#    username: sa  # H2 접속 시 입력할 username 정보 (원하는 것으로 입력)
+#    password:  # H2 접속 시 입력할 password 정보 (원하는 것으로 입력)
 
   jpa:
     open-in-view: true
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -23,7 +36,7 @@ mail:
     admin: admin@gmail.com
 jwt:
   key:
-    secret: kevin1234123412341234123412341234
+    secret: kevin1234123412341234123412341234           # 민감한 정보는 시스템 환경 변수에서 로드한다.
   access-token-expiration-minutes: 1200
   refresh-token-expiration-minutes: 4800
 

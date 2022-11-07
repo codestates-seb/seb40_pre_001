@@ -17,6 +17,7 @@ const Li = styled.li`
   transition: background-color linear 2s;
   margin: 0;
   padding: 0;
+  user-select: none;
 `;
 
 const TextContainer = styled.div`
@@ -60,6 +61,7 @@ const EditButton = styled.span`
   cursor: pointer;
   padding: 0;
   top: 3px;
+  z-index: 10;
 `;
 
 const Comment = styled.span`

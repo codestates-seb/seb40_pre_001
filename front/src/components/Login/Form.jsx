@@ -51,11 +51,6 @@ const Form = () => {
     }
   };
 
-  // const handleSubmit (e)= >{
-  //   e.preventDefault();
-  //   alert(JSON.stringify(values,null,2))
-  // }
-
   const handleSubmit = async (e) => {
     setDisabled(true);
     e.preventDefault();
