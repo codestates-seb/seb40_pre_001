@@ -31,6 +31,7 @@
 
 
 ## 🦉 백엔드 인프라 구조  
+![ERD_Final ](https://user-images.githubusercontent.com/84262646/200245264-9d49a62f-d83f-4e7b-9e60-5a52707760cd.png)
 
 
 ## 🤝 팀문화
