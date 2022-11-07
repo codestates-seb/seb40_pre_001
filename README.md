@@ -19,8 +19,17 @@
 <br>
 
 ## ✨ 프론트엔드 기술 스택 
+   
+![리액트](https://user-images.githubusercontent.com/105303007/200245979-41a22edc-ed2c-43d6-bf76-68309da07c23.png)
+  /React를 사용할 경우 사용자 입장에서 데이터가 변할 때 페이지 리로딩이 일어나지 않기 때문에 UX가 더욱 향상되고 그 때문에 많은 사이트들이 React를 사용.
+  /또한, 개발자 입장에서도 컴포넌트 기반의 React를 사용할 경우 코드의 가독성과 재사용성 그리고 유지보수가 편해지기 때문에 React를 사용하는 점도 있다.
+![쟈스](https://user-images.githubusercontent.com/105303007/200246004-b54c6334-f5ec-4999-a019-21fc2de36fe6.png)
+![리액트쿼리](https://user-images.githubusercontent.com/105303007/200246015-86daa719-93a0-4e7f-9b25-b53fc1131b77.png)
+![스타일컴포넌트](https://user-images.githubusercontent.com/105303007/200246028-b7d00177-1833-43c0-9fb7-91416d753578.jpg)
 
-
+  
+  
+  
 ## ⚡️ 백엔드 기술 스택 
   JAVA
   SPRING BOOT
