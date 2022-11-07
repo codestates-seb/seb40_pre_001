@@ -8,7 +8,7 @@ import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import { forwardRef } from 'react';
 
-const TextEditor = forwardRef(({ height, value, onChange }, ref) => {
+const TextEditor = forwardRef(({ height, value = '', onChange }, ref) => {
   const [isFocused, setIsFocused] = useState(false);
   isFocused;
 
