@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
-import Form from '../../components/Login/Form';
-import { isLoggedIn } from '../../constants/auth';
+import React from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import Form from '../../components/Login/Form';
+import { usersState } from '../../store';
 
 const Login = () => {
-  const navigator = useNavigate();
+  const { isAuthenticated } = useRecoilValue(usersState);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      navigator('/questions');
-    }
-  }, [isLoggedIn]);
-
+    if (isAuthenticated) navigate('/questions');
+  }, [isAuthenticated, navigate]);
   return (
     <div>
       <Form />

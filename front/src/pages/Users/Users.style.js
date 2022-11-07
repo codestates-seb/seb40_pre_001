@@ -5,10 +5,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1114px;
+  height: 100%;
   margin: 50px auto 0;
   padding: 24px;
   margin-left: 164px;
+  overflow: hidden;
 `;
 const UsersContainer = styled.div`
   display: grid;
@@ -33,4 +34,18 @@ const UsersLegend = styled.div`
   font-size: 13px;
   font-weight: bold;
 `;
-export { UsersContainer, Container, UsersLegend, UsersfooterContainer };
+
+const PagiNationContainer = styled.div`
+  .active {
+    background-color: hsl(27, 90%, 55%);
+    color: hsl(0, 0%, 100%);
+  }
+`;
+
+export {
+  UsersContainer,
+  Container,
+  UsersLegend,
+  UsersfooterContainer,
+  PagiNationContainer,
+};

@@ -1,49 +1,46 @@
 import React from 'react';
+import {
+  useAnswerDownVote,
+  useAnswerUpVote,
+  usePostDownVote,
+  usePostUpVote,
+} from '../../../../hooks/questions';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
-// import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRecoilValue } from 'recoil';
-import pagesState from '../../../../store/pagesState';
-import { apiClient } from '../../../../apis/questions';
 
-const LeftBox = ({ status }) => {
-  // const queryClient = useQueryClient();
-  const { currentContentId } = useRecoilValue(pagesState);
-
-  // const updateVoteCount = useMutation(
-  //   (vote) => {
-  //     putStatus(currentContentId, vote);
-  //   },
-
-  //   {
-  //     retry: 1,
-  //     onSuccess: () =>
-  //       queryClient.invalidateQueries(['questions'], currentContentId),
-  //   },
-  // );
-
-  const putMethod = async () => {
-    return await apiClient.put(`/api/questions/${currentContentId}`, {
-      ...status,
-      votes: status.votes + 1,
-    });
-  };
+const LeftBox = ({ type, questionId, answerId, currentUser, votes }) => {
+  // 프론트에서도 vote에 대한 상태관리 필요
+  const { handleVoteCount: postUpVote } = usePostUpVote();
+  const { handleVoteCount: postDownVote } = usePostDownVote();
+  const { handleVoteCount: answerUpVote } = useAnswerUpVote();
+  const { handleVoteCount: answerDownVote } = useAnswerDownVote();
 
   return (
     <S.LeftBox>
       <S.VotingContainer>
         <S.IconContainer
           onClick={() => {
-            // updateVoteCount.mutate(status.votes + 1);
-            putMethod();
+            if (type === 'post') {
+              postUpVote(questionId, currentUser?.userId);
+            } else if (type === 'answer') {
+              answerUpVote(questionId, answerId, currentUser?.userId);
+            }
           }}
         >
           <ArrowIcon direction='up' />
         </S.IconContainer>
         <S.VoteCount>
-          <span>{status.votes}</span>
+          <span>{votes}</span>
         </S.VoteCount>
-        <S.IconContainer>
+        <S.IconContainer
+          onClick={() => {
+            if (type === 'post') {
+              postDownVote(questionId, currentUser?.userId);
+            } else if (type === 'answer') {
+              answerDownVote(questionId, answerId, currentUser?.userId);
+            }
+          }}
+        >
           <ArrowIcon direction='down' />
         </S.IconContainer>
         <SaveIcon style={{ margin: '10px 0 10px 12px' }} />

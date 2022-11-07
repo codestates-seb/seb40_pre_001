@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const SquareButton = styled.button`
   position: relative;
   display: inline-block;
-  padding: 0.5em 0.8em 0.5em 0.8em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   color: ${({ color }) => color || 'hsl(0,0%,100%)'};
   border: 1px solid ${({ borderColor }) => borderColor || 'transparent'};
   border-radius: 3px;
@@ -55,7 +55,7 @@ const StyledTag = styled.button`
   background-color: hsl(205, 46%, 92%);
   border-color: transparent;
   display: inline-block;
-  padding: 0.4em 0.5em;
+  padding: 0.4em 0.5em !important;
   margin: 0 2px 2px 0;
   line-height: 1;
   white-space: nowrap;
@@ -64,6 +64,7 @@ const StyledTag = styled.button`
   border-width: 1px;
   border-style: solid;
   border-radius: 3px;
+  width: ${({ width }) => width};
 `;
 
 export { SquareButton, StyledSnsButton, StyledTag };

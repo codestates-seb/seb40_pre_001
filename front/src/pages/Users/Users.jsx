@@ -1,29 +1,31 @@
 import React from 'react';
-import UserInfo from '../../components/Users/UserInfo';
+import UserInfo from '../../components/UsersPage/Users/Userinfo';
 import * as S from './Users.style.js';
-import Title from '../../components/Title/Title';
-import UsersTab from '../../components/UsersTab/UsersTab';
-import UsersFilter from '../../components/UsersFilter/UsersFilter';
-import UsersPagiNation from '../../components/Questions/Main/UsersPaginaton/UsersPagination';
-import UserData from '../../components/Users/UserData';
+
+import UsersTab from '../../components/UsersPage/UsersTab/UsersTab';
+import UsersFilter from '../../components/UsersPage/UsersFilter/UsersFilter';
+import useGetAllUsers from '../../hooks/users/useGetAllUsers';
+import TitleBox from '../../components/@common/TitleBox/TitleBar';
 
 const Users = () => {
+  const { data } = useGetAllUsers();
+
   return (
     <S.Container>
-      <Title></Title>
+      <TitleBox title='Users' />
       <UsersFilter />
       <UsersTab />
       <S.UsersContainer>
-        {UserData.map((UserData) => {
-          return <UserInfo key={name} UserData={UserData} />;
+        {data?.map(({ content }, i) => {
+          return <UserInfo key={i}>{content}</UserInfo>;
         })}
-        <UserInfo />
       </S.UsersContainer>
       <S.UsersfooterContainer>
         <S.UsersLegend>
           weekly / monthly / quarterly resutatiom leagues
         </S.UsersLegend>
-        <UsersPagiNation />
+
+        <S.PagiNationContainer></S.PagiNationContainer>
       </S.UsersfooterContainer>
     </S.Container>
   );

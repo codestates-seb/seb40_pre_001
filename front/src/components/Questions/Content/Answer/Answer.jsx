@@ -1,43 +1,31 @@
-import React, { useRef, useState } from 'react';
-import { StyledButton } from '../../../@common/Buttons';
-import { TextEditor } from '../../../@common/TextEditor/TextEditor';
+import React from 'react';
+import LeftBox from '../PostBody/LeftBox';
+import RightBox from '../PostBody/RightBox';
+import * as S from '../Content.style';
 
-const Answer = () => {
-  const [editor, setEditor] = useState({ html: '', md: '' });
-  const editorRef = useRef(null);
-
-  const handleChange = () => {
-    const editor_instance = editorRef.current?.getInstance();
-    if (editor_instance) {
-      setEditor({
-        html: editor_instance?.getHTML(),
-        md: editor_instance?.getMarkdown(),
-      });
-    }
-  };
+const Answer = ({ detail, currentUser }) => {
+  const { context, createdAt, questionId, userId, voteCount, answerId } =
+    detail;
 
   return (
     <>
-      <div
-        style={{
-          borderTop: '1px solid gray',
-          marginTop: 10,
-        }}
-      >
-        <p style={{ marginBottom: 30, marginTop: 20 }}> Your Answer</p>
-        <TextEditor
-          ref={editorRef}
-          width='727'
-          height='255px'
-          onChange={handleChange}
+      <S.PostLayout>
+        <LeftBox
+          type='answer'
+          votes={voteCount}
+          questionId={questionId}
+          answerId={answerId}
+          currentUser={currentUser}
         />
-        <p>{editor.md}</p>
-      </div>
-      <StyledButton
-        content='Post Your Answer'
-        style={{ width: 129, height: 45 }}
-        onClick={() => console.log(editor.html)}
-      />
+        <RightBox
+          type='answer'
+          answerId={answerId}
+          questionId={questionId}
+          context={context}
+          userId={userId}
+          createdAt={createdAt}
+        />
+      </S.PostLayout>
     </>
   );
 };

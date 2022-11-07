@@ -1,9 +1,9 @@
 // 라우팅에 필요한 라우팅 컴포넌트에 대한 디테일들
 
 const ROUTES = Object.freeze({
-  HOME: {
+  INDEX: {
     path: '/',
-    name: 'Home',
+    name: 'Index',
   },
   TAGS: {
     path: '/tags',
@@ -32,6 +32,26 @@ const ROUTES = Object.freeze({
   ASK: {
     path: '/questions/ask',
     name: 'Ask Question',
+  },
+  NOT_FOUND: {
+    path: '*',
+    name: '404NotFound',
+  },
+  SEARCH: {
+    path: '/search',
+    name: 'Search',
+  },
+  USERPROFILE: {
+    path: '/userprofile',
+    name: 'UserProfile',
+  },
+  EDIT_POST: {
+    path: '/questions/7:id/edit',
+    name: 'EditPost',
+  },
+  EDIT_ANSWER: {
+    path: '/questions/8:id/edit',
+    name: 'EditAnswer',
   },
 });
 

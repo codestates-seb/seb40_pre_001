@@ -4,13 +4,7 @@ import WS02Icon from '../assets/wso2.svg';
 
 const pageLimits = Object.freeze([15, 30, 50]);
 
-const categoryButton = Object.freeze([
-  'Newest',
-  'Active',
-  `Bountied`,
-  'Unanswered',
-  'More',
-]);
+const categoryButton = Object.freeze(['Newest', 'Unanswered', 'More']);
 
 const UsersCategoryButton = Object.freeze([
   'Reputation',
@@ -19,6 +13,16 @@ const UsersCategoryButton = Object.freeze([
   'Editors',
   'Moderators',
 ]);
+const UserAnswersButton = Object.freeze(['Score', 'Activity', 'Newest']);
+
+const UserQuestionButton = Object.freeze([
+  'Score',
+  'Activity',
+  'Newest',
+  'Views',
+]);
+
+const TagsCategoryButton = Object.freeze(['Popular', 'Name', 'New']);
 
 const UsersTabButton = Object.freeze([
   'week',
@@ -27,6 +31,7 @@ const UsersTabButton = Object.freeze([
   'year',
   'all',
 ]);
+
 const COLLECTIVE_DETAILS = Object.freeze([
   {
     title: 'Google Cloud',
@@ -138,5 +143,8 @@ export {
   FOOTER_CONTENTS,
   UsersCategoryButton,
   UsersTabButton,
+  TagsCategoryButton,
   MOCK_MD_CONTENT,
+  UserAnswersButton,
+  UserQuestionButton,
 };
