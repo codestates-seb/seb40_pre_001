@@ -19,28 +19,19 @@
 <br>
 
 ## ✨ 프론트엔드 기술 스택 
-   
-![리액트](https://user-images.githubusercontent.com/105303007/200245979-41a22edc-ed2c-43d6-bf76-68309da07c23.png)
-  /React를 사용할 경우 사용자 입장에서 데이터가 변할 때 페이지 리로딩이 일어나지 않기 때문에 UX가 더욱 향상되고 그 때문에 많은 사이트들이 React를 사용.
-  /또한, 개발자 입장에서도 컴포넌트 기반의 React를 사용할 경우 코드의 가독성과 재사용성 그리고 유지보수가 편해지기 때문에 React를 사용하는 점도 있다.
-![쟈스](https://user-images.githubusercontent.com/105303007/200246004-b54c6334-f5ec-4999-a019-21fc2de36fe6.png)
-![리액트쿼리](https://user-images.githubusercontent.com/105303007/200246015-86daa719-93a0-4e7f-9b25-b53fc1131b77.png)
-![스타일컴포넌트](https://user-images.githubusercontent.com/105303007/200246028-b7d00177-1833-43c0-9fb7-91416d753578.jpg)
 
-  
-  
-  
+
 ## ⚡️ 백엔드 기술 스택 
-  JAVA
-  SPRING BOOT
-  GRADLE
-  JWT
-  SPRING SECURITY
-  MAPSTRUCT
-  MYSQL
-  HIBERNATE
-  SPRIGN DATA JPA
-  LOMBOK
+  JAVA : 메인 언어
+  SPRING BOOT :  Spring MVC Framework 구현을 위한 SpringBoot 
+  GRADLE : 빌드 툴
+  SPRING SECURITY : 로그인/로그아웃/회원가입/JWT 기능 
+  MYSQL : DB구조. MySQL & H2 사용
+  SPRIGN DATA JPA HIBERNATE: Mapstruct, DTO, Repository 등을 통한 ORM 기술
+  LOMBOK : Getter, Setter 등과 같은 어노테이션 기능
+  Ngork: 로컬호스트의 개발 환경을 외부로 공유하는 툴
+  AWS: 배포
+  Discord: 소통 툴 
 
 ## ⚙️ 인프라 기술 스택 
   
@@ -49,8 +40,22 @@
 
 
 ## 🦉 백엔드 인프라 구조  
+  
+![ERD_Final ](https://user-images.githubusercontent.com/84262646/200247314-1ec3201c-dfc0-49b1-9f45-e7286907074f.png)
 
-
+기능
+-	회원가입 기능 
+-	로그인 및 JWT 기능
+-	회원 유저 CRUD 기능
+-	유저 프로필 및 질문 수, 답변 수, 조회수 표시기능
+-	질문 CRUD 기능
+-	질문 검색 기능
+-	질문 목록 페이지
+-	답변 CRUD 기능
+-	댓글 CRUD 기능 
+-	태그 생성 및 태그 추가, 삭제 기능 
+-	질문 및 답변 추천, 비추천 기능
+  
 ## 🤝 팀문화
 
 #### 1. 매일 미팅을 가져요
