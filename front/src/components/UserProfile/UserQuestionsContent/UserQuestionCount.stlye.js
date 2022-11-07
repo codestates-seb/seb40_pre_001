@@ -7,8 +7,12 @@ const Container = styled.div`
   padding: 5px;
 `;
 const UserQuestionList = styled.div`
+  margin-left: 5px;
+
   font-size: 16px;
   color: blue;
+  max-width: 240px;
+  overflow: hidden;
 `;
 const UsesQuestionDays = styled.div`
   font-size: 12px;

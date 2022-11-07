@@ -50,7 +50,6 @@ const BoxLeft = styled.div`
   }
 
   .active {
-    border: none;
     border-radius: 0;
     background-color: hsl(210, 8%, 90%);
     color: hsl(210, 8%, 25%);

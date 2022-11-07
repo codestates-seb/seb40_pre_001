@@ -1,6 +1,5 @@
 /*eslint-disable*/
 import React from 'react';
-// import usePost from '../../../hooks/usePost';
 import * as S from './Ask.style';
 
 import ASK_FORM from '../../../constants/askform';
@@ -16,8 +15,6 @@ import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
 
 const Ask = () => {
-  // useState를 useRef로 대체했을때 차이 (렌더링 ), debounce 적용하면 onChange마다 rendering 일어나지 않음??
-  // 예시
   const { title, questionsUp, questionsDown, tags, author } =
     useRecoilValue(questions);
   const { mutate } = useCreateQuestions();

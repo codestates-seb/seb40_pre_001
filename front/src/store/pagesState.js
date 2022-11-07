@@ -11,4 +11,9 @@ const pagesState = atom({
   },
 });
 
-export default pagesState;
+const filterState = atom({
+  key: 'filterState',
+  default: 'Newest',
+});
+
+export { pagesState, filterState };

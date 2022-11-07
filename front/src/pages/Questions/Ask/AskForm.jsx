@@ -63,7 +63,6 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
   function changeButton() {
     SetLiveButton(true);
   }
-  //index -1 에 인풋 벨류가 존재하면 클래스 빼기
 
   const DoneQuestion = () => {
     let check = textdone.replace(/\s/g, '');
