@@ -76,7 +76,8 @@
 -	질문 검색 기능
 -	질문 목록 페이지
 -	답변 CRUD 기능  (ManyToOne) 
--	댓글 CRUD 기능  (ManyToOne)
+- 답변의 댓글 CRUD 기능 (ManyToOne) 
+- 질문의 댓글 CRUD 기능 (ManyToOne)
 -	태그 생성 및 태그 추가, 삭제 기능  (ManyToMany)
 - Dummy 데이터 생성을 통한 Spring Test 기능 
   
