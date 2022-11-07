@@ -1,5 +1,5 @@
 <div align=center>
-  <h2> Stack overflow 클론 </h2>
+  <h2> Stack Overflow 클론 </h2>
  
 
 
