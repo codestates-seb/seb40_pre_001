@@ -14,7 +14,7 @@ const UserDetails = styled.div`
   margin: 0 0 0 9px;
   line-height: 1.3;
 `;
-const UserInfoProfil = styled.img`
+const UserInfoProfile = styled.img`
   width: 48px;
   height: 48px;
   /* background-image: ${({ backgrondImges }) => backgrondImges || 'null'}; ; */
@@ -46,7 +46,7 @@ const UsersTags = styled.a`
 `;
 export {
   UserInfoContainer,
-  UserInfoProfil,
+  UserInfoProfile,
   UserDetails,
   UserInfoName,
   UserInfoLocation,
