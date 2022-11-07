@@ -16,15 +16,6 @@ const getAllPosts = async () => {
 };
 
 const createPost = async (question) => {
-  // 성공
-  // questionTagList null
-  // {
-  //   userId,
-  //   questionTitle,
-  //   context,
-  //   questionTagList: ['Java', 'Javasciprt', 'Python'],
-  // }
-
   const response = await apiClient2.post('/questions/ask', question);
 
   console.log(response);
@@ -33,37 +24,19 @@ const createPost = async (question) => {
 };
 
 const getPostById = async (id) => {
-  // 성공
-  // id === questionId
-  // Answer 도 포함
-
   const { data } = await apiClient2.get(`/questions/${id}`);
 
   return data;
 };
 
 const updateQuestionById = async (id, newDetails) => {
-  // 성공
-  // id === questionId
-  // {
-  //   userId: 1,
-  //   questionTitle: 'updated title updated tit2le updated tsdsdaitle',
-  //   context: 'updated context updated context updated contexsadsadt',
-  // };
-
   const response = await apiClient2.patch(`/questions/edit/${id}`, newDetails);
-
-  console.log(response);
 
   return response;
 };
 
 const getSimplePostById = async (id) => {
-  // id === questionId
-  // 성공
   const response = await apiClient2.get(`/questions/simple/${id}`);
-
-  console.log(response.data.data);
 
   return response.data.data;
 };
@@ -72,8 +45,6 @@ const getPostsByKeyword = async (keyword) => {
   const { data } = await apiClient2.get(
     `/questions/search?searchTitle=${keyword}`,
   );
-
-  console.log(data);
 
   return data;
 };

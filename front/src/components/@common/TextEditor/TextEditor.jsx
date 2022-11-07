@@ -18,7 +18,7 @@ const TextEditor = forwardRef(({ height, value, onChange }, ref) => {
         ref={ref}
         height={height}
         useCommandShortcut
-        plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]} // 코드블럭 하이라이트
+        plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
         toolbarItems={[
           ['bold', 'italic', 'strike'],
           ['code', 'codeblock'],

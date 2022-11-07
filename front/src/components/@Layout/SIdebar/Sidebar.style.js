@@ -84,7 +84,6 @@ const PageLinkContainer = styled.div`
   align-items: center;
   padding-left: 2;
   color: hsl(210, 8%, 35%);
-  // height: 33px;
 
   &:hover {
     color: hsl(210, 8%, 5%);

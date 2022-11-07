@@ -11,8 +11,6 @@ const apiClient2 = axios.create({
 const getAllTags = async () => {
   const response = await apiClient2.get('/tags');
 
-  console.log(response.data.data);
-
   return response.data.data;
 };
 
