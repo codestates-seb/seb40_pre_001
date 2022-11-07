@@ -1,46 +1,38 @@
-import axios from 'axios';
-
-const apiClient2 = axios.create({
-  baseURL: 'https://630c-125-177-243-74.jp.ngrok.io',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  },
-  withCredentials: true,
-});
+import { apiClient } from './auth';
 
 // Post Related
 const getAllPosts = async () => {
-  const { data } = await apiClient2.get('/questions');
+  const { data } = await apiClient.get('/questions');
 
   return data;
 };
 
 const createPost = async (question) => {
-  const response = await apiClient2.post('/questions/ask', question);
+  const response = await apiClient.post('/questions/ask', question);
 
   return response;
 };
 
 const getPostById = async (id) => {
-  const { data } = await apiClient2.get(`/questions/${id}`);
+  const { data } = await apiClient.get(`/questions/${id}`);
 
   return data;
 };
 
 const updateQuestionById = async (id, newDetails) => {
-  const response = await apiClient2.patch(`/questions/edit/${id}`, newDetails);
+  const response = await apiClient.patch(`/questions/edit/${id}`, newDetails);
 
   return response;
 };
 
 const getSimplePostById = async (id) => {
-  const response = await apiClient2.get(`/questions/simple/${id}`);
+  const response = await apiClient.get(`/questions/simple/${id}`);
 
   return response.data.data;
 };
 
 const getPostsByKeyword = async (keyword) => {
-  const { data } = await apiClient2.get(
+  const { data } = await apiClient.get(
     `/questions/search?searchTitle=${keyword}`,
   );
 
@@ -48,7 +40,7 @@ const getPostsByKeyword = async (keyword) => {
 };
 
 const deletePost = async (id, userId) => {
-  const response = await apiClient2.delete(`/questions/${id}`, {
+  const response = await apiClient.delete(`/questions/${id}`, {
     params: { userId },
   });
 
@@ -56,7 +48,7 @@ const deletePost = async (id, userId) => {
 };
 
 const modifyPost = async (questionId, id, modifiedContent) => {
-  const response = await apiClient2.patch(`/questions/edit/${questionId}`, {
+  const response = await apiClient.patch(`/questions/edit/${questionId}`, {
     ...modifiedContent,
     id,
   });
@@ -66,7 +58,7 @@ const modifyPost = async (questionId, id, modifiedContent) => {
 
 // Answer related
 const createAnswer = async (questionId, userId, context) => {
-  const response = await apiClient2.post(`/questions/${questionId}`, {
+  const response = await apiClient.post(`/questions/${questionId}`, {
     userId,
     context,
   });
@@ -75,19 +67,16 @@ const createAnswer = async (questionId, userId, context) => {
 };
 
 const modifyAnswer = async (answerId, userId, context) => {
-  const response = await apiClient2.patch(
-    `/questions/answer/edit/${answerId}`,
-    {
-      userId,
-      context,
-    },
-  );
+  const response = await apiClient.patch(`/questions/answer/edit/${answerId}`, {
+    userId,
+    context,
+  });
 
   return response;
 };
 
 const deleteAnswer = async (userId, questionId, answerId) => {
-  return await apiClient2.delete(`/questions/${questionId}/${answerId}`, {
+  return await apiClient.delete(`/questions/${questionId}/${answerId}`, {
     params: { userId },
   });
 };
@@ -95,7 +84,7 @@ const deleteAnswer = async (userId, questionId, answerId) => {
 // Comment related
 
 const createComment = async (userId, questionId, questionCommentContent) => {
-  const response = await apiClient2.post('/questions/comments', {
+  const response = await apiClient.post('/questions/comments', {
     userId,
     questionId,
     questionCommentContent,
@@ -105,7 +94,7 @@ const createComment = async (userId, questionId, questionCommentContent) => {
 };
 
 const createAnswerComment = async (userId, answerId, answerCommentContent) => {
-  const response = await apiClient2.post(`/answers/comments`, {
+  const response = await apiClient.post(`/answers/comments`, {
     userId,
     answerId,
     answerCommentContent,
@@ -115,13 +104,13 @@ const createAnswerComment = async (userId, answerId, answerCommentContent) => {
 };
 
 const getCommentsByAnswerId = async (answerCommentId) => {
-  const response = await apiClient2.get(`/answers/comments/${answerCommentId}`);
+  const response = await apiClient.get(`/answers/comments/${answerCommentId}`);
 
   return response;
 };
 
 const postUpVote = async (questionId, userId) => {
-  const response = await apiClient2.post(
+  const response = await apiClient.post(
     `/questions/upvote/${questionId}?userId=${userId}`,
   );
 
@@ -129,7 +118,7 @@ const postUpVote = async (questionId, userId) => {
 };
 
 const postDownVote = async (questionId, userId) => {
-  const response = await apiClient2.post(
+  const response = await apiClient.post(
     `/questions/downvote/${questionId}?userId=${userId}`,
   );
 
@@ -137,14 +126,14 @@ const postDownVote = async (questionId, userId) => {
 };
 
 const answerUpVote = async (questionId, answerId, userId) => {
-  const response = await apiClient2.post(
+  const response = await apiClient.post(
     `/questions/upvote/${questionId}/${answerId}?userId=${userId}`,
   );
 
   return response;
 };
 const answerDownVote = async (questionId, answerId, userId) => {
-  const response = await apiClient2.post(
+  const response = await apiClient.post(
     `/questions/downvote/${questionId}/${answerId}?userId=${userId}`,
   );
 
@@ -152,7 +141,7 @@ const answerDownVote = async (questionId, answerId, userId) => {
 };
 
 const deleteAnswerComment = async (answerCommentId, userId) => {
-  const response = await apiClient2.delete(
+  const response = await apiClient.delete(
     `/answers/comments/${answerCommentId}?userId=${userId}`,
   );
 
@@ -160,7 +149,7 @@ const deleteAnswerComment = async (answerCommentId, userId) => {
 };
 
 const deletePostComment = async (postCommentId, userId) => {
-  const response = await apiClient2.delete(
+  const response = await apiClient.delete(
     `/questions/comments/${postCommentId}?userId=${userId}`,
   );
 
@@ -173,7 +162,7 @@ const updateAnswerComment = async (
   answerId,
   answerCommentContent,
 ) => {
-  const response = await apiClient2.patch(
+  const response = await apiClient.patch(
     `/answers/comments/edit/${answerCommentId}`,
     { userId, answerId, answerCommentContent },
   );
@@ -187,7 +176,7 @@ const updatePostComment = async (
   questionId,
   questionCommentContent,
 ) => {
-  const response = await apiClient2.patch(
+  const response = await apiClient.patch(
     `/questions/comments/edit/${questionCommentId}`,
     { userId, questionId, questionCommentContent },
   );

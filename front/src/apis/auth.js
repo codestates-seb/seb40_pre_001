@@ -2,7 +2,7 @@ import axios from 'axios';
 import setAuthToken from '../components/@helper/setAuthToken';
 
 const apiClient = axios.create({
-  baseURL: 'https://630c-125-177-243-74.jp.ngrok.io',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     'Access-Control-Allow-Origin': '*',
   },
@@ -28,5 +28,7 @@ const postLogin = async (loginInfo) => {
     setAuthToken(jwt);
   });
 };
+
+export { apiClient };
 
 export { postLogin, createUser };

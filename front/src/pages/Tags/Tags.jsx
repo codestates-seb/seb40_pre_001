@@ -22,6 +22,7 @@ const Tags = () => {
     return response.data;
   };
   const { data, status } = useQuery(['tags'], fetchData);
+  data;
 
   if (status === 'loading') {
     return <div>Loading...</div>;
@@ -44,7 +45,6 @@ const Tags = () => {
         })}
         {console.log(data.results)} */}
         <Contents />
-        {console.log(data)}
       </S.TagsContainer>
       <S.PagiNationContainer></S.PagiNationContainer>
     </S.Container>

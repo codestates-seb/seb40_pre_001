@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllUsers } from '../../apis/users';
 
 const useGetCurrentUser = () => {
-  const { data } = useQuery(['allUsers'], getAllUsers, {
+  const { data, isSuccess, isLoading } = useQuery(['allUsers'], getAllUsers, {
     refetchOnWindowFocus: false,
     suspense: true,
   });
@@ -15,7 +15,7 @@ const useGetCurrentUser = () => {
 
   const currentUser = data.find((user) => user.email === currentUserEmail);
 
-  return { data, currentUser };
+  return { data, currentUser, isSuccess, isLoading };
 };
 
 export default useGetCurrentUser;

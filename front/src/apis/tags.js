@@ -1,15 +1,7 @@
-import axios from 'axios';
-
-const apiClient2 = axios.create({
-  baseURL: 'https://630c-125-177-243-74.jp.ngrok.io',
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  },
-  withCredentials: true,
-});
+import { apiClient } from './auth';
 
 const getAllTags = async () => {
-  const response = await apiClient2.get('/tags');
+  const response = await apiClient.get('/tags');
 
   return response.data.data;
 };
