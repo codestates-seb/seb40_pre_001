@@ -18,8 +18,6 @@ const getAllPosts = async () => {
 const createPost = async (question) => {
   const response = await apiClient2.post('/questions/ask', question);
 
-  console.log(response);
-
   return response;
 };
 
@@ -62,8 +60,6 @@ const modifyPost = async (questionId, id, modifiedContent) => {
     ...modifiedContent,
     id,
   });
-
-  console.log(response);
 
   return response;
 };
@@ -121,8 +117,6 @@ const createAnswerComment = async (userId, answerId, answerCommentContent) => {
 const getCommentsByAnswerId = async (answerCommentId) => {
   const response = await apiClient2.get(`/answers/comments/${answerCommentId}`);
 
-  console.log(response);
-
   return response;
 };
 
@@ -130,8 +124,6 @@ const postUpVote = async (questionId, userId) => {
   const response = await apiClient2.post(
     `/questions/upvote/${questionId}?userId=${userId}`,
   );
-
-  console.log(response);
 
   return response;
 };
@@ -141,8 +133,6 @@ const postDownVote = async (questionId, userId) => {
     `/questions/downvote/${questionId}?userId=${userId}`,
   );
 
-  console.log(response);
-
   return response;
 };
 
@@ -151,16 +141,12 @@ const answerUpVote = async (questionId, answerId, userId) => {
     `/questions/upvote/${questionId}/${answerId}?userId=${userId}`,
   );
 
-  console.log(response);
-
   return response;
 };
 const answerDownVote = async (questionId, answerId, userId) => {
   const response = await apiClient2.post(
     `/questions/downvote/${questionId}/${answerId}?userId=${userId}`,
   );
-
-  console.log(response);
 
   return response;
 };
@@ -185,11 +171,11 @@ const updateAnswerComment = async (
   answerCommentId,
   userId,
   answerId,
-  content,
+  answerCommentContent,
 ) => {
   const response = await apiClient2.patch(
     `/answers/comments/edit/${answerCommentId}`,
-    { userId, answerId, content },
+    { userId, answerId, answerCommentContent },
   );
 
   return response;

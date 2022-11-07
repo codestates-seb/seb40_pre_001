@@ -6,7 +6,8 @@ import { PencilIcon } from '../../../@common/Icons';
 import useDeleteAnswerComment from './hooks/useDeleteAnswerComment';
 import useDeletePostComment from './hooks/useDeletePostComment';
 import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
-// import useUpdateAnswerComment from './hooks/useUpdateAnswerComment';
+import useUpdateAnswerComment from './hooks/useUpdateAnswerComment';
+import { getCommentsByAnswerId } from '../../../../apis/questions';
 
 const CommentList = ({
   type,
@@ -20,7 +21,7 @@ const CommentList = ({
   const { currentUser } = useGetCurrentUser();
   const { handleDelete: handleDeleteAnswerComment } = useDeleteAnswerComment();
   const { handleDelete: handleDeletePostComment } = useDeletePostComment();
-  // const { handleUpdate: handleUpdateAnswerComment } = useUpdateAnswerComment();
+  const { handleUpdate: handleUpdateAnswerComment } = useUpdateAnswerComment();
   answerId;
   return (
     <S.CommentList data-id={id}>
@@ -46,16 +47,43 @@ const CommentList = ({
             />
             {currentUser?.userId === userId && (
               <>
-                <S.EditButton
-                  onClick={() => {
-                    if (type === 'post') {
-                      // 수정
-                    } else if (type === 'answer') {
-                      // 수정
-                    }
-                  }}
-                >
-                  <PencilIcon fill='hsl(210,8%,60%)' />
+                <S.EditButton id={id}>
+                  <PencilIcon
+                    id={id}
+                    fill='hsl(210,8%,60%)'
+                    onClick={(e) => {
+                      if (e.target.tagName === 'svg') {
+                        if (type === 'post') {
+                          console.log('post', e.target.id);
+
+                          // 수정
+                        } else if (type === 'answer') {
+                          console.log('answer', e.target.id);
+                          const commentContent = prompt(
+                            '댓글을 수정해 주세요.',
+                            content,
+                          );
+
+                          if (commentContent && commentContent.length > 14) {
+                            console.log(commentContent);
+                            console.log(userId);
+                            console.log(answerId);
+                            getCommentsByAnswerId(e.target.id);
+                            handleUpdateAnswerComment(
+                              e.target.id,
+                              userId,
+                              answerId,
+                              commentContent,
+                            );
+                          } else {
+                            return;
+                          }
+
+                          // 수정
+                        }
+                      }
+                    }}
+                  />
                 </S.EditButton>
                 <span
                   style={{ marginLeft: 5, fontSize: 15, cursor: 'pointer' }}
