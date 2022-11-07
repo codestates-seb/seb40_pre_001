@@ -1,14 +1,15 @@
 import React from 'react';
-import { UsersCategoryButton } from '../../../../../constants/pages';
+import { TagsCategoryButton } from '../../../../../constants/';
+
 import * as S from './UsersFilterBox.style';
 
-const UsersFilterBox = () => {
+const TagsFilterBox = () => {
   return (
     <S.FlexBox>
       <div>
         <S.ButtonWrapper>
           <S.BoxLeft>
-            {UsersCategoryButton.map((button) => {
+            {TagsCategoryButton.map((button) => {
               return button === 'Bountied' ? (
                 <S.CategoryButton key={button}>{button}</S.CategoryButton>
               ) : (
@@ -22,4 +23,4 @@ const UsersFilterBox = () => {
   );
 };
 
-export default UsersFilterBox;
+export default TagsFilterBox;
