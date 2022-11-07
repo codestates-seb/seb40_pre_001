@@ -1,6 +1,6 @@
 import React from 'react';
-import FilterBox from './FilterBox/FilterBox';
 import TitleBox from '../../../@common/TitleBox/TitleBar';
+import FilterBox from './FiIterBox/FilterBox';
 
 const Header = ({ title, length }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './TagsFilter.style';
-import TagsFilterBox from '../../Questions/Main/Header/FilterBox/TagsFilterBox';
 import SearchInput from '../../@Layout/Nav/SearchInput/SearchInput';
+import TagsFilterBox from '../../Questions/Main/Header/FiIterBox/TagsFilterBox';
 
 const TagsFilter = () => {
   return (
