@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import * as S from './Ask.style';
 
@@ -14,12 +14,21 @@ import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
 import { useCreatePost } from '../../../hooks/usePost';
 import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
+import { useNavigate } from 'react-router-dom';
 
 const Ask = () => {
   const { title, questionsUp, questionsDown, tags, author } =
     useRecoilValue(questions);
   const { data, status } = useGetAllPosts();
   const addPost = useCreatePost('questions', '/questions');
+  const navigate = useNavigate();
+
+  // 임시 비로그인 유저 리다이렉팅 로직
+  useEffect(() => {
+    if (!localStorage.getItem('user')) {
+      navigate('/login');
+    }
+  }, []);
 
   const onClick = () => {
     const mockData = Object.assign({

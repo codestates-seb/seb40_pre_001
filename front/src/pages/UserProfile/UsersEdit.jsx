@@ -5,9 +5,9 @@ import Spinner from '../../components/@common/Spinner';
 
 import * as S from './UserProfile.style';
 import MyPage from '../../components/MyPage/MyPage';
-import UserProfile from '../../components/MyPage/Profile/Profile';
+import UserEdit from '../../components/MyPage/Edit/Edit';
 
-const UserProfilePage = () => {
+const UserEditPage = () => {
   const { currentUser } = useGetCurrentUser();
   const {
     data: userStatus,
@@ -23,11 +23,11 @@ const UserProfilePage = () => {
     return (
       <S.ContentWrapper>
         <MyPage userStatus={userStatus}>
-          <UserProfile />
+          <UserEdit />
         </MyPage>
       </S.ContentWrapper>
     );
   }
 };
 
-export default UserProfilePage;
+export default UserEditPage;

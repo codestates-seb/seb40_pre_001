@@ -1,12 +1,12 @@
 import React from 'react';
 
-const PencilIcon = ({ fill, ...rest }) => {
+const PencilIcon = ({ fill, width, height, ...rest }) => {
   return (
     <svg
       aria-hidden='true'
       className='va-text-top svg-icon iconPencilSm'
-      width='14'
-      height='14'
+      width={width || '14'}
+      height={height || '14'}
       viewBox='0 0 14 14'
       {...rest}
     >
