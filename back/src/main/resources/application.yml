@@ -2,6 +2,7 @@ server:
   port: 8000
   context-path: /api
 
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
