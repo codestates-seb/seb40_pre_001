@@ -1,4 +1,4 @@
-import pagesState from './pagesState';
+import { pagesState, filterState } from './pagesState';
 import usersState from './users';
 
-export { pagesState, usersState };
+export { pagesState, filterState, usersState };

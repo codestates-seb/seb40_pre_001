@@ -42,7 +42,7 @@ const ROUTES = Object.freeze({
     name: 'Search',
   },
   USERPROFILE: {
-    path: '/userprofile',
+    path: '/users/:userid/:usernickname',
     name: 'UserProfile',
   },
   EDIT_POST: {

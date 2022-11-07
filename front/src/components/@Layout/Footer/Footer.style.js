@@ -14,12 +14,9 @@ const Footer = styled.footer`
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: 0;
-
-  /* transform: translateY(-100%) !important; */
 `;
 
 const Container = styled.div`
-  // footer랑 연결이 되어있네용
   max-width: 1264px;
   width: 100%;
   margin: 0 auto;

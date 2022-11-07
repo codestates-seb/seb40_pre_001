@@ -1,21 +1,28 @@
 import React from 'react';
 import * as S from './UserStatsBox.stlye';
 
-const UserStatsBox = () => {
+const UserStatsBox = ({ userStatus }) => {
+  const { answerCounts, questionCounts, reputation, totalViewCounts } =
+    userStatus;
+
   return (
     <S.Container>
       <S.StatsBox>
         <S.StatsBoxContentsCount>
-          1<S.StatsBoxContentsItem>reputation</S.StatsBoxContentsItem>
+          {reputation}
+          <S.StatsBoxContentsItem>reputation</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          0<S.StatsBoxContentsItem>reached</S.StatsBoxContentsItem>
+          {totalViewCounts}
+          <S.StatsBoxContentsItem>reached</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          0<S.StatsBoxContentsItem>answers</S.StatsBoxContentsItem>
+          {answerCounts}
+          <S.StatsBoxContentsItem>answers</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
         <S.StatsBoxContentsCount>
-          0<S.StatsBoxContentsItem>questions</S.StatsBoxContentsItem>
+          {questionCounts}
+          <S.StatsBoxContentsItem>questions</S.StatsBoxContentsItem>
         </S.StatsBoxContentsCount>
       </S.StatsBox>
     </S.Container>

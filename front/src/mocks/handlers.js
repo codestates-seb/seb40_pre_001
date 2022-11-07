@@ -80,13 +80,9 @@ export const handlers = [
   rest.delete('/api/questions/:id', (req, res, ctx) => {
     const { id } = req.params;
 
-    console.log(id);
-
     mockData = mockData.filter(
       (question) => question.questionId !== Number(id),
     );
-
-    console.log('deleted', mockData);
 
     return res(ctx.status(204), ctx.delay());
   }),

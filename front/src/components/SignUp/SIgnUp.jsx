@@ -26,7 +26,7 @@ const SignUpForm = () => {
     console.log(email, nickName);
     return await axios
       .post(
-        'https://630c-125-177-243-74.jp.ngrok.io/users/signup',
+        `${process.env.REACT_APP_BASE_URL}/users/signup`,
         {
           email: email,
           userNickname: nickName,

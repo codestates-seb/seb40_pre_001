@@ -9,7 +9,6 @@ import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
 
 const LeftBox = ({ type, questionId, answerId, currentUser, votes }) => {
-  // 프론트에서도 vote에 대한 상태관리 필요
   const { handleVoteCount: postUpVote } = usePostUpVote();
   const { handleVoteCount: postDownVote } = usePostDownVote();
   const { handleVoteCount: answerUpVote } = useAnswerUpVote();

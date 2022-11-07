@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
 const CustomLink = ({ className, path, children, ...rest }) => {
   // window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 

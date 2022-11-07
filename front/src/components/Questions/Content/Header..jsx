@@ -19,12 +19,12 @@ const Header = ({ title, createdAt, modifiedAt, viewCount }) => {
           <span>modified</span>
           <TimeAgo
             date={modifiedAt}
-            style={{ color: 'hsl(210, 8%, 15%)', fontSize: 13 }}
+            style={{ color: 'hsl(210, 8%, 15%)', fontSize: 13, width: 90 }}
           />
         </S.TextBox>
         <S.TextBox>
           <span>Viewed</span>
-          <p>{viewCount} times</p>
+          <p>{Math.ceil(viewCount / 3)} times</p>
         </S.TextBox>
       </S.Status>
     </>

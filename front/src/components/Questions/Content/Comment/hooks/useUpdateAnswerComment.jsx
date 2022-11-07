@@ -14,9 +14,7 @@ const useUpdateAnswerComment = () => {
   );
 
   const handleUpdate = (answerCommentId, userId, answerId, content) => {
-    if (confirm('정말 삭제하시겠습니까 ?')) {
-      mutate({ answerCommentId, userId, answerId, content });
-    }
+    mutate({ answerCommentId, userId, answerId, content });
   };
 
   return { handleUpdate, status };

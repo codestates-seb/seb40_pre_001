@@ -14,7 +14,7 @@ const UserInfo = ({ type, author, createdAt, isAuthor }) => {
         <S.UserBox>
           <a>
             <div>
-              <img src={UnnamedCard} width='32' height='32' />
+              <img src={UnnamedCard} alt='user avatar' width='32' height='32' />
             </div>
           </a>
           <S.UserDetails>

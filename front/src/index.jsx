@@ -26,7 +26,6 @@ const root = createRoot(container);
 
 root.render(
   <>
-    {/* <React.StrictMode> */}
     <GlobalStyles theme={theme} />
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
@@ -36,6 +35,5 @@ root.render(
         </Router>
       </RecoilRoot>
     </QueryClientProvider>
-    {/* </React.StrictMode> */}
   </>,
 );
