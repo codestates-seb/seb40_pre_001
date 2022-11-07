@@ -1,6 +1,5 @@
 /*eslint-disable*/
 import React from 'react';
-
 // import usePost from '../../../hooks/usePost';
 import * as S from './Ask.style';
 
@@ -11,7 +10,7 @@ import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import { AskForm } from './AskForm';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+import useCreateQuestions from '../../../hooks/questions/useCreateQuestions';
 import { useCreatePost } from '../../../hooks/usePost';
 import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
@@ -21,29 +20,22 @@ const Ask = () => {
   // 예시
   const { title, questionsUp, questionsDown, tags, author } =
     useRecoilValue(questions);
-  const { data, status } = useGetAllPosts();
+  const { mutate } = useCreateQuestions();
   const addPost = useCreatePost('questions', '/questions');
-
-  // createdAt
-  // const date = new Date().getDate();
-  // const day = new Date().getDay();
-  // const year = new Date().getFullYear();
-  // const randomDate = `${year}-${day}-${date}`;
 
   const onClick = () => {
     const mockData = Object.assign({
       userId: author,
       questionTitle: title,
-      tagIdList: tags,
+      tagIdList: [],
       context: questionsUp + questionsDown,
     });
 
-    //   status === 'success'
-    //     ? addPost.mutate(mockData)
-    //     : status === 'error'
-    //     ? console.log('Failed to add new Post')
-    //     : null;
-    // };
+    mutate === 'success'
+      ? addPost.mutate(mockData)
+      : mutate === 'error'
+      ? console.log('Failed to add new Post')
+      : null;
   };
 
   return (
