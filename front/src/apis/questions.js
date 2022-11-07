@@ -181,6 +181,20 @@ const updateAnswerComment = async (
   return response;
 };
 
+const updatePostComment = async (
+  questionCommentId,
+  userId,
+  questionId,
+  questionCommentContent,
+) => {
+  const response = await apiClient2.patch(
+    `/questions/comments/edit/${questionCommentId}`,
+    { userId, questionId, questionCommentContent },
+  );
+
+  return response;
+};
+
 export {
   createPost,
   getAllPosts,
@@ -201,6 +215,7 @@ export {
   deleteAnswerComment,
   deletePostComment,
   updateAnswerComment,
+  updatePostComment,
 };
 
 export { postUpVote, postDownVote, answerUpVote, answerDownVote };

@@ -7,7 +7,8 @@ import useDeleteAnswerComment from './hooks/useDeleteAnswerComment';
 import useDeletePostComment from './hooks/useDeletePostComment';
 import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
 import useUpdateAnswerComment from './hooks/useUpdateAnswerComment';
-import { getCommentsByAnswerId } from '../../../../apis/questions';
+import { useParams } from 'react-router-dom';
+import useUpdatePostComment from './hooks/useUpdatePostComment';
 
 const CommentList = ({
   type,
@@ -18,11 +19,13 @@ const CommentList = ({
   userId,
   answerId,
 }) => {
+  const { id: questionId } = useParams();
   const { currentUser } = useGetCurrentUser();
   const { handleDelete: handleDeleteAnswerComment } = useDeleteAnswerComment();
   const { handleDelete: handleDeletePostComment } = useDeletePostComment();
   const { handleUpdate: handleUpdateAnswerComment } = useUpdateAnswerComment();
-  answerId;
+  const { handleUpdate: handleUpdatePostComment } = useUpdatePostComment();
+
   return (
     <S.CommentList data-id={id}>
       <S.Li>
@@ -54,21 +57,31 @@ const CommentList = ({
                     onClick={(e) => {
                       if (e.target.tagName === 'svg') {
                         if (type === 'post') {
-                          console.log('post', e.target.id);
+                          const questionCommentContent = prompt(
+                            '댓글을 수정해 주세요.',
+                            content,
+                          );
+
+                          if (
+                            questionCommentContent &&
+                            questionCommentContent.length > 14
+                          ) {
+                            handleUpdatePostComment(
+                              e.target.id,
+                              userId,
+                              questionId,
+                              questionCommentContent,
+                            );
+                          }
 
                           // 수정
                         } else if (type === 'answer') {
-                          console.log('answer', e.target.id);
                           const commentContent = prompt(
                             '댓글을 수정해 주세요.',
                             content,
                           );
 
                           if (commentContent && commentContent.length > 14) {
-                            console.log(commentContent);
-                            console.log(userId);
-                            console.log(answerId);
-                            getCommentsByAnswerId(e.target.id);
                             handleUpdateAnswerComment(
                               e.target.id,
                               userId,
