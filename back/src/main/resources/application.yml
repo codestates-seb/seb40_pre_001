@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://pre-project-database.czoivzztz1lz.ap-northeast-2.rds.amazonaws.com:3306/stackoverflow?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
-    username: admin
-    password: david1aa
+    #url: jdbc:mysql://pre-project-database.czoivzztz1lz.ap-northeast-2.rds.amazonaws.com:3306/stackoverflow?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    #username: admin
+    #password: david1aa
 
   jpa:
     open-in-view: true
