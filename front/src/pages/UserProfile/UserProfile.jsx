@@ -1,19 +1,15 @@
 import React from 'react';
 import useGetUserStatus from '../../hooks/users/useGetUserStatus';
-import useGetCurrentUser from '../../hooks/users/useGetCurrentUser';
 import Spinner from '../../components/@common/Spinner';
 
 import * as S from './UserProfile.style';
 import MyPage from '../../components/MyPage/MyPage';
 import UserProfile from '../../components/MyPage/Profile/Profile';
+import { useParams } from 'react-router-dom';
 
 const UserProfilePage = () => {
-  const { currentUser } = useGetCurrentUser();
-  const {
-    data: userStatus,
-    isLoading,
-    isSuccess,
-  } = useGetUserStatus(currentUser.userId);
+  const { userId } = useParams();
+  const { data: userStatus, isLoading, isSuccess } = useGetUserStatus(userId);
 
   if (isLoading) {
     return <Spinner />;

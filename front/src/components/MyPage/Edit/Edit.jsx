@@ -3,21 +3,21 @@ import * as S from './Edit.style';
 
 import UnnamedCard from '../../../assets/unnamedCard.png';
 import StyledButton from '../../@common/Buttons/Button';
-import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
 import { useUpdateUserInfo } from '../hooks/useUpdateUserInfo';
 import { useParams } from 'react-router-dom';
+import useGetUserById from '../../../hooks/users/useGetUserById';
+import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
 
 const UserEdit = () => {
   const { userId } = useParams();
-  const { currentUser, isSuccess } = useGetCurrentUser();
   const emailRef = useRef(null);
   const addressRef = useRef(null);
   const userNicknameRef = useRef(null);
-
+  const { currentUser } = useGetCurrentUser();
+  const { data, isSuccess } = useGetUserById(userId);
   const { handleUpdateInfo } = useUpdateUserInfo();
 
   if (isSuccess) {
-    const { email, address, userNickname } = currentUser;
     return (
       <S.EditContainer>
         <S.TitleContainer>
@@ -31,27 +31,43 @@ const UserEdit = () => {
           <img name='img' src={UnnamedCard} width={164} height={164} alt='' />
 
           <S.Label htmlFor='email'>Email</S.Label>
-          <S.Input ref={emailRef} name='email' defaultValue={email} disabled />
+          <S.Input
+            ref={emailRef}
+            name='email'
+            defaultValue={data.email}
+            disabled
+          />
 
           <S.Label htmlFor='userNickname'>Nickname</S.Label>
           <S.Input
             ref={userNicknameRef}
             name='userNickname'
-            defaultValue={userNickname}
+            defaultValue={data.userNickname}
+            disabled={Number(userId) !== currentUser.userId}
           />
 
           <S.Label htmlFor='address'>Address</S.Label>
-          <S.Input ref={addressRef} name='address' defaultValue={address} />
+          <S.Input
+            ref={addressRef}
+            name='address'
+            defaultValue={data.address}
+            disabled={Number(userId) !== currentUser.userId}
+          />
         </S.PIContainer>
 
         <StyledButton
           content='Save profile'
           onClick={() => {
+            if (!addressRef.current.value || !userNicknameRef.current.value) {
+              return;
+            }
+
             handleUpdateInfo(userId, {
               address: addressRef.current.value,
               userNickname: userNicknameRef.current.value,
             });
           }}
+          disabled={Number(userId) !== currentUser.userId}
         />
       </S.EditContainer>
     );

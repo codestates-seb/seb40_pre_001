@@ -42,7 +42,7 @@ const Header = ({ currentUser, userNickname, createdAt, modifiedAt }) => {
             </S.Li>
           </S.UserInfoBox>
         </S.UserInfoContainer>
-        {!currentUser && (
+        {currentUser?.userId === Number(userId) && (
           <CustomLink path={`/users/edit/${userId}/${userNickname}`}>
             <HeaderButton
               icon={
