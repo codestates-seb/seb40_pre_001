@@ -14,6 +14,10 @@ import ArrowIcon from './ArrowIcon';
 import HistoryIcon from './HistoryIcon';
 import SaveIcon from './SaveIcon';
 
+// MyPage
+import CakeIcon from './CakeIcon';
+import ClockIcon from './ClockIcon';
+
 // SNS related
 import GoogleIcon from './GoogleIcon';
 import GithubIcon from './GithubIcon';
@@ -24,6 +28,7 @@ import LabelIcon from './LabelIcon';
 import QuestionIcon from './QuestionIcon';
 import TrophyIcon from './TrophyIcon';
 import UpDownIcon from './UpDownIcon';
+import CalendarIcon from './CalendarIcon';
 
 // Not Found
 import NotFoundIcon from './NotFoundIcon';
@@ -46,6 +51,9 @@ export {
   ArrowIcon,
   HistoryIcon,
   SaveIcon,
+  CakeIcon,
+  ClockIcon,
+  CalendarIcon,
 };
 
 // NotFound
