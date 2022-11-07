@@ -6,32 +6,39 @@ import FilteredPostBox from '../../components/Questions/Main/Post/FilteredPostBo
 import SearchNotFound from '../../components/Questions/Main/Post/SearchNotFound/SearchNotFound';
 import { useGetFilteredPost } from '../../hooks/questions';
 import { useSearchParams } from 'react-router-dom';
+import Spinner from '../../components/@common/Spinner';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('q');
-  const { data, isSuccess } = useGetFilteredPost(keyword);
+  const { data, isSuccess, isLoading } = useGetFilteredPost(keyword);
 
-  return (
-    <S.ContentWrapper>
-      <S.MainContainer>
-        {isSuccess && (
-          <>
-            <Header title='Search Results' length={data.length} />
-            {data.length !== 0 ? (
-              <>
-                <FilteredPostBox data={data} />
-                <Pagination length={data.length} />
-              </>
-            ) : (
-              <SearchNotFound />
-            )}
-          </>
-        )}
-      </S.MainContainer>
-      <Widget />
-    </S.ContentWrapper>
-  );
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isSuccess) {
+    return (
+      <S.ContentWrapper>
+        <S.MainContainer>
+          {isSuccess && (
+            <>
+              <Header title='Search Results' length={data?.length} />
+              {data.length !== 0 ? (
+                <>
+                  <FilteredPostBox data={data} />
+                  <Pagination length={data?.length} />
+                </>
+              ) : (
+                <SearchNotFound />
+              )}
+            </>
+          )}
+        </S.MainContainer>
+        <Widget />
+      </S.ContentWrapper>
+    );
+  }
 };
 
 export default Search;
