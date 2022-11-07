@@ -46,6 +46,8 @@
   
   Discord: 소통 툴 
   
+  GIT & GitHub: 협업 툴 
+  
 
 ## ⚙️ 인프라 기술 스택 
   
