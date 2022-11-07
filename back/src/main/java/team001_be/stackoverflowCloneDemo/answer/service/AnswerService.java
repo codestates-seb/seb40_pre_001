@@ -6,7 +6,6 @@ import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.answer.repository.AnswerRepository;
 import team001_be.stackoverflowCloneDemo.exception.BusinessLogicException;
 import team001_be.stackoverflowCloneDemo.exception.ExceptionCode;
-import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.question.service.QuestionService;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 import team001_be.stackoverflowCloneDemo.user.service.UserService;

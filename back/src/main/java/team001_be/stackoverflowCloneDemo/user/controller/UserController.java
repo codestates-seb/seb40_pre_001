@@ -1,6 +1,5 @@
 package team001_be.stackoverflowCloneDemo.user.controller;
 
-import io.jsonwebtoken.io.IOException;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import team001_be.stackoverflowCloneDemo.response.MultiResponseDto;
 import team001_be.stackoverflowCloneDemo.response.StatsResponseDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserEmailDto;
 import team001_be.stackoverflowCloneDemo.user.dto.UserPatchDto;

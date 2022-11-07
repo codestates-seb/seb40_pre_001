@@ -16,19 +16,20 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table
 public class Answer extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
     @ManyToOne
-    @JoinColumn(name = "QUESTION_ID")
+    @JoinColumn(name = "question_id")
     @ToString.Exclude
     @Setter
     private Question question;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     @ToString.Exclude
     @Setter
     private User user;
@@ -38,7 +39,7 @@ public class Answer extends Auditable {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<AnswerComment> answerCommentList = new ArrayList<>();
 
-    @Column(length = 65535, nullable = false)
+    @Column(length = 2000, nullable = false)
     @Setter
     private String context;
 

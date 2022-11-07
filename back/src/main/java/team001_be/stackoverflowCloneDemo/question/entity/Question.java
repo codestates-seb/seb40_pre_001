@@ -18,11 +18,11 @@ import java.util.*;
 public class Question extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "QUESTION_ID")
+    @Column
     private Long questionId;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     @ToString.Exclude
     @Setter
     private User user;
@@ -31,7 +31,7 @@ public class Question extends Auditable {
     @Column(length = 100, nullable = false)
     private String questionTitle;
 
-    @Column(length = 65535, nullable = false)
+    @Column(length = 2000, nullable = false)
     private String context;
 
     public void setViewCount(Long viewCount) {

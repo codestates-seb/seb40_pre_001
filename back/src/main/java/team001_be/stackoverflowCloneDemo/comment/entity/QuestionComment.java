@@ -1,14 +1,11 @@
 package team001_be.stackoverflowCloneDemo.comment.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
-import team001_be.stackoverflowCloneDemo.question.dto.QuestionPostDto;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
 import team001_be.stackoverflowCloneDemo.user.entity.User;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Getter

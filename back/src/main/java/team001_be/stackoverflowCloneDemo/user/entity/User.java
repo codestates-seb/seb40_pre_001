@@ -5,13 +5,11 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import team001_be.stackoverflowCloneDemo.answer.entity.Answer;
 import team001_be.stackoverflowCloneDemo.question.entity.Question;
-import team001_be.stackoverflowCloneDemo.user.dto.UserDto;
 import team001_be.stackoverflowCloneDemo.audit.Auditable;
 
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.chrono.MinguoChronology;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "users")
 public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,16 +30,16 @@ public class User extends Auditable {
     @Column(nullable = false, updatable = false)
     private String password;
 
-    @Column(name = "\"userNickname\"")
+    @Column
     public String userNickname;
 
-    @Column(name = "description")
+    @Column
     public String description;
 
-    @Column(name = "address")
+    @Column
     public String address;
 
-    @Column(name = "birthday")
+    @Column
     private LocalDate birthday;
 
     @ElementCollection(fetch = FetchType.EAGER)
