@@ -14,7 +14,7 @@ import NotFound from './404/404';
 import Search from './Search/Search';
 import EditPostPage from './Questions/Edit/EditPost';
 import EditAnswerPage from './Questions/Edit/EditAnswer';
-import AskPage from './Questions/ASK/AskPage';
+import AskPage from './Questions/Ask/AskPage';
 
 const Questions = lazy(() => import('./Questions/Questions'));
 const Post = lazy(() => import('./Questions/Post/Post'));

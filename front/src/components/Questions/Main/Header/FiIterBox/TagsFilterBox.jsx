@@ -1,5 +1,6 @@
 import React from 'react';
-import { TagsCategoryButton } from '../../../../../constants/pages';
+import { TagsCategoryButton } from '../../../../../constants/';
+
 import * as S from './UsersFilterBox.style';
 
 const TagsFilterBox = () => {
