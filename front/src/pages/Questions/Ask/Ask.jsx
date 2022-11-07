@@ -1,6 +1,5 @@
 /*eslint-disable*/
-import React, { useEffect } from 'react';
-
+import React from 'react';
 import * as S from './Ask.style';
 
 import ASK_FORM from '../../../constants/askform';
@@ -10,7 +9,7 @@ import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import { AskForm } from './AskForm';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+import useCreateQuestions from '../../../hooks/questions/useCreateQuestions';
 import { useCreatePost } from '../../../hooks/usePost';
 import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
@@ -19,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 const Ask = () => {
   const { title, questionsUp, questionsDown, tags, author } =
     useRecoilValue(questions);
-  const { data, status } = useGetAllPosts();
+  const { mutate } = useCreateQuestions();
   const addPost = useCreatePost('questions', '/questions');
   const navigate = useNavigate();
 
@@ -34,9 +33,15 @@ const Ask = () => {
     const mockData = Object.assign({
       userId: author,
       questionTitle: title,
-      tagIdList: tags,
+      tagIdList: [],
       context: questionsUp + questionsDown,
     });
+
+    mutate === 'success'
+      ? addPost.mutate(mockData)
+      : mutate === 'error'
+      ? console.log('Failed to add new Post')
+      : null;
   };
 
   return (
