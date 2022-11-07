@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAnswersById } from '../../apis/questions';
+import { getAllUsers } from '../../apis/users';
 
-const useGetAnswersById = (id) => {
+const useGetAllUsers = () => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['answers', id],
-    () => getAnswersById(id),
+    ['allUsers'],
+    getAllUsers,
     {
       refetchOnWindowFocus: false,
+      suspense: true,
     },
   );
 
   return { data, isSuccess, isLoading, isError };
 };
 
-export default useGetAnswersById;
+export default useGetAllUsers;

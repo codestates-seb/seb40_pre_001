@@ -3,9 +3,9 @@ import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
 import TimeAgo from 'react-timeago';
 import * as S from './Comment.style';
 import { PencilIcon } from '../../../@common/Icons';
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 import useDeleteAnswerComment from './hooks/useDeleteAnswerComment';
 import useDeletePostComment from './hooks/useDeletePostComment';
+import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
 // import useUpdateAnswerComment from './hooks/useUpdateAnswerComment';
 
 const CommentList = ({

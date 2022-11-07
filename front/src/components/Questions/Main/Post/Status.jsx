@@ -1,7 +1,6 @@
 import React from 'react';
-
+import { useGetAnswersLength } from '../../../../hooks/questions';
 import * as S from './Post.style';
-import useGetAnswersLength from '../../../../hooks/questions/useGetAnswerLength';
 
 const PostStatus = ({ id, views, votes }) => {
   const { length, isSuccess } = useGetAnswersLength(id);

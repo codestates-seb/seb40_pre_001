@@ -14,6 +14,12 @@ const useCreateComment = () => {
   );
 
   const handleCreate = (userId, questionId, questionCommentContent) => {
+    console.log(userId);
+    if (!userId) {
+      alert('로그인을 해주시기 바랍니다.');
+      return;
+    }
+
     if (questionCommentContent.length < 15) {
       alert('댓글은 15자 이상 입력하셔야 합니다.');
       return;

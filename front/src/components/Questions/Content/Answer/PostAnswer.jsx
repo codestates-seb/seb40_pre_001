@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { StyledButton } from '../../../@common/Buttons';
 import { TextEditor } from '../../../@common/TextEditor/TextEditor';
 import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
-import useCreateAnswer from '../../../../hooks/questions/useCreateAnswer';
+import { useCreateAnswer } from '../../../../hooks/questions';
 import * as S from './Answer.style';
 
 const PostAnswer = ({ questionId, currentUser }) => {

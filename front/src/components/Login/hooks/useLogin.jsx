@@ -22,7 +22,10 @@ const useLogin = () => {
         navigate(ROUTES.QUESTIONS.path)
       ),
       onError: () => {
+        alert('이메일 혹은 비밀번호를 확인해 주세요.');
         console.log('으악 로그인 실패');
+
+        return;
       },
     },
     {

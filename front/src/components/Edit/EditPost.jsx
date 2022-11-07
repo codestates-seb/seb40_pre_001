@@ -7,8 +7,8 @@ import Spinner from '../@common/Spinner';
 import { TextEditor } from '../@common/TextEditor/TextEditor';
 import { useRef } from 'react';
 import { StyledButton } from '../@common/Buttons';
-import useGetCurrentUser from '../../hooks/useGetCurrentUser';
 import useEditPost from './hooks/useEditPost';
+import useGetCurrentUser from '../../hooks/users/useGetCurrentUser';
 
 const EditPost = () => {
   const { id } = useParams();

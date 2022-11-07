@@ -23,6 +23,11 @@ const PostComment = ({
         onClick={(e) => {
           e.preventDefault();
           setIsClicked(!isClicked);
+
+          if (!currentUser || !currentUser.userId) {
+            alert('로그인을 해주시기 바랍니다.');
+            return;
+          }
           type === 'post'
             ? handleCreateComment(currentUser.userId, id, textRef.current.value)
             : handleCreateAnswerComment(

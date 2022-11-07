@@ -1,7 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { postDownVote, postUpVote } from '../../apis/questions';
+import useGetCurrentUser from '../users/useGetCurrentUser';
 
 const usePostUpVote = () => {
+  const { currentUser } = useGetCurrentUser();
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
@@ -9,6 +11,12 @@ const usePostUpVote = () => {
     ({ questionId, userId }) => postUpVote(questionId, userId),
     {
       onSuccess: () => queryClient.invalidateQueries(['postById']),
+      onError: () => {
+        if (!currentUser) {
+          alert('로그인을 해주시기 바랍니다.');
+          return;
+        }
+      },
     },
   );
 
@@ -19,6 +27,7 @@ const usePostUpVote = () => {
 };
 
 const usePostDownVote = () => {
+  const { currentUser } = useGetCurrentUser();
   const queryClient = useQueryClient();
 
   const { mutate, status } = useMutation(
@@ -26,6 +35,12 @@ const usePostDownVote = () => {
     ({ questionId, userId }) => postDownVote(questionId, userId),
     {
       onSuccess: () => queryClient.invalidateQueries(['postById']),
+      onError: () => {
+        if (!currentUser) {
+          alert('로그인을 해주시기 바랍니다.');
+          return;
+        }
+      },
     },
   );
 

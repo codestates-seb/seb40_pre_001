@@ -1,8 +1,8 @@
 import React from 'react';
-import * as S from './Post.style';
 import CustomLink from '../../../@common/Link';
 import TagButton from '../../../@common/Buttons/Tag';
 import UserCard from './UserCard';
+import * as S from './Post.style';
 
 const PostDetails = ({
   data: { questionId, questionTitle, context, createdAt, userId },

@@ -1,7 +1,5 @@
-/*eslint-disable*/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { categoryButton } from '../../../../../constants';
 import { pagesState } from '../../../../../store';
 import { FilterIcon } from '../../../../@common/Icons';
 import * as S from './FilterBox.style';

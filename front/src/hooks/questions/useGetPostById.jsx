@@ -5,12 +5,13 @@ import { getPostById } from '../../apis/questions';
 const useGetPostById = (id) => {
   const navigate = useNavigate();
   const { data, isSuccess, isLoading, isError, status } = useQuery(
-    ['postById', id],
+    ['postById'],
     () => getPostById(id),
     {
       onError: () => navigate('/notfound'),
       retry: false,
       refetchOnWindowFocus: false,
+      staleTime: 1000,
     },
   );
 

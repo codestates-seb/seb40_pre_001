@@ -1,10 +1,10 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { pagesState } from '../../../../store';
 
 import PostDetails from './Details';
 import PostStatus from './Status';
 import * as S from './Post.style';
-import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../../../store';
 
 const PostBox = ({ data }) => {
   const { selectedLimit, currentPage } = useRecoilValue(pagesState);

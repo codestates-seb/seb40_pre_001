@@ -11,8 +11,8 @@ import Spinner from '../../@common/Spinner';
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
 import { useParams } from 'react-router-dom';
-import useGetPostById from '../../../hooks/questions/useGetPostById';
-import useGetCurrentUser from '../../../hooks/useGetCurrentUser';
+import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
+import { useGetPostById } from '../../../hooks/questions';
 
 const Content = () => {
   const { id } = useParams();

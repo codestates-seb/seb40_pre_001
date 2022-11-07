@@ -1,12 +1,10 @@
 import React from 'react';
 import {
+  useAnswerDownVote,
+  useAnswerUpVote,
   usePostDownVote,
   usePostUpVote,
-} from '../../../../hooks/questions/usePostVote';
-import {
-  useAnswerUpVote,
-  useAnswerDownVote,
-} from '../../../../hooks/questions/useAnswerVote';
+} from '../../../../hooks/questions';
 import { ArrowIcon, HistoryIcon, SaveIcon } from '../../../@common/Icons';
 import * as S from './PostBody.style';
 
@@ -23,9 +21,9 @@ const LeftBox = ({ type, questionId, answerId, currentUser, votes }) => {
         <S.IconContainer
           onClick={() => {
             if (type === 'post') {
-              postUpVote(questionId, currentUser.userId);
+              postUpVote(questionId, currentUser?.userId);
             } else if (type === 'answer') {
-              answerUpVote(questionId, answerId, currentUser.userId);
+              answerUpVote(questionId, answerId, currentUser?.userId);
             }
           }}
         >
@@ -37,9 +35,9 @@ const LeftBox = ({ type, questionId, answerId, currentUser, votes }) => {
         <S.IconContainer
           onClick={() => {
             if (type === 'post') {
-              postDownVote(questionId, currentUser.userId);
+              postDownVote(questionId, currentUser?.userId);
             } else if (type === 'answer') {
-              answerDownVote(questionId, answerId, currentUser.userId);
+              answerDownVote(questionId, answerId, currentUser?.userId);
             }
           }}
         >

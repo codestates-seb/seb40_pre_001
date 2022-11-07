@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import useGetUserById from '../../../../hooks/useGetUserById';
-import { TagButton } from '../../../@common/Buttons';
-import * as S from './PostBody.style';
-import UserInfo from './UserInfo';
-import useDeletePost from '../../../../hooks/questions/useDeletePost';
-import CustomLink from '../../../@common/Link';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { pagesState } from '../../../../store';
+import * as S from './PostBody.style';
+import UserInfo from './UserInfo';
+import CustomLink from '../../../@common/Link';
+import { TagButton } from '../../../@common/Buttons';
+import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
+import useGetUserById from '../../../../hooks/users/useGetUserById';
+import { useDeleteAnswer, useDeletePost } from '../../../../hooks/questions';
 import CommentBox from '../Comment/Comment';
-import useDeleteAnswer from '../../../../hooks/questions/useDeleteAnswer';
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 
 const RightBox = ({
   type,
