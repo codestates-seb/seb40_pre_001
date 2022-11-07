@@ -74,6 +74,8 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
           ref={editorRef}
           onChange={(e) => handleRegisterButton()}
           required
+          height='
+          300px'
         ></TextEditor>
       ) : (
         <input

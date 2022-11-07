@@ -11,13 +11,14 @@ import SignUp from './AuthPage/Signup';
 import Post from './Questions/Post/Post';
 import Users from './Users/Users';
 import UserProfile from './UserProfile/UserProfile';
-import Ask from './Questions/ASK/Ask';
+
 import NotFound from './404/404';
 import Search from './Search/Search';
-import Question from './PagesLayout/Question';
+// import Question from './PagesLayout/Question';
 import { lazy } from 'react';
 import EditPostPage from './Questions/Edit/EditPost';
 import EditAnswerPage from './Questions/Edit/EditAnswer';
+import AskPage from './Questions/ASK/AskPage';
 
 const Questions = lazy(() => import('./Questions/Questions'));
 
@@ -91,20 +92,25 @@ const PAGES = [
       },
     ],
   },
-  {
-    element: <Question />,
-    children: [
-      {
-        name: ROUTES.ASK.name,
-        path: ROUTES.ASK.path,
-        element: <Ask />,
-      },
-    ],
-  },
+  // {
+  //   element: <Question />,
+  //   children: [
+  //     {
+  //       name: ROUTES.ASK.name,
+  //       path: ROUTES.ASK.path,
+  //       element: <Ask />,
+  //     },
+  //   ],
+  // },
   {
     name: ROUTES.NOT_FOUND.name,
     path: ROUTES.NOT_FOUND.path,
     element: <NotFound />,
+  },
+  {
+    name: ROUTES.ASK.name,
+    path: ROUTES.ASK.path,
+    element: <AskPage />,
   },
 ];
 
