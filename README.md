@@ -76,11 +76,11 @@
 - 질문 조회수 및 쿠키를 통한 중복 방지 기능 
 -	질문 및 답변 추천, 비추천 기능 및 중복 방지 기능
 -	질문 검색 기능
--	질문 목록 페이징 
+- 질문 목록 페이징 기능
 -	답변 CRUD 기능  (ManyToOne) 
 - 답변의 댓글 CRUD 기능 (ManyToOne) 
 - 질문의 댓글 CRUD 기능 (ManyToOne)
-- 질문의  CRUD 기능 (ManyToMany)
+- 질문의 태그 CRUD 기능 (ManyToMany)
 - Dummy 유저 데이터 생성을 통한 Spring Test 기능 
   
 ## 🤝 팀문화
