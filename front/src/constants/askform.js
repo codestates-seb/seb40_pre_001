@@ -8,6 +8,7 @@ const ASK_FORM = Object.freeze([
     MARKDOWN: false,
     PLACEHOLDER:
       'e.g. Is there an R function for finding the index of an element in a vector?',
+    TYPE: 'title',
   },
   {
     TITLE: 'What are the details of your problem?',
@@ -16,6 +17,7 @@ const ASK_FORM = Object.freeze([
     INDEX: 2,
     BUTTON: false,
     MARKDOWN: true,
+    TYPE: 'contextUp',
   },
   {
     TITLE: 'What did you try and what were you expecting?',
@@ -24,6 +26,7 @@ const ASK_FORM = Object.freeze([
     INDEX: 3,
     BUTTON: false,
     MARKDOWN: true,
+    TYPE: 'contextDown',
   },
   {
     TITLE: 'Tags',
@@ -33,6 +36,7 @@ const ASK_FORM = Object.freeze([
     BUTTON: false,
     MARKDOWN: false,
     PLACEHOLDER: 'e.g. (objective-c json asp.net)',
+    TYPE: 'tags',
   },
 ]);
 
