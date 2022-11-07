@@ -3,18 +3,13 @@ import { useParams } from 'react-router-dom';
 import { StyledButton } from '../../../@common/Buttons';
 import { TextEditor } from '../../../@common/TextEditor/TextEditor';
 import SmallBlueSpan from '../../../@common/Text/SmallBlueSpan';
-import usePostAnswer from '../../../../hooks/questions/usePostAnswer';
+import { useCreateAnswer } from '../../../../hooks/questions';
 import * as S from './Answer.style';
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser';
 
-const PostAnswer = ({ questionId }) => {
+const PostAnswer = ({ questionId, currentUser }) => {
   const { id } = useParams();
-  const { currentUser } = useGetCurrentUser();
-  const { mutate } = usePostAnswer(id);
-
+  const { mutate } = useCreateAnswer(id);
   const [editor, setEditor] = useState('');
-  setEditor;
-
   const editorRef = useRef('');
 
   const textEditorValidator = (text) => {
@@ -50,7 +45,7 @@ const PostAnswer = ({ questionId }) => {
           width='727px'
           height='255px'
           onChange={handleEditor}
-          value={editor}
+          value={editor || ''}
         />
         <S.PreviewText>{editor.replace(/<[^>]+>/g, '')}</S.PreviewText>
       </S.AnswerContainer>
@@ -64,6 +59,7 @@ const PostAnswer = ({ questionId }) => {
               userId: currentUser?.userId,
               context: editor,
             });
+            setEditor('');
           }
         }}
       />

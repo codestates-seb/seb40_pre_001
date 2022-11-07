@@ -1,8 +1,10 @@
 import React from 'react';
-
+import { useGetAnswersLength } from '../../../../hooks/questions';
 import * as S from './Post.style';
 
-const PostStatus = ({ views, votes }) => {
+const PostStatus = ({ id, views, votes }) => {
+  const { length, isSuccess } = useGetAnswersLength(id);
+
   return (
     <S.BoxLeft>
       <S.VoteBox>
@@ -10,7 +12,7 @@ const PostStatus = ({ views, votes }) => {
         <span>votes</span>
       </S.VoteBox>
       <S.AnswerBox>
-        <span>{10}</span>
+        {isSuccess && <span>{length}</span>}
         <span>answers</span>
       </S.AnswerBox>
       <S.ViewBox>

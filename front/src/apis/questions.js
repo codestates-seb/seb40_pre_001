@@ -19,10 +19,9 @@ const createPost = async (question) => {
   // 성공
   // questionTagList null
   // {
-  //   userId: 1,
-  //   questionTitle: 'new title new title new title new title',
-  //   context:
-  //     'sakljdsalkdjskaldjksaljdoisjvklzxclkxzjclasm,nelkjsakljfoiwqjnkldasnmkldjwqiojdas',
+  //   userId,
+  //   questionTitle,
+  //   context,
   //   questionTagList: ['Java', 'Javasciprt', 'Python'],
   // }
 
@@ -43,7 +42,7 @@ const getPostById = async (id) => {
   return data;
 };
 
-const demoUpdateQuestionById = async (id, newDetails) => {
+const updateQuestionById = async (id, newDetails) => {
   // 성공
   // id === questionId
   // {
@@ -62,7 +61,7 @@ const demoUpdateQuestionById = async (id, newDetails) => {
 const getSimplePostById = async (id) => {
   // id === questionId
   // 성공
-  const response = await apiClient2.get(`questions/simple/${id}`);
+  const response = await apiClient2.get(`/questions/simple/${id}`);
 
   console.log(response.data.data);
 
@@ -70,9 +69,9 @@ const getSimplePostById = async (id) => {
 };
 
 const getPostsByKeyword = async (keyword) => {
-  const { data } = await apiClient2.get('/questions/search', {
-    params: { searchTitle: keyword },
-  });
+  const { data } = await apiClient2.get(
+    `/questions/search?searchTitle=${keyword}`,
+  );
 
   console.log(data);
 
@@ -129,18 +128,101 @@ const deleteAnswer = async (userId, questionId, answerId) => {
 // Comment related
 
 const createComment = async (userId, questionId, questionCommentContent) => {
-  const response = apiClient2.post('/question/comments', {
+  const response = await apiClient2.post('/questions/comments', {
     userId,
     questionId,
     questionCommentContent,
   });
+
+  return response;
+};
+
+const createAnswerComment = async (userId, answerId, answerCommentContent) => {
+  const response = await apiClient2.post(`/answers/comments`, {
+    userId,
+    answerId,
+    answerCommentContent,
+  });
+
+  return response;
+};
+
+const getCommentsByAnswerId = async (answerCommentId) => {
+  const response = await apiClient2.get(`/answers/comments/${answerCommentId}`);
 
   console.log(response);
 
   return response;
 };
 
-export { demoUpdateQuestionById };
+const postUpVote = async (questionId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/upvote/${questionId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+
+const postDownVote = async (questionId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/downvote/${questionId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+
+const answerUpVote = async (questionId, answerId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/upvote/${questionId}/${answerId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+const answerDownVote = async (questionId, answerId, userId) => {
+  const response = await apiClient2.post(
+    `/questions/downvote/${questionId}/${answerId}?userId=${userId}`,
+  );
+
+  console.log(response);
+
+  return response;
+};
+
+const deleteAnswerComment = async (answerCommentId, userId) => {
+  const response = await apiClient2.delete(
+    `/answers/comments/${answerCommentId}?userId=${userId}`,
+  );
+
+  return response;
+};
+
+const deletePostComment = async (postCommentId, userId) => {
+  const response = await apiClient2.delete(
+    `/questions/comments/${postCommentId}?userId=${userId}`,
+  );
+
+  return response;
+};
+
+const updateAnswerComment = async (
+  answerCommentId,
+  userId,
+  answerId,
+  content,
+) => {
+  const response = await apiClient2.patch(
+    `/answers/comments/edit/${answerCommentId}`,
+    { userId, answerId, content },
+  );
+
+  return response;
+};
 
 export {
   createPost,
@@ -150,8 +232,18 @@ export {
   deletePost,
   getPostsByKeyword,
   modifyPost,
+  updateQuestionById,
 };
 
 export { createAnswer, modifyAnswer, deleteAnswer };
 
-export { createComment };
+export {
+  createComment,
+  createAnswerComment,
+  getCommentsByAnswerId,
+  deleteAnswerComment,
+  deletePostComment,
+  updateAnswerComment,
+};
+
+export { postUpVote, postDownVote, answerUpVote, answerDownVote };

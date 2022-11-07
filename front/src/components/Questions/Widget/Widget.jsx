@@ -3,9 +3,9 @@ import Collectives from './Collectives/Collectives';
 import YellowBox from './YellowBox/YellowBox';
 import RelatedTags from './WidgetBottom/RelatedTags';
 import HotNetwork from './WidgetBottom/HotNetwork';
+import SmallBlueSpan from '../../@common/Text/SmallBlueSpan';
 
 import * as S from './Widget.style';
-import SmallBlueSpan from '../../@common/Text/SmallBlueSpan';
 
 const Widget = () => {
   return (

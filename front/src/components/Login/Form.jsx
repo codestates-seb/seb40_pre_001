@@ -4,58 +4,28 @@ import SmallLogoIcon from '../@common/Icons/SmallLogoIcon';
 import LoginHelp from '../../components/Login/LoginHelp';
 import SnsButton from '../@common/Buttons/Sns';
 import SNS_BUTTONS from '../../constants/snsButton.js';
-import { useMutation } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
 import { usersState } from '../../store';
-import { postLogin } from '../../apis/auth';
-import { getCurrentUser } from '../../apis/users.js';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../constants';
 import { useEffect } from 'react';
+import useLogin from './hooks/useLogin.jsx';
 
 const Form = () => {
   const [authState, setIsAuthenticated] = useRecoilState(usersState);
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [emailValid, setEmailValid] = useState(false);
-  const [pwValid, setPwdvalid] = useState(false);
+  const [pwValid, setPwValid] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const navigate = useNavigate();
-
-  // hooks 로 분리 필요
-  const { mutate } = useMutation(
-    postLogin,
-    {
-      onSuccess: () => {
-        getCurrentUser();
-        setIsAuthenticated({
-          ...authState,
-          isAuthenticated: true,
-        });
-
-        navigate(ROUTES.QUESTIONS.path);
-      },
-      onError: () => {
-        console.log('으악');
-      },
-    },
-    {
-      retry: false,
-    },
-  );
+  const { mutate } = useLogin();
 
   useEffect(() => {
     setIsAuthenticated({
       ...authState,
       currentUser: localStorage.getItem('user'),
     });
-  }, []);
 
-  // const credential = {
-  //   email: 'test94@gamil.com',
-  //   password: 'a12345678',
-  //   userNickname: 'test12345',
-  // };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -75,9 +45,9 @@ const Form = () => {
       // eslint-disable-next-line
       /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     if (regex.test(pw)) {
-      setPwdvalid(true);
+      setPwValid(true);
     } else {
-      setPw(false);
+      setPwValid(false);
     }
   };
 
@@ -145,7 +115,7 @@ const Form = () => {
             disabled={disabled}
             onClick={(e) => {
               e.preventDefault();
-              mutate({ email: 'test1@test1.com', password: 'test1234' });
+              mutate({ email, password: pw });
             }}
           >
             Log in

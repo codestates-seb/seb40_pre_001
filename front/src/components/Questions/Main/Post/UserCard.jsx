@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './Post.style';
 import TimeAgo from 'react-timeago';
-import useGetUserById from '../../../../hooks/useGetUserById';
+import useGetUserById from '../../../../hooks/users/useGetUserById';
+import * as S from './Post.style';
 
 const UserCard = ({ id, createdAt }) => {
   const { data } = useGetUserById(id);

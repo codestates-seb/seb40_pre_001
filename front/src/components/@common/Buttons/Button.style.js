@@ -55,7 +55,7 @@ const StyledTag = styled.button`
   background-color: hsl(205, 46%, 92%);
   border-color: transparent;
   display: inline-block;
-  padding: 0.4em 0.5em;
+  padding: 0.4em 0.5em !important;
   margin: 0 2px 2px 0;
   line-height: 1;
   white-space: nowrap;

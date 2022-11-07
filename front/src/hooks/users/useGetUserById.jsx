@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllUsers } from '../apis/users';
+import { getUserById } from '../../apis/users';
 
-const useGetAllUsers = () => {
+const useGetUserById = (id) => {
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['allUsers'],
-    getAllUsers,
+    ['userById', id],
+    () => getUserById(id),
     {
       refetchOnWindowFocus: false,
       suspense: true,
@@ -14,4 +14,4 @@ const useGetAllUsers = () => {
   return { data, isSuccess, isLoading, isError };
 };
 
-export default useGetAllUsers;
+export default useGetUserById;

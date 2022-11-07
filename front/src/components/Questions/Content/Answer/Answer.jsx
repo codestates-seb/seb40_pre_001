@@ -3,14 +3,20 @@ import LeftBox from '../PostBody/LeftBox';
 import RightBox from '../PostBody/RightBox';
 import * as S from '../Content.style';
 
-const Answer = ({ detail }) => {
+const Answer = ({ detail, currentUser }) => {
   const { context, createdAt, questionId, userId, voteCount, answerId } =
     detail;
 
   return (
     <>
       <S.PostLayout>
-        <LeftBox votes={voteCount} />
+        <LeftBox
+          type='answer'
+          votes={voteCount}
+          questionId={questionId}
+          answerId={answerId}
+          currentUser={currentUser}
+        />
         <RightBox
           type='answer'
           answerId={answerId}

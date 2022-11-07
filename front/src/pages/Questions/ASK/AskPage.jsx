@@ -1,12 +1,12 @@
 import React from 'react';
-import { Nav, Footer } from '../../../components/@Layout';
+import { Footer, Nav } from '../../../components/@Layout';
 import Ask from './Ask';
 
 const AskPage = () => {
   return (
     <>
-      <Nav></Nav>
-      <Ask></Ask>
+      <Nav />
+      <Ask />
       <Footer />
     </>
   );

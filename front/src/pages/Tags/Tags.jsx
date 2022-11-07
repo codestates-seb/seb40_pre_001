@@ -1,12 +1,10 @@
 import React from 'react';
 import * as S from './Tags.style';
-import Title from '../../components/Title/Title';
 import TagsTitleText from './TagsTitleText';
 import TagsAll from './TagsAll';
 import TagsFilter from '../../components/TagsPage/TagsFilter/TagsFilter';
 import axios from 'axios';
 import Contents from '../../components/TagsPage/Tags/Contents';
-import LeftBox from '../../components/Questions/Content/PostBody/LeftBox';
 // import { getAlltagsData } from '../../apis/tags';
 import { useQuery } from '@tanstack/react-query';
 
@@ -36,7 +34,7 @@ const Tags = () => {
   // getAlltagsData();
   return (
     <S.Container>
-      <Title title={'Tags'} />
+      {/* <Title title={'Tags'} /> */}
       <TagsTitleText />
       <TagsAll />
       <TagsFilter />
@@ -48,9 +46,7 @@ const Tags = () => {
         <Contents />
         {console.log(data)}
       </S.TagsContainer>
-      <S.PagiNationContainer>
-        <LeftBox />
-      </S.PagiNationContainer>
+      <S.PagiNationContainer></S.PagiNationContainer>
     </S.Container>
   );
 };

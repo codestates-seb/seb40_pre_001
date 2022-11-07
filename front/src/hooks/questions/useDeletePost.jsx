@@ -8,14 +8,13 @@ const useDeletePost = () => {
   const navigate = useNavigate();
 
   const { mutate, status } = useMutation(
+    ['questions'],
     ({ id, userId }) => deletePost(id, userId),
     {
-      onSuccess: () => {
-        return (
-          queryClient.invalidateQueries(['questions']),
-          navigate(ROUTES.QUESTIONS.path)
-        );
-      },
+      onSuccess: () => (
+        queryClient.invalidateQueries(['questions']),
+        navigate(ROUTES.QUESTIONS.path)
+      ),
     },
   );
 

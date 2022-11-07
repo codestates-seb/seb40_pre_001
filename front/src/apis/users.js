@@ -42,8 +42,6 @@ const updateUserEmail = async (id, newEmail) => {
     newEmail,
   );
 
-  console.log(response);
-
   return response;
 };
 
@@ -60,15 +58,13 @@ const updateUserInfo = async (id, newInfo) => {
 
   const response = await apiClient.patch(`/users/edit/${id}`, newInfo);
 
-  console.log(response);
-
   return response;
 };
 
 const getCurrentUser = async () => {
   // 성공
   const accessToken = localStorage.getItem('token');
-  const response = await apiClient.get('/users/login', {
+  const response = await apiClient.get('/users/info', {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

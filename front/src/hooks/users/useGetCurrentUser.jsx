@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllUsers } from '../apis/users';
+import { getAllUsers } from '../../apis/users';
 
 const useGetCurrentUser = () => {
   const { data } = useQuery(['allUsers'], getAllUsers, {

@@ -6,7 +6,9 @@ import TagsInfo from '../TagsInfo/TagsInfo';
 const Contents = () => {
   return (
     <S.Container>
-      <TagButton width={'62px'} />
+      <div>
+        <TagButton content='javascript' />
+      </div>
       <span style={{ fontSize: 13, marginTop: 12, marginBottom: 12 }}>
         For questions about programming in ECMAScript (JavaScript/JS) and its
         different dialects/implementations (except for ActionScript). Keep in{' '}

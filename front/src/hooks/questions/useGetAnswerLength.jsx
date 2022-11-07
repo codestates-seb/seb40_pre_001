@@ -1,22 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
 import { getPostById } from '../../apis/questions';
 
-const useGetPostById = (id) => {
-  const navigate = useNavigate();
+const useGetAnswersLength = (id) => {
   const { data, isSuccess, isLoading, isError, status } = useQuery(
-    ['postById'],
+    ['postById', id],
     () => getPostById(id),
     {
-      onError: () => navigate('/notfound'),
       retry: false,
       refetchOnWindowFocus: false,
-      staleTime: 1000,
+      staleTime: 50000,
     },
   );
 
+  const length = data?.answers?.length;
+
   return {
-    data,
+    length,
     isSuccess,
     isLoading,
     isError,
@@ -24,4 +23,4 @@ const useGetPostById = (id) => {
   };
 };
 
-export default useGetPostById;
+export default useGetAnswersLength;

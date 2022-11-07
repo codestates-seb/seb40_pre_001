@@ -11,10 +11,12 @@ import Spinner from '../../@common/Spinner';
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
 import { useParams } from 'react-router-dom';
-import useGetPostById from '../../../hooks/questions/useGetPostById';
+import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
+import { useGetPostById } from '../../../hooks/questions';
 
 const Content = () => {
   const { id } = useParams();
+  const { currentUser } = useGetCurrentUser();
 
   const { data, isSuccess, isLoading } = useGetPostById(id);
 
@@ -55,7 +57,12 @@ const Content = () => {
             />
           </S.ImgContainer>
           <S.PostLayout>
-            <LeftBox votes={voteCount} />
+            <LeftBox
+              type='post'
+              questionId={questionId}
+              currentUser={currentUser}
+              votes={voteCount}
+            />
             <RightBox
               type='post'
               questionId={questionId}
@@ -69,12 +76,14 @@ const Content = () => {
             <>
               <S.AnswerHeader>{answers?.length} Answer</S.AnswerHeader>
               {answers.map((answer, i) => {
-                return <Answer detail={answer} key={i} />;
+                return (
+                  <Answer detail={answer} currentUser={currentUser} key={i} />
+                );
               })}
             </>
           )}
           {/* Post Answer */}
-          <PostAnswer questionId={questionId} userId={userId} />
+          <PostAnswer questionId={questionId} currentUser={currentUser} />
         </M.MainContainer>
         <Widget />
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { pagesState } from '../../../../../store';
 import { SearchNFIcon } from '../../../../@common/Icons';
 import * as P from '../Post.style';
 import * as S from './SearchNotFound.style';
-import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../../../../store';
 
 const SearchNotFound = () => {
   const { keyword } = useRecoilValue(pagesState);
