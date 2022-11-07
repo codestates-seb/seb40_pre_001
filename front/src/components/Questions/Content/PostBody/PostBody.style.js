@@ -26,6 +26,7 @@ const VotingContainer = styled.div`
   align-items: stretch;
   justify-content: center;
   margin: -2px;
+  z-index: -1;
 
   color: hsl(210, 8%, 75%);
 

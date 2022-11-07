@@ -8,12 +8,20 @@ import useDeleteAnswerComment from './hooks/useDeleteAnswerComment';
 import useDeletePostComment from './hooks/useDeletePostComment';
 // import useUpdateAnswerComment from './hooks/useUpdateAnswerComment';
 
-const CommentList = ({ type, id, content, userName, createdAt, userId }) => {
+const CommentList = ({
+  type,
+  id,
+  content,
+  userName,
+  createdAt,
+  userId,
+  answerId,
+}) => {
   const { currentUser } = useGetCurrentUser();
   const { handleDelete: handleDeleteAnswerComment } = useDeleteAnswerComment();
   const { handleDelete: handleDeletePostComment } = useDeletePostComment();
   // const { handleUpdate: handleUpdateAnswerComment } = useUpdateAnswerComment();
-
+  answerId;
   return (
     <S.CommentList data-id={id}>
       <S.Li>

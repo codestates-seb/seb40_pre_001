@@ -45,18 +45,24 @@ const CommentBox = ({ type, currentUser, answerId }) => {
                 answerCommentContent,
                 answerCommentUsername,
                 createdAt,
+                answerId: commentAnswerId,
               }) => {
-                return (
-                  <CommentList
-                    type='answer'
-                    key={answerCommentId}
-                    id={answerCommentId}
-                    userId={userId}
-                    content={answerCommentContent}
-                    userName={answerCommentUsername}
-                    createdAt={createdAt}
-                  />
-                );
+                if (answerId) {
+                  if (commentAnswerId === answerId) {
+                    return (
+                      <CommentList
+                        type='answer'
+                        key={answerCommentId}
+                        id={answerCommentId}
+                        answerId={answerId}
+                        userId={userId}
+                        content={answerCommentContent}
+                        userName={answerCommentUsername}
+                        createdAt={createdAt}
+                      />
+                    );
+                  }
+                }
               },
             )}
 
