@@ -11,6 +11,7 @@ import useGetUserById from '../../../../hooks/users/useGetUserById';
 import { useDeleteAnswer, useDeletePost } from '../../../../hooks/questions';
 import CommentBox from '../Comment/Comment';
 import useGetAllTags from '../../../../hooks/tags/useGetAllTags';
+import Spinner from '../../../@common/Spinner';
 
 const RightBox = ({
   type,
@@ -36,6 +37,10 @@ const RightBox = ({
 
   const currentUser = localStorage.getItem('user') || 'anonymous';
   const { data: tags, status } = useGetAllTags();
+
+  if (status === 'loading') {
+    return <Spinner />;
+  }
 
   const getTag = (tagId) => {
     const tag = tags?.find((tag) => tag.tagId === tagId);
@@ -92,6 +97,7 @@ const RightBox = ({
           </S.FeatureBox>
           <UserInfo
             type={type}
+            userId={userId}
             author={user?.userNickname}
             createdAt={createdAt}
             isAuthor={isAuthor}

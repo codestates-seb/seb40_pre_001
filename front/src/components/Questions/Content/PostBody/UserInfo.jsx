@@ -2,8 +2,9 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
 import UnnamedCard from '../../../../assets/unnamedCard.png';
+import CustomLink from '../../../@common/Link';
 
-const UserInfo = ({ type, author, createdAt, isAuthor }) => {
+const UserInfo = ({ type, userId, author, createdAt, isAuthor }) => {
   return (
     <S.Wrapper isAuthor={isAuthor}>
       <S.Container>
@@ -18,7 +19,9 @@ const UserInfo = ({ type, author, createdAt, isAuthor }) => {
             </div>
           </a>
           <S.UserDetails>
-            <a>{author}</a>
+            <CustomLink path={`/users/${userId}/${author}`}>
+              {author}
+            </CustomLink>
             <div>
               <span>5 bronze badges</span>
             </div>
