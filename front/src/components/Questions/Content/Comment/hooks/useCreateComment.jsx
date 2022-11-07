@@ -14,7 +14,6 @@ const useCreateComment = () => {
   );
 
   const handleCreate = (userId, questionId, questionCommentContent) => {
-    console.log(userId);
     if (!userId) {
       alert('로그인을 해주시기 바랍니다.');
       return;
