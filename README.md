@@ -19,6 +19,10 @@
 <br>
 
 ## ✨ 프론트엔드 기술 스택 
+   ![쟈스](https://user-images.githubusercontent.com/105303007/200245837-422a3899-eb0e-4df9-91e8-f0cf4eca6fde.png)
+![리액트](https://user-images.githubusercontent.com/105303007/200245845-fdba6a03-dd49-4b7d-a341-b414f03344c9.png)
+![리![스타일컴포넌트](https://user-images.githubusercontent.com/105303007/200245856-ded2186c-c589-43a6-afe2-edca6f11b0ed.jpg)
+액트쿼리](https://user-images.githubusercontent.com/105303007/200245850-afa044d4-43ed-463d-9909-16c589790c55.png)
 
 
 ## ⚡️ 백엔드 기술 스택 
