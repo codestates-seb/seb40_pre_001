@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 import * as S from './UserInfo.style';
+import UnnamedCard from '../../../../assets/unnamedCard.png';
 
 const UserInfo = ({ type, author, createdAt, isAuthor }) => {
   return (
@@ -13,12 +14,7 @@ const UserInfo = ({ type, author, createdAt, isAuthor }) => {
         <S.UserBox>
           <a>
             <div>
-              <img
-                src='https://lh3.googleusercontent.com/a/AATXAJzt9UEAVbgkJikn0eoxPlTjnkAVLQoLKITEp_hz=k-s64'
-                alt="Christopher Fernandez's user avatar"
-                width='32'
-                height='32'
-              />
+              <img src={UnnamedCard} alt='user avatar' width='32' height='32' />
             </div>
           </a>
           <S.UserDetails>
