@@ -23,15 +23,25 @@
 
 ## ⚡️ 백엔드 기술 스택 
   JAVA : 메인 언어
+  
   SPRING BOOT :  Spring MVC Framework 구현을 위한 SpringBoot 
+  
   GRADLE : 빌드 툴
+  
   SPRING SECURITY : 로그인/로그아웃/회원가입/JWT 기능 
+  
   MYSQL : DB구조. MySQL & H2 사용
+  
   SPRIGN DATA JPA HIBERNATE: Mapstruct, DTO, Repository 등을 통한 ORM 기술
+  
   LOMBOK : Getter, Setter 등과 같은 어노테이션 기능
+  
   Ngork: 로컬호스트의 개발 환경을 외부로 공유하는 툴
+  
   AWS: 배포
+  
   Discord: 소통 툴 
+  
 
 ## ⚙️ 인프라 기술 스택 
   
