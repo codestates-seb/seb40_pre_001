@@ -7,6 +7,7 @@ import {
   TrophyIcon,
 } from '../../../@common/Icons';
 import * as S from './AuthNav.style';
+import Unnamed from '../../../../assets/unnamed.png';
 
 import LogoutPopOver from './LogoutPopOver';
 
@@ -17,12 +18,7 @@ const Auth = () => {
     <S.Ol style={{ marginTop: 6 }}>
       <S.Li>
         <S.ProfileBox>
-          <img
-            src='https:lh3.googleusercontent.com/a/AATXAJxRbtWtiiQfLRliQJ403f5uiryCfFRKhBFb3yme=k-s48'
-            alt="Keonhee Lee's user avatar"
-            width='24'
-            height='24'
-          />
+          <img src={Unnamed} width='24' height='24' />
           <span>1</span>
         </S.ProfileBox>
       </S.Li>
