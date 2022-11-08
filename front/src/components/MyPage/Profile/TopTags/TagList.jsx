@@ -13,7 +13,7 @@ const TagList = ({ content, count, desc }) => {
       </div>
       <div>
         <span style={{ fontSize: 17 }}>{count}</span>
-        <span style={{ marginLeft: 10 }}>count</span>
+        <span style={{ marginLeft: 10 }}>counts</span>
       </div>
     </S.Li>
   );

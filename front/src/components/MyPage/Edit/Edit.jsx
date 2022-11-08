@@ -54,21 +54,22 @@ const UserEdit = () => {
             disabled={Number(userId) !== currentUser.userId}
           />
         </S.PIContainer>
+        {currentUser.userId === Number(userId) && (
+          <StyledButton
+            content='Save profile'
+            onClick={() => {
+              if (!addressRef.current.value || !userNicknameRef.current.value) {
+                return;
+              }
 
-        <StyledButton
-          content='Save profile'
-          onClick={() => {
-            if (!addressRef.current.value || !userNicknameRef.current.value) {
-              return;
-            }
-
-            handleUpdateInfo(userId, {
-              address: addressRef.current.value,
-              userNickname: userNicknameRef.current.value,
-            });
-          }}
-          disabled={Number(userId) !== currentUser.userId}
-        />
+              handleUpdateInfo(userId, {
+                address: addressRef.current.value,
+                userNickname: userNicknameRef.current.value,
+              });
+            }}
+            disabled={Number(userId) !== currentUser.userId}
+          />
+        )}
       </S.EditContainer>
     );
   }
