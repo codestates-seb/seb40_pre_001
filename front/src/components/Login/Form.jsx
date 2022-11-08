@@ -86,6 +86,7 @@ const Form = () => {
           <S.FormInput
             type='text'
             name='email'
+            autoComplete='username'
             value={email}
             onChange={handleEmail}
           ></S.FormInput>
@@ -100,6 +101,7 @@ const Form = () => {
           <S.FormInput
             name='password'
             type='password'
+            autoComplete='current-password'
             onChange={handlePw}
           ></S.FormInput>
           {!pwValid && pw.length < 1 && (

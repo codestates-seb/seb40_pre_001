@@ -3,7 +3,6 @@ import * as S from './EditContent.style';
 import { Widget } from '../Questions';
 import { useNavigate, useParams } from 'react-router-dom';
 import useGetPostById from '../../hooks/questions/useGetPostById';
-import Spinner from '../@common/Spinner';
 import { TextEditor } from '../@common/TextEditor/TextEditor';
 import { useRef } from 'react';
 import { StyledButton } from '../@common/Buttons';
@@ -16,7 +15,7 @@ const EditPost = () => {
   const titleRef = useRef(null);
   const editorRef = useRef(null);
   const [editor, setEditor] = useState('');
-  const { data, isLoading } = useGetPostById(id);
+  const { data } = useGetPostById(id);
   const { currentUser } = useGetCurrentUser();
   const navigate = useNavigate();
 
@@ -39,10 +38,6 @@ const EditPost = () => {
   const handleEditor = useCallback(() => {
     setEditor(editorRef?.current?.getInstance().getMarkdown());
   }, []);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   const { questionTitle, questionId, context } = data.question;
 

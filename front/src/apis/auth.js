@@ -18,15 +18,20 @@ const createUser = async (registerInfo) => {
 
 // login
 const postLogin = async (loginInfo) => {
-  return await apiClient.post('/auth/login', loginInfo).then((res) => {
-    const token = res.headers.get('Authorization');
+  return await apiClient
+    .post('/auth/login', loginInfo)
+    .then((res) => {
+      const token = res.headers.get('Authorization');
 
-    const [_, jwt] = token.split(' ');
-    _;
+      const [_, jwt] = token.split(' ');
+      _;
 
-    localStorage.setItem('token', jwt);
-    setAuthToken(jwt);
-  });
+      localStorage.setItem('token', jwt);
+      setAuthToken(jwt);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 export { apiClient };

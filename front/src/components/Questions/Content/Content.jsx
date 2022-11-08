@@ -6,7 +6,6 @@ import Widget from '../Widget/Widget';
 import LeftBox from './PostBody/LeftBox';
 import PostAnswer from './Answer/PostAnswer';
 import Answer from './Answer/Answer';
-import Spinner from '../../@common/Spinner';
 
 import * as S from './Content.style';
 import * as M from '../../../pages/Questions/Questions.style';
@@ -18,11 +17,7 @@ const Content = () => {
   const { id } = useParams();
   const { currentUser } = useGetCurrentUser();
 
-  const { data, isSuccess, isLoading } = useGetPostById(id);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  const { data, isSuccess } = useGetPostById(id);
 
   if (isSuccess) {
     const { answers } = data;

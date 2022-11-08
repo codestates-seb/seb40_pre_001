@@ -3,7 +3,7 @@ import React from 'react';
 import { ROUTES } from '../constants';
 import { Nav } from '../components/@Layout';
 
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import Layout from './PagesLayout/Layout';
 import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
@@ -16,9 +16,12 @@ import EditPostPage from './Questions/Edit/EditPost';
 import EditAnswerPage from './Questions/Edit/EditAnswer';
 import AskPage from './Questions/Ask/AskPage';
 import UserEditPage from './UserProfile/UsersEdit';
+import Questions from './Questions/Questions';
+import Post from './Questions/Post/Post';
 
-const Questions = lazy(() => import('./Questions/Questions'));
-const Post = lazy(() => import('./Questions/Post/Post'));
+// const Login = lazy(() => import('./AuthPage/Login'));
+// const Questions = lazy(() => import('./Questions/Questions'));
+// const Post = lazy(() => import('./Questions/Post/Post'));
 
 // Layout 하위로 페이지 라우팅
 const PAGES = [

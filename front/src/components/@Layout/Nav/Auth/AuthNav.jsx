@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAllTags } from '../../../../apis/tags';
+import { useNavigate } from 'react-router-dom';
 import Unnamed from '../../../../assets/unnamed.png';
 import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
 import {
@@ -9,17 +9,22 @@ import {
   TrophyIcon,
 } from '../../../@common/Icons';
 import CustomLink from '../../../@common/Link';
-import Spinner from '../../../@common/Spinner';
+// import Spinner from '../../../@common/Spinner';
 import * as S from './AuthNav.style';
 
 import LogoutPopOver from './LogoutPopOver';
 
 const Auth = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const { currentUser, isSuccess, isLoading } = useGetCurrentUser();
+  const { currentUser, isSuccess, isLoading, isError } = useGetCurrentUser();
+  const navigate = useNavigate();
 
   if (isLoading) {
-    return <Spinner />;
+    return <div>loading...</div>;
+  }
+
+  if (isError) {
+    navigate('/login');
   }
 
   if (isSuccess) {
@@ -38,7 +43,7 @@ const Auth = () => {
         <S.Li style={{ marginLeft: 15 }}>
           <InboxIcon />
         </S.Li>
-        <S.Li onClick={() => getAllTags()}>
+        <S.Li>
           <TrophyIcon
             fill1='hsl(210,8%,35%)'
             style={{ width: 18, height: 18 }}

@@ -7,14 +7,8 @@ import UsersFilter from '../../components/UsersPage/UsersFilter/UsersFilter';
 import useGetAllUsers from '../../hooks/users/useGetAllUsers';
 import TitleBox from '../../components/@common/TitleBox/TitleBar';
 
-import Spinner from '../../components/@common/Spinner';
-
 const Users = () => {
-  const { data, isSuccess, isLoading } = useGetAllUsers();
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  const { data, isSuccess } = useGetAllUsers();
 
   if (isSuccess) {
     return (

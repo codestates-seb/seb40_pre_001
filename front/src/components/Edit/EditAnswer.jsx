@@ -3,7 +3,6 @@ import * as S from './EditContent.style';
 import { Widget } from '../Questions';
 import { useNavigate, useParams } from 'react-router-dom';
 import useGetPostById from '../../hooks/questions/useGetPostById';
-import Spinner from '../@common/Spinner';
 import { TextEditor } from '../@common/TextEditor/TextEditor';
 import { useRef } from 'react';
 import { StyledButton } from '../@common/Buttons';
@@ -17,7 +16,7 @@ const EditAnswer = () => {
 
   const editorRef = useRef(null);
   const [editor, setEditor] = useState('');
-  const { data, isLoading, isSuccess } = useGetPostById(currentQuestionId);
+  const { data, isSuccess } = useGetPostById(currentQuestionId);
   const navigate = useNavigate();
 
   const textEditorValidator = (text) => {
@@ -39,10 +38,6 @@ const EditAnswer = () => {
   const handleEditor = useCallback(() => {
     setEditor(editorRef?.current?.getInstance().getMarkdown());
   }, []);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   if (isSuccess) {
     const answersData = data?.answers.find(
