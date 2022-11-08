@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Unnamed from '../../../../assets/unnamed.png';
 import useGetCurrentUser from '../../../../hooks/users/useGetCurrentUser';
 import {
@@ -9,23 +8,13 @@ import {
   TrophyIcon,
 } from '../../../@common/Icons';
 import CustomLink from '../../../@common/Link';
-// import Spinner from '../../../@common/Spinner';
 import * as S from './AuthNav.style';
 
 import LogoutPopOver from './LogoutPopOver';
 
 const Auth = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const { currentUser, isSuccess, isLoading, isError } = useGetCurrentUser();
-  const navigate = useNavigate();
-
-  if (isLoading) {
-    return <div>loading...</div>;
-  }
-
-  if (isError) {
-    navigate('/login');
-  }
+  const { currentUser, isSuccess } = useGetCurrentUser();
 
   if (isSuccess) {
     return (

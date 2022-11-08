@@ -1,20 +1,18 @@
 import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { postLogin } from '../../../apis/auth';
 import { getCurrentUser } from '../../../apis/users';
-import { ROUTES } from '../../../constants';
 import { usersState } from '../../../store';
 
 const useLogin = () => {
   const [authState, setIsAuthenticated] = useRecoilState(usersState);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { mutate, status } = useMutation(
     postLogin,
     {
       onSuccess: () => {
-        navigate(ROUTES.QUESTIONS.path);
         getCurrentUser();
         setIsAuthenticated({
           ...authState,

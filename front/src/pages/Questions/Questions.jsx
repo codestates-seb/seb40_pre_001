@@ -10,6 +10,10 @@ import Spinner from '../../components/@common/Spinner';
 const Questions = () => {
   const { questionsData: data, isError, isLoading } = useGetAllPosts();
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   if (isError) {
     return <div>Error...</div>;
   }
@@ -17,15 +21,9 @@ const Questions = () => {
   return (
     <S.ContentWrapper>
       <S.MainContainer>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            <Header title='All Questions' length={data?.length} />
-            <PostBox data={data} />
-            <Pagination length={data?.length} />
-          </>
-        )}
+        <Header title='All Questions' length={data?.length} />
+        <PostBox data={data} />
+        <Pagination length={data?.length} />
       </S.MainContainer>
       <Widget />
     </S.ContentWrapper>

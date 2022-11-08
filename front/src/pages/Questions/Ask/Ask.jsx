@@ -37,8 +37,6 @@ const Ask = () => {
       ],
     });
 
-    console.log(mockData);
-
     addPost.mutate(mockData)
       ? addPost.mutate(mockData)
       : mutate === 'error'
