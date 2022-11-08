@@ -1,20 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createPost } from '../../apis/questions';
+import { createAnswer } from '../../apis/questions';
 
-const useCreateQuestions = () => {
+const useCreateAnswer = () => {
   const queryClient = useQueryClient();
 
-  //mutate > get, post 등
-  //status > success error
-  const { mutate, status } = useMutation(
-    ['questionId'],
-    ({ userId, questionTitle, context }) =>
-      createPost(userId, questionTitle, context),
+  const { mutate, state } = useMutation(
+    ['postById'],
+    ({ questionId, userId, context }) =>
+      createAnswer(questionId, userId, context),
     {
-      onSuccess: () => queryClient.invalidateQueries(['questionId']),
+      onSuccess: () => queryClient.invalidateQueries(['postById']),
     },
   );
-  return { mutate, status };
+
+  return { mutate, state };
 };
 
-export default useCreateQuestions;
+export default useCreateAnswer;
