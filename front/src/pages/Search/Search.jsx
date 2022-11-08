@@ -6,16 +6,11 @@ import FilteredPostBox from '../../components/Questions/Main/Post/FilteredPostBo
 import SearchNotFound from '../../components/Questions/Main/Post/SearchNotFound/SearchNotFound';
 import { useGetFilteredPost } from '../../hooks/questions';
 import { useSearchParams } from 'react-router-dom';
-import Spinner from '../../components/@common/Spinner';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
   const keyword = searchParams.get('q');
-  const { data, isSuccess, isLoading } = useGetFilteredPost(keyword);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  const { data, isSuccess } = useGetFilteredPost(keyword);
 
   if (isSuccess) {
     return (

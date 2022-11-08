@@ -86,8 +86,8 @@ const Form = () => {
           <S.FormInput
             type='text'
             name='email'
-            value={email}
             autoComplete='username'
+            value={email}
             onChange={handleEmail}
           ></S.FormInput>
           {!emailValid && email.length > 0 && (
