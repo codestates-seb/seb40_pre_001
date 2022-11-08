@@ -11,7 +11,7 @@ const Ol = styled.ol`
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
+  overflow: hidden;
   align-items: center;
   padding-bottom: 5px;
   width: auto;

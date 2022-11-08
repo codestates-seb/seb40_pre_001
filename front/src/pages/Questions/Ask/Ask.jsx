@@ -13,22 +13,33 @@ import useCreateQuestions from '../../../hooks/questions/useCreateQuestions';
 import { useCreatePost } from '../../../hooks/usePost';
 import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
+import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
 
 const Ask = () => {
-  const { title, questionsUp, questionsDown, tags, author } =
-    useRecoilValue(questions);
+  const { title, questionsUp, questionsDown, tags } = useRecoilValue(questions);
   const { mutate } = useCreateQuestions();
   const addPost = useCreatePost('questions', '/questions');
 
+  const { currentUser } = useGetCurrentUser();
+
   const onClick = () => {
     const mockData = Object.assign({
-      userId: author,
+      userId: currentUser.userId,
       questionTitle: title,
-      tagIdList: [],
-      context: questionsUp + questionsDown,
+      context: `${questionsUp}\n\n ${questionsDown}`,
+      tagList: [
+        {
+          tagId: 1,
+        },
+        {
+          tagId: 2,
+        },
+      ],
     });
 
-    mutate === 'success'
+    console.log(mockData);
+
+    addPost.mutate(mockData)
       ? addPost.mutate(mockData)
       : mutate === 'error'
       ? console.log('Failed to add new Post')
