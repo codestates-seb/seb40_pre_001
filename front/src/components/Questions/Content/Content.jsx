@@ -36,6 +36,7 @@ const Content = () => {
       voteCount,
       context,
       userId,
+      tagList,
     } = data.question;
 
     return (
@@ -69,6 +70,7 @@ const Content = () => {
               context={context}
               userId={userId}
               createdAt={createdAt}
+              tagList={tagList}
             />
           </S.PostLayout>
           {/* Answers */}

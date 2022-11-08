@@ -9,12 +9,13 @@ import Tags from './Tags/Tags';
 import Login from './AuthPage/Login';
 import SignUp from './AuthPage/Signup';
 import Users from './Users/Users';
-import UserProfile from './UserProfile/UserProfile';
+import UserProfilePage from './UserProfile/UserProfile';
 import NotFound from './404/404';
 import Search from './Search/Search';
 import EditPostPage from './Questions/Edit/EditPost';
 import EditAnswerPage from './Questions/Edit/EditAnswer';
 import AskPage from './Questions/Ask/AskPage';
+import UserEditPage from './UserProfile/UsersEdit';
 
 const Questions = lazy(() => import('./Questions/Questions'));
 const Post = lazy(() => import('./Questions/Post/Post'));
@@ -68,9 +69,14 @@ const PAGES = [
         element: <Users />,
       },
       {
-        name: ROUTES.USERPROFILE.name,
-        path: ROUTES.USERPROFILE.path,
-        element: <UserProfile />,
+        name: ROUTES.USER_PROFILE.name,
+        path: ROUTES.USER_PROFILE.path,
+        element: <UserProfilePage />,
+      },
+      {
+        name: ROUTES.USER_EDIT.name,
+        path: ROUTES.USER_EDIT.path,
+        element: <UserEditPage />,
       },
     ],
   },

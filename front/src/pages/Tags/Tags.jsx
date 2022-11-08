@@ -3,52 +3,41 @@ import * as S from './Tags.style';
 import TagsTitleText from './TagsTitleText';
 import TagsAll from './TagsAll';
 import TagsFilter from '../../components/TagsPage/TagsFilter/TagsFilter';
-import axios from 'axios';
 import Contents from '../../components/TagsPage/Tags/Contents';
-// import { getAlltagsData } from '../../apis/tags';
-import { useQuery } from '@tanstack/react-query';
+
+import useGetAllTags from '../../hooks/tags/useGetAllTags';
+import TitleBox from '../../components/@common/TitleBox/TitleBar';
 
 const Tags = () => {
-  const fetchData = async () => {
-    const response = await axios.get(
-      'https://630c-125-177-243-74.jp.ngrok.io/tags',
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        withCredentials: true,
-      },
+  const { data, status } = useGetAllTags();
+
+  if (status === 'success') {
+    return (
+      <S.Container style={{ height: 1000 }}>
+        <TitleBox title='Tags' />
+        <TagsTitleText />
+        <TagsAll />
+        <TagsFilter />
+        <S.TagsContainer>
+          {data.map(({ tagId, tagName, tagDescription }) => {
+            return (
+              tagName.trim().length !== 0 && (
+                <Contents
+                  key={tagId}
+                  tagName={tagName}
+                  tagDescription={tagDescription}
+                >
+                  {tagName}
+                </Contents>
+              )
+            );
+          })}
+          <Contents />
+        </S.TagsContainer>
+        <S.PagiNationContainer></S.PagiNationContainer>
+      </S.Container>
     );
-    return response.data;
-  };
-  const { data, status } = useQuery(['tags'], fetchData);
-  data;
-
-  if (status === 'loading') {
-    return <div>Loading...</div>;
   }
-
-  if (status === 'error') {
-    return <div>Error</div>;
-  }
-
-  // getAlltagsData();
-  return (
-    <S.Container>
-      {/* <Title title={'Tags'} /> */}
-      <TagsTitleText />
-      <TagsAll />
-      <TagsFilter />
-      <S.TagsContainer>
-        {/* {data.results.map((tags) => {
-          <Contents>{tags.tagName}</Contents>;
-        })}
-        {console.log(data.results)} */}
-        <Contents />
-      </S.TagsContainer>
-      <S.PagiNationContainer></S.PagiNationContainer>
-    </S.Container>
-  );
 };
 
 export default Tags;

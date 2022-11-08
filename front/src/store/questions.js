@@ -6,7 +6,7 @@ const questions = atom({
     title: '',
     questionsUp: '',
     questionsDown: '',
-    tags: [],
+    tags: [{ tagId: 'javascript' }, { tagId: 'java' }],
     author: '',
   },
 });

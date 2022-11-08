@@ -1,12 +1,12 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { pagesState } from '../../../../../store';
+import { useSearchParams } from 'react-router-dom';
 import { SearchNFIcon } from '../../../../@common/Icons';
 import * as P from '../Post.style';
 import * as S from './SearchNotFound.style';
 
 const SearchNotFound = () => {
-  const { keyword } = useRecoilValue(pagesState);
+  const [searchParams] = useSearchParams();
+  const keyword = searchParams.get('q');
 
   return (
     <P.PostContainer>

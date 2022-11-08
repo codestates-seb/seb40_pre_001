@@ -7,28 +7,36 @@ import UsersFilter from '../../components/UsersPage/UsersFilter/UsersFilter';
 import useGetAllUsers from '../../hooks/users/useGetAllUsers';
 import TitleBox from '../../components/@common/TitleBox/TitleBar';
 
+import Spinner from '../../components/@common/Spinner';
+
 const Users = () => {
-  const { data } = useGetAllUsers();
+  const { data, isSuccess, isLoading } = useGetAllUsers();
 
-  return (
-    <S.Container>
-      <TitleBox title='Users' />
-      <UsersFilter />
-      <UsersTab />
-      <S.UsersContainer>
-        {data?.map(({ content }, i) => {
-          return <UserInfo key={i}>{content}</UserInfo>;
-        })}
-      </S.UsersContainer>
-      <S.UsersfooterContainer>
-        <S.UsersLegend>
-          weekly / monthly / quarterly resutatiom leagues
-        </S.UsersLegend>
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-        <S.PagiNationContainer></S.PagiNationContainer>
-      </S.UsersfooterContainer>
-    </S.Container>
-  );
+  if (isSuccess) {
+    return (
+      <S.Container>
+        <TitleBox title='Users' />
+        <UsersFilter />
+        <UsersTab />
+        <S.UsersContainer>
+          {data.map((data, i) => {
+            return <UserInfo key={i} data={data} />;
+          })}
+        </S.UsersContainer>
+        <S.UsersfooterContainer>
+          <S.UsersLegend>
+            weekly / monthly / quarterly resutatiom leagues
+          </S.UsersLegend>
+
+          <S.PagiNationContainer></S.PagiNationContainer>
+        </S.UsersfooterContainer>
+      </S.Container>
+    );
+  }
 };
 
 export default Users;

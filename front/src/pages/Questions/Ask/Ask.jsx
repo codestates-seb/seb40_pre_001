@@ -1,6 +1,5 @@
 /*eslint-disable*/
 import React from 'react';
-
 import * as S from './Ask.style';
 
 import ASK_FORM from '../../../constants/askform';
@@ -10,24 +9,41 @@ import QuestionAdvice from './Advice';
 import QUESTION_ADVICE from '../../../constants/questionAdvice';
 
 import { AskForm } from './AskForm';
-import useGetAllPosts from '../../../hooks/questions/useGetAllPosts';
+import useCreateQuestions from '../../../hooks/questions/useCreateQuestions';
 import { useCreatePost } from '../../../hooks/usePost';
 import { useRecoilValue } from 'recoil';
 import { questions } from '../../../store/questions';
+import useGetCurrentUser from '../../../hooks/users/useGetCurrentUser';
 
 const Ask = () => {
-  const { title, questionsUp, questionsDown, tags, author } =
-    useRecoilValue(questions);
-  const { data, status } = useGetAllPosts();
+  const { title, questionsUp, questionsDown, tags } = useRecoilValue(questions);
+  const { mutate } = useCreateQuestions();
   const addPost = useCreatePost('questions', '/questions');
+
+  const { currentUser } = useGetCurrentUser();
 
   const onClick = () => {
     const mockData = Object.assign({
-      userId: author,
+      userId: currentUser.userId,
       questionTitle: title,
-      tagIdList: tags,
-      context: questionsUp + questionsDown,
+      context: `${questionsUp}\n\n ${questionsDown}`,
+      tagList: [
+        {
+          tagId: 1,
+        },
+        {
+          tagId: 2,
+        },
+      ],
     });
+
+    console.log(mockData);
+
+    addPost.mutate(mockData)
+      ? addPost.mutate(mockData)
+      : mutate === 'error'
+      ? console.log('Failed to add new Post')
+      : null;
   };
 
   return (
