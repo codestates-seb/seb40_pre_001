@@ -23,7 +23,7 @@ const SignUpForm = () => {
 
   const handleChange = async (e) => {
     e.preventDefault();
-    console.log(email, nickName);
+    // console.log(email, nickName);
     return await axios
       .post(
         `${process.env.REACT_APP_BASE_URL}/users/signup`,

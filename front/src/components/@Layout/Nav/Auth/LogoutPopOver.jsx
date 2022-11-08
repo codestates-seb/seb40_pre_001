@@ -13,6 +13,7 @@ const LogoutPopOver = () => {
     setIsAuthenticated({ isAuthenticated: false, currentUser: 'anonymous' });
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    alert('로그아웃 되었습니다');
   };
 
   return (
