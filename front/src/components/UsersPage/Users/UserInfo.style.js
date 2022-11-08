@@ -19,7 +19,7 @@ const UserInfoProfile = styled.img`
   height: 48px;
   /* background-image: ${({ backgrondImges }) => backgrondImges || 'null'}; ; */
 `;
-const UserInfoName = styled.a`
+const UserInfoName = styled.span`
   font-size: 15px;
   display: block;
   color: #0077cc;

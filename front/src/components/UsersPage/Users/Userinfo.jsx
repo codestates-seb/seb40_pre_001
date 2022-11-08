@@ -4,6 +4,7 @@ import UserCard from '../../../assets/unnamedCard.png';
 import UserCard2 from '../../../assets/unnamed.png';
 import { TagButton } from '../../@common/Buttons';
 import TimeAgo from 'react-timeago';
+import CustomLink from '../../@common/Link';
 
 const UserInfo = ({ data }) => {
   const { userNickname, email, userId, createdAt } = data;
@@ -43,7 +44,9 @@ const UserInfo = ({ data }) => {
         src={Number(userId) % 2 === 0 ? UserCard : UserCard2}
       />
       <S.UserDetails>
-        <S.UserInfoName>{userNickname}</S.UserInfoName>
+        <CustomLink path={`/users/${userId}/${userNickname}`}>
+          <S.UserInfoName>{userNickname}</S.UserInfoName>
+        </CustomLink>
         <S.UserInfoLocation>{email}</S.UserInfoLocation>
         <TimeAgo date={createdAt} />
       </S.UserDetails>
