@@ -1,18 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Overpass');
 
-* {
-  box-sizing: border-box;
-  font-family: 'Overpass', sans-serif;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Overpass', sans-serif;
-}
-
 .tags-input {
   display: flex;
   align-items: flex-start;
@@ -22,14 +9,11 @@ body {
   padding: 0 8px;
   border: 1px solid rgb(214, 216, 218);
   border-radius: 6px;
-  &:focus-within {
-    border: 1px solid #0052cc;
-  }
 
   height: '32px';
   border: '1px solid hsl(210,8%,75%)';
-  borderradius: '3px';
-  paddingleft: '8px';
+  border-radius: '3px';
+  padding-left: '8px';
 }
 
 .input {
@@ -38,9 +22,6 @@ body {
   height: 46px;
   font-size: 14px;
   padding: 4px 0 0 0;
-  &:focus {
-    outline: transparent;
-  }
 }
 
 #tags {
@@ -63,9 +44,6 @@ body {
   border-radius: 6px;
   margin: 0 8px 8px 0;
   background: #e1ecf4;
-  .tag-title {
-    margin-top: 3px;
-  }
 }
 
 .tag-close-icon {
@@ -85,4 +63,8 @@ body {
   .tags-input {
     width: calc(100vw - 32px);
   }
+}
+
+.tag-title {
+  margin-top: 3px;
 }

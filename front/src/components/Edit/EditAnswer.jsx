@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import * as S from './EditContent.style';
 import { Widget } from '../Questions';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useGetPostById from '../../hooks/questions/useGetPostById';
 import Spinner from '../@common/Spinner';
 import { TextEditor } from '../@common/TextEditor/TextEditor';
@@ -18,6 +18,7 @@ const EditAnswer = () => {
   const editorRef = useRef(null);
   const [editor, setEditor] = useState('');
   const { data, isLoading, isSuccess } = useGetPostById(currentQuestionId);
+  const navigate = useNavigate();
 
   const textEditorValidator = (text) => {
     let isValid = false;
@@ -94,6 +95,7 @@ const EditAnswer = () => {
                 color: 'hsl(206,100%,40%)',
                 marginLeft: 10,
               }}
+              onClick={() => navigate(`/questions/${id}`)}
             />
           </S.ButtonBox>
         </S.LeftBox>

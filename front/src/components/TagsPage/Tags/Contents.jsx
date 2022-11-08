@@ -3,22 +3,20 @@ import * as S from './Contents.style';
 import TagButton from '../../@common/Buttons/Tag';
 import TagsInfo from '../TagsInfo/TagsInfo';
 
-const Contents = () => {
+const Contents = ({ tagName, tagDescription, usedTagCnt }) => {
   return (
     <S.Container>
       <div>
-        <TagButton content='javascript' />
+        <TagButton content={tagName} />
       </div>
       <span style={{ fontSize: 13, marginTop: 12, marginBottom: 12 }}>
-        For questions about programming in ECMAScript (JavaScript/JS) and its
-        different dialects/implementations (except for ActionScript). Keep in{' '}
-        ...
+        {tagDescription}
       </span>
       {/* <p>{tags.tagId}</p>
       <p>{tags.name}</p>
       <p>{tags.tagDescription}</p>
       <p>{tags.usedTagCnt}</p> */}
-      <TagsInfo />
+      <TagsInfo usedTagCnt={usedTagCnt} />
     </S.Container>
   );
 };

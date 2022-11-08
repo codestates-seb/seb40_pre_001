@@ -4,7 +4,7 @@ import useCreateAnswer from './useCreateAnswer';
 import useDeleteAnswer from './useDeleteAnswer';
 import useGetAllPosts from './useGetAllPosts';
 import useGetAnswersLength from './useGetAnswerLength';
-import useGetFilteredPost from './useGetFilteredPost';
+import { useGetFilteredPost, useSearchBar } from './useGetFilteredPost';
 import useGetPostById from './useGetPostById';
 import useDeletePost from './useDeletePost';
 
@@ -14,6 +14,7 @@ export {
   useGetAnswersLength,
   useGetFilteredPost,
   useGetPostById,
+  useSearchBar,
 };
 
 // votes

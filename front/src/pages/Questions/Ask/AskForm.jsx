@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useState, useRef } from 'react';
 import * as S from './Ask.style';
 import { TextEditor } from '../../../components/@common/TextEditor/TextEditor';
@@ -7,7 +6,6 @@ import { SquareButton } from '../../../components/@common/Buttons/Button.style';
 import { useRecoilState } from 'recoil';
 import { questions } from '../../../store/questions';
 
-// import TagsInput from './MakeTags';
 import './Tags.css';
 
 const TagsInput = (props) => {
@@ -18,7 +16,7 @@ const TagsInput = (props) => {
   const addTags = (event) => {
     if (event.target.value !== '') {
       setTags([...tags, { tagId: event.target.value }]);
-      props.selectedTags([...tags, { tagId: event.target.value }]);
+
       setInputVale({
         ...state,
         tags: [...tags, { tagId: event.target.value }],
@@ -89,8 +87,6 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
         questionsDown: textdone,
       });
     }
-
-    console.log(state);
   };
 
   const editorRef = useRef();
@@ -99,10 +95,6 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
     const EditorText = editorRef.current?.getInstance().getMarkdown();
     SetTextDone(EditorText);
     DoneQuestion(textdone);
-  };
-
-  const selectedTags = (tags) => {
-    // console.log(tags);
   };
 
   return (
@@ -117,16 +109,13 @@ const AskForm = ({ title, script, index, markdown, placeholder, type }) => {
       {markdown ? (
         <TextEditor
           ref={editorRef}
-          onChange={(e) => handleRegisterButton()}
+          onChange={() => handleRegisterButton()}
           required
           height='
           300px'
         ></TextEditor>
       ) : type === 'tags' ? (
-        <TagsInput
-          selectedTags={selectedTags}
-          tags={[{ tagId: 'javascript' }, { tagId: 'java' }]}
-        />
+        <TagsInput tags={[{ tagId: 'javascript' }, { tagId: 'java' }]} />
       ) : (
         <input
           style={{

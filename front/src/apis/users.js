@@ -27,10 +27,9 @@ const deleteUser = async (id) => {
 };
 
 const updateUserEmail = async (id, newEmail) => {
-  const response = await apiClient.patch(
-    `/users/email/settings/${id}`,
-    newEmail,
-  );
+  const response = await apiClient.patch(`/users/edit/${id}`, {
+    userEmail: newEmail,
+  });
 
   return response;
 };

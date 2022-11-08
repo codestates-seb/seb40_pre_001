@@ -1,6 +1,7 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 import useGetUserById from '../../../../hooks/users/useGetUserById';
+import CustomLink from '../../../@common/Link';
 import * as S from './Post.style';
 
 const UserCard = ({ id, createdAt }) => {
@@ -10,7 +11,9 @@ const UserCard = ({ id, createdAt }) => {
     <S.DetailRight>
       <S.UserCard>
         <S.UserCardLink>
-          <a href='/users/17314281/user17314281'>{data?.userNickname}</a>
+          <CustomLink path={`/users/${id}/${data?.userNickname}`}>
+            {data?.userNickname}
+          </CustomLink>
         </S.UserCardLink>
         <S.UserPostCount>13</S.UserPostCount>
       </S.UserCard>

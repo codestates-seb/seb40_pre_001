@@ -1,15 +1,11 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getPostsByKeyword } from '../../apis/questions';
 
 const useGetFilteredPost = (keyword) => {
-  const queryClient = useQueryClient();
-
   const { data, isSuccess, isLoading, isError } = useQuery(
-    ['filtered-post', 'questions'],
+    ['filtered-post'],
     () => getPostsByKeyword(keyword),
     {
-      onSuccess: () =>
-        queryClient.invalidateQueries(['filtered-post', 'questions']),
       refetchOnWindowFocus: false,
     },
   );
@@ -17,4 +13,19 @@ const useGetFilteredPost = (keyword) => {
   return { data, isSuccess, isLoading, isError };
 };
 
-export default useGetFilteredPost;
+const useSearchBar = () => {
+  const queryClient = useQueryClient();
+
+  const { mutate, data, isSuccess, isLoading } = useMutation(
+    ['filtered-post'],
+    (keyword) => getPostsByKeyword(keyword),
+    {
+      onSuccess: (data) => queryClient.setQueryData(['filtered-post'], data),
+      refetchOnWindowFocus: false,
+    },
+  );
+
+  return { mutate, data, isSuccess, isLoading };
+};
+
+export { useGetFilteredPost, useSearchBar };
