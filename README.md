@@ -1,8 +1,8 @@
 <div align=center>
   <h2> Stack Overflow 클론 </h2>
  
-
-
+ 
+배포 링크: http://pre-project-deploy.s3-website.ap-northeast-2.amazonaws.com/
 
 
 </div>
