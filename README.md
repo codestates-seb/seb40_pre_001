@@ -1,11 +1,22 @@
 <div align=center>
   <h2> Stack Overflow 클론 </h2>
- 
- 
-배포 링크: http://pre-project-deploy.s3-website.ap-northeast-2.amazonaws.com/
-
 
 </div>
+<br>
+
+## 배포
+
+#### 링크
+http://pre-project-deploy.s3-website.ap-northeast-2.amazonaws.com
+
+
+#### 테스트 계정
+
+id: testuser@test.com  
+password: 123456789aa  
+  
+<br>
+
 
 ## 팀원 소개 👩🏻‍💻🧑🏻‍💻
 
